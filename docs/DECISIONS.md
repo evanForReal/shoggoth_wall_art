@@ -26,4 +26,4 @@
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
 | 2026-11-13 | docs-lead | Initial creation + seed entry | docs-reviewer |
-| 2026-11-14 | orchestrator | Appended round-01 verdict entry | [PROVISIONAL] |
+| 2026-11-14 | orchestrator | Appended round-01 verdict entry | docs-reviewer |
