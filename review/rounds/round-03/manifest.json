@@ -1,0 +1,393 @@
+{
+  "round": "round-03",
+  "title": "Shoggoth wall art — round 03: four-group search",
+  "created": "2026-11-14",
+  "issue_repo": "evanForReal/shoggoth_wall_art",
+  "notes": "48 cards, 4 independent groups x 12 (artistic / surface-aesthetic / interior-decor / structural-format) per the 2026-11-14 methodology restructure. Images are hotlinked from their original hosts, not stored in this repo. Known gaps: 3D-print marketplace refs (MakerWorld/Printables/CGTrader) bot-walled, so printed-cleat/segmented-seam cards are absent from structural; decor group light on domestic rooms (Apartment Therapy bot-walled); artistic group is Beksinski+idiom rather than shoggoth-specific fan art.",
+  "cards": [
+    {
+      "id": "a01",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/c/c3/AA78_by_Zdzislaw_Beksinski_1978.jpg",
+      "axis": "artistic",
+      "title": "AA78 (1978) — Zdzisław Beksiński",
+      "rationale": "Evan's loved reference; anchor for ochre/bone palette and fused flesh-architecture.",
+      "source": "https://commons.wikimedia.org/wiki/File:AA78_by_Zdzislaw_Beksinski_1978.jpg"
+    },
+    {
+      "id": "a02",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/20/Untitled_painting_by_Zdzislaw_Beksinski_1984.jpg",
+      "axis": "artistic",
+      "title": "Untitled (1984) — Zdzisław Beksiński",
+      "rationale": "Evan's liked reference; probes elongated, desiccated figure forms as relief silhouette.",
+      "source": "https://commons.wikimedia.org/wiki/File:Untitled_painting_by_Zdzislaw_Beksinski_1984.jpg"
+    },
+    {
+      "id": "a03",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/3/34/Y_by_Zdzislaw_Beksinski_2005.jpg",
+      "axis": "artistic",
+      "title": "Y (2005) — Zdzisław Beksiński",
+      "rationale": "Probes late-period soft, vertebral mass with sparse focal detail.",
+      "source": "https://commons.wikimedia.org/wiki/File:Y_by_Zdzislaw_Beksinski_2005.jpg"
+    },
+    {
+      "id": "a04",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/d/d6/S4_by_Zdzislaw_Beksinski_2004.jpg",
+      "axis": "artistic",
+      "title": "S4 (2004) — Zdzisław Beksiński",
+      "rationale": "Probes tall column composition for a portrait-format wall piece.",
+      "source": "https://commons.wikimedia.org/wiki/File:S4_by_Zdzislaw_Beksinski_2004.jpg"
+    },
+    {
+      "id": "a05",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Untitled_relief_by_Zdzislaw_Beksinski_1957.jpg",
+      "axis": "artistic",
+      "title": "Untitled relief (1957) — Zdzisław Beksiński",
+      "rationale": "Beksiński's own sculptural relief; direct precedent for a printable low-relief surface.",
+      "source": "https://commons.wikimedia.org/wiki/File:Untitled_relief_by_Zdzislaw_Beksinski_1957.jpg"
+    },
+    {
+      "id": "a06",
+      "image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c10516e4-44c9-4d6c-bcc1-a73e4f3fd7d3/db5gey8-ceb0be29-5511-406f-95fd-6babe67b40bf.jpg/v1/fill/w_730,h_1095,q_70,strp/angel_of_death_beksinski_hommage_by_marcuspropostus_db5gey8-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTUzNiIsInBhdGgiOiIvZi9jMTA1MTZlNC00NGM5LTRkNmMtYmNjMS1hNzNlNGYzZmQ3ZDMvZGI1Z2V5OC1jZWIwYmUyOS01NTExLTQwNmYtOTVmZC02YmFiZTY3YjQwYmYuanBnIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.wfr9RjYFm5ea6x-rovorZVvZkqw25F1dhVLSyT52E-g",
+      "axis": "artistic",
+      "title": "Angel of Death / Beksinski-Hommage — Marcus Propostus",
+      "rationale": "Probes near-black, hooded vertical figure in a decayed gothic cavity; value-range reference.",
+      "source": "https://www.deviantart.com/marcuspropostus/art/Angel-of-death-Beksinski-Hommage-674291888"
+    },
+    {
+      "id": "a07",
+      "image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ec20a662-6376-46af-bf9a-81ec8026cec6/dmv0xu5-00c192c1-9e2c-437b-9abc-17dbae5c7b47.png/v1/fill/w_1192,h_670,q_70,strp/52_cirith_ungol_zdzislaw_beksinski_final_4k_by_docchannard_dmv0xu5-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi9lYzIwYTY2Mi02Mzc2LTQ2YWYtYmY5YS04MWVjODAyNmNlYzYvZG12MHh1NS0wMGMxOTJjMS05ZTJjLTQzN2ItOWFiYy0xN2RiYWU1YzdiNDcucG5nIiwiaGVpZ2h0IjoiPD03MjAiLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS53YXRlcm1hcmsiXSwid21rIjp7InBhdGgiOiIvd20vZWMyMGE2NjItNjM3Ni00NmFmLWJmOWEtODFlYzgwMjZjZWM2L2RvY2NoYW5uYXJkLTQucG5nIiwib3BhY2l0eSI6OTUsInByb3BvcnRpb25zIjowLjQ1LCJncmF2aXR5IjoiY2VudGVyIn19.qJLkzd2AK8X1PwpdlSufVd6dxCkgNjlfpAbJS05ugoY",
+      "axis": "artistic",
+      "title": "52 Cirith Ungol (Beksinski study) — docchannard",
+      "rationale": "Probes eroded rock-as-architecture and ochre-grey haze for the background mass.",
+      "source": "https://www.deviantart.com/docchannard/art/52-Cirith-Ungol-Zdzislaw-Beksinski-Final-4K-1382367821"
+    },
+    {
+      "id": "a08",
+      "image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e124a23a-09ef-4480-a27a-bb8af5af4293/dexfjnk-16c4020e-62bb-4d2f-b1ee-134238e85c5b.jpg/v1/fill/w_751,h_1063,q_70,strp/beksinski_inspiration_by_bolzak_dexfjnk-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTgxMSIsInBhdGgiOiIvZi9lMTI0YTIzYS0wOWVmLTQ0ODAtYTI3YS1iYjhhZjVhZjQyOTMvZGV4Zmpuay0xNmM0MDIwZS02MmJiLTRkMmYtYjFlZS0xMzQyMzhlODVjNWIuanBnIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.48APXScJL--VHm7LqifZeaLW0mFq71shgPZEnb9Xkvs",
+      "axis": "artistic",
+      "title": "Beksinski Inspiration — Bolzak",
+      "rationale": "Probes saturated ochre ground with a stringy, flayed standing figure.",
+      "source": "https://www.deviantart.com/bolzak/art/Beksinski-Inspiration-902679104"
+    },
+    {
+      "id": "a09",
+      "image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a42b6eeb-5327-4846-b844-1d2b835d9fd8/dhbempo-6f8274f3-2a29-462c-b3d6-c472ff78c6fc.jpg/v1/fill/w_600,h_800,q_75,strp/cosmic_horror_creature_ink_drawing_artwork_by_demonic666evil_dhbempo-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi9hNDJiNmVlYi01MzI3LTQ4NDYtYjg0NC0xZDJiODM1ZDlmZDgvZGhiZW1wby02ZjgyNzRmMy0yYTI5LTQ2MmMtYjNkNi1jNDcyZmY3OGM2ZmMuanBnIiwiaGVpZ2h0IjoiPD04MDAiLCJ3aWR0aCI6Ijw9NjAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLndhdGVybWFyayJdLCJ3bWsiOnsicGF0aCI6Ii93bS9hNDJiNmVlYi01MzI3LTQ4NDYtYjg0NC0xZDJiODM1ZDlmZDgvZGVtb25pYzY2NmV2aWwtNC5wbmciLCJvcGFjaXR5Ijo5NSwicHJvcG9ydGlvbnMiOjAuNDUsImdyYXZpdHkiOiJjZW50ZXIifX0.6oIIR8MubQBBHfs3iwxv674c0FNOzq0SbD3chSnayjQ",
+      "axis": "artistic",
+      "title": "Cosmic Horror Creature Ink Drawing — demonic666evil",
+      "rationale": "OUTLIER (pen and ink): dense mouth/tentacle all-over texture; tests monochrome shoggoth surface density.",
+      "source": "https://www.deviantart.com/demonic666evil/art/Cosmic-Horror-Creature-Ink-Drawing-Artwork-1047083388"
+    },
+    {
+      "id": "a10",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Takiyasha_the_Witch_and_the_Skeleton_Spectre%2C_by_Utagawa_Kuniyoshi.jpg",
+      "axis": "artistic",
+      "title": "Takiyasha the Witch and the Skeleton Spectre — Utagawa Kuniyoshi",
+      "rationale": "OUTLIER (ukiyo-e): giant-scale monster rendered in flat line and colour; tests graphic-flat shoggoth mass.",
+      "source": "https://commons.wikimedia.org/wiki/File:Takiyasha_the_Witch_and_the_Skeleton_Spectre,_by_Utagawa_Kuniyoshi.jpg"
+    },
+    {
+      "id": "a11",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/25/L%27aigle_de_malheur.jpg",
+      "axis": "artistic",
+      "title": "The Eagle of Doom (Apocalypse Tapestry, Angers) — Nicolas Bataille / Jean Bondol",
+      "rationale": "OUTLIER (14th-c. woven tapestry): medieval beast in flat woven fields; tests textile/relief-like flatness.",
+      "source": "https://commons.wikimedia.org/wiki/File:L'aigle_de_malheur.jpg"
+    },
+    {
+      "id": "a12",
+      "image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/711a12a2-30f3-440e-9d05-6566f2951200/daphigy-75bf21b6-470c-4fa4-b103-79fdbfe1c7ee.jpg/v1/fill/w_772,h_1035,q_70,strp/medieval_cthulhu_leaded_stained_glass_by_autobotwonko_daphigy-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTM3MyIsInBhdGgiOiIvZi83MTFhMTJhMi0zMGYzLTQ0MGUtOWQwNS02NTY2ZjI5NTEyMDAvZGFwaGlneS03NWJmMjFiNi00NzBjLTRmYTQtYjEwMy03OWZkYmZlMWM3ZWUuanBnIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.03QmbOagbbgeoowl490DzelqeSrmnoMHeLkp76zZVIg",
+      "axis": "artistic",
+      "title": "Medieval Cthulhu Leaded Stained Glass — AutobotWonko",
+      "rationale": "OUTLIER (leaded glass): hard-outline segmented panels; tests segmentation-as-aesthetic for the print splits.",
+      "source": "https://www.deviantart.com/autobotwonko/art/Medieval-Cthulhu-Leaded-Stained-Glass-647469250"
+    },
+    {
+      "id": "s01",
+      "image": "https://www.artchive.com/wp-content/uploads/2024/04/untitled-zdzislaw-beksinski-1983-poland.jpg",
+      "axis": "surface-aesthetic",
+      "title": "Beksinski 1983: webbed cathedral facade",
+      "rationale": "Does lace-like calcified webbing relief in a single burnt-orange hue read as skin at 1 m, or too busy/gothic?",
+      "source": "https://www.artchive.com/artwork/untitled-zdzislaw-beksinski-1983-poland/"
+    },
+    {
+      "id": "s02",
+      "image": "https://www.artchive.com/wp-content/uploads/2024/04/untitled-zdzislaw-beksinski-1984-poland.jpg",
+      "axis": "surface-aesthetic",
+      "title": "Beksinski 1984: mummified ochre flesh",
+      "rationale": "Is dried-hide ochre-to-umber with soft matte finish the target body surface (caption bar in scan to be ignored)?",
+      "source": "https://www.artchive.com/artwork/untitled-zdzislaw-beksinski-1984-poland/"
+    },
+    {
+      "id": "s03",
+      "image": "https://www.artchive.com/wp-content/uploads/2024/04/untitled-zdzislaw-beksinski-1971-poland.jpg",
+      "axis": "surface-aesthetic",
+      "title": "Beksinski 1971: bone field, olive-ochre crust",
+      "rationale": "Does a murky olive/ochre bone-crust palette with heavy impasto hold up as a matte print finish?",
+      "source": "https://www.artchive.com/artwork/untitled-zdzislaw-beksinski-1971-poland/"
+    },
+    {
+      "id": "s04",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/7/75/Dried_mud_creeks_on_the_shores_of_the_Wash_-_geograph.org.uk_-_10669.jpg",
+      "axis": "surface-aesthetic",
+      "title": "Dried mud-crack polygons, tidal flat",
+      "rationale": "Cracked-earth skin: is a polygonal craze network at ~1-5 cm cell size a viable printed surface?",
+      "source": "https://en.wikipedia.org/wiki/Mudcrack"
+    },
+    {
+      "id": "s05",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saracen%27s_Tent%2C_Luray_Caverns.jpg/960px-Saracen%27s_Tent%2C_Luray_Caverns.jpg",
+      "axis": "surface-aesthetic",
+      "title": "Flowstone drapery, Saracen's Tent, Luray",
+      "rationale": "Calcified webbing: do vertical translucent-cream drapery ribs give the right wet-then-petrified read?",
+      "source": "https://en.wikipedia.org/wiki/Flowstone"
+    },
+    {
+      "id": "s06",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Rust_on_iron.jpg/1280px-Rust_on_iron.jpg",
+      "axis": "surface-aesthetic",
+      "title": "Rust on iron, oxide gradient",
+      "rationale": "Rust-and-bone gradient: does flaking oxide orange grading to pale substrate suit a hand-painted PLA finish?",
+      "source": "https://en.wikipedia.org/wiki/Rust"
+    },
+    {
+      "id": "s07",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Favites_abdita.jpg",
+      "axis": "surface-aesthetic",
+      "title": "Brain coral (Favites abdita)",
+      "rationale": "Brain-coral ridging: is meandering ridge-and-valley relief the preferred micro-texture over cracks?",
+      "source": "https://en.wikipedia.org/wiki/Brain_coral"
+    },
+    {
+      "id": "s08",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Florence-Neptune%27s_Verdigris.jpg/1280px-Florence-Neptune%27s_Verdigris.jpg",
+      "axis": "surface-aesthetic",
+      "title": "Verdigris streaks on bronze (Neptune fountain)",
+      "rationale": "Verdigris patina: does teal oxide running down ochre-brown metal work as accent over the base palette?",
+      "source": "https://en.wikipedia.org/wiki/Verdigris"
+    },
+    {
+      "id": "s09",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Hon%27ami_Koetsu_Fujisan_1.jpg/1280px-Hon%27ami_Koetsu_Fujisan_1.jpg",
+      "axis": "surface-aesthetic",
+      "title": "Raku tea bowl, crazed pale glaze, carbon-dark base",
+      "rationale": "OUTLIER dry/mineral: would raku crackle glaze with smoked-carbon gradient suit a ceramic-look finish?",
+      "source": "https://en.wikipedia.org/wiki/Raku_ware"
+    },
+    {
+      "id": "s10",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Chthamalus_stellatus.jpg/1280px-Chthamalus_stellatus.jpg",
+      "axis": "surface-aesthetic",
+      "title": "Barnacle colony (Chthamalus stellatus)",
+      "rationale": "OUTLIER organic/matte: is a dense colony of small calcite cones a usable scale-pattern for the skin?",
+      "source": "https://en.wikipedia.org/wiki/Barnacle"
+    },
+    {
+      "id": "s11",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Makie.jpg/1280px-Makie.jpg",
+      "axis": "surface-aesthetic",
+      "title": "Maki-e gold on black urushi lacquer",
+      "rationale": "OUTLIER wet/gloss: does deep black lacquer gloss with fine gold line detail suit the mask or accent areas?",
+      "source": "https://en.wikipedia.org/wiki/Maki-e"
+    },
+    {
+      "id": "s12",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Gold_Bug_.Plusiotis_resplendens_-_Flickr_-_gailhampshire_%281%29.jpg/1280px-Gold_Bug_.Plusiotis_resplendens_-_Flickr_-_gailhampshire_%281%29.jpg",
+      "axis": "surface-aesthetic",
+      "title": "Metallic scarab shell (Chrysina resplendens)",
+      "rationale": "OUTLIER gloss/organic: would a mirror-metallic chitin finish work as a small bright counterpoint to matte decay?",
+      "source": "https://en.wikipedia.org/wiki/Chrysina_resplendens"
+    },
+    {
+      "id": "d01",
+      "image": "https://thedesignfiles.wpenginepowered.com/wp-content/uploads/2018/08/JuliaDeVille-art-tdf-thv1.jpg",
+      "axis": "interior-decor",
+      "title": "Julia DeVille gothic home, Melbourne",
+      "rationale": "Does dark taxidermy-and-macabre art read as a collected home rather than a haunted-house set, and at what density?",
+      "source": "https://thedesignfiles.net/2018/08/home-gothic-opulent-melbourne-juliadeville"
+    },
+    {
+      "id": "d02",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/1/19/My_Cabinet_o%27Curiosities1.jpg",
+      "axis": "interior-decor",
+      "title": "Domestic cabinet-of-curiosities room",
+      "rationale": "How does a 1 m organic wall piece sit among dense collected objects instead of on a bare wall?",
+      "source": "https://en.wikipedia.org/wiki/Cabinet_of_curiosities"
+    },
+    {
+      "id": "d03",
+      "image": "https://www.designboom.com/twitterimages/uploads/2025/09/studio-ggsv-salons-for-the-imagination-manufactures-nationales-paris-designboom-1200.jpg",
+      "axis": "interior-decor",
+      "title": "Paris salon, dark green velvet and art",
+      "rationale": "Dark saturated palette plus sofa-scale art: wall piece must hold against upholstery and window light.",
+      "source": "https://www.designboom.com/design/studio-ggsv-historic-paris-apartment-salons-imagination-manufactures-nationales-interview-09-19-2025/"
+    },
+    {
+      "id": "d04",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/f/f2/HR_Giger_Museum_Bar_Gruyeres_04.jpg",
+      "axis": "interior-decor",
+      "title": "Giger Museum Bar, Gruyeres, wide interior",
+      "rationale": "Architecture-scale biomechanical ribbing: what happens when the creature is the room, not an object on the wall.",
+      "source": "https://commons.wikimedia.org/wiki/File:HR_Giger_Museum_Bar_Gruyeres_04.jpg"
+    },
+    {
+      "id": "d05",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/c/c9/HR_Giger_Museum_Bar_Gruyeres_06.jpg",
+      "axis": "interior-decor",
+      "title": "Giger Museum Bar, Gruyeres, seating detail",
+      "rationale": "Furniture and wall share one bone-colored organic language; tests whether sofa/lamp must echo the piece.",
+      "source": "https://commons.wikimedia.org/wiki/File:HR_Giger_Museum_Bar_Gruyeres_06.jpg"
+    },
+    {
+      "id": "d06",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Giger_Bar_2.jpg",
+      "axis": "interior-decor",
+      "title": "Giger Bar ceiling vault",
+      "rationale": "Overhead and wall-plane vertebral forms under low warm light: lighting direction for relief sculpture.",
+      "source": "https://commons.wikimedia.org/wiki/File:Giger_Bar_2.jpg"
+    },
+    {
+      "id": "d07",
+      "image": "https://www.designboom.com/twitterimages/dbsub/402027/2021-12-22/yod-group-designed-a-bar-with-roots-on-the-ceiling-that-locates-under-the-flower-shop-2-61c305144125b.jpg",
+      "axis": "interior-decor",
+      "title": "Deep Bar, Ukraine, root-draped ceiling and raw masonry",
+      "rationale": "Dark tangled organic mass against rough wall with a single lit sign: how much light a dark piece needs to read.",
+      "source": "https://www.designboom.com/design/yod-group-deep-bar-ukraine-12-23-2021/"
+    },
+    {
+      "id": "d08",
+      "image": "https://www.designboom.com/twitterimages/uploads/2026/10/le-poisson-volant-restaurant-paris-designboom-FB.jpg",
+      "axis": "interior-decor",
+      "title": "Le Poisson Volant, red-lit Paris restaurant",
+      "rationale": "Single-hue colored lighting as a way to make a dark piece glow at night.",
+      "source": "https://www.designboom.com/architecture/le-poisson-volant-red-restaurant-paris-nightclub-claves-france/"
+    },
+    {
+      "id": "d09",
+      "image": "https://www.designboom.com/twitterimages/uploads/2026/01/irregular-voids-cave-geological-interior-japanese-residence-me-designboom-1200.jpg",
+      "axis": "interior-decor",
+      "title": "OUTLIER: Japanese house with cave-like voids cut through walls",
+      "rationale": "Organic cavity in a plain Japanese house: a subtractive foil to an additive wall creature.",
+      "source": "https://www.designboom.com/art/irregular-voids-cave-geological-interior-japanese-residence-me-01-05-2026/"
+    },
+    {
+      "id": "d10",
+      "image": "https://www.designboom.com/twitterimages/uploads/2026/08/ultra-studio-uehara-apartment-after-image-tokyo-japan-designboom-FB.jpg",
+      "axis": "interior-decor",
+      "title": "OUTLIER: Tokyo minimal apartment, tiled volume and bare walls",
+      "rationale": "Japanese-minimal negative space: does one grotesque piece need blank wall and few competing objects?",
+      "source": "https://www.designboom.com/architecture/ultra-studio-domestic-perception-tokyo-after-image-apartment-uehara-japan/"
+    },
+    {
+      "id": "d11",
+      "image": "https://mymodernmet.com/wp/wp-content/uploads/2021/11/childrens-room-wall-art-darina-thumbnail.jpg",
+      "axis": "interior-decor",
+      "title": "OUTLIER: Kids-room whale mural in progress",
+      "rationale": "Friendly-creature mural scale: soften the Shoggoth toward a family-room read?",
+      "source": "https://mymodernmet.com/childrens-room-wall-art-darina/"
+    },
+    {
+      "id": "d12",
+      "image": "https://www.designboom.com/twitterimages/uploads/2025/10/crosby-studios-bright-yellow-alien-habitat-dessert-shop-jakarta-butter-baby-designboom-1200.jpg",
+      "axis": "interior-decor",
+      "title": "OUTLIER: Butter Baby, Jakarta, yellow alien-habitat shop",
+      "rationale": "Kitsch/pop inversion: same biomorphic curves in cheerful yellow; probes happy-mask colorway.",
+      "source": "https://www.designboom.com/architecture/crosby-studios-bright-yellow-alien-habitat-dessert-shop-jakarta-butter-baby-10-20-2025/"
+    },
+    {
+      "id": "f01",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/9/9a/La_puerta_del_Infierno_de_Rodin_del_museo_Soumaya_%28con_fondo_negro%29.jpg",
+      "axis": "structural-format",
+      "title": "Rodin, Gates of Hell (high relief in a door frame)",
+      "rationale": "High relief that pushes figures out of a rectangular architectural frame: how deep can the body go before the back plate needs ribs and cleats?",
+      "source": "https://en.wikipedia.org/wiki/The_Gates_of_Hell"
+    },
+    {
+      "id": "f02",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/03/Abraham_%28Gates_of_Paradise%29_01.JPG",
+      "axis": "structural-format",
+      "title": "Ghiberti, Gates of Paradise (bas-relief panel)",
+      "rationale": "Bas-relief depth class with perspective compression: floor option for a flat-back tentacle field.",
+      "source": "https://en.wikipedia.org/wiki/Relief"
+    },
+    {
+      "id": "f03",
+      "image": "https://mymodernmet.com/wp/wp-content/uploads/2024/07/gillie-marc-wtc-octopus-thumbnail.jpg",
+      "axis": "structural-format",
+      "title": "Gillie and Marc bronze octopus, WTC Oculus",
+      "rationale": "Tentacled creature gripping architecture at 36 ft: arch/column-merging format and where tentacle tips take load.",
+      "source": "https://mymodernmet.com/world-trade-center-octopus-gillie-marc"
+    },
+    {
+      "id": "f04",
+      "image": "https://mymodernmet.com/wp/wp-content/uploads/archive/-WPo13V2pl40mel5cDtO_huangyongping1.jpg",
+      "axis": "structural-format",
+      "title": "Huang Yong Ping, Wu Zei (octopus wrapping gallery)",
+      "rationale": "Tentacles reaching meters from body across ceiling, poles and beams: multi-point freeform spread with mixed wall/ceiling anchors.",
+      "source": "https://mymodernmet.com/huang-yong-ping-wu-zei/"
+    },
+    {
+      "id": "f05",
+      "image": "https://upload.wikimedia.org/wikipedia/en/c/c1/Cloud_Gate_%28The_Bean%29_from_east%27.jpg",
+      "axis": "structural-format",
+      "title": "Cloud Gate, welded plate seams",
+      "rationale": "Segmentation seam strategy: large form built from plates with seams ground flush versus seams expressed.",
+      "source": "https://en.wikipedia.org/wiki/Cloud_Gate"
+    },
+    {
+      "id": "f06",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Jackalope_wall_decoration_at_Pension_Hellerau.jpg/1280px-Jackalope_wall_decoration_at_Pension_Hellerau.jpg",
+      "axis": "structural-format",
+      "title": "Jackalope wall decoration, plaque mount",
+      "rationale": "Trophy-plaque format: single proud head on a small backplate with a hanger, creature as mounted specimen.",
+      "source": "https://commons.wikimedia.org/wiki/File:Jackalope_wall_decoration_at_Pension_Hellerau.jpg"
+    },
+    {
+      "id": "f07",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Naturalis_Biodiversity_Center_-_Museum_-_Auditorium_with_antlers_on_the_wall.jpg/1280px-Naturalis_Biodiversity_Center_-_Museum_-_Auditorium_with_antlers_on_the_wall.jpg",
+      "axis": "structural-format",
+      "title": "Antlers covering an auditorium wall, Naturalis",
+      "rationale": "Outlier: antler/taxidermy mount hardware as a repeated point-mount array; many small anchors instead of three big ones.",
+      "source": "https://commons.wikimedia.org/wiki/File:Naturalis_Biodiversity_Center_-_Museum_-_Auditorium_with_antlers_on_the_wall.jpg"
+    },
+    {
+      "id": "f08",
+      "image": "https://www.designboom.com/wp-content/uploads/2026/07/pavel-rotts-climbing-a-memory-helsinki-designboom-001.jpg",
+      "axis": "structural-format",
+      "title": "Pavel Rotts, climbing-wall installation",
+      "rationale": "Outlier: climbing-hold aesthetic and T-nut style bolt grid as a rated, repositionable mount system for tentacle terminations.",
+      "source": "https://www.designboom.com/art/bomb-scars-wall-rock-artist-pavel-rotts-war-climbing-play/"
+    },
+    {
+      "id": "f09",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/6/6c/2022-08-12_European_Championships_2022_%E2%80%93_Sport_Climbing_Women%27s_Boulder_by_Sandro_Halank%E2%80%93003.jpg",
+      "axis": "structural-format",
+      "title": "Bouldering wall with volumes and holds",
+      "rationale": "Outlier: sculpted volumes bolted to a wall as proven large-scale, load-rated, modular relief hardware.",
+      "source": "https://en.wikipedia.org/wiki/Climbing_hold"
+    },
+    {
+      "id": "f10",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Calder-redmobile.jpg",
+      "axis": "structural-format",
+      "title": "Calder mobile (articulated hanging form)",
+      "rationale": "Outlier: articulated/kinetic limbs hung from single pivots; could a tentacle tip pivot instead of bolt?",
+      "source": "https://en.wikipedia.org/wiki/Mobile_(sculpture)"
+    },
+    {
+      "id": "f11",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/26/Tensegrity_simple_3.gif",
+      "axis": "structural-format",
+      "title": "Tensegrity structure",
+      "rationale": "Outlier: tension-cable mount; compression struts floating on cables could carry tentacle load into wall anchors with minimal printed mass.",
+      "source": "https://en.wikipedia.org/wiki/Tensegrity"
+    },
+    {
+      "id": "f12",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/6/66/Ceramic_Tile_Tessellations_in_Marrakech.jpg",
+      "axis": "structural-format",
+      "title": "Marrakech tessellated tile wall",
+      "rationale": "Outlier: modular tile system; body as repeating tiles with interlocking edges, seams hidden in pattern.",
+      "source": "https://en.wikipedia.org/wiki/Tessellation"
+    }
+  ]
+}
