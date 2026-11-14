@@ -20,6 +20,7 @@
 *(Exchange active constraints with Aesthetics here. Both leads must sign off.)*
 
 - 2026-11-14, aesthetics→structural: Format converging on wall-concentrated piece — flat-back relief or trophy-proud body with freeform tentacle spread across wall plane (round-01: 06/07/08 loved, 05 note). Mount design should assume multiple tentacle terminations contacting the wall, not a single contained silhouette. Signed: aesthetics-lead (orchestrator), structural-lead (docs-reviewer).
+- [PROVISIONAL] 2026-11-14, liaison v2 (r03 verdicts + vision sketch IMG_0073): (a) trophy-plaque format dead; body is bas-to-mid relief, tentacles spread freeform with multiple wall anchors (f02+f04 loved). (b) NEW LOAD CASE: the 3 load-bearing tentacle spans are plant shelves — flat tops, protrusion clear of vertical obstruction, must carry potted-plant load (soil+water weight, est. 2-5 kg per span) plus sculpture self-weight; anchor spec (e.g. nails per sketch — recommend upgrading to screw/cleat) to be engineered. (c) Strong horizontal protrusion variance wanted across the piece. (d) Tension-cable assist acceptable aesthetically (f11 liked). Awaiting structural-lead sign-off.
 
 ## Takeaways
 
@@ -32,3 +33,4 @@ None yet.
 |------|-------|--------|---------------|
 | 2026-11-13 | docs-lead | Initial creation | docs-reviewer |
 | 2026-11-14 | docs-reviewer | Mirrored liaison constraint from aesthetics | orchestrator |
+| 2026-11-14 | orchestrator | Liaison v2: plant-shelf load case, relief+spread format, depth variance | [PROVISIONAL] |
