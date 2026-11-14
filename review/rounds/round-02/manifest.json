@@ -1,0 +1,56 @@
+{
+  "round": "round-02",
+  "title": "Shoggoth wall art — round 02 mood board",
+  "created": "2026-11-14",
+  "issue_repo": "evanForReal/shoggoth_wall_art",
+  "cards": [
+    {
+      "id": "01",
+      "image": "images/01_plush-octopus-sock-creature.jpg",
+      "axis": "cutesy-horror",
+      "title": "Plush octopus, dark grey, big eyes",
+      "rationale": "Soft, benign tentacle creature in dark fabric; probes how far the shoggoth can go toward plush-friendly before it stops reading as horror (round-01: Evan asked for a mild cutesy aesthetic).",
+      "source": "https://commons.wikimedia.org/wiki/File:Cute_plush_octopus_(25921962906).jpg"
+    },
+    {
+      "id": "02",
+      "image": "images/02_plush-cthulhu-on-granite.jpg",
+      "axis": "cutesy-horror",
+      "title": "Plush Cthulhu on granite marker",
+      "rationale": "Chibi Cthulhu as a toy; probes whether a smiling, simplified tentacle face works if the form stays mythos-legible (replaces the dead literal-mask axis).",
+      "source": "https://commons.wikimedia.org/wiki/File:H.P._Lovecraft_plaque_w_stuffed_Cthulhu.jpg"
+    },
+    {
+      "id": "05",
+      "image": "images/05_casa-batllo-organic-facade.jpg",
+      "axis": "wall-integration",
+      "title": "Casa Batlló organic facade",
+      "rationale": "Gaudí facade with scale-tile roof and bone-like window frames; probes ornament growing out of the wall plane rather than a contained silhouette (round-01: Giger Bar columns merging with wall were loved).",
+      "source": "https://commons.wikimedia.org/wiki/File:Casa_Batlló_01.jpg"
+    },
+    {
+      "id": "09",
+      "image": "images/09_beksinski-s4-2004.jpg",
+      "axis": "surface-finish",
+      "title": "Beksiński S4 (2004)",
+      "rationale": "Beksiński figures dissolving into web-like crust; cold blue-grey variant of the loved AA78 surface, probes whether a pale petrified palette beats ochre.",
+      "source": "https://commons.wikimedia.org/wiki/File:S4_by_Zdzislaw_Beksinski_2004.jpg"
+    },
+    {
+      "id": "10",
+      "image": "images/10_brain-coral-colony.jpg",
+      "axis": "surface-finish",
+      "title": "Brain coral colony, ochre ridges",
+      "rationale": "Dense meandering ridges in ochre; probes a coral/brain-fold texture as a decor-compatible organic surface in place of Giger ribbing.",
+      "source": "https://commons.wikimedia.org/wiki/File:Colpophyllia_natans_(Boulder_Brain_Coral)_entire_colony.jpg"
+    },
+    {
+      "id": "11",
+      "image": "images/11_cthulhu-statue-verdigris-patina.jpg",
+      "axis": "surface-finish",
+      "title": "Cthulhu statue, verdigris patina",
+      "rationale": "Hand-painted Cthulhu figure in mottled green-black patina; probes a bronze/verdigris paint finish that reads as decor sculpture, not gothic prop.",
+      "source": "https://commons.wikimedia.org/wiki/File:Cthulhu_statue_green.jpg"
+    }
+  ]
+}
