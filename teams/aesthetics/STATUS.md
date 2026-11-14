@@ -12,17 +12,9 @@
 
 **Round-04 (synthesis round) in progress.** R02+r03 verdicts backpropped; vision sketch (IMG_0073) ingested — smiley mask + separate toothy maw, freeform sprawl, three plant-shelf tentacles, strong depth variance.
 
-Round-04 groups: (1) generated concept comps of the full piece; (2) mask treatment, non-chibi benign-face refs; (3) plant-integration formats (sculptural wall planters/shelves); (4) depth-variance structure refs.
+Round-04 board: 43 cards (deviation from 48: Canva credit quota capped concepts at 7 of 12) — generated-concept c01-c07 (preview-res, in-repo; c08-c12 + full-res re-export queued on quota reset), mask-treatment m01-m12, plant-integration p01-p12, depth-variance v01-v12. Mask group trawled by orchestrator inline (Sonnet pool rate-limited).
 
 Locked by r01-r03: Beksiński surface core (webbing/ochre/bone-crust/flowstone/rust, gloss as accent only); refined-room decor target; bas-relief body + multi-anchor freeform tentacle spread; no chibi, no trophy plaque, no historic-medium novelties.
-
-Groups:
-1. artistic — Shoggoth/Lovecraft art (DeviantArt, ArtStation, similar), heavy Beksiński lean
-2. surface-aesthetic — texture, palette, material finish
-3. interior-decor — dark/organic statement pieces in real rooms
-4. structural-format — mount & relief typologies
-
-Round-02 (7 cards, deployed, ping sent) awaits Evan verdicts; round-03 board supersedes its axis-walk approach.
 
 ## Vision Constraints
 
@@ -54,4 +46,4 @@ Round-02 (7 cards, deployed, ping sent) awaits Evan verdicts; round-03 board sup
 | 2026-11-14 | orchestrator | Round-01 backprop: takeaways, round-02 axes, liaison entry | docs-reviewer |
 | 2026-11-14 | orchestrator | Round-02 state: 7/12 delivered, stale target fixed | docs-reviewer (flagged) |
 | 2026-11-14 | orchestrator | Round-03 charter + board assembled 48/48 | docs-reviewer (flagged: outliers per group are 4-6, not 4-7) |
-| 2026-11-14 | orchestrator | R02/r03 backprop, sketch constraints, round-04 charter | [PROVISIONAL] |
+| 2026-11-14 | orchestrator | R02/r03 backprop, sketch constraints, round-04 charter | docs-reviewer (haiku) |

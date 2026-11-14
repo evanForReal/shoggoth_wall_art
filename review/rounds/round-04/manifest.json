@@ -1,0 +1,353 @@
+{
+  "round": "round-04",
+  "title": "Shoggoth wall art — round 04: synthesis",
+  "created": "2026-11-14",
+  "issue_repo": "evanForReal/shoggoth_wall_art",
+  "notes": "43 cards. First synthesis round: 7 generated concept comps of the actual piece (c01-c07, PREVIEW RESOLUTION — Canva credit quota blocked full-res export and concepts c08-c12; media ids logged in scratch prompts file, full-res re-export + 5 remaining comps queued for next round) + mask-treatment (m01-m12), plant-integration (p01-p12), depth-variance (v01-v12) reference groups. Mask group trawled by orchestrator inline — Sonnet worker pool hit account rate limit. Concept images live in this repo (generated content); reference images hotlinked.",
+  "cards": [
+    {
+      "id": "c01",
+      "image": "images/c01_baseline-velvet-salon.jpg",
+      "axis": "generated-concept",
+      "title": "Concept: baseline — velvet salon install",
+      "rationale": "Baseline: dark velvet-salon install with graphic mask and plant-bearing spans.",
+      "source": "generated (Canva) — prompt on file"
+    },
+    {
+      "id": "c02",
+      "image": "images/c02_stone-smile.jpg",
+      "axis": "generated-concept",
+      "title": "Concept: serene stone smile",
+      "rationale": "Tests mask language: sculpted serene stone smile vs graphic dots-and-curve.",
+      "source": "generated (Canva) — prompt on file"
+    },
+    {
+      "id": "c03",
+      "image": "images/c03_mask-plus-maw-ochre.jpg",
+      "axis": "generated-concept",
+      "title": "Concept: mask + toothy maw, ochre",
+      "rationale": "Tests sketch duality: clean graphic mask above separate toothy maw, ochre-dominant.",
+      "source": "generated (Canva) — prompt on file"
+    },
+    {
+      "id": "c04",
+      "image": "images/c04_studio-raking-light.jpg",
+      "axis": "generated-concept",
+      "title": "Concept: studio raking light",
+      "rationale": "Tests surface legibility: bare dark wall, raking light, texture detail.",
+      "source": "generated (Canva) — prompt on file"
+    },
+    {
+      "id": "c05",
+      "image": "images/c05_rust-corner-wrap.jpg",
+      "axis": "generated-concept",
+      "title": "Concept: rust corner wrap",
+      "rationale": "Tests palette (rust-dominant) and wall integration: tentacles wrapping an interior corner.",
+      "source": "generated (Canva) — prompt on file"
+    },
+    {
+      "id": "c06",
+      "image": "images/c06_japanese-minimal-pothos.jpg",
+      "axis": "generated-concept",
+      "title": "Concept: Japanese minimal room, pothos",
+      "rationale": "Tests decor context: minimal dark Japanese room, piece as sole object, trailing pothos.",
+      "source": "generated (Canva) — prompt on file"
+    },
+    {
+      "id": "c07",
+      "image": "images/c07_beksinski-painting.jpg",
+      "axis": "generated-concept",
+      "title": "Concept: rendered as Beksinski painting",
+      "rationale": "Tests medium: 2D Beksinski-style painting vs photoreal install.",
+      "source": "generated (Canva) — prompt on file"
+    },
+    {
+      "id": "m01",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Bayon%2C_Angkor_Thom%2C_Camboya%2C_2013-08-17%2C_DD_37.JPG/3840px-Bayon%2C_Angkor_Thom%2C_Camboya%2C_2013-08-17%2C_DD_37.JPG",
+      "axis": "mask-treatment",
+      "title": "Bayon face towers, Angkor Thom",
+      "rationale": "Monumental serene stone smiles emerging from rough architecture; probes a sculpted-calm face reading as part of the mass rather than applied to it.",
+      "source": "https://en.wikipedia.org/wiki/Bayon"
+    },
+    {
+      "id": "m02",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/7/78/Athens_%E2%80%94_Mask_of_Agamemnon.jpg",
+      "axis": "mask-treatment",
+      "title": "Mask of Agamemnon, gold",
+      "rationale": "Serene hammered-gold death mask; probes a metallic contrast mask as the one clean element against a dark organic body.",
+      "source": "https://en.wikipedia.org/wiki/Mask_of_Agamemnon"
+    },
+    {
+      "id": "m03",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/6/66/Noh_Performance_%28235951661%29.jpeg",
+      "axis": "mask-treatment",
+      "title": "Noh masks in performance",
+      "rationale": "Pale serene ko-omote-type masks under stage light; probes the becalmed-face-on-dark-figure treatment (the anti-Hannya, which round-01 rejected).",
+      "source": "https://en.wikipedia.org/wiki/Noh"
+    },
+    {
+      "id": "m04",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/1/13/Budai%2C_British_Museum.jpg",
+      "axis": "mask-treatment",
+      "title": "Budai, British Museum",
+      "rationale": "Jolly carved smile integral to a blobby organic body; probes smile-as-expression-of-the-mass vs smile-as-applied-mask.",
+      "source": "https://en.wikipedia.org/wiki/Budai"
+    },
+    {
+      "id": "m05",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/4/49/Greek_-_Actor_-_Walters_541067.jpg",
+      "axis": "mask-treatment",
+      "title": "Greek comic actor with mask",
+      "rationale": "Ancient comedy mask held before a figure; probes the theatrical worn-mask convention — mask explicitly separate from the face beneath.",
+      "source": "https://en.wikipedia.org/wiki/Theatre_of_ancient_Greece"
+    },
+    {
+      "id": "m06",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/02023_0906_Amber_carnival_masks_of_Venice.jpg/1280px-02023_0906_Amber_carnival_masks_of_Venice.jpg",
+      "axis": "mask-treatment",
+      "title": "Venetian carnival masks, amber",
+      "rationale": "Ornate clean masks displayed against dark ground; probes how decorative the mask surface can get before it fights the body's texture.",
+      "source": "https://commons.wikimedia.org/wiki/Category:Carnival_masks_of_Venice"
+    },
+    {
+      "id": "m07",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Smiley.svg/960px-Smiley.svg.png",
+      "axis": "mask-treatment",
+      "title": "Canonical smiley graphic",
+      "rationale": "The flat two-dots-and-curve icon itself, as drawn in the vision sketch; probes maximum graphic abstraction for the mask.",
+      "source": "https://en.wikipedia.org/wiki/Smiley"
+    },
+    {
+      "id": "m08",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Monster_in_Parco_dei_Mostri_%28Bomarzo%29.jpg/1280px-Monster_in_Parco_dei_Mostri_%28Bomarzo%29.jpg",
+      "axis": "mask-treatment",
+      "title": "Orcus mouth, Gardens of Bomarzo",
+      "rationale": "16th-c. monster face whose maw is a door; probes the sketch's mask-above-maw duality executed at architectural scale.",
+      "source": "https://en.wikipedia.org/wiki/Gardens_of_Bomarzo"
+    },
+    {
+      "id": "m09",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/17th_c_Sun_and_Moon_Engraved_Image%2C_hand-colored.jpg/1280px-17th_c_Sun_and_Moon_Engraved_Image%2C_hand-colored.jpg",
+      "axis": "mask-treatment",
+      "title": "Sun and Moon faces, 17th-c. engraving",
+      "rationale": "OUTLIER: celestial folk faces — benign features applied to non-face objects; probes naive-folk linework for the mask.",
+      "source": "https://commons.wikimedia.org/wiki/Category:Crescent_moon_with_faces"
+    },
+    {
+      "id": "m10",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/%22Hallowe%27en.%22_%28A_Witch_riding_a_broomstick_being_pulled_by_a_jack-o-lantern_with_a_black_cat%29.jpg/1280px-%22Hallowe%27en.%22_%28A_Witch_riding_a_broomstick_being_pulled_by_a_jack-o-lantern_with_a_black_cat%29.jpg",
+      "axis": "mask-treatment",
+      "title": "Jack-o'-lantern, vintage Hallowe'en print",
+      "rationale": "OUTLIER: grin carved into organic matter — the smile as a void/cutout rather than an applied plate.",
+      "source": "https://commons.wikimedia.org/wiki/Category:Crescent_moon_with_faces"
+    },
+    {
+      "id": "m11",
+      "image": "https://mymodernmet.com/wp/wp-content/uploads/2022/08/happy-hammock-fb-thumbnail.jpg",
+      "axis": "mask-treatment",
+      "title": "Smiley-face hammock installation",
+      "rationale": "OUTLIER: smiley as a functional object in space; probes the icon surviving translation into 3D structure.",
+      "source": "https://mymodernmet.com/smiley-face-hammock/"
+    },
+    {
+      "id": "m12",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20smile%20of%20the%20Bayon.jpg",
+      "axis": "mask-treatment",
+      "title": "Bayon smile, close",
+      "rationale": "OUTLIER framing test: the same serene smile at intimate close range — monumental vs intimate read of a sculpted calm face.",
+      "source": "https://commons.wikimedia.org/wiki/File:The_smile_of_the_Bayon.jpg"
+    },
+    {
+      "id": "p01",
+      "image": "https://mymodernmet.com/wp/wp-content/uploads/2019/07/emeric-chantier-plant-sculptures-thumbnail.jpg",
+      "axis": "plant-integration",
+      "title": "Emeric Chantier plant-covered figure sculptures — My Modern Met",
+      "rationale": "Can a creature body read as sculpture while living plants grow from it, and does foliage soften or amplify the horror?",
+      "source": "https://mymodernmet.com/emeric-chantier-plant-sculptures/"
+    },
+    {
+      "id": "p02",
+      "image": "https://mymodernmet.com/wp/wp-content/uploads/2022/10/monsieur-plant-wood-sculpture-twist-thumbnail.jpg",
+      "axis": "plant-integration",
+      "title": "Monsieur Plant twisted bark-clad trunk sculptures — My Modern Met",
+      "rationale": "Does a dark bark-textured, knotted limb form work as the tentacle-span substrate that a flat shelf top is cut into?",
+      "source": "https://mymodernmet.com/monsieur-plant-wood-sculpture-twist/"
+    },
+    {
+      "id": "p03",
+      "image": "https://www.designboom.com/twitterimages/dbsub/369765/2013-01-28/img_1_1359387250_6e5060b0a95cf36ce1ef638023203f60.jpg",
+      "axis": "plant-integration",
+      "title": "Giuseppe Licari root installation — designboom",
+      "rationale": "Do root-like tentacle forms read as organic support structure, with pots nested in the branching junctions?",
+      "source": "https://www.designboom.com/art/tree-roots-emerge-from-the-ceiling-in-an-installation-by-giuseppe-licari/"
+    },
+    {
+      "id": "p04",
+      "image": "https://mymodernmet.com/wp/wp-content/uploads/2024/10/tile-tevaplanter-tile-thumbnail.jpg",
+      "axis": "plant-integration",
+      "title": "TevaPlanter self-watering wall tile planter — My Modern Met",
+      "rationale": "Planter as wall relief: how a sealed, self-watering tile hides waterproofing and soil in a flat wall composition.",
+      "source": "https://mymodernmet.com/tile-planter-tevaplanter"
+    },
+    {
+      "id": "p05",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Money_Plant_%28Epipremnum_aureum%29_4.jpg/960px-Money_Plant_%28Epipremnum_aureum%29_4.jpg",
+      "axis": "plant-integration",
+      "title": "Epipremnum aureum (pothos), trailing habit — Wikipedia",
+      "rationale": "Trailing pothos cascading off a shelf edge: does a green drape over the dark tentacle read as lush contrast or visual clutter.",
+      "source": "https://en.wikipedia.org/wiki/Epipremnum_aureum"
+    },
+    {
+      "id": "p06",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Kokedama_SKG.png/1280px-Kokedama_SKG.png",
+      "axis": "plant-integration",
+      "title": "Kokedama moss balls — Wikipedia",
+      "rationale": "Pot-free moss-ball plants hung or perched on the sculpture: removes ceramic pots, but does moss texture clash with calcified surface?",
+      "source": "https://en.wikipedia.org/wiki/Kokedama"
+    },
+    {
+      "id": "p07",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Bonsai_tumbuh_atas_batu.JPG/1280px-Bonsai_tumbuh_atas_batu.JPG",
+      "axis": "plant-integration",
+      "title": "Root-over-rock bonsai — Wikimedia Commons",
+      "rationale": "Roots gripping stone as a model for tentacle-gripping-pot geometry; tests a single small tree as shelf occupant.",
+      "source": "https://commons.wikimedia.org/wiki/File:Bonsai_tumbuh_atas_batu.JPG"
+    },
+    {
+      "id": "p08",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Green-Wall-Blusson-Hall-SFU-Burnaby-British-Columbia-Canada-01-A.jpg/960px-Green-Wall-Blusson-Hall-SFU-Burnaby-British-Columbia-Canada-01-A.jpg",
+      "axis": "plant-integration",
+      "title": "Green wall, Blusson Hall SFU — Wikipedia",
+      "rationale": "OUTLIER: full living wall as the artwork itself; tests whether Evan wants plants dominant over sculpture.",
+      "source": "https://en.wikipedia.org/wiki/Green_wall"
+    },
+    {
+      "id": "p09",
+      "image": "https://upload.wikimedia.org/wikipedia/en/thumb/2/28/Bosco_Verticale_Milano.jpg/960px-Bosco_Verticale_Milano.jpg",
+      "axis": "plant-integration",
+      "title": "Bosco Verticale, Milan — Wikipedia",
+      "rationale": "OUTLIER: protruding balconies carrying trees at scale; horizontal-protrusion variance as the planting structure.",
+      "source": "https://en.wikipedia.org/wiki/Bosco_Verticale"
+    },
+    {
+      "id": "p10",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Sarracenia_ne1.JPG/1280px-Sarracenia_ne1.JPG",
+      "axis": "plant-integration",
+      "title": "Sarracenia pitcher plants — Wikimedia Commons",
+      "rationale": "OUTLIER: carnivorous pitcher plants as the shelf occupants; vertical tubes read as predatory/horror-adjacent and need upward clearance.",
+      "source": "https://commons.wikimedia.org/wiki/File:Sarracenia_ne1.JPG"
+    },
+    {
+      "id": "p11",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Psilocybe_Mushrooms_statues.jpg",
+      "axis": "plant-integration",
+      "title": "Fungi in art (mushroom statues) — Wikipedia",
+      "rationale": "OUTLIER: fungal/mycelium forms as the growth layer instead of foliage; tests bioart direction (live growth on sculpture).",
+      "source": "https://en.wikipedia.org/wiki/Fungi_in_art"
+    },
+    {
+      "id": "p12",
+      "image": "https://mymodernmet.com/wp/wp-content/uploads/2021/04/Paper-Crane-Origami-Trees-Naoki-Onogawa-thumbnail.jpg",
+      "axis": "plant-integration",
+      "title": "Naoki Onogawa bonsai trees of paper cranes — My Modern Met",
+      "rationale": "OUTLIER: bonsai as sculptural object (non-living stand-in); tests faux/preserved plants as a no-maintenance shelf fill.",
+      "source": "https://mymodernmet.com/naoki-onogawa-paper-cranes/"
+    },
+    {
+      "id": "v01",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/La_puerta_del_Infierno_de_Rodin_del_museo_Soumaya_%28con_fondo_negro%29.jpg/960px-La_puerta_del_Infierno_de_Rodin_del_museo_Soumaya_%28con_fondo_negro%29.jpg",
+      "axis": "depth-variance",
+      "title": "Gates of Hell — Rodin",
+      "rationale": "Figures go from flush bas-relief to nearly free-standing on one door plane; template for body-in-wall to tentacle-out-of-wall gradient.",
+      "source": "https://en.wikipedia.org/wiki/The_Gates_of_Hell"
+    },
+    {
+      "id": "v02",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Ecstasy_of_St._Teresa_HDR.jpg/960px-Ecstasy_of_St._Teresa_HDR.jpg",
+      "axis": "depth-variance",
+      "title": "Ecstasy of Saint Teresa — Bernini",
+      "rationale": "Full-round marble figures cantilevered off a flat architectural niche with rays behind: how much mass can float before the wall reads as backdrop.",
+      "source": "https://en.wikipedia.org/wiki/Ecstasy_of_Saint_Teresa"
+    },
+    {
+      "id": "v03",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Casa_Batllo_Overview_Barcelona_Spain_cut.jpg/1280px-Casa_Batllo_Overview_Barcelona_Spain_cut.jpg",
+      "axis": "depth-variance",
+      "title": "Casa Batlló facade — Gaudí",
+      "rationale": "R02 liked Gaudí ('great great direction'): facade swells from flat plane to bone-like balconies with continuous depth gradient, no hard step.",
+      "source": "https://en.wikipedia.org/wiki/Casa_Batlló"
+    },
+    {
+      "id": "v04",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Berlin_-_Pergamonmuseum_-_Altar_01.jpg/960px-Berlin_-_Pergamonmuseum_-_Altar_01.jpg",
+      "axis": "depth-variance",
+      "title": "Pergamon Altar Gigantomachy frieze",
+      "rationale": "Hellenistic high relief with limbs and wings breaking the frame edge; writhing mass clustered, tests Ghiberti-plus-depth.",
+      "source": "https://en.wikipedia.org/wiki/Pergamon_Altar"
+    },
+    {
+      "id": "v05",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Trevi_Fountain_-_Roma.jpg/1280px-Trevi_Fountain_-_Roma.jpg",
+      "axis": "depth-variance",
+      "title": "Trevi Fountain — Salvi",
+      "rationale": "Sculpture bursting out of a flat palazzo wall; rock mass transitions from facade to freestanding horses and spills forward.",
+      "source": "https://en.wikipedia.org/wiki/Trevi_Fountain"
+    },
+    {
+      "id": "v06",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/FP_Toledo_Cathedral_2025_-_Transparente.jpg/960px-FP_Toledo_Cathedral_2025_-_Transparente.jpg",
+      "axis": "depth-variance",
+      "title": "El Transparente — Narciso Tomé, Toledo",
+      "rationale": "Baroque altar where figures burst through the wall and ceiling in layered depth planes with light behind; relief to full-round in one piece.",
+      "source": "https://en.wikipedia.org/wiki/El_Transparente"
+    },
+    {
+      "id": "v07",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Interior_of_Teatro_Olimpico_%28Vicenza%29_scena_.jpg/1280px-Interior_of_Teatro_Olimpico_%28Vicenza%29_scena_.jpg",
+      "axis": "depth-variance",
+      "title": "Teatro Olimpico scaena — Palladio/Scamozzi",
+      "rationale": "False-perspective street receding in a few cm of depth: shallow relief can fake meters; could carry body detail in shallow wall depth while tentacles go truly deep.",
+      "source": "https://en.wikipedia.org/wiki/Teatro_Olimpico"
+    },
+    {
+      "id": "v08",
+      "image": "https://mymodernmet.com/wp/wp-content/uploads/2018/12/matthew-shilan-paper-sculpture-thumbnail.jpg",
+      "axis": "depth-variance",
+      "title": "Matthew Shlian paper tessellations",
+      "rationale": "OUTLIER: folded paper wall relief where spikes jut from a flat sheet; pop-up engineering as a way to get big projection from flat stock, printable as folded-plate shells.",
+      "source": "https://mymodernmet.com/matthew-shlian-paper-engineering/"
+    },
+    {
+      "id": "v09",
+      "image": "https://www.designboom.com/twitterimages/uploads/2025/11/woven-image-acoustics-designboom-facebook.jpg",
+      "axis": "depth-variance",
+      "title": "Woven Image 3D-formed acoustic panels",
+      "rationale": "OUTLIER: acoustic diffuser wall with continuous peak/trough depth gradient; wall treatment that reads as sculpture, low-risk 'flat zone' vocabulary between deep spans.",
+      "source": "https://www.designboom.com/design/acoustic-woven-image-sound-waves-3d-formed-panel-collection-architonic-11-07-2025/"
+    },
+    {
+      "id": "v10",
+      "image": "https://www.designboom.com/twitterimages/uploads/2026/07/pavel-rotts-climbing-a-memory-helsinki-designboom-FB1.jpg",
+      "axis": "depth-variance",
+      "title": "Climbing a Memory — Pavel Rotts, Helsinki",
+      "rationale": "OUTLIER: climbing wall cast from damaged architecture; load-rated protrusions on a flat wall, a real structural precedent for tentacle anchors and shelf loads.",
+      "source": "https://www.designboom.com/art/bomb-scars-wall-rock-artist-pavel-rotts-war-climbing-play/"
+    },
+    {
+      "id": "v11",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Opel_50_Jahre_Design_%2814541643013%29.jpg",
+      "axis": "depth-variance",
+      "title": "Automotive clay model — Opel design studio",
+      "rationale": "OUTLIER: full-size clay form half-resolved, surfaces scraped in planes; tests rough-sculpted unfinished emergence as a finish state.",
+      "source": "https://en.wikipedia.org/wiki/Clay_modeling"
+    },
+    {
+      "id": "v12",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Figerhead_Aris_Tsamadou.jpg/960px-Figerhead_Aris_Tsamadou.jpg",
+      "axis": "depth-variance",
+      "title": "Ship figurehead — Aris (Tsamadou)",
+      "rationale": "OUTLIER: figure thrust forward from a flat hull plane as a single cantilever; the bow-mounted torso projection precedent for the mask or shelf-tentacle.",
+      "source": "https://en.wikipedia.org/wiki/Figurehead_(ship)"
+    }
+  ]
+}
