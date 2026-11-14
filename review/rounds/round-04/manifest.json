@@ -3,7 +3,7 @@
   "title": "Shoggoth wall art — round 04: synthesis",
   "created": "2026-11-14",
   "issue_repo": "evanForReal/shoggoth_wall_art",
-  "notes": "43 cards. First synthesis round: 7 generated concept comps of the actual piece (c01-c07, PREVIEW RESOLUTION — Canva credit quota blocked full-res export and concepts c08-c12; media ids logged in scratch prompts file, full-res re-export + 5 remaining comps queued for next round) + mask-treatment (m01-m12), plant-integration (p01-p12), depth-variance (v01-v12) reference groups. Mask group trawled by orchestrator inline — Sonnet worker pool hit account rate limit. Concept images live in this repo (generated content); reference images hotlinked.",
+  "notes": "43 cards. First synthesis round: 7 generated concept comps of the actual piece (c01-c07; originally shipped at preview resolution under Canva credit quota, since replaced in-place with full-resolution exports via the import-shell+export route — no credits consumed; concepts c08-c12 still pending credit reset) + mask-treatment (m01-m12), plant-integration (p01-p12), depth-variance (v01-v12) reference groups. Mask group trawled by orchestrator inline — Sonnet worker pool hit account rate limit. Concept images live in this repo (generated content); reference images hotlinked. Reviewed in issue #4 against the preview-res images.",
   "cards": [
     {
       "id": "c01",
