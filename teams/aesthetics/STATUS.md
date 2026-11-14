@@ -10,11 +10,9 @@
 
 ## Current State
 
-**Round-04 (synthesis round) in progress.** R02+r03 verdicts backpropped; vision sketch (IMG_0073) ingested — smiley mask + separate toothy maw, freeform sprawl, three plant-shelf tentacles, strong depth variance.
+**Round-05 (mask-direction generation round) in progress.** R04 backpropped: concept direction VALIDATED (c01/c02 loved). Round-05 is all-generated: group A = mask studies on the winning body (carved-serene vs flat-graphic vs void-mouth vs none; asymmetric placements); group B = body refinement (more horrific/less octopus, asymmetry, sleek Beksiński; Gaudí gradient + Shlian crisp emergence; root-grip plant shelves).
 
-Round-04 board: 43 cards (deviation from 48: Canva credit quota capped concepts at 7 of 12) — generated-concept c01-c07 (preview-res, in-repo; c08-c12 + full-res re-export queued on quota reset), mask-treatment m01-m12, plant-integration p01-p12, depth-variance v01-v12. Mask group trawled by orchestrator inline (Sonnet pool rate-limited).
-
-Locked by r01-r03: Beksiński surface core (webbing/ochre/bone-crust/flowstone/rust, gloss as accent only); refined-room decor target; bas-relief body + multi-anchor freeform tentacle spread; no chibi, no trophy plaque, no historic-medium novelties.
+Locked by r01-r04: Beksiński surface core (webbing/ochre/bone-crust/flowstone/rust, gloss accent only); refined-room, non-centerpiece decor; bas-relief body + multi-anchor freeform spread with strong depth variance; mask carved into mass (serene monumental or flat graphic), never a worn/applied object; tentacle-grips-pot plant shelves; horrific asymmetry; no chibi, no comical, no trophy, no corner-wrap (shelved).
 
 ## Vision Constraints
 
@@ -34,7 +32,7 @@ Locked by r01-r03: Beksiński surface core (webbing/ochre/bone-crust/flowstone/r
 **Round-01 (issue #1):**
 - Surface: Beksiński decay palette > Giger biomech. Giger acceptable only as architecture merging with wall (08).
 - New hard constraints: blend with interior decor; mild-cutesy element wanted.
-- Format: wall relief / trophy formats all loved; freeform, wall-concentrated spread preferred over framed/contained.
+- Format: wall relief / trophy formats all loved *(superseded r03: trophy/plaque dead, f06)*; freeform, wall-concentrated spread preferred over framed/contained.
 - Mask: literal historical/menacing mask refs dead (09/10/11 all disliked). Happy-face mask direction → benign/cute, probed in round-02 cutesy-horror axis.
 
 ---
@@ -47,3 +45,4 @@ Locked by r01-r03: Beksiński surface core (webbing/ochre/bone-crust/flowstone/r
 | 2026-11-14 | orchestrator | Round-02 state: 7/12 delivered, stale target fixed | docs-reviewer (flagged) |
 | 2026-11-14 | orchestrator | Round-03 charter + board assembled 48/48 | docs-reviewer (flagged: outliers per group are 4-6, not 4-7) |
 | 2026-11-14 | orchestrator | R02/r03 backprop, sketch constraints, round-04 charter | docs-reviewer (haiku) |
+| 2026-11-14 | orchestrator | R04 backprop, locked constraints, round-05 charter | docs-reviewer (haiku) |
