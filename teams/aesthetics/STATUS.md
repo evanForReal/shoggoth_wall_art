@@ -10,14 +10,15 @@
 
 ## Current State
 
-**Round-02 board assembled: 7 of 12 planned cards** (Wikimedia rate limits blocked 5 slots; Printables bot-walled — see round-02 manifest notes). Awaiting deploy + Evan review. Round-03 trawl leads with cutesy-horror and wall-integration gaps.
+**Round-03 trawl in progress under restructured methodology** (see DECISIONS 2026-11-14): 48 cards = 4 parallel groups × 12, hotlinked images, high temperature (~1/3 outliers per group).
 
-Axes (refined from round-01 verdicts):
-1. Cutesy-horror balance — how much mild-cutesy bleeds into the horror; benign/cute mask+creature refs (replaces dead literal-mask axis)
-2. Wall-integration — relief depth: flat-back relief vs trophy mount vs freeform tentacle spread across the wall plane
-3. Surface-finish — Beksiński decay palette at print scale; decor-compatible paint/texture treatments
+Groups:
+1. artistic — Shoggoth/Lovecraft art (DeviantArt, ArtStation, similar), heavy Beksiński lean
+2. surface-aesthetic — texture, palette, material finish
+3. interior-decor — dark/organic statement pieces in real rooms
+4. structural-format — mount & relief typologies
 
-Delivered: 7 cards (2 cutesy-horror, 2 wall-integration, 3 surface-finish).
+Round-02 (7 cards, deployed, ping sent) awaits Evan verdicts; round-03 board supersedes its axis-walk approach.
 
 ## Vision Constraints
 

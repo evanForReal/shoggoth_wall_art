@@ -212,8 +212,8 @@ function showError(msg){
 
 // ── Image base URL resolution ─────────────────────────────────────────────────
 function imgUrl(path){
-  // manifest is at ../review/rounds/<round>/manifest.json relative to review-app/
-  // images are relative to that manifest directory
+  // absolute URLs (hotlinked art) pass through; otherwise relative to the round's manifest directory
+  if(/^https?:\/\//i.test(path))return path;
   return '../review/rounds/'+round+'/'+path;
 }
 
@@ -244,7 +244,7 @@ function buildCardEl(c){
   el.className='card';
   el.innerHTML=
     '<div class="card-img-wrap" id="img-wrap">'+
-      '<img src="'+imgUrl(c.image)+'" alt="'+escHtml(c.title)+'" draggable="false">'+
+      '<img src="'+imgUrl(c.image)+'" alt="'+escHtml(c.title)+'" draggable="false" referrerpolicy="no-referrer" onerror="this.style.display=\'none\';this.parentNode.insertAdjacentHTML(\'beforeend\',\'<div style=&quot;display:flex;align-items:center;justify-content:center;height:100%;color:#888;font-size:.9rem;padding:1rem;text-align:center&quot;>image unavailable — see source link in notes</div>\')">'+
       '<div class="overlay like" id="ov-like"></div>'+
       '<div class="overlay dislike" id="ov-dislike"></div>'+
       '<div class="overlay love" id="ov-love"></div>'+
