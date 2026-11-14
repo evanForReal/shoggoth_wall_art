@@ -1,0 +1,14 @@
+see the HEIC image in this folder.
+
+
+First prompt:
+ok, we are going to create a 3d-printing blueprint model for a wall-art project I would like to create. Here is the core idea:
+a 3d-printed wall art piece that is a Shoggoth wearing a happy-face mask.
+Go take a trawl through this repo to get a sense of how we are going to go from aesthetic design to robust model to finished CAD model to printer-feasible segmentation to printed thing.
+
+The first step we'd iterate on in a production scenario is to go through several rounds of human-computer iteration on our aesthetic design. Our First Task in this setting would be for you to take a look at my init folder, get a sense of what I would like our aesthetic design to be, and then go trawl the internet for our first batch of design mood-board images in a folder. Then, create our review md in that folder, 
+
+Before you go off to do that task, here are some ground rules, and a Task Zero.
+You and our team of agents will constantly be updating our repository's documentation so that every agent can read nearby documentation and get a clear sense of where we stand. You will highly prioritize making clear executive summaries of latest happenings and you will deprioritize making minute summaries of passing, inconsequential exchanges. You will all have permission to make edits to documentation to make it more accurate, with the ground rule being that you will have to confirm with at least one other agent that the edits you are making are advancing our priorities and are accurate and in keeping with our grander mission. Prioritize efficient, technical top level summaries over verbose and hawkish statements. All prose should always be terse, technical, 
+Task Zero (before the above First Task) is this: go through and flesh out our repo with rules and guidelines that enable the agents we will be sending forth to be able to self-improve and distributedly augment our documentation in a clean and coordinated way. You will spin off agents to read up on the context of every local task and begin their work such that our flow is this: your subagents will escalate to their superior and so on until it reaches me ONLY in a capacity that decisions are forwarded to me in an efficient, aesthetic and easy-to-use board. For example, any given review session for the aesthetics iteration portion should be handed to me in a Tinder-style "i like this, i dont like this, heres what I would prefer about this" manner which should then be backpropagated down to the trawlers and workers and whatever, instead of me having to manually open md files to review these docs. Interview me until you feel prepared to embark on this task, and I give you permission (and encouragement) to write new md files such that our design philosophies and guidelines are codified.
+remember: TERSE, TECHNICAL, BLUNT. i hate reading your words.

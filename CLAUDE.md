@@ -1,0 +1,54 @@
+# CLAUDE.md
+
+**Mission:** Produce a 3D-printed Shoggoth wall-art piece (~3×2–3×3 ft) — sculptural horror aesthetic, happy-face mask — from generative concept through fabrication-ready segments.
+
+## Pipeline
+
+1. **Aesthetic design** — mood boards, style axes, Evan review rounds
+2. **Robust 3D model** — geometry passes structural + visual bar
+3. **CAD model** — engineering-grade mesh, tolerances, hardware
+4. **Printer-feasible segmentation** — split for ≤256 mm FDM bed, joints designed
+5. **Print / assemble** — physical build, finish
+
+## Repo Map
+
+```
+CLAUDE.md                        ← this file
+docs/
+  AGENTS.md                      ← hierarchy, charters, protocols
+  DECISIONS.md                   ← append-only human-verdict log
+teams/
+  aesthetics/STATUS.md
+  structural/STATUS.md
+  cad/STATUS.md
+  fabrication/STATUS.md
+review/
+  rounds/round-NN/               ← per-round manifests + assets (DO NOT EDIT)
+review-app/                      ← GitHub Pages swipe-board (DO NOT EDIT)
+aesthetics vision/               ← raw human input (DO NOT EDIT)
+agent orchestration/
+artifacts/
+knobs that we can tweak/
+```
+
+## Ground Rules
+
+**Prose style:** Terse, technical, blunt. No filler, no marketing language. Exec summaries over play-by-play.
+
+**Doc-edit peer sign-off:** Every file edit requires confirmation by a second agent. Sign-off logged in that file's edit log (`date | agent | change | signed-off-by`). Unconfirmed edits are provisional.
+
+**Escalation / review flow:** Workers → Team Leads → Orchestrator → Evan. Evan sees only decision boards (phone-friendly swipe app, GitHub Pages). Evan is pinged by email when a round is ready. Verdicts return as a JSON block in a GitHub issue on evanForReal/shoggoth_wall_art. Agents backprop verdicts into takeaways and DECISIONS.md.
+
+**Agent model policy:** All subagents run Sonnet. Orchestrator runs in the main session. No agent contacts Evan directly; only the Orchestrator presents, and only via review rounds.
+
+## Key Docs
+
+- `docs/AGENTS.md` — full hierarchy, role charters, protocols
+- `docs/DECISIONS.md` — human verdict log
+
+---
+*Edit log*
+
+| Date | Agent | Change | Signed-off-by |
+|------|-------|--------|---------------|
+| 2026-11-13 | docs-lead | Initial creation | docs-reviewer |

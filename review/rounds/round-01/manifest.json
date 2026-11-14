@@ -1,0 +1,104 @@
+{
+  "round": "round-01",
+  "title": "Shoggoth wall art — round 01 mood board",
+  "created": "2026-11-13",
+  "issue_repo": "evanForReal/shoggoth_wall_art",
+  "cards": [
+    {
+      "id": "01",
+      "image": "images/01_giger-xenomorph-sculpture.jpg",
+      "axis": "surface-language",
+      "title": "Giger Xenomorph biomechanical skin",
+      "rationale": "Museum-quality photograph of Giger's Xenomorph sculpture surface; probes how much mechanical ribbing vs fleshy tube density to pack into the shoggoth body.",
+      "source": "https://commons.wikimedia.org/wiki/File:H.R._Giger%E2%80%99s_Xenomorph_(Ank_Kumar_)_09.jpg"
+    },
+    {
+      "id": "02",
+      "image": "images/02_giger-museum-bar-interior.jpg",
+      "axis": "surface-language",
+      "title": "Giger bar vertebral arch relief",
+      "rationale": "Wide-angle interior of the Giger Bar Gruyères; shows how repeated vertebral-rib modules tile across a large surface — directly relevant to tiling the 3x3 ft print.",
+      "source": "https://commons.wikimedia.org/wiki/File:HR_Giger_Museum_Bar_Gruyeres_02.jpg"
+    },
+    {
+      "id": "03",
+      "image": "images/03_beksinski-untitled-1984.jpg",
+      "axis": "surface-language",
+      "title": "Beksiński mummified embrace decay",
+      "rationale": "Canonical Beksiński decayed-flesh color palette and calcified-skin texture; probes whether the shoggoth surface reads as dried/petrified organic vs wet/viscous.",
+      "source": "https://commons.wikimedia.org/wiki/File:Untitled_painting_by_Zdzislaw_Beksinski_1984.jpg"
+    },
+    {
+      "id": "04",
+      "image": "images/04_beksinski-aa78-1978.jpg",
+      "axis": "surface-language",
+      "title": "Beksiński AA78 dystopian figure",
+      "rationale": "AA78's layered cracked-earth and bone-crust surfaces calibrate how much of Beksiński's desolate-ochre tone should bleed into the shoggoth's color treatment.",
+      "source": "https://commons.wikimedia.org/wiki/File:AA78_by_Zdzislaw_Beksinski_1978.jpg"
+    },
+    {
+      "id": "05",
+      "image": "images/05_kraken-tentacle-wall-sculpture.jpg",
+      "axis": "wall-format",
+      "title": "Kraken tentacle porthole burst",
+      "rationale": "PLA print of a tentacle erupting through a porthole frame, hung on drywall; probes whether the shoggoth reads better as a contained-silhouette relief or as limbs escaping beyond any border.",
+      "source": "https://ozfdm.com.au/products/unleash-the-kraken-tentacle-wall-sculpture-pla"
+    },
+    {
+      "id": "06",
+      "image": "images/06_cthulhu-wall-decor-print.jpg",
+      "axis": "wall-format",
+      "title": "Cthulhu FDM wall relief mounted",
+      "rationale": "4096px community photo of a printed Cthulhu hanging flush on plaster; shows the flat-backed full-body wall-relief format and how layer lines read at scale.",
+      "source": "https://www.printables.com/model/1236361-cthulhu-wall-decor"
+    },
+    {
+      "id": "07",
+      "image": "images/07_xenomorph-trophy-wall-mount.jpg",
+      "axis": "wall-format",
+      "title": "Xenomorph trophy taxidermy plaque",
+      "rationale": "Printed Xenomorph head on a wooden taxidermy plaque hung on wood-panel wall; probes the full-bust-trophy format vs flat relief — whether the shoggoth should read as a hunted thing.",
+      "source": "https://www.printables.com/model/1651851-xenomorph-hunting-trophy-alien-wall-mount"
+    },
+    {
+      "id": "08",
+      "image": "images/08_giger-bar-wall-columns.jpg",
+      "axis": "wall-format",
+      "title": "Giger bar architectural wall columns",
+      "rationale": "Giger Bar window bay where biomechanical sculpture is the wall itself — probes whether the shoggoth piece should frame or merge with its mounting surface rather than stand proud of it.",
+      "source": "https://commons.wikimedia.org/wiki/File:HR_Giger_Museum_Bar_Gruyeres_08.jpg"
+    },
+    {
+      "id": "09",
+      "image": "images/09_hannya-noh-mask-tokyo.jpg",
+      "axis": "mask-treatment",
+      "title": "Hannya Noh demon mask TNM",
+      "rationale": "Tokyo National Museum Hannya: horned demon with frozen snarl — graphic mask form that is itself horror; probes whether the shoggoth's smiley mask should be purely benign or carry menace.",
+      "source": "https://commons.wikimedia.org/wiki/File:Hannya_(Noh_mask),_Tokyo_National_Museum_C-1555.jpg"
+    },
+    {
+      "id": "10",
+      "image": "images/10_aztec-skull-mask.jpg",
+      "axis": "mask-treatment",
+      "title": "Aztec skull trophy mask",
+      "rationale": "Real human skull fitted with mosaic inlays as a ceremonial mask; the clearest analog to the concept — a recognizable graphic face applied to raw organic material, testing how that contrast reads in 3D.",
+      "source": "https://commons.wikimedia.org/wiki/File:Aztec_Skull_Mask_(9782105274).jpg"
+    },
+    {
+      "id": "11",
+      "image": "images/11_plague-doctor-mask.jpg",
+      "axis": "mask-treatment",
+      "title": "Plague doctor beak mask",
+      "rationale": "Clean graphic beak form photographed against pure black; probes how much the smiley mask needs visual isolation or rim-lighting to read as a singular clean element amid tentacle chaos.",
+      "source": "https://commons.wikimedia.org/wiki/File:Maschera_Medico_Peste.jpg"
+    },
+    {
+      "id": "12",
+      "image": "images/12_shoggoth-fanart-nottsuo.jpg",
+      "axis": "mask-treatment",
+      "title": "Shoggoth fan art organic chaos",
+      "rationale": "Canonical Shoggoth rendering with writhing tentacles and scattered eyes; establishes what the smiley mask is embedded in — probes scale and placement of a clean icon against that density.",
+      "source": "https://commons.wikimedia.org/wiki/File:Shoggoth_by_Nottsuo.jpg"
+    }
+  ]
+}

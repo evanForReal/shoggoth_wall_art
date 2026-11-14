@@ -1,0 +1,5 @@
+.DS_Store
+.claude-flow/
+.claude/settings.local.json
+.claude/.proven-config-version
+.claude/proven-config.json

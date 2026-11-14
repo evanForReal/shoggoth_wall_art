@@ -1,0 +1,4 @@
+use this folder as follows:
+each round of design review will be in a folder aptly named. There will be examples named ordinally, and an md file in each folder that associates with each ordinal case a set of sample values for a human reviewer to review and a box for notes. the 'priority' value will 
+
+as you review each iteration, you will use the takeaways doc to write your high-level conclusions about how our design should turn out. You will both add specs and remove specs. you will include a component dedicated to things you tried and that I rejected, and which you believe would be helpful for other agents to know in the design process.
