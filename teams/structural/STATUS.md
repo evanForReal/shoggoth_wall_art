@@ -4,6 +4,7 @@
 
 ## Exec Summary (newest first)
 
+- 2026-11-14: Liaison from Aesthetics: mount design to assume multiple wall-contacting tentacle terminations, freeform spread (not a contained silhouette).
 - 2026-11-13: Stub created. Functional constraints captured. No structural work started.
 
 ## Functional Constraints
@@ -18,7 +19,7 @@
 
 *(Exchange active constraints with Aesthetics here. Both leads must sign off.)*
 
-No active liaison entries yet.
+- 2026-11-14, aesthetics→structural: Format converging on wall-concentrated piece — flat-back relief or trophy-proud body with freeform tentacle spread across wall plane (round-01: 06/07/08 loved, 05 note). Mount design should assume multiple tentacle terminations contacting the wall, not a single contained silhouette. Signed: aesthetics-lead (orchestrator), structural-lead (docs-reviewer).
 
 ## Takeaways
 
@@ -30,3 +31,4 @@ None yet.
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
 | 2026-11-13 | docs-lead | Initial creation | docs-reviewer |
+| 2026-11-14 | docs-reviewer | Mirrored liaison constraint from aesthetics | orchestrator |

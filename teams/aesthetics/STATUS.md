@@ -10,14 +10,14 @@
 
 ## Current State
 
-**Round-02 trawl in progress.**
+**Round-02 board assembled: 7 of 12 planned cards** (Wikimedia rate limits blocked 5 slots; Printables bot-walled — see round-02 manifest notes). Awaiting deploy + Evan review. Round-03 trawl leads with cutesy-horror and wall-integration gaps.
 
 Axes (refined from round-01 verdicts):
 1. Cutesy-horror balance — how much mild-cutesy bleeds into the horror; benign/cute mask+creature refs (replaces dead literal-mask axis)
 2. Wall-integration — relief depth: flat-back relief vs trophy mount vs freeform tentacle spread across the wall plane
 3. Surface-finish — Beksiński decay palette at print scale; decor-compatible paint/texture treatments
 
-Target: 12 images (4 per axis).
+Delivered: 7 cards (2 cutesy-horror, 2 wall-integration, 3 surface-finish).
 
 ## Vision Constraints
 
@@ -30,7 +30,7 @@ Target: 12 images (4 per axis).
 
 *(Exchange active constraints with Structural here. Both leads must sign off.)*
 
-- [PROVISIONAL] 2026-11-14, aesthetics→structural: Format converging on wall-concentrated piece — flat-back relief or trophy-proud body with freeform tentacle spread across wall plane (round-01: 06/07/08 loved, 05 note). Mount design should assume multiple tentacle terminations contacting the wall, not a single contained silhouette. Awaiting structural-lead sign-off.
+- 2026-11-14, aesthetics→structural: Format converging on wall-concentrated piece — flat-back relief or trophy-proud body with freeform tentacle spread across wall plane (round-01: 06/07/08 loved, 05 note). Mount design should assume multiple tentacle terminations contacting the wall, not a single contained silhouette. Signed: aesthetics-lead (orchestrator), structural-lead (docs-reviewer).
 
 ## Takeaways
 
@@ -46,4 +46,5 @@ Target: 12 images (4 per axis).
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
 | 2026-11-13 | docs-lead | Initial creation | docs-reviewer |
-| 2026-11-14 | orchestrator | Round-01 backprop: takeaways, round-02 axes, liaison entry | [PROVISIONAL] |
+| 2026-11-14 | orchestrator | Round-01 backprop: takeaways, round-02 axes, liaison entry | docs-reviewer |
+| 2026-11-14 | orchestrator | Round-02 state: 7/12 delivered, stale target fixed | docs-reviewer (flagged) |
