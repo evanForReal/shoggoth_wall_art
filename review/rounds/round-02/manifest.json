@@ -29,6 +29,14 @@
       "source": "https://commons.wikimedia.org/wiki/File:Casa_Batlló_01.jpg"
     },
     {
+      "id": "07",
+      "image": "images/07_mosaic-octopus-ground-sprawl.jpg",
+      "axis": "wall-integration",
+      "title": "Mosaic octopus sprawled across plane",
+      "rationale": "Pink mosaic octopus with tentacles spreading freeform across a flat plane (ground analog for wall spread); probes uncontained-silhouette spread (round-01: 05 note), and the playful mosaic skin doubles as a mild-cutesy signal.",
+      "source": "https://commons.wikimedia.org/wiki/File:Octopus_statue_in_Sin'guang_Park,_Kaohsiung.jpg"
+    },
+    {
       "id": "09",
       "image": "images/09_beksinski-s4-2004.jpg",
       "axis": "surface-finish",
