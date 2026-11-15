@@ -58,12 +58,12 @@ def solve_frame(stations, E, nu, rho, extra_mass=None, loads=None, self_weight=T
     for i in range(n - 1):
         a, b = stations[i], stations[i + 1]
         L, R = _local_axes(a["p"], b["p"], 0.5 * (a["u"] + b["u"]))
-        A = 0.5 * (a["A_eff"] + b["A_eff"])
-        Iu = 0.5 * (a["Iu"] + b["Iu"]); Iv = 0.5 * (a["Iv"] + b["Iv"]); J = 0.5 * (a["J"] + b["J"])
+        A = 0.5 * (a["A_eff_k"] + b["A_eff_k"])
+        Iu = 0.5 * (a["Iu_k"] + b["Iu_k"]); Iv = 0.5 * (a["Iv_k"] + b["Iv_k"]); J = 0.5 * (a["J_k"] + b["J_k"])
         # local y = u (lateral), z = v (up): Iy (about y) = int z^2 = Iu ; Iz = int y^2 = Iv
         ke = beam_k(E, Gm, A, Iu, Iv, J, L)
         rA = 0.5 * (a["rhoA"] + b["rhoA"]) * 1.0
-        me = beam_m(rA, rA * (Iu + Iv) / max(A, 1e-9), L)
+        me = beam_m(rA, rA * (0.5 * (a["Iu"] + b["Iu"] + a["Iv"] + b["Iv"])) / max(0.5 * (a["A_eff"] + b["A_eff"]), 1e-9), L)
         T = np.zeros((12, 12))
         for k in range(4):
             T[3 * k:3 * k + 3, 3 * k:3 * k + 3] = R

@@ -61,7 +61,7 @@ def main():
         lc2 = json.loads(json.dumps(lc)); lc2["skin"]["mass_factor"] = lc["skin"]["mass_factor"] * fac
         tmp = Path(a.out) / f"_lc_{name}.json"; tmp.write_text(json.dumps(lc2))
         ns = NS(); ns.underlay = a.underlay; ns.skin = a.skin if fac > 0 else None; ns.params = a.params; ns.loadcases = str(tmp); ns.out = str(Path(a.out) / "_swap_tmp")
-        ns.name = f"an_{name}"; ns.stations = 30; ns.joints = None
+        ns.name = f"an_{name}"; ns.stations = 0; ns.spacing = 6.0; ns.joints = None
         o = RA.run(ns); tmp.unlink()
         l1 = next(c for c in o["load_cases"] if c["id"] == "LC1")
         res[name] = {"mass_kg": o["mass_kg"], "tip_u": l1["tip_disp_mag_mm"], "sigma": l1["sigma_max_MPa"], "f1_plant": o["modal"]["freq_with_5kg_plant_Hz"][0]}

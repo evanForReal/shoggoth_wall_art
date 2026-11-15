@@ -33,7 +33,7 @@ def run_variant(name, base, patch, work, gen, lcpath):
     if r.returncode != 0:
         return {"name": name, "patch": patch, "error": r.stderr[-300:]}
     ns = NS(); ns.underlay = str(d / "out/underlay.stl"); ns.skin = str(d / "out/skin.stl"); ns.params = str(d / "params.json"); ns.loadcases = lcpath
-    ns.out = str(d / "rep"); ns.name = "analytic"; ns.stations = 30; ns.joints = None
+    ns.out = str(d / "rep"); ns.name = "analytic"; ns.stations = 0; ns.spacing = 6.0; ns.joints = None
     o = RA.run(ns)
     l = {c["id"]: c for c in o["load_cases"]}
     U = np.max([c["util_by_station"] for c in o["load_cases"] if c.get("util_by_station")], axis=0)

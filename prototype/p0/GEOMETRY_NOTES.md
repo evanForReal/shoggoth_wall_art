@@ -65,3 +65,4 @@ orientation is a heuristic. (e) no fillet at tube/dome junction yet. (f) reviewe
 |------|-------|--------|---------------|
 | 2026-11-15 | geometry-manager | v0 notes | [PROVISIONAL] (no second agent available in this run) |
 | 2026-11-15 | geometry-manager | v0.1 status, checks, hand-calc summary | [PROVISIONAL] |
+| 2026-11-15 | independent-geometry-reviewer | reviewed, confirmed with exceptions: shell wall >=2.4 FAILS on s>225 (min 0.81 mm); anchor tension 148/393 N overstated (corrected 83-112 / 217-293 N); see geometry_review.md | author:geometry-manager |

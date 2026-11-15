@@ -17,14 +17,14 @@ def main():
     def chk(name, ok, detail): out["checks"].append({"check": name, "agree": bool(ok), "detail": detail})
     fea = json.loads((R / "fea.json").read_text()); ana = json.loads((R / "analytic.json").read_text())
     tmp = R / "_rerun"; 
-    r = subprocess.run([sys.executable, "-m", "sim.analytic.run_analytic", "--underlay", str(P / "out/underlay.stl"), "--skin", str(P / "out/skin.stl"), "--params", str(P / "params.json"), "--out", str(tmp), "--stations", "70", "--name", "an70"],
+    r = subprocess.run([sys.executable, "-m", "sim.analytic.run_analytic", "--underlay", str(P / "out/underlay.stl"), "--skin", str(P / "out/skin.stl"), "--params", str(P / "params.json"), "--out", str(tmp), "--spacing", "3.5", "--name", "an70"],
                        capture_output=True, text=True, cwd=str(Path(__file__).resolve().parent.parent), env={**__import__("os").environ, "PYTHONPATH": "."})
     if r.returncode == 0:
         a70 = json.loads((tmp / "an70.json").read_text())
         for lc in ("LC1", "LC2", "LC3a"):
             s0 = next(c for c in ana["load_cases"] if c["id"] == lc); s1 = next(c for c in a70["load_cases"] if c["id"] == lc)
-            chk(f"analytic {lc} SF stations 45 vs 70", abs(s1["sf"] / s0["sf"] - 1) < 0.10, [s0["sf"], s1["sf"]])
-            chk(f"analytic {lc} tip |u| 45 vs 70", abs(s1["tip_disp_mag_mm"] / s0["tip_disp_mag_mm"] - 1) < 0.05, [s0["tip_disp_mag_mm"], s1["tip_disp_mag_mm"]])
+            chk(f"analytic {lc} SF spacing 5 vs 3.5 mm", abs(s1["sf"] / s0["sf"] - 1) < 0.10, [s0["sf"], s1["sf"]])
+            chk(f"analytic {lc} tip |u| spacing 5 vs 3.5 mm", abs(s1["tip_disp_mag_mm"] / s0["tip_disp_mag_mm"] - 1) < 0.05, [s0["tip_disp_mag_mm"], s1["tip_disp_mag_mm"]])
     else:
         chk("analytic rerun", False, r.stderr[-300:])
     for n in ("underlay", "skin", "assembly"):

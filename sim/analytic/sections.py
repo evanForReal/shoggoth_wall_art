@@ -127,7 +127,22 @@ def props(poly, wall, ffac):
             "n_holes": int(holes)}
 
 
-def sections_along(mesh, cl, wall, ffac, n=45, s0=0.0, s1=1.0, r_hint=None):
+def stiffness_envelope(st, cl, window_mm):
+    """Replace stiffness properties by their running MINIMUM over +-window/2 of arclength (ring ribs, bulkheads and plugs are local
+    and must not be credited as continuous beam stiffness). Mass is NOT filtered. Adds A_k, Iu_k, Iv_k, J_k."""
+    s = np.array([x["s"] for x in st]) * cl.L
+    for key in ("A_eff", "Iu", "Iv", "J"):
+        v = np.array([x[key] for x in st])
+        out = np.empty_like(v)
+        for i in range(len(st)):
+            m = np.abs(s - s[i]) <= window_mm / 2
+            out[i] = v[m].min()
+        for x, o in zip(st, out):
+            x[key + "_k"] = float(o)
+    return st
+
+
+def sections_along(mesh, cl, wall, ffac, n=45, s0=0.0, s1=1.0, r_hint=None, window_mm=0.0):
     """list of station dicts along centerline fraction s0..s1."""
     out = []
     for f in np.linspace(s0, s1, n):
@@ -139,4 +154,9 @@ def sections_along(mesh, cl, wall, ffac, n=45, s0=0.0, s1=1.0, r_hint=None):
         pr = props(poly, wall, ffac)
         cen = p + pr["cu"] * u + pr["cv"] * v
         out.append({"s": float(f), "p": cen, "t": t, "u": u, "v": v, **pr})
+    if window_mm > 0:
+        stiffness_envelope(out, cl, window_mm)
+    else:
+        for x in out:
+            x.update(A_eff_k=x["A_eff"], Iu_k=x["Iu"], Iv_k=x["Iv"], J_k=x["J"])
     return out

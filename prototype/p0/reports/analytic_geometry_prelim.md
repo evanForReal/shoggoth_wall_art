@@ -46,3 +46,4 @@ Worst section SF (interlayer allowable 18 MPa, no stress concentration): LC1 16.
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
 | 2026-11-15 | geometry-manager | Initial hand calcs | [PROVISIONAL] |
+| 2026-11-15 | independent-geometry-reviewer | section-stress table confirmed (<1 %, see geometry_review.md); anchor-screw section NOT confirmed (Mx wrongly added to tension) | author:geometry-manager |

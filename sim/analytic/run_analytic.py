@@ -28,14 +28,14 @@ def lc_loads(case, shelf_pt, tip_pt):
 def station_stress(st, ef_a, mat, bdir, wall):
     """ef_a: local end-a force vector acting on the outboard element at this station [Fx,Fy,Fz,Mx,My,Mz]."""
     Fx, Fy, Fz, Mx, My, Mz = ef_a
-    A = st["A_eff"]; Iy = st["Iu"]; Iz = st["Iv"]
+    A = st["A_eff_k"]; Iy = st["Iu_k"]; Iz = st["Iv_k"]
     # local y = u, z = v (see frame.beam_k); boundary coords relative to centroid (u,v)
     y = st["bnd"][:, 0]; z = st["bnd"][:, 1]
     sig = -Fx / A - My * z / Iy + Mz * y / Iz
     s = np.abs(sig); k = int(np.argmax(s)); smax = s[k]
     V = np.hypot(Fy, Fz)
     rmax = np.max(np.hypot(y, z))
-    tau = 2.0 * V / A + abs(Mx) * rmax / max(st["J"], 1e-9)
+    tau = 2.0 * V / A + abs(Mx) * rmax / max(st["J_k"], 1e-9)
     vm = np.sqrt(smax ** 2 + 3 * tau ** 2)
     sn = max(sig[k], 0.0) * float(st["t"] @ bdir) ** 2
     fi1 = vm / mat["allow_xy"]; fi2 = sn / mat["allow_z"]
@@ -62,7 +62,9 @@ def run(a):
     fr = np.linspace(0, 1, 2001); P, _ = cl.at(fr)
     s0 = float(fr[np.argmax(P[:, 0] >= x_root - 1e-6)]) if (P[:, 0] >= x_root - 1e-6).any() else 0.0
     rh = lambda f: 70.0 if manifest else float(local_radius(params, f))
-    st = sections_along(mesh, cl, wall, f_inf, n=a.stations, s0=s0, s1=1.0, r_hint=rh)
+    ribp = float((params.get("ribs") or {}).get("pitch", 36.0))
+    n_st = a.stations or int(np.ceil(cl.L * (1 - s0) / a.spacing)) + 1
+    st = sections_along(mesh, cl, wall, f_inf, n=n_st, s0=s0, s1=1.0, r_hint=rh, window_mm=ribp)
     # drop the last 2 mm-ish station if inside the tip cap (section may be solid disc)
     for s in st:
         s["rhoA"] = mat["rho_t_mm3"] * s["A_eff"]
@@ -93,8 +95,8 @@ def run(a):
         shelf_pt = lp.copy(); shelf_pt[2] = st[idx_shelf]["p"][2] + 0.0 * shelf_pt[2]    # load applied at centroid height to avoid fake torsion; offset reported
     bdir = layer_dir(params)
     out = {"tool": "sim.analytic.run_analytic", "date": TODAY, "inputs": {"underlay": str(a.underlay), "skin": str(a.skin) if skin is not None else None, "params": str(a.params)},
-           "material": mat["name"], "n_stations": len(st), "root_fraction": s0, "root_x_mm": x_root,
-           "assumptions": ["root block (plate+stub) rigid: frame fixed at first station past plate+stub", "J via Bredt (single-cell) or polar; product of inertia neglected in frame (reported)",
+           "material": mat["name"], "n_stations": len(st), "spacing_mm": a.spacing, "root_fraction": s0, "root_x_mm": x_root,
+           "assumptions": [f"stiffness properties = running minimum over +-{ribp/2:.0f} mm (rib pitch {ribp:.0f}): ring ribs/bulkhead plugs not credited as continuous beam stiffness; mass is not filtered", "root block (plate+stub) rigid: frame fixed at first station past plate+stub", "J via Bredt (single-cell) or polar; product of inertia neglected in frame (reported)",
                            "infill-equivalent: material deeper than shell_wall scaled by infill E/rho factor", "stress at station boundary fibres; tau = 2V/A + T*r/J"],
            "sections": [{"s": round(s["s"], 3), "A_mm2": round(s["A_eff"], 1), "Iu": round(s["Iu"], 0), "Iv": round(s["Iv"], 0), "Iuv_over_sqrt_IuIv": round(abs(s["Iuv"]) / np.sqrt(s["Iu"] * s["Iv"]), 4),
                          "J": round(s["J"], 0), "t_eff": round(s["t_eff_mm"], 2), "centroid": s["p"].round(1).tolist()} for s in st],
@@ -207,7 +209,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--underlay", required=True); ap.add_argument("--skin"); ap.add_argument("--params", required=True)
     ap.add_argument("--loadcases", default=str(P0 / "loadcases.json")); ap.add_argument("--out", required=True)
-    ap.add_argument("--name", default="analytic"); ap.add_argument("--stations", type=int, default=45); ap.add_argument("--joints")
+    ap.add_argument("--name", default="analytic"); ap.add_argument("--stations", type=int, default=0); ap.add_argument("--spacing", type=float, default=5.0); ap.add_argument("--joints")
     a = ap.parse_args(); o = run(a)
     print([(c["id"], round(c["sf"], 2), round(c["tip_disp_mag_mm"], 3)) for c in o["load_cases"]], o["modal"]["freq_with_5kg_plant_Hz"][:2])
 
