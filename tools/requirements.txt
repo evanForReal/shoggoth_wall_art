@@ -1,0 +1,12 @@
+# Pinned to what is installed in this environment (2026-11-15). No new deps were added by Verification.
+numpy==2.5.3            # arrays, voxel raster, hex FEA assembly
+scipy==1.18.1           # sparse CG/LOBPCG, EDT, cKDTree, eigh
+trimesh==5.2.1          # mesh IO, plane slicing (mesh_plane), surface sampling (no rtree/networkx used)
+manifold3d==3.5.5       # boolean ops (joint interference, skin contract), reference article generator
+shapely==2.2.0          # section polygons / moments (analytic)
+meshio==5.3.5           # available (not required by Verification code)
+scikit-fem==12.0.2      # available; not used (voxel-hex FEA is in-repo, sim/hexfea.py)
+build123d==0.13.0       # Geometry's
+jsonschema==4.26.0      # tools/schema_check.py
+matplotlib==3.11.2      # optional plots
+# NOT installed / not used: rtree, networkx, pyamg, pytest (tests use stdlib unittest; AMG is in-repo sim/amg.py)

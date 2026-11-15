@@ -3,3 +3,8 @@
 .claude/settings.local.json
 .claude/.proven-config-version
 .claude/proven-config.json
+
+# regenerable P0 geometry outputs (make gen)
+prototype/p0/out/
+__pycache__/
+*.pyc

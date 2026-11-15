@@ -1,0 +1,12 @@
+{
+  "_note": "Thresholds. Items marked ASSUMED are not in docs/PROTOTYPE_SPEC.md and need orchestrator/Evan sign-off.",
+  "bed_mm": 256.0, "bed_target_mm": 240.0,
+  "min_wall_mm": 1.2, "min_wall_note": "ASSUMED: 3 perimeters at 0.4 mm. Spec shell_wall is 2.4 (6 perimeters).",
+  "min_feature_mm": 0.8, "min_feature_note": "ASSUMED: 2 extrusion widths (also min gap that will not fuse)",
+  "overhang_angle_deg": 45.0,
+  "overhang_area_fraction_max": 0.25, "overhang_note": "ASSUMED: <=25 % of surface area beyond 45 deg in the chosen orientation (otherwise supports/redesign).",
+  "bridge_max_mm": 15.0, "bridge_note": "ASSUMED: PETG bridging limit ~15 mm unsupported",
+  "joint_clearance_mm": [0.2, 0.3], "joint_clearance_accept_mm": [0.1, 0.5], "joint_clearance_note": "spec: tolerance stack 0.2-0.3 mm per mating face; accept band ASSUMED",
+  "infill_fraction": 0.2, "flow_mm3_s": 8.0, "layer_overhead_s": 4.0,
+  "joint_moment_ratio_max": 0.6, "interlayer_tangent_cos2_max": 0.25
+}

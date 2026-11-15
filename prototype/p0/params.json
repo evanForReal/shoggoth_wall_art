@@ -1,0 +1,48 @@
+{
+  "schema": "p0-params-v1",
+  "units": "mm",
+  "span_length": 450,
+  "root_diameter": 100,
+  "tip_diameter": 40,
+  "shell_wall": 2.4,
+  "centerline": {
+    "note": "plan path from heading(s) knots [s/L, deg from +X toward +Y]; z from knots [s/L, mm]. neck_len = straight run inside stub, s<0.",
+    "root_xyz": [60, 0, 0],
+    "neck_len": 30,
+    "heading_knots_deg": [[0, 0], [0.2, 38], [0.45, 76], [0.7, 62], [1.0, 62]],
+    "z_knots": [[0, 0], [0.2, 22], [0.4, 42], [0.55, 50], [0.667, 52], [1.0, 52]]
+  },
+  "shelf": {
+    "note": "flat top >=120x120, centered 80% span. top plane = z(center)+half_height.",
+    "plateau_start_frac": 0.6667,
+    "plateau_end_frac": 0.9333,
+    "ramp_up_start_frac": 0.50,
+    "ramp_down_end_frac": 1.0,
+    "half_width": 74,
+    "corner_radius": 12,
+    "half_height": 32,
+    "keepout_margin": 20
+  },
+  "architecture": "rib_ladder",
+  "architectures_available": ["rib_ladder", "lattice", "spine_beam"],
+  "ribs": {"pitch": 36, "thickness": 2.4, "flange": 7, "rail_w": 5, "rail_h": 5,
+           "deck_web_t": 2.4, "deck_web_n": 32, "deck_rib_pitch": 30,
+           "lattice_struts_per_family": 4, "lattice_turn_len": 160, "strut_w": 2.8, "strut_h": 6,
+           "spine_web_t": 4.0, "spine_flange_w": 12, "spine_flange_h": 4.0, "spine_ring_pitch": 72},
+  "station_spacing": 3.0,
+  "anchor_plate": {"size": [160, 110, 8], "hole_d": 6, "hole_pattern": [120, 70],
+                   "counterbore_d": 12, "boss_d": 20, "boss_h": 6, "access_bore_d": 14},
+  "body_stub": {"diameter": 200, "depth": 80, "wall": 3.0, "cross_rib_t": 3.0},
+  "material": "PETG",
+  "joint": {
+    "type": "dovetail_bolt",
+    "types_available": ["dovetail_bolt", "tongue_pin", "socket_through_bolt"],
+    "cut_stations": [151, 302],
+    "cut_station_note": "mm along span from root (s). peak moment is at root; cuts placed outboard.",
+    "bulkhead_A": 8, "key_len": 12, "clearance": 0.2, "bolt_d": 4.5, "pin_d": 6.4,
+    "bed_usable": 240
+  },
+  "skin": {"style": "calcified_webbing", "seed": 1, "max_proud": 6.0, "min_proud": 0.8,
+           "edge_len": 2.5, "inset": 0.6},
+  "layer_dir": "span axis horizontal within each segment"
+}

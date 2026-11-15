@@ -1,0 +1,135 @@
+{
+ "all_pass": true,
+ "checks": {
+  "underlay.watertight_winding_volume>0": {
+   "value": {
+    "wt": true,
+    "wind": true,
+    "vol": 1211391.9592229028
+   },
+   "pass_": true
+  },
+  "skin.watertight_winding_volume>0": {
+   "value": {
+    "wt": true,
+    "wind": true,
+    "vol": 494852.2166289116
+   },
+   "pass_": true
+  },
+  "assembly.watertight_winding_volume>0": {
+   "value": {
+    "wt": true,
+    "wind": true,
+    "vol": 1604590.8865593206
+   },
+   "pass_": true
+  },
+  "skin_never_removes_underlay (vol U-A mm3)": {
+   "value": -5.692988143153308,
+   "pass_": true
+  },
+  "skin_overlap_with_underlay mm3 (<= inset*envelope area = bond overlap only)": {
+   "value": 101653.40570277328,
+   "pass_": true
+  },
+  "skin_max_proud_mm (skin verts to underlay envelope, +-0.5 sampling tol)": {
+   "value": 6.07925489329006,
+   "pass_": true
+  },
+  "shelf_120x120_top_z_range_mm (assembly)": {
+   "value": 0.022119470508130235,
+   "pass_": true
+  },
+  "shelf_slope_deg": {
+   "value": 0.01056126909021903,
+   "pass_": true
+  },
+  "shelf_top_plane_z": {
+   "value": 83.99753634243929,
+   "pass_": true
+  },
+  "max_geometry_above_shelf_plane_in_footprint+margin_mm": {
+   "value": 0.0,
+   "pass_": true
+  },
+  "protrusion_x_max_mm (assembly aabb, incl skin)": {
+   "value": 357.35400390625,
+   "pass_": true
+  },
+  "tip_centerline_x": {
+   "value": 300.84456957040146,
+   "pass_": true
+  },
+  "centerline_rise_mm": {
+   "value": 52.0,
+   "pass_": true
+  },
+  "span_arc3d_mm (plan arc = span_length)": {
+   "value": 455.42157067374586,
+   "pass_": true
+  },
+  "seg0_fits_240mm_bed": {
+   "value": [
+    220.83,
+    210.36,
+    209.13
+   ],
+   "pass_": true
+  },
+  "seg1_fits_240mm_bed": {
+   "value": [
+    167.47,
+    159.67,
+    89.73
+   ],
+   "pass_": true
+  },
+  "seg2_fits_240mm_bed": {
+   "value": [
+    172.39,
+    160.0,
+    70.0
+   ],
+   "pass_": true
+  },
+  "segment_count>=2": {
+   "value": 3,
+   "pass_": true
+  },
+  "segments_union_volume_deficit_mm3 (holes+clearance)": {
+   "value": 3284.148494177498,
+   "pass_": true
+  },
+  "skin_swap_styles_never_alter_underlay": {
+   "value": {
+    "calcified_webbing": {
+     "skin_vol": 491266.88388473727,
+     "underlay_removed": -5.899320596434729,
+     "underlay_bytes_equal": true
+    },
+    "bone_crust": {
+     "skin_vol": 551577.992340643,
+     "underlay_removed": -5.892493407921209,
+     "underlay_bytes_equal": true
+    },
+    "flowstone": {
+     "skin_vol": 457558.3539849743,
+     "underlay_removed": -5.8995861485262235,
+     "underlay_bytes_equal": true
+    },
+    "rust_blister": {
+     "skin_vol": 426895.47365794267,
+     "underlay_removed": -5.892493408194728,
+     "underlay_bytes_equal": true
+    },
+    "mummified_ochre": {
+     "skin_vol": 460187.29857219383,
+     "underlay_removed": -5.892493408553545,
+     "underlay_bytes_equal": true
+    }
+   },
+   "pass_": true
+  }
+ }
+}

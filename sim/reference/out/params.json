@@ -1,0 +1,46 @@
+{
+  "_comment": "REFERENCE ARTICLE (not P0): straight tapered hollow tube + plate, spec key names",
+  "span_length": 450.0,
+  "root_diameter": 100.0,
+  "tip_diameter": 40.0,
+  "shell_wall": 2.4,
+  "anchor_plate": {
+    "size_y": 160.0,
+    "size_z": 110.0,
+    "thickness": 8.0,
+    "hole_dia": 6.0,
+    "pattern_y": 120.0,
+    "pattern_z": 70.0
+  },
+  "centerline": [
+    [
+      8,
+      0,
+      0
+    ],
+    [
+      158,
+      0,
+      0
+    ],
+    [
+      308,
+      0,
+      0
+    ],
+    [
+      458,
+      0,
+      0
+    ]
+  ],
+  "shelf_zone": {
+    "center_frac": 0.8
+  },
+  "material": "PETG",
+  "layer_dir": [
+    0,
+    0,
+    1
+  ]
+}

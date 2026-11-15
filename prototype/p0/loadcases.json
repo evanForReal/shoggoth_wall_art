@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "_source": "docs/PROTOTYPE_SPEC.md (Load cases, Safety factors, Material allowables). Entries marked ASSUMED are not in the spec and need sign-off.",
+  "units": "mm,N,MPa,kg",
+  "gravity_mm_s2": 9810.0,
+  "materials": {
+    "PETG": {"E": 2000.0, "nu": 0.35, "allow_xy": 35.0, "allow_z": 18.0, "rho_g_cm3": 1.27},
+    "PLA":  {"E": 3200.0, "nu": 0.36, "allow_xy": 45.0, "allow_z": 20.0, "rho_g_cm3": 1.24}
+  },
+  "nu_note": "nu values ASSUMED (typical FDM); spec gives E and allowables only",
+  "interlayer_shear_ratio": 0.577,
+  "interlayer_shear_note": "ASSUMED: interlayer shear allowable = 0.577 * allow_z (von Mises ratio)",
+  "infill": {"fraction": 0.2, "E_factor": 0.2, "wall_depth_mm": "shell_wall", "note": "ASSUMED: material deeper than shell_wall from any surface is 20 % infill: rho and E scaled by 0.2 (linear rule)"},
+  "skin": {"mass_factor": 0.3, "note": "ASSUMED: skin is printed as thin shell/low infill; effective density = 0.3 * rho. Skin is mass-only in FEA per spec Layering."},
+  "load_cases": [
+    {"id": "LC1", "title": "Plant on shelf + self weight", "kind": "static", "self_weight": true,
+     "loads": [{"where": "shelf_center", "mass_kg": 5.0, "direction": [0, 0, -1]}],
+     "sf_min": 3.0, "check_tip_deflection_mm": 6.0, "check_freq_hz": 8.0},
+    {"id": "LC2", "title": "Plant overload 15 kg + self weight", "kind": "static", "self_weight": true,
+     "loads": [{"where": "shelf_center", "mass_kg": 15.0, "direction": [0, 0, -1]}],
+     "sf_min": 1.5},
+    {"id": "LC3a", "title": "Lateral nudge +Y at tip (with LC1 loads)", "kind": "static", "self_weight": true,
+     "loads": [{"where": "shelf_center", "mass_kg": 5.0, "direction": [0, 0, -1]}, {"where": "tip", "force_N": 30.0, "direction": [0, 1, 0]}],
+     "sf_min": 3.0, "note": "ASSUMED combination: nudge applied while LC1 plant present (conservative)"},
+    {"id": "LC3b", "title": "Lateral nudge -Y at tip (with LC1 loads)", "kind": "static", "self_weight": true,
+     "loads": [{"where": "shelf_center", "mass_kg": 5.0, "direction": [0, 0, -1]}, {"where": "tip", "force_N": 30.0, "direction": [0, -1, 0]}], "sf_min": 3.0},
+    {"id": "LC3c", "title": "Lateral nudge +X at tip (with LC1 loads)", "kind": "static", "self_weight": true,
+     "loads": [{"where": "shelf_center", "mass_kg": 5.0, "direction": [0, 0, -1]}, {"where": "tip", "force_N": 30.0, "direction": [1, 0, 0]}], "sf_min": 3.0},
+    {"id": "LC3d", "title": "Lateral nudge -X at tip (with LC1 loads)", "kind": "static", "self_weight": true,
+     "loads": [{"where": "shelf_center", "mass_kg": 5.0, "direction": [0, 0, -1]}, {"where": "tip", "force_N": 30.0, "direction": [-1, 0, 0]}], "sf_min": 3.0},
+    {"id": "LC4", "title": "Self weight only", "kind": "static", "self_weight": true, "loads": [],
+     "sf_min": 3.0, "note": "spec gives no SF for LC4; subset of LC1, SF 3.0 applied"},
+    {"id": "LC5", "title": "Anchor pull-out / screw group", "kind": "anchor", "from": ["LC1", "LC2"],
+     "sf_min": {"LC1": 3.0, "LC2": 1.5}}
+  ],
+  "criteria": {"tip_deflection_max_mm": 6.0, "freq_min_hz": 8.0, "sf_lc1_lc3": 3.0, "sf_lc2": 1.5,
+               "freq_with_plant_mass": true, "freq_note": "ASSUMED: frequency evaluated with 5 kg plant mass lumped at shelf center (conservative); bare value also reported"},
+  "anchor": {
+    "plate": {"note": "plate geometry from params.json anchor_plate; pattern_y x pattern_z ASSUMED = (Y,Z) in wall plane"},
+    "options": {
+      "stud_2": {"desc": "2x #8 wood screws into one stud (the two screws at one Y), other holes unused", "screws": "pattern_y_plus_only", "kind": "wood_screw"},
+      "backer_4": {"desc": "4x #8 wood screws into backer board / two studs via cleat", "screws": "all", "kind": "wood_screw"},
+      "drywall_4": {"desc": "4x drywall anchors rated >= 25 kg each (rating treated as ultimate)", "screws": "all", "kind": "drywall_anchor"}
+    },
+    "capacities_ultimate_N": {
+      "wood_screw": {"tension": 1200.0, "shear": 900.0, "note": "ASSUMED #8 x 2.5in, ~38 mm embed in SPF stud; NOT vendor/NDS verified [UNVERIFIED]"},
+      "drywall_anchor": {"tension": 245.0, "shear": 245.0, "note": "25 kg rating (spec) treated as ultimate both ways (conservative) [UNVERIFIED vs product]"}
+    },
+    "screw_head_dia_mm": 9.0,
+    "interaction": "linear (T/Tu + V/Vu) <= 1/SF"
+  },
+  "joint_hardware": {
+    "default": {"kind": "steel_pin_or_bolt", "dia_mm": 6.0, "count": 2, "tau_ult_MPa": 300.0, "note": "ASSUMED M6 steel (class 4.6-ish) shear ultimate 300 MPa; replace with Geometry's joint spec"}
+  }
+}
