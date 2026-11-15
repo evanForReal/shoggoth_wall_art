@@ -2,6 +2,13 @@
 
 Exec summary, newest first. Owner: Geometry regional manager. Units mm.
 
+## 2026-11-15 late: printcheck on v0 (ran locally, output in scratch only)
+
+5 FAIL. (1) watertight FAIL on underlay and all segments is a loader artifact: printcheck loads STL with `process=False`
+so vertices are unmerged (open_edges ~ all edges). Files are watertight under `trimesh.load` default (merge) - request
+Verification call `merge_vertices()` before the check. (2) underlay bridge 23.1 mm > 15 mm: real; likely pad underside / ramp
+and ring-rib spans. Candidate geometry fix next iteration: shorter deck-rib pitch or support webs under the pad underside.
+
 ## 2026-11-15 v0.1 final for this run
 
 **Checks:** `geometry_selfcheck.py` ALL PASS (watertight/winding after STL round-trip for underlay, skin, assembly, 3 segments;
