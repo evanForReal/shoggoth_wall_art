@@ -1,10 +1,10 @@
 # Structural Team — STATUS.md
 
-**Status:** ACTIVE — engineering pass v1 delivered [PROVISIONAL]; awaiting CAD mass model and Evan wall-construction answer.
+**Status:** ACTIVE — engineering pass v1 delivered, peer-signed. Design case locked (DECISIONS 2026-11-15). Awaiting CAD mass model.
 
 ## Exec Summary (newest first)
 
-- 2026-11-15: Engineering pass v1 [PROVISIONAL]: shelf moment governs (worst 295 N tension per upper anchor); stud-fastened cleat passes, nails and single toggles fail; sculpture est. 5-14 kg. See `analysis/load-model-v1.md`.
+- 2026-11-15: Engineering pass v1 (peer-signed): shelf moment governs (worst 295 N tension per upper anchor); stud-fastened cleat passes, nails and single toggles fail; sculpture est. 5-14 kg. See `analysis/load-model-v1.md`.
 - 2026-11-14: Liaison from Aesthetics: mount design to assume multiple wall-contacting tentacle terminations, freeform spread (not a contained silhouette).
 - 2026-11-13: Stub created. Functional constraints captured. No structural work started.
 
@@ -18,12 +18,12 @@
 
 ## Current State
 
-Engineering pass v1 delivered [PROVISIONAL, awaiting peer sign-off]. Hand calcs, no FEA, no mesh yet.
+Engineering pass v1 delivered and peer-signed. Hand calcs, no FEA, no mesh yet. Design case locked: drywall on wood studs, drilling approved, French cleat + stud screws primary, buttress tentacle approved >=25 cm shelves, 5 kg/shelf ceiling (DECISIONS 2026-11-15).
 
 - `analysis/load-model-v1.md`: plant-shelf cantilever (5 kg x 1.5 SF = 73.6 N, p = 10-30 cm, s = 8-12 cm), sculpture self-weight (5-14 kg, nominal ~9 kg), anchor options table with D/C verdicts, multi-anchor spread (6-10), whip stiffness, cable vs strut assist, open questions.
 - `analysis/side-profile-cantilever.svg`: protrusion variance + loaded shelf free body.
 - `analysis/front-anchor-map.svg`: 8-anchor map over c01 silhouette (6 shelf + 2 hold-down).
-- Blocked on: CAD mass model from real mesh; Evan answer on wall construction (drywall-on-stud vs masonry).
+- Blocked on: CAD mass model from real mesh. (Wall-construction answer received: drywall on wood studs.)
 
 ## Liaison
 
@@ -46,5 +46,5 @@ Engineering pass v1 delivered [PROVISIONAL, awaiting peer sign-off]. Hand calcs,
 | 2026-11-13 | docs-lead | Initial creation | docs-reviewer |
 | 2026-11-14 | docs-reviewer | Mirrored liaison constraint from aesthetics | orchestrator |
 | 2026-11-14 | orchestrator | Liaison v2: plant-shelf load case, relief+spread format, depth variance | docs-reviewer (haiku) |
-| 2026-11-15 | structural-lead | Engineering pass v1: load model, anchor options, diagrams | [PROVISIONAL] |
-| 2026-11-15 | structural-lead | Rev after peer review: strut statics corrected (295 to ~92 N, not ~18 N), stud-screw conversion, rounding, labels | [PROVISIONAL] |
+| 2026-11-15 | structural-lead | Engineering pass v1: load model, anchor options, diagrams | docs-reviewer |
+| 2026-11-15 | structural-lead | Rev after peer review: strut statics corrected (295 to ~92 N, not ~18 N), stud-screw conversion, rounding, labels | docs-reviewer |

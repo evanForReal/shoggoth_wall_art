@@ -1,6 +1,6 @@
 # Load Model v1 — Structural Engineering Pass
 
-**Status:** [PROVISIONAL] first pass. Hand calcs, no FEA. Geometry basis: r04 c01 (velvet-salon baseline) and c02 (stone-smile), ~3x2 to 3x3 ft. Inputs from liaison v2 (STATUS.md). SI units throughout; g = 9.81 m/s^2.
+**Status:** peer-signed first pass (docs-reviewer). Hand calcs, no FEA. Geometry basis: r04 c01 (velvet-salon baseline) and c02 (stone-smile), ~3x2 to 3x3 ft. Inputs from liaison v2 (STATUS.md). SI units throughout; g = 9.81 m/s^2.
 
 ## 0. Exec summary
 
@@ -176,5 +176,5 @@ Cable from shelf tip up and back to a wall anchor at angle theta above horizonta
 
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
-| 2026-11-15 | structural-lead | Initial creation (engineering pass v1) | [PROVISIONAL] |
-| 2026-11-15 | structural-lead | Rev after peer review: strut thrust statics (92 N not 18 N), strut-foot anchorage, NDS conversion (143 lbf = 636 N; 530 N used), 295 N rounding, D/C 0.56/0.68 with linear-sum rule, layer-shear area, SVG label | [PROVISIONAL] |
+| 2026-11-15 | structural-lead | Initial creation (engineering pass v1) | docs-reviewer |
+| 2026-11-15 | structural-lead | Rev after peer review: strut thrust statics (92 N not 18 N), strut-foot anchorage, NDS conversion (143 lbf = 636 N; 530 N used), 295 N rounding, D/C 0.56/0.68 with linear-sum rule, layer-shear area, SVG label | docs-reviewer |

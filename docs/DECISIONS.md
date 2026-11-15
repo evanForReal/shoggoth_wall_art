@@ -37,4 +37,4 @@
 | 2026-11-14 | orchestrator | Appended review-methodology restructure (Evan, direct) | docs-reviewer |
 | 2026-11-14 | orchestrator | Appended r02+r03 verdicts, vision-sketch constraints | docs-reviewer (haiku) |
 | 2026-11-14 | orchestrator | Appended round-04 verdict row | docs-reviewer (haiku) |
-| 2026-11-15 | orchestrator | Appended structural design case (Evan answers) | [PROVISIONAL] |
+| 2026-11-15 | orchestrator | Appended structural design case (Evan answers) | docs-reviewer |
