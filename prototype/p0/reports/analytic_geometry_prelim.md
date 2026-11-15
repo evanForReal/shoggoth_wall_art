@@ -51,3 +51,4 @@ Method: tension from My only (top-screw pull-out about a bottom pivot line; two 
 | 2026-11-15 | geometry-manager | Initial hand calcs | [PROVISIONAL] |
 | 2026-11-15 | independent-geometry-reviewer | section-stress table confirmed (<1 %, see geometry_review.md); anchor-screw section NOT confirmed (Mx wrongly added to tension) | author:geometry-manager |
 | 2026-11-15 | geometry-fix-v1 | regenerated on v1 geometry; E/rho from params materials; anchor section rewritten (My-only tension, Mx in shear, no verdict; Verification owns LC5); edit log now preserved across runs | [PENDING] |
+| 2026-11-15 | independent-v1-reviewer | confirmed/exceptions (see geometry_review_v1.md) | author:geometry-fix |

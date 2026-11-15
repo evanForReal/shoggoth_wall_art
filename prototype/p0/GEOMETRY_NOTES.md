@@ -121,4 +121,4 @@ orientation is a heuristic. (e) no fillet at tube/dome junction yet. (f) reviewe
 | 2026-11-15 | geometry-manager | v0.1 status, checks, hand-calc summary | [PROVISIONAL] |
 | 2026-11-15 | independent-geometry-reviewer | reviewed, confirmed with exceptions: shell wall >=2.4 FAILS on s>225 (min 0.81 mm); anchor tension 148/393 N overstated (corrected 83-112 / 217-293 N); see geometry_review.md | author:geometry-manager |
 | 2026-11-15 | geometry-fix-v1 | v1 geometry fix notes (wall offset, voids/vents, swap check, repairs, keepout, anchor-load restatement); out/ swapped | [PENDING] independent reviewer |
-
+| 2026-11-15 | independent-v1-reviewer | confirmed/exceptions (see geometry_review_v1.md) | author:geometry-fix |

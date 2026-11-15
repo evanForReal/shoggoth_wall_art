@@ -1,0 +1,1217 @@
+{
+ "tool": "printcheck.run_printcheck",
+ "date": "2026-11-15",
+ "limits": {
+  "_note": "Thresholds. Items marked ASSUMED are not in docs/PROTOTYPE_SPEC.md and need orchestrator/Evan sign-off.",
+  "bed_mm": 256.0,
+  "bed_target_mm": 240.0,
+  "min_wall_mm": 1.2,
+  "min_wall_note": "ASSUMED: 3 perimeters at 0.4 mm. Spec shell_wall is 2.4 (6 perimeters).",
+  "min_feature_mm": 0.8,
+  "min_feature_note": "ASSUMED: 2 extrusion widths (also min gap that will not fuse)",
+  "overhang_angle_deg": 45.0,
+  "overhang_area_fraction_max": 0.25,
+  "overhang_note": "ASSUMED: <=25 % of surface area beyond 45 deg in the chosen orientation (otherwise supports/redesign).",
+  "bridge_max_mm": 15.0,
+  "bridge_note": "ASSUMED: PETG bridging limit ~15 mm unsupported",
+  "joint_clearance_mm": [
+   0.2,
+   0.3
+  ],
+  "joint_clearance_accept_mm": [
+   0.1,
+   0.5
+  ],
+  "joint_clearance_note": "spec: tolerance stack 0.2-0.3 mm per mating face; accept band ASSUMED",
+  "infill_fraction": 0.2,
+  "flow_mm3_s": 8.0,
+  "layer_overhead_s": 4.0,
+  "joint_moment_ratio_max": 0.6,
+  "interlayer_tangent_cos2_max": 0.25
+ },
+ "material": "PETG",
+ "inputs": {
+  "underlay": "prototype/p0/out/underlay.stl",
+  "segments": "prototype/p0/out/segments"
+ },
+ "underlay": {
+  "name": "underlay",
+  "bounds": [
+   [
+    0.0,
+    -100.0,
+    -100.0
+   ],
+   [
+    352.2,
+    369.3,
+    100.0
+   ]
+  ],
+  "extents": [
+   352.2,
+   469.3,
+   200.0
+  ],
+  "integrity": {
+   "watertight": true,
+   "winding_consistent": true,
+   "volume_mm3": 1211391.9592229028,
+   "non_manifold_edges": 0,
+   "open_edges": 0,
+   "degenerate_faces": 0,
+   "components": 5,
+   "n_faces": 106000,
+   "inverted": false,
+   "self_intersection_proxy_cells": 5,
+   "self_intersection_locations": [
+    {
+     "center": [
+      56.8,
+      1.7,
+      43.1
+     ],
+     "cells": 2
+    },
+    {
+     "center": [
+      51.1,
+      -2.4,
+      47.2
+     ],
+     "cells": 1
+    },
+    {
+     "center": [
+      56.3,
+      -2.4,
+      43.1
+     ],
+     "cells": 1
+    },
+    {
+     "center": [
+      57.3,
+      -2.4,
+      43.1
+     ],
+     "cells": 1
+    }
+   ],
+   "self_intersection_note": "voxel winding proxy at pitch 1.03 mm: cells with |winding|>=2 or <0; sub-pitch overlaps not detected",
+   "self_intersection_proxy_mm3": 5.509957585687873,
+   "pass": false,
+   "self_intersection_threshold_note": "ASSUMED: proxy volume <= 5 mm3 tolerated (raster noise at tangent faces)"
+  },
+  "orientations": [
+   {
+    "up": "+z",
+    "xy_extent_mm": [
+     409.1,
+     419.6
+    ],
+    "rot_deg": 81.0,
+    "height_mm": 200.0,
+    "overhang_area_mm2": 97591.38456139564,
+    "overhang_fraction": 0.16555443819445906,
+    "support_volume_proxy_cm3": 11633.841828340224,
+    "fits_bed": false,
+    "fits_target": false,
+    "bridge_minor_mm": Infinity
+   },
+   {
+    "up": "-z",
+    "xy_extent_mm": [
+     419.6,
+     409.1
+    ],
+    "rot_deg": 9.0,
+    "height_mm": 200.0,
+    "overhang_area_mm2": 98027.24046763766,
+    "overhang_fraction": 0.16629382600021603,
+    "support_volume_proxy_cm3": 5662.124060767962,
+    "fits_bed": false,
+    "fits_target": false,
+    "bridge_minor_mm": Infinity
+   },
+   {
+    "up": "+x",
+    "xy_extent_mm": [
+     376.2,
+     375.6
+    ],
+    "rot_deg": 36.0,
+    "height_mm": 352.20599365234375,
+    "overhang_area_mm2": 76012.39908914773,
+    "overhang_fraction": 0.12894775582469614,
+    "support_volume_proxy_cm3": 13099.428745079378,
+    "fits_bed": false,
+    "fits_target": false,
+    "bridge_minor_mm": Infinity
+   },
+   {
+    "up": "-x",
+    "xy_extent_mm": [
+     375.6,
+     376.2
+    ],
+    "rot_deg": 54.0,
+    "height_mm": 352.20599365234375,
+    "overhang_area_mm2": 103682.71635965872,
+    "overhang_fraction": 0.17588779926162443,
+    "support_volume_proxy_cm3": 19062.702512234104,
+    "fits_bed": false,
+    "fits_target": false,
+    "bridge_minor_mm": Infinity
+   },
+   {
+    "up": "+y",
+    "xy_extent_mm": [
+     340.7,
+     331.3
+    ],
+    "rot_deg": 60.0,
+    "height_mm": 469.3240051269531,
+    "overhang_area_mm2": 76979.9940896693,
+    "overhang_fraction": 0.13058918808258504,
+    "support_volume_proxy_cm3": 14796.925376650484,
+    "fits_bed": false,
+    "fits_target": false,
+    "bridge_minor_mm": Infinity
+   },
+   {
+    "up": "-y",
+    "xy_extent_mm": [
+     331.3,
+     340.7
+    ],
+    "rot_deg": 30.0,
+    "height_mm": 469.3240051269531,
+    "overhang_area_mm2": 76838.20097090925,
+    "overhang_fraction": 0.13034864963524503,
+    "support_volume_proxy_cm3": 16506.065789425273,
+    "fits_bed": false,
+    "fits_target": false,
+    "bridge_minor_mm": Infinity
+   }
+  ],
+  "best_orientation": {
+   "up": "+x",
+   "xy_extent_mm": [
+    376.2,
+    375.6
+   ],
+   "rot_deg": 36.0,
+   "height_mm": 352.20599365234375,
+   "overhang_area_mm2": 76012.39908914773,
+   "overhang_fraction": 0.12894775582469614,
+   "support_volume_proxy_cm3": 13099.428745079378,
+   "fits_bed": false,
+   "fits_target": false,
+   "bridge_minor_mm": Infinity
+  },
+  "bridge": {
+   "n_patches": 44,
+   "max_minor_extent_mm": 89.68940020405975,
+   "max_major_extent_mm": 132.3195923987602,
+   "worst_patch_center": [
+    77.4,
+    -0.3,
+    2.5
+   ],
+   "limit_mm": 15.0,
+   "pass": false
+  },
+  "overhang": {
+   "fraction": 0.12894775582469614,
+   "limit": 0.25,
+   "pass": true,
+   "support_volume_proxy_cm3": 13099.428745079378
+  },
+  "bed": {
+   "fits_bed_256": false,
+   "fits_target_240": false,
+   "xy_extent_mm": [
+    376.2,
+    375.6
+   ],
+   "height_mm": 352.20599365234375,
+   "pass": false
+  },
+  "mass_time": {
+   "extruded_volume_cm3": 901.5142,
+   "geom_volume_cm3": 1211.3919592229029,
+   "mass_kg_20pct_infill": 1.1449230339999998,
+   "mass_kg_solid": 1.5384677882130864,
+   "print_time_proxy_h": 32.4136875,
+   "note": "voxel pitch 1.00; time = V/8.0 mm3/s + layers*4.0 s (proxy, no travel/retraction model)"
+  },
+  "wall_s": 8.1
+ },
+ "segments": {
+  "seg_00": {
+   "name": "seg_00",
+   "bounds": [
+    [
+     0.0,
+     -105.9,
+     -105.0
+    ],
+    [
+     220.8,
+     105.0,
+     104.6
+    ]
+   ],
+   "extents": [
+    220.8,
+    210.9,
+    209.6
+   ],
+   "integrity": {
+    "watertight": true,
+    "winding_consistent": true,
+    "volume_mm3": 788895.1896812377,
+    "non_manifold_edges": 0,
+    "open_edges": 0,
+    "degenerate_faces": 0,
+    "components": 1,
+    "n_faces": 109402,
+    "inverted": false,
+    "self_intersection_proxy_cells": 44,
+    "self_intersection_locations": [
+     {
+      "center": [
+       70.8,
+       43.7,
+       21.0
+      ],
+      "cells": 10
+     },
+     {
+      "center": [
+       72.5,
+       -45.4,
+       -25.6
+      ],
+      "cells": 7
+     },
+     {
+      "center": [
+       70.8,
+       -39.5,
+       35.4
+      ],
+      "cells": 2
+     },
+     {
+      "center": [
+       67.2,
+       7.8,
+       52.6
+      ],
+      "cells": 25
+     }
+    ],
+    "self_intersection_note": "voxel winding proxy at pitch 0.80 mm: cells with |winding|>=2 or <0; sub-pitch overlaps not detected",
+    "self_intersection_proxy_mm3": 22.528000000000006,
+    "pass": false,
+    "self_intersection_threshold_note": "ASSUMED: proxy volume <= 5 mm3 tolerated (raster noise at tangent faces)"
+   },
+   "orientations": [
+    {
+     "up": "+z",
+     "xy_extent_mm": [
+      210.9,
+      220.8
+     ],
+     "rot_deg": 0.0,
+     "height_mm": 209.56400299072266,
+     "overhang_area_mm2": 46853.10462338656,
+     "overhang_fraction": 0.1382967447789775,
+     "support_volume_proxy_cm3": 4484.793321644165,
+     "fits_bed": true,
+     "fits_target": true,
+     "bridge_minor_mm": 78.18659242165401
+    },
+    {
+     "up": "-z",
+     "xy_extent_mm": [
+      210.9,
+      220.8
+     ],
+     "rot_deg": 0.0,
+     "height_mm": 209.56400299072266,
+     "overhang_area_mm2": 46851.33732900574,
+     "overhang_fraction": 0.13829152823971294,
+     "support_volume_proxy_cm3": 3827.5933831318775,
+     "fits_bed": true,
+     "fits_target": true,
+     "bridge_minor_mm": 94.13208680155232
+    },
+    {
+     "up": "+x",
+     "xy_extent_mm": [
+      209.7,
+      210.1
+     ],
+     "rot_deg": 6.0,
+     "height_mm": 220.83200073242188,
+     "overhang_area_mm2": 29016.99750570637,
+     "overhang_fraction": 0.08564974147510061,
+     "support_volume_proxy_cm3": 2114.689511703259,
+     "fits_bed": true,
+     "fits_target": true,
+     "bridge_minor_mm": 207.4806590446593
+    },
+    {
+     "up": "-x",
+     "xy_extent_mm": [
+      210.1,
+      209.7
+     ],
+     "rot_deg": 84.0,
+     "height_mm": 220.83200073242188,
+     "overhang_area_mm2": 62626.052163687564,
+     "overhang_fraction": 0.1848539007652725,
+     "support_volume_proxy_cm3": 9663.056364265241,
+     "fits_bed": true,
+     "fits_target": true,
+     "bridge_minor_mm": 94.35069027193842
+    },
+    {
+     "up": "+y",
+     "xy_extent_mm": [
+      209.6,
+      220.8
+     ],
+     "rot_deg": 0.0,
+     "height_mm": 210.87999725341797,
+     "overhang_area_mm2": 48197.99621532649,
+     "overhang_fraction": 0.14226647380207985,
+     "support_volume_proxy_cm3": 4703.0149191635455,
+     "fits_bed": true,
+     "fits_target": true,
+     "bridge_minor_mm": 77.50444523832954
+    },
+    {
+     "up": "-y",
+     "xy_extent_mm": [
+      209.6,
+      220.8
+     ],
+     "rot_deg": 0.0,
+     "height_mm": 210.87999725341797,
+     "overhang_area_mm2": 48203.77413315965,
+     "overhang_fraction": 0.14228352853589843,
+     "support_volume_proxy_cm3": 3574.8036066146146,
+     "fits_bed": true,
+     "fits_target": true,
+     "bridge_minor_mm": 76.97338409140822
+    }
+   ],
+   "best_orientation": {
+    "up": "-y",
+    "xy_extent_mm": [
+     209.6,
+     220.8
+    ],
+    "rot_deg": 0.0,
+    "height_mm": 210.87999725341797,
+    "overhang_area_mm2": 48203.77413315965,
+    "overhang_fraction": 0.14228352853589843,
+    "support_volume_proxy_cm3": 3574.8036066146146,
+    "fits_bed": true,
+    "fits_target": true,
+    "bridge_minor_mm": 76.97338409140822
+   },
+   "bridge": {
+    "n_patches": 988,
+    "max_minor_extent_mm": 76.97338409140822,
+    "max_major_extent_mm": 117.9041192932161,
+    "worst_patch_center": [
+     44.4,
+     1.5,
+     -60.7
+    ],
+    "limit_mm": 15.0,
+    "pass": false
+   },
+   "overhang": {
+    "fraction": 0.14228352853589843,
+    "limit": 0.25,
+    "pass": true,
+    "support_volume_proxy_cm3": 3574.8036066146146
+   },
+   "bed": {
+    "fits_bed_256": true,
+    "fits_target_240": true,
+    "xy_extent_mm": [
+     209.6,
+     220.8
+    ],
+    "height_mm": 210.87999725341797,
+    "pass": true
+   },
+   "thickness": {
+    "pitch_mm": 0.6248628369166617,
+    "min_cells": 30,
+    "by_threshold": {
+     "0.6": {
+      "vol_mm3": 0.0,
+      "clusters": 0,
+      "worst": null,
+      "worst_cells": 0
+     },
+     "0.8": {
+      "vol_mm3": 0.0,
+      "clusters": 0,
+      "worst": null,
+      "worst_cells": 0
+     },
+     "1.0": {
+      "vol_mm3": 0.0,
+      "clusters": 0,
+      "worst": null,
+      "worst_cells": 0
+     },
+     "1.2": {
+      "vol_mm3": 0.0,
+      "clusters": 0,
+      "worst": null,
+      "worst_cells": 0
+     },
+     "1.6": {
+      "vol_mm3": 0.0,
+      "clusters": 0,
+      "worst": null,
+      "worst_cells": 0
+     },
+     "2.0": {
+      "vol_mm3": 59.53110103750127,
+      "clusters": 6,
+      "worst": [
+       53.2,
+       28.0,
+       -76.3
+      ],
+      "worst_cells": 51
+     }
+    },
+    "min_wall_resolved_ge_mm": 1.6,
+    "pass_min_wall": true,
+    "note": "wall >= t demonstrated for the largest t with zero significant thin clusters; resolution ~ +-pitch"
+   },
+   "mass_time": {
+    "extruded_volume_cm3": 641.8728000000001,
+    "geom_volume_cm3": 788.8951896812376,
+    "mass_kg_20pct_infill": 0.815178456,
+    "mass_kg_solid": 1.0018968908951718,
+    "print_time_proxy_h": 23.45149446105957,
+    "note": "voxel pitch 1.00; time = V/8.0 mm3/s + layers*4.0 s (proxy, no travel/retraction model)"
+   },
+   "wall_s": 48.4
+  },
+  "seg_01": {
+   "name": "seg_01",
+   "bounds": [
+    [
+     140.5,
+     55.6,
+     -5.9
+    ],
+    [
+     302.1,
+     255.1,
+     89.4
+    ]
+   ],
+   "extents": [
+    161.6,
+    199.6,
+    95.3
+   ],
+   "integrity": {
+    "watertight": true,
+    "winding_consistent": true,
+    "volume_mm3": 379899.07429201977,
+    "non_manifold_edges": 0,
+    "open_edges": 0,
+    "degenerate_faces": 0,
+    "components": 3,
+    "n_faces": 65902,
+    "inverted": false,
+    "self_intersection_proxy_cells": 0,
+    "self_intersection_note": "voxel winding proxy at pitch 0.80 mm: cells with |winding|>=2 or <0; sub-pitch overlaps not detected",
+    "self_intersection_proxy_mm3": 0.0,
+    "pass": true,
+    "self_intersection_threshold_note": "ASSUMED: proxy volume <= 5 mm3 tolerated (raster noise at tangent faces)"
+   },
+   "orientations": [
+    {
+     "up": "+z",
+     "xy_extent_mm": [
+      171.2,
+      159.3
+     ],
+     "rot_deg": 27.0,
+     "height_mm": 95.32000160217285,
+     "overhang_area_mm2": 22006.758310120567,
+     "overhang_fraction": 0.13492204923640364,
+     "support_volume_proxy_cm3": 1028.4028754395526,
+     "fits_bed": true,
+     "fits_target": true,
+     "bridge_minor_mm": 26.88119979517512
+    },
+    {
+     "up": "-z",
+     "xy_extent_mm": [
+      159.3,
+      171.2
+     ],
+     "rot_deg": 63.0,
+     "height_mm": 95.32000160217285,
+     "overhang_area_mm2": 23539.149378580845,
+     "overhang_fraction": 0.14431704236872428,
+     "support_volume_proxy_cm3": 770.4693402831397,
+     "fits_bed": true,
+     "fits_target": true,
+     "bridge_minor_mm": 25.75291571182953
+    },
+    {
+     "up": "+x",
+     "xy_extent_mm": [
+      181.2,
+      178.7
+     ],
+     "rot_deg": 42.0,
+     "height_mm": 161.59400939941406,
+     "overhang_area_mm2": 23670.580550480743,
+     "overhang_fraction": 0.14512283860624287,
+     "support_volume_proxy_cm3": 1207.517937439897,
+     "fits_bed": true,
+     "fits_target": true,
+     "bridge_minor_mm": 21.656731837481452
+    },
+    {
+     "up": "-x",
+     "xy_extent_mm": [
+      178.7,
+      181.2
+     ],
+     "rot_deg": 48.0,
+     "height_mm": 161.59400939941406,
+     "overhang_area_mm2": 25422.29815996383,
+     "overhang_fraction": 0.15586250894861495,
+     "support_volume_proxy_cm3": 2165.14383475967,
+     "fits_bed": true,
+     "fits_target": true,
+     "bridge_minor_mm": 32.34118413848663
+    },
+    {
+     "up": "+y",
+     "xy_extent_mm": [
+      147.2,
+      145.2
+     ],
+     "rot_deg": 54.0,
+     "height_mm": 199.58399963378906,
+     "overhang_area_mm2": 29452.92586918961,
+     "overhang_fraction": 0.18057403358910137,
+     "support_volume_proxy_cm3": 2633.456026874061,
+     "fits_bed": true,
+     "fits_target": true,
+     "bridge_minor_mm": 66.1993833909228
+    },
+    {
+     "up": "-y",
+     "xy_extent_mm": [
+      145.2,
+      147.2
+     ],
+     "rot_deg": 36.0,
+     "height_mm": 199.58399963378906,
+     "overhang_area_mm2": 30365.49744599088,
+     "overhang_fraction": 0.18616895245365309,
+     "support_volume_proxy_cm3": 2175.6978929844304,
+     "fits_bed": true,
+     "fits_target": true,
+     "bridge_minor_mm": 34.752119160712724
+    }
+   ],
+   "best_orientation": {
+    "up": "+x",
+    "xy_extent_mm": [
+     181.2,
+     178.7
+    ],
+    "rot_deg": 42.0,
+    "height_mm": 161.59400939941406,
+    "overhang_area_mm2": 23670.580550480743,
+    "overhang_fraction": 0.14512283860624287,
+    "support_volume_proxy_cm3": 1207.517937439897,
+    "fits_bed": true,
+    "fits_target": true,
+    "bridge_minor_mm": 21.656731837481452
+   },
+   "bridge": {
+    "n_patches": 699,
+    "max_minor_extent_mm": 21.656731837481452,
+    "max_major_extent_mm": 57.144680638469865,
+    "worst_patch_center": [
+     231.6,
+     126.5,
+     45.4
+    ],
+    "limit_mm": 15.0,
+    "pass": false
+   },
+   "overhang": {
+    "fraction": 0.14512283860624287,
+    "limit": 0.25,
+    "pass": true,
+    "support_volume_proxy_cm3": 1207.517937439897
+   },
+   "bed": {
+    "fits_bed_256": true,
+    "fits_target_240": true,
+    "xy_extent_mm": [
+     181.2,
+     178.7
+    ],
+    "height_mm": 161.59400939941406,
+    "pass": true
+   },
+   "thickness": {
+    "pitch_mm": 0.425165819243219,
+    "min_cells": 30,
+    "by_threshold": {
+     "0.6": {
+      "vol_mm3": 0.0,
+      "clusters": 0,
+      "worst": null,
+      "worst_cells": 0
+     },
+     "0.8": {
+      "vol_mm3": 0.0,
+      "clusters": 0,
+      "worst": null,
+      "worst_cells": 0
+     },
+     "1.0": {
+      "vol_mm3": 0.0,
+      "clusters": 0,
+      "worst": null,
+      "worst_cells": 0
+     },
+     "1.2": {
+      "vol_mm3": 0.0,
+      "clusters": 0,
+      "worst": null,
+      "worst_cells": 0
+     },
+     "1.6": {
+      "vol_mm3": 0.0,
+      "clusters": 0,
+      "worst": null,
+      "worst_cells": 0
+     },
+     "2.0": {
+      "vol_mm3": 109.05797346409209,
+      "clusters": 12,
+      "worst": [
+       157.0,
+       228.2,
+       55.8
+      ],
+      "worst_cells": 284
+     }
+    },
+    "min_wall_resolved_ge_mm": 1.6,
+    "pass_min_wall": true,
+    "note": "wall >= t demonstrated for the largest t with zero significant thin clusters; resolution ~ +-pitch"
+   },
+   "mass_time": {
+    "extruded_volume_cm3": 300.97,
+    "geom_volume_cm3": 379.89907429201975,
+    "mass_kg_20pct_infill": 0.38223190000000007,
+    "mass_kg_solid": 0.48247182435086505,
+    "print_time_proxy_h": 10.979902786678737,
+    "note": "voxel pitch 1.00; time = V/8.0 mm3/s + layers*4.0 s (proxy, no travel/retraction model)"
+   },
+   "wall_s": 55.1
+  },
+  "seg_02": {
+   "name": "seg_02",
+   "bounds": [
+    [
+     161.0,
+     181.9,
+     14.0
+    ],
+    [
+     357.4,
+     373.2,
+     84.0
+    ]
+   ],
+   "extents": [
+    196.4,
+    191.4,
+    70.0
+   ],
+   "integrity": {
+    "watertight": true,
+    "winding_consistent": true,
+    "volume_mm3": 432514.04156439565,
+    "non_manifold_edges": 0,
+    "open_edges": 0,
+    "degenerate_faces": 0,
+    "components": 1,
+    "n_faces": 73160,
+    "inverted": false,
+    "self_intersection_proxy_cells": 0,
+    "self_intersection_note": "voxel winding proxy at pitch 0.80 mm: cells with |winding|>=2 or <0; sub-pitch overlaps not detected",
+    "self_intersection_proxy_mm3": 0.0,
+    "pass": true,
+    "self_intersection_threshold_note": "ASSUMED: proxy volume <= 5 mm3 tolerated (raster noise at tangent faces)"
+   },
+   "orientations": [
+    {
+     "up": "+z",
+     "xy_extent_mm": [
+      172.4,
+      161.9
+     ],
+     "rot_deg": 27.0,
+     "height_mm": 70.0,
+     "overhang_area_mm2": 34291.46745501584,
+     "overhang_fraction": 0.1500469790697824,
+     "support_volume_proxy_cm3": 1204.1849339389562,
+     "fits_bed": true,
+     "fits_target": true,
+     "bridge_minor_mm": 36.474621676042176
+    },
+    {
+     "up": "-z",
+     "xy_extent_mm": [
+      161.9,
+      172.4
+     ],
+     "rot_deg": 63.0,
+     "height_mm": 70.0,
+     "overhang_area_mm2": 25503.790515862467,
+     "overhang_fraction": 0.11159530360588248,
+     "support_volume_proxy_cm3": 1036.4765678075696,
+     "fits_bed": true,
+     "fits_target": true,
+     "bridge_minor_mm": 154.65810093838513
+    },
+    {
+     "up": "+x",
+     "xy_extent_mm": [
+      170.4,
+      169.2
+     ],
+     "rot_deg": 45.0,
+     "height_mm": 196.3520050048828,
+     "overhang_area_mm2": 37425.726356336374,
+     "overhang_fraction": 0.16376135511340467,
+     "support_volume_proxy_cm3": 3410.6686291872593,
+     "fits_bed": true,
+     "fits_target": true,
+     "bridge_minor_mm": 13.061204418622733
+    },
+    {
+     "up": "-x",
+     "xy_extent_mm": [
+      169.2,
+      170.4
+     ],
+     "rot_deg": 45.0,
+     "height_mm": 196.3520050048828,
+     "overhang_area_mm2": 37813.484653811065,
+     "overhang_fraction": 0.16545804427439328,
+     "support_volume_proxy_cm3": 2852.6669549908875,
+     "fits_bed": true,
+     "fits_target": true,
+     "bridge_minor_mm": 6.275267942763079
+    },
+    {
+     "up": "+y",
+     "xy_extent_mm": [
+      176.7,
+      175.7
+     ],
+     "rot_deg": 45.0,
+     "height_mm": 191.3979949951172,
+     "overhang_area_mm2": 35012.83126993153,
+     "overhang_fraction": 0.15320340453860615,
+     "support_volume_proxy_cm3": 2542.8083805836127,
+     "fits_bed": true,
+     "fits_target": true,
+     "bridge_minor_mm": 51.778186623501696
+    },
+    {
+     "up": "-y",
+     "xy_extent_mm": [
+      175.7,
+      176.7
+     ],
+     "rot_deg": 45.0,
+     "height_mm": 191.3979949951172,
+     "overhang_area_mm2": 34388.95360311984,
+     "overhang_fraction": 0.15047354296773582,
+     "support_volume_proxy_cm3": 2783.0214165838634,
+     "fits_bed": true,
+     "fits_target": true,
+     "bridge_minor_mm": 8.231301383085192
+    }
+   ],
+   "best_orientation": {
+    "up": "-x",
+    "xy_extent_mm": [
+     169.2,
+     170.4
+    ],
+    "rot_deg": 45.0,
+    "height_mm": 196.3520050048828,
+    "overhang_area_mm2": 37813.484653811065,
+    "overhang_fraction": 0.16545804427439328,
+    "support_volume_proxy_cm3": 2852.6669549908875,
+    "fits_bed": true,
+    "fits_target": true,
+    "bridge_minor_mm": 6.275267942763079
+   },
+   "bridge": {
+    "n_patches": 729,
+    "max_minor_extent_mm": 6.275267942763079,
+    "max_major_extent_mm": 16.77504084174177,
+    "worst_patch_center": [
+     353.6,
+     289.7,
+     31.3
+    ],
+    "limit_mm": 15.0,
+    "pass": true
+   },
+   "overhang": {
+    "fraction": 0.16545804427439328,
+    "limit": 0.25,
+    "pass": true,
+    "support_volume_proxy_cm3": 2852.6669549908875
+   },
+   "bed": {
+    "fits_bed_256": true,
+    "fits_target_240": true,
+    "xy_extent_mm": [
+     169.2,
+     170.4
+    ],
+    "height_mm": 196.3520050048828,
+    "pass": true
+   },
+   "thickness": {
+    "pitch_mm": 0.40364873055542644,
+    "min_cells": 30,
+    "by_threshold": {
+     "0.6": {
+      "vol_mm3": 0.0,
+      "clusters": 0,
+      "worst": null,
+      "worst_cells": 0
+     },
+     "0.8": {
+      "vol_mm3": 0.0,
+      "clusters": 0,
+      "worst": null,
+      "worst_cells": 0
+     },
+     "1.0": {
+      "vol_mm3": 0.0,
+      "clusters": 0,
+      "worst": null,
+      "worst_cells": 0
+     },
+     "1.2": {
+      "vol_mm3": 0.0,
+      "clusters": 0,
+      "worst": null,
+      "worst_cells": 0
+     },
+     "1.6": {
+      "vol_mm3": 185.99024997239746,
+      "clusters": 46,
+      "worst": [
+       324.1,
+       330.0,
+       72.3
+      ],
+      "worst_cells": 210
+     },
+     "2.0": {
+      "vol_mm3": 63.26825334987495,
+      "clusters": 6,
+      "worst": [
+       323.2,
+       331.1,
+       71.3
+      ],
+      "worst_cells": 367
+     }
+    },
+    "min_wall_resolved_ge_mm": 1.2,
+    "pass_min_wall": true,
+    "note": "wall >= t demonstrated for the largest t with zero significant thin clusters; resolution ~ +-pitch"
+   },
+   "mass_time": {
+    "extruded_volume_cm3": 363.8308,
+    "geom_volume_cm3": 432.51404156439565,
+    "mass_kg_20pct_infill": 0.462065116,
+    "mass_kg_solid": 0.5492928327867825,
+    "print_time_proxy_h": 13.021902777777777,
+    "note": "voxel pitch 1.00; time = V/8.0 mm3/s + layers*4.0 s (proxy, no travel/retraction model)"
+   },
+   "wall_s": 59.1
+  }
+ },
+ "joints": [
+  {
+   "mating": true,
+   "interference_mm3": 0.0029142649106429774,
+   "gap_min_mm": 0.0012800120037777052,
+   "gap_p5_mm": 0.04834802042249531,
+   "gap_median_mm": 0.1945698633243295,
+   "n_mating_samples": 69606,
+   "band_fractions": {
+    "abut(<0.05)": 0.054,
+    "tight(0.05-0.15)": 0.317,
+    "fit(0.15-0.5)": 0.564,
+    "loose(>0.5)": 0.066
+   },
+   "center": [
+    182.9,
+    80.1,
+    37.6
+   ],
+   "pass": false,
+   "note": "sample spacing 0.2 mm (gap resolution +-0.10); pass = interference<5 mm3 (float32 boolean noise), tight band(0.05-0.15) <10 %, loose band <10 %, fit band >5 % (zero-gap abutting faces are treated as intended)",
+   "pair": [
+    "seg_00",
+    "seg_01"
+   ]
+  },
+  {
+   "mating": true,
+   "interference_mm3": 1.5645582443770671,
+   "gap_min_mm": 0.0008437982116025071,
+   "gap_p5_mm": 0.05381495361116541,
+   "gap_median_mm": 0.2021833459258799,
+   "n_mating_samples": 236367,
+   "band_fractions": {
+    "abut(<0.05)": 0.043,
+    "tight(0.05-0.15)": 0.279,
+    "fit(0.15-0.5)": 0.621,
+    "loose(>0.5)": 0.057
+   },
+   "center": [
+    233.1,
+    221.8,
+    50.9
+   ],
+   "pass": false,
+   "note": "sample spacing 0.2 mm (gap resolution +-0.10); pass = interference<5 mm3 (float32 boolean noise), tight band(0.05-0.15) <10 %, loose band <10 %, fit band >5 % (zero-gap abutting faces are treated as intended)",
+   "pair": [
+    "seg_01",
+    "seg_02"
+   ]
+  }
+ ],
+ "segment_volume_closure": {
+  "sum_segment_vol_mm3": 1601308.3055376532,
+  "assembly_vol_mm3": 1604590.8865593206,
+  "note": "sum of segments exceeds assembly when joints add overlap/pins; large deficit = lost material"
+ },
+ "segmentation_eval": {
+  "total": 0.6524727923315998,
+  "weights": {
+   "part_count": 0.2,
+   "joint_vs_peak_moment": 0.4,
+   "orientation_vs_stress": 0.4
+  },
+  "order_along_span": [
+   "seg_00",
+   "seg_01",
+   "seg_02"
+  ],
+  "components": {
+   "part_count": {
+    "score": 0.75,
+    "detail": "3 segments; centerline length 455 mm; minimum 2 at 240.0 mm target (ideal count)"
+   },
+   "joint_vs_peak_moment": {
+    "score": 0.5141051488863164,
+    "detail": "['seg_00', 'seg_01'] at s=0.35: M/Mmax=0.77 (> limit 0.60); ['seg_01', 'seg_02'] at s=0.68: M/Mmax=0.20 [analytic LC1 station moments; centerline from params/manifest]",
+    "ratios_ok": false
+   },
+   "orientation_vs_stress": {
+    "score": 0.7420768319426831,
+    "detail": "seg_00: up=-y tangent.build^2=0.09; seg_01: up=+x tangent.build^2=0.08; seg_02: up=-x tangent.build^2=0.22"
+   }
+  },
+  "centerline_source": "centerline from params/manifest"
+ },
+ "checks": [
+  {
+   "check": "underlay: manifold/watertight/no self-overlap",
+   "status": "FAIL",
+   "detail": {
+    "watertight": true,
+    "non_manifold_edges": 0,
+    "open_edges": 0,
+    "self_intersection_proxy_cells": 5
+   }
+  },
+  {
+   "check": "seg_00: manifold/watertight/no self-overlap",
+   "status": "FAIL",
+   "detail": {
+    "watertight": true,
+    "non_manifold_edges": 0,
+    "open_edges": 0,
+    "self_intersection_proxy_cells": 44
+   }
+  },
+  {
+   "check": "seg_00: min wall >= 1.2 mm",
+   "status": "PASS",
+   "detail": {
+    "resolved_ge": 1.6
+   }
+  },
+  {
+   "check": "seg_00: overhang fraction <= 0.25",
+   "status": "PASS",
+   "detail": 0.142
+  },
+  {
+   "check": "seg_00: bridge <= 15.0 mm",
+   "status": "FAIL",
+   "detail": 77.0
+  },
+  {
+   "check": "seg_00: bed fit 256",
+   "status": "PASS",
+   "detail": [
+    209.6,
+    220.8,
+    210.87999725341797
+   ]
+  },
+  {
+   "check": "seg_01: manifold/watertight/no self-overlap",
+   "status": "PASS",
+   "detail": {
+    "watertight": true,
+    "non_manifold_edges": 0,
+    "open_edges": 0,
+    "self_intersection_proxy_cells": 0
+   }
+  },
+  {
+   "check": "seg_01: min wall >= 1.2 mm",
+   "status": "PASS",
+   "detail": {
+    "resolved_ge": 1.6
+   }
+  },
+  {
+   "check": "seg_01: overhang fraction <= 0.25",
+   "status": "PASS",
+   "detail": 0.145
+  },
+  {
+   "check": "seg_01: bridge <= 15.0 mm",
+   "status": "FAIL",
+   "detail": 21.7
+  },
+  {
+   "check": "seg_01: bed fit 256",
+   "status": "PASS",
+   "detail": [
+    181.2,
+    178.7,
+    161.59400939941406
+   ]
+  },
+  {
+   "check": "seg_02: manifold/watertight/no self-overlap",
+   "status": "PASS",
+   "detail": {
+    "watertight": true,
+    "non_manifold_edges": 0,
+    "open_edges": 0,
+    "self_intersection_proxy_cells": 0
+   }
+  },
+  {
+   "check": "seg_02: min wall >= 1.2 mm",
+   "status": "PASS",
+   "detail": {
+    "resolved_ge": 1.2
+   }
+  },
+  {
+   "check": "seg_02: overhang fraction <= 0.25",
+   "status": "PASS",
+   "detail": 0.165
+  },
+  {
+   "check": "seg_02: bridge <= 15.0 mm",
+   "status": "PASS",
+   "detail": 6.3
+  },
+  {
+   "check": "seg_02: bed fit 256",
+   "status": "PASS",
+   "detail": [
+    169.2,
+    170.4,
+    196.3520050048828
+   ]
+  },
+  {
+   "check": "joint ['seg_00', 'seg_01']: no interference, no binding/loose clearance",
+   "status": "FAIL",
+   "detail": {
+    "interference_mm3": 0.0029142649106429774,
+    "gap_median_mm": 0.1945698633243295,
+    "band_fractions": {
+     "abut(<0.05)": 0.054,
+     "tight(0.05-0.15)": 0.317,
+     "fit(0.15-0.5)": 0.564,
+     "loose(>0.5)": 0.066
+    }
+   }
+  },
+  {
+   "check": "joint ['seg_01', 'seg_02']: no interference, no binding/loose clearance",
+   "status": "FAIL",
+   "detail": {
+    "interference_mm3": 1.5645582443770671,
+    "gap_median_mm": 0.2021833459258799,
+    "band_fractions": {
+     "abut(<0.05)": 0.043,
+     "tight(0.05-0.15)": 0.279,
+     "fit(0.15-0.5)": 0.621,
+     "loose(>0.5)": 0.057
+    }
+   }
+  }
+ ],
+ "summary": {
+  "status": "FAIL",
+  "n_fail": 6,
+  "n_unverified": 0
+ }
+}
