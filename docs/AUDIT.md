@@ -23,7 +23,7 @@ Score each team per criterion: **GREEN / YELLOW / RED**, each with one line of e
 
 ## Recentering protocol
 
-When the audit flags a team RED on R1 or two+ YELLOWs overall:
+When the audit flags any RED, or 2+ YELLOWs on R1/R4 within a single area (recalibrated from "2+ YELLOW overall" per cycle-1 finding — the old threshold fired on nearly any scorecard):
 1. Auditor files a **recenter proposal** in teams/audit/STATUS.md: what drifted, evidence, proposed reprioritization (task list, context, or management changes).
 2. Weighted council vote: Orchestrator 3 votes, each active Team Lead 1 vote, Auditor chairs without voting. Majority carries.
 3. Evan may veto or override any outcome at any time (chat or review round). Proposals touching the vision itself always escalate to Evan.
@@ -43,3 +43,4 @@ One audit per review-round cycle, plus on Evan's request.
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
 | 2026-11-15 | orchestrator | Initial charter (Evan directive) | docs-reviewer |
+| 2026-11-15 | orchestrator | Recenter threshold recalibrated (RP-1 council note; charter change) | [PROVISIONAL] |

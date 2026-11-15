@@ -32,6 +32,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 #undo-btn:active{color:var(--text);border-color:var(--accent)}
 #undo-btn:disabled{opacity:.3;cursor:default}
 
+/* Round notes banner */
+#notes-banner{margin:.25rem .75rem;padding:.45rem .65rem;font-size:.72rem;line-height:1.4;color:var(--muted);background:var(--surface);border-left:3px solid var(--accent);border-radius:6px;max-height:5.6em;overflow-y:auto}
+
 /* Card stack area */
 #stack{flex:1;position:relative;overflow:hidden;margin:.25rem 0}
 
@@ -198,6 +201,7 @@ function init(){
       ui.classList.remove('hidden');
       ui.style.display='flex';
       qs('#round-title').textContent=m.title||round;
+      if(m.notes){var nb=document.createElement('div');nb.id='notes-banner';nb.textContent=m.notes;ui.insertBefore(nb,qs('#stack'));}
       renderCard();
       updateHeader();
     })
