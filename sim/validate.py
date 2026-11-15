@@ -46,7 +46,7 @@ def fe_bar(mesh, h, L, P=100.0, modal=True, plane_tip=True):
     f = np.zeros(M.ndof); f[tip * 3 + 2] = -P / len(tip)
     M.factor(); u, info = M.solve(f)
     d = -u[tip * 3 + 2].mean()
-    modal = modal and M.ndof < 220_000     # LOBPCG too slow above this; f1 is validated on the coarser levels
+    modal = modal and M.ndof < 320_000     # LOBPCG too slow above this; f1 is validated on the coarser levels
     sig = M.stress(u); cen = M.elem_centers()
     out = {"h": h, "ne": M.ne, "ndof": M.ndof, "delta": float(d), "iters": info.get("iters"), "rel_res": info["rel_res"], "anomalous": bad}
     # mid-span axial stress, outermost fibre elements (z = +-)
