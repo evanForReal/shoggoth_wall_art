@@ -77,5 +77,5 @@ Departures from policy. Append only.
 |------|-------|--------|---------------|
 | 2026-11-13 | docs-lead | Initial creation | docs-reviewer |
 | 2026-11-15 | orchestrator | Added Audit Lead to hierarchy + charters (Evan directive) | docs-reviewer |
-| 2026-11-15 | docs-worker | Added Deviation log section | [PROVISIONAL] |
-| 2026-11-15 | orchestrator | CAD charter amended: owns step-2 geometry | [PROVISIONAL] |
+| 2026-11-15 | docs-worker | Added Deviation log section | docs-reviewer |
+| 2026-11-15 | orchestrator | CAD charter amended: owns step-2 geometry | docs-reviewer |

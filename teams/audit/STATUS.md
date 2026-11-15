@@ -1,6 +1,6 @@
 # Audit Team — STATUS.md
 
-**Status:** ACTIVE — cycle 1 complete (2026-11-15); recenter proposal RP-1 pending council vote.
+**Status:** ACTIVE — cycle 1 complete (2026-11-15); RP-1 adopted by Evan and executed 2026-11-15.
 
 ## Exec Summary (newest first)
 
@@ -27,7 +27,7 @@ Proposed reprioritization:
 
 Note to council: the "2+ YELLOW overall" threshold is met by almost any 5-criterion scorecard. Recommend recalibrating in AUDIT.md (e.g., any RED, or 2+ YELLOW on R1/R4 in one area). Charter change; Orchestrator decides.
 
-Vote: pending.
+Vote: superseded — adopted by Evan directly ("let rp1's items continue", 2026-11-15); executed same day. Item 6 fallback generator: none exists in-environment; logged in aesthetics STATUS as a single-point dependency.
 
 ## Takeaways
 

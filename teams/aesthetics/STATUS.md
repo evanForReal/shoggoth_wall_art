@@ -79,4 +79,4 @@ Locked by r01-r04: Beksiński surface core (webbing/ochre/bone-crust/flowstone/r
 | 2026-11-14 | orchestrator | Round-03 charter + board assembled 48/48 | docs-reviewer (flagged: outliers per group are 4-6, not 4-7) |
 | 2026-11-14 | orchestrator | R02/r03 backprop, sketch constraints, round-04 charter | docs-reviewer (haiku) |
 | 2026-11-14 | orchestrator | R04 backprop, locked constraints, round-05 charter | docs-reviewer (haiku) |
-| 2026-11-15 | docs-worker | Hygiene pass: takeaways r02-r04, rejected list, exec summary line | [PROVISIONAL] |
+| 2026-11-15 | docs-worker | Hygiene pass: takeaways r02-r04, rejected list, exec summary line | docs-reviewer |
