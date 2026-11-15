@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 660" width="640" height="660" font-family="sans-serif" font-size="12" fill="currentColor" stroke="currentColor">
+  <title>Front view anchor map over loved-concept silhouette</title>
+
+  <text x="20" y="24" font-size="13" stroke="none">Front view: anchor map over c01 silhouette (abstracted). ~3 x 3 ft piece.</text>
+
+  <!-- decorative whip tentacles: thin, dashed, no load path -->
+  <g fill="none" stroke-width="9" stroke-dasharray="6 5" stroke-linecap="round" opacity="0.55">
+    <path d="M370 300 C 440 330 500 340 514 424"/>
+    <path d="M290 350 C 250 400 200 440 169 490"/>
+    <path d="M330 360 C 370 420 440 440 460 490"/>
+  </g>
+  <!-- optional locator pads at whip tips -->
+  <rect x="509" y="419" width="10" height="10" fill="none" stroke-width="1.5"/>
+  <rect x="164" y="485" width="10" height="10" fill="none" stroke-width="1.5"/>
+  <rect x="455" y="485" width="10" height="10" fill="none" stroke-width="1.5"/>
+  <text x="524" y="428" stroke="none">whip D1</text>
+  <text x="70" y="506" stroke="none">whip D2</text>
+  <text x="440" y="508" stroke="none">whip D3</text>
+
+  <!-- body core -->
+  <ellipse cx="322" cy="238" rx="78" ry="126" fill="currentColor" fill-opacity="0.1" stroke-width="2"/>
+  <!-- mask (carved into mass, non-structural) -->
+  <ellipse cx="322" cy="163" rx="28" ry="36" fill="none" stroke-width="1.5"/>
+  <circle cx="312" cy="157" r="2.5" stroke="none"/>
+  <circle cx="332" cy="157" r="2.5" stroke="none"/>
+  <path d="M310 172 Q322 184 334 172" fill="none" stroke-width="1.5"/>
+  <!-- maw -->
+  <ellipse cx="322" cy="256" rx="42" ry="40" fill="none" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <text x="304" y="260" stroke="none">maw</text>
+
+  <!-- arms to shelves (load-bearing, thick) -->
+  <g fill="none" stroke-width="22" stroke-linecap="round" opacity="0.2">
+    <path d="M225 175 C 250 185 255 205 262 225"/>
+    <path d="M412 215 C 395 220 385 228 378 240"/>
+    <path d="M238 360 C 255 350 262 340 268 325"/>
+  </g>
+
+  <!-- Shelf A (upper left) -->
+  <path d="M103 146 L225 146 L225 190 Q170 204 103 204 Z" fill="currentColor" fill-opacity="0.25" stroke-width="3"/>
+  <rect x="140" y="112" width="46" height="34" fill="none" stroke-width="2"/>
+  <path d="M163 112 C 150 98 140 94 134 98 M163 112 C 163 96 165 88 169 84 M163 112 C 176 98 186 94 192 98" fill="none" stroke-width="1.5"/>
+  <text x="103" y="78" stroke="none">Shelf A</text>
+  <text x="103" y="92" stroke="none">5 kg, p 10-30 cm</text>
+
+  <!-- Shelf B (upper right) -->
+  <path d="M525 188 L412 188 L412 220 Q470 242 525 242 Z" fill="currentColor" fill-opacity="0.25" stroke-width="3"/>
+  <rect x="442" y="154" width="46" height="34" fill="none" stroke-width="2"/>
+  <path d="M465 154 C 452 140 442 136 436 140 M465 154 C 465 138 467 130 471 126 M465 154 C 478 140 488 136 494 140" fill="none" stroke-width="1.5"/>
+  <text x="440" y="108" stroke="none">Shelf B</text>
+  <text x="440" y="122" stroke="none">5 kg, p 10-30 cm</text>
+
+  <!-- Shelf C (mid left) -->
+  <path d="M105 330 L238 330 L238 372 Q170 388 105 388 Z" fill="currentColor" fill-opacity="0.25" stroke-width="3"/>
+  <rect x="145" y="296" width="46" height="34" fill="none" stroke-width="2"/>
+  <path d="M168 296 C 155 282 145 278 139 282 M168 296 C 168 280 170 272 174 268 M168 296 C 181 282 191 278 197 282" fill="none" stroke-width="1.5"/>
+  <text x="103" y="262" stroke="none">Shelf C</text>
+  <text x="103" y="276" stroke="none">5 kg, p 10-30 cm</text>
+
+  <!-- shelf anchor pairs: upper (tension) T, lower (bearing) C, s ~ 10 cm -->
+  <g stroke="none">
+    <circle cx="114" cy="152" r="5.5"/><circle cx="114" cy="198" r="5.5"/>
+    <circle cx="514" cy="194" r="5.5"/><circle cx="514" cy="236" r="5.5"/>
+    <circle cx="116" cy="336" r="5.5"/><circle cx="116" cy="382" r="5.5"/>
+  </g>
+  <text x="124" y="156" stroke="none" font-size="11">T</text>
+  <text x="124" y="202" stroke="none" font-size="11">C</text>
+  <text x="496" y="198" stroke="none" font-size="11">T</text>
+  <text x="496" y="240" stroke="none" font-size="11">C</text>
+  <text x="126" y="340" stroke="none" font-size="11">T</text>
+  <text x="126" y="386" stroke="none" font-size="11">C</text>
+
+  <!-- body hold-down anchors (double ring) -->
+  <g fill="none" stroke-width="2">
+    <circle cx="322" cy="118" r="5"/><circle cx="322" cy="118" r="2"/>
+    <circle cx="322" cy="334" r="5"/><circle cx="322" cy="334" r="2"/>
+  </g>
+  <text x="332" y="108" stroke="none" font-size="11">hold-down H1</text>
+  <text x="332" y="352" stroke="none" font-size="11">hold-down H2</text>
+
+  <!-- scale bar: 300 mm ~ 138 px -->
+  <line x1="103" y1="560" x2="241" y2="560" stroke-width="2"/>
+  <line x1="103" y1="554" x2="103" y2="566" stroke-width="2"/>
+  <line x1="241" y1="554" x2="241" y2="566" stroke-width="2"/>
+  <text x="103" y="592" stroke="none">300 mm (stud pitch 406 mm = 186 px)</text>
+
+  <!-- legend -->
+  <g stroke="none">
+    <circle cx="300" cy="548" r="5.5"/>
+  </g>
+  <text x="312" y="552" stroke="none">anchor: T upper (tension), C lower (bearing)</text>
+  <g fill="none" stroke-width="2">
+    <circle cx="300" cy="570" r="5"/><circle cx="300" cy="570" r="2"/>
+  </g>
+  <text x="312" y="574" stroke="none">body hold-down (self-weight share)</text>
+  <text x="20" y="620" stroke="none">Heavy outline + fill = load-bearing shelf span (73.6 N factored each)</text>
+  <line x1="20" y1="636" x2="60" y2="636" stroke-width="7" stroke-dasharray="6 5" opacity="0.55"/>
+  <text x="68" y="640" stroke="none">Dashed thin = decorative whip, no load path; hollow square = optional locator pad</text>
+  <text x="20" y="656" stroke="none">8 anchors total: 6 shelf (2 each) + 2 hold-down. Anchor x-positions are set by stud location.</text>
+</svg>
