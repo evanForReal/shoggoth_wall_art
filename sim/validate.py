@@ -76,7 +76,7 @@ def stress_err(res, cf, zref_fn):
     return None
 
 
-def run(quick=False):
+def run(quick=False, only=None):
     rows = []
     cases = []
     t0 = time.time()
@@ -87,8 +87,12 @@ def run(quick=False):
     cases.append(("solid_round_D24_L150", lambda: gr.straight_bar("solid", L=L2, D=24, segs=160), L2, dict(kind="solid", L=L2, D=24), [3.0, 1.5, 1.0] + ([] if quick else [0.75])))
     L3 = 240.0
     cases.append(("hollow_tube_OD40_t2.4_L240", lambda: gr.straight_bar("tube", L=L3, D=40, wall=2.4, segs=192), L3, dict(kind="tube", L=L3, D=40, wall=2.4), [2.4, 1.6, 1.2] + ([] if quick else [0.8])))
+    L4 = 400.0
+    cases.append(("hollow_tube_OD40_t2.4_L400", lambda: gr.straight_bar("tube", L=L4, D=40, wall=2.4, segs=192), L4, dict(kind="tube", L=L4, D=40, wall=2.4), [2.4, 1.6, 1.2]))
     out_cases = []
     for name, mk, L, ck, hs in cases:
+        if only and only not in name:
+            continue
         mesh = mk(); cf = closed_form(**ck)
         res_list = []
         for h in hs:
@@ -104,19 +108,22 @@ def run(quick=False):
             res_list.append(r)
             print(name, {k_: (round(v, 3) if isinstance(v, float) else v) for k_, v in r.items() if k_ in ("h", "ne", "err_delta_pct", "err_sig_pct", "err_f1_pct", "iters")}, flush=True)
         out_cases.append({"name": name, "closed_form": cf, "runs": res_list})
+    if only and only not in 'tapered':
+        return out_cases, time.time() - t0
     # tapered hollow tube, no plate, closed-form Euler-Bernoulli by quadrature (variable I)
     p = dict(gr.REF_PARAMS); p["span_length"] = 300.0; p["root_diameter"] = 60.0; p["tip_diameter"] = 30.0
     p["anchor_plate"] = dict(p["anchor_plate"]); t = p["anchor_plate"]["thickness"]
-    mesh = gr.tapered_tube(p, plate=False, tip_cap=2.4)
+    mesh = gr.tapered_tube(p, plate=False, tip_cap=0)
     L = p["span_length"]; r0 = p["root_diameter"] / 2; r1 = p["tip_diameter"] / 2; w = p["shell_wall"]
-    ro = lambda x: r0 + (r1 - r0) * x / L
+    ro = lambda x: r0 + (r1 - r0) * max(x, 0.0) / L        # mesh starts 1 mm inside the root (x0-1): constant r0 there
     Ix = lambda x: np.pi * (ro(x) ** 4 - (ro(x) - w) ** 4) / 4
     Ax = lambda x: np.pi * (ro(x) ** 2 - (ro(x) - w) ** 2)
     Pl = 100.0
     G = E / (2 * (1 + NU))
     # tip at x=L from root (mesh root at x=t, tip cap end at x = t+L). unit-load deflection under tip load P
-    d_b = integrate.quad(lambda x: Pl * (L - x) ** 2 / (E * Ix(x)), 0, L)[0]
-    d_s = integrate.quad(lambda x: Pl / (cowper_kappa("round", (ro(x) - w) / ro(x)) * G * Ax(x)), 0, L)[0]
+    Lx = L + 1.0                                            # clamped face at x=-1 (relative to taper start), tip at x=L
+    d_b = integrate.quad(lambda x: Pl * (L - x) ** 2 / (E * Ix(x)), -1.0, L, points=[0.0])[0]
+    d_s = integrate.quad(lambda x: Pl / (cowper_kappa("round", (ro(x) - w) / ro(x)) * G * Ax(x)), -1.0, L, points=[0.0])[0]
     cf = {"P": Pl, "delta": d_b + d_s, "delta_bending": d_b, "desc": "Euler-Bernoulli by quadrature with exact I(x)=pi/4(ro^4-ri^4) + Timoshenko shear"}
     res_list = []
     for h in [2.4, 1.6, 1.2] + ([] if quick else [0.9]):
@@ -139,18 +146,23 @@ def run(quick=False):
 
 
 def verdict(out_cases, tol=5.0):
-    """validated iff at h/wall <= 0.5 (hollow) / finest-2 levels, delta and f1 errors within tol; reports both."""
+    """validated iff, per case, the finest run with h <= 1.2 (hollow; any h for solid) has |tip delta err| <= tol, AND
+    first-frequency error <= tol is demonstrated on the finest run that has a frequency (a missing frequency is a FAIL, never a pass)."""
     summ = []
     ok = True
     for c in out_cases:
         runs = c["runs"]
         hollow = ("tube" in c["name"] or "tapered" in c["name"])
-        cand = [r for r in runs if (r["h"] <= 1.2 + 1e-9 if hollow else True)]
-        best = cand[-1] if cand else runs[-1]
-        e_d = abs(best["err_delta_pct"]); e_f = abs(best["err_f1_pct"]) if best.get("err_f1_pct") is not None else None
-        e_s = abs(best["err_sig_pct"]) if best.get("err_sig_pct") is not None else None
-        good = e_d <= tol and (e_f is None or e_f <= tol)
-        summ.append({"case": c["name"], "h_used": best["h"], "err_delta_pct": best["err_delta_pct"], "err_f1_pct": best.get("err_f1_pct"), "err_sig_pct": best.get("err_sig_pct"), "pass": bool(good)})
+        cand = [r for r in runs if (r["h"] <= 1.2 + 1e-9 if hollow else True)] or runs
+        best = cand[-1]
+        has_f_cf = "f1_EB" in c["closed_form"]
+        fr = [r for r in cand if r.get("err_f1_pct") is not None]
+        fbest = fr[-1] if fr else None
+        e_d = abs(best["err_delta_pct"])
+        e_f = abs(fbest["err_f1_pct"]) if fbest else None
+        good = e_d <= tol and ((not has_f_cf) or (e_f is not None and e_f <= tol))
+        summ.append({"case": c["name"], "h_used": best["h"], "err_delta_pct": best["err_delta_pct"], "h_used_f1": fbest["h"] if fbest else None, "err_f1_pct": e_f if fbest is None else fbest["err_f1_pct"],
+                     "err_sig_pct": best.get("err_sig_pct"), "pass": bool(good)})
         ok &= good
     return ok, summ
 
@@ -163,7 +175,7 @@ def write_md(out_cases, ok, summ, secs, path):
          "Load = tip force 100 N spread over tip-face nodes; clamp = all dofs on the first node layer at the root face (3-D clamp includes Poisson/warping restraint, expected +1..3 % stiffness vs beam theory). Stress column: axial stress of outermost element at mid-span vs M*z/I evaluated at that element's centroid height.\n",
          "## Summary\n| case | h used | tip delta err % | f1 err % | mid-span stress err % | pass |\n|---|---|---|---|---|---|"]
     for s in summ:
-        f = "n/a" if s["err_f1_pct"] is None else f"{s['err_f1_pct']:+.2f}"
+        f = "n/a" if s["err_f1_pct"] is None else f"{s['err_f1_pct']:+.2f} (h={s['h_used_f1']})"
         sg = "n/a" if s["err_sig_pct"] is None else f"{s['err_sig_pct']:+.2f}"
         L.append(f"| {s['case']} | {s['h_used']} | {s['err_delta_pct']:+.2f} | {f} | {sg} | {s['pass']} |")
     L.append("\n## Mesh-convergence study (error vs closed form)\n")
@@ -180,10 +192,14 @@ def write_md(out_cases, ok, summ, secs, path):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--quick", action="store_true"); a = ap.parse_args()
-    out_cases, secs = run(a.quick)
-    ok, summ = verdict(out_cases)
+    ap = argparse.ArgumentParser(); ap.add_argument("--quick", action="store_true"); ap.add_argument("--only", help="re-run only cases whose name contains this; merged into validation.json"); a = ap.parse_args()
     here = Path(__file__).parent
+    out_cases, secs = run(a.quick, a.only)
+    if a.only and (here / "validation.json").exists():
+        old = json.loads((here / "validation.json").read_text())["cases"]
+        names = {c["name"] for c in out_cases}
+        out_cases = [c for c in old if c["name"] not in names] + out_cases
+    ok, summ = verdict(out_cases)
     (here / "validation.json").write_text(json.dumps({"validated": bool(ok), "max_h_over_wall": 0.5, "date": TODAY, "summary": summ, "quick": a.quick,
                                                        "cases": out_cases}, indent=1, default=float))
     write_md(out_cases, ok, summ, secs, here / "VALIDATION.md")

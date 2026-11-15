@@ -80,13 +80,7 @@ def mummified_ochre(P, n, seed):
 
 def _smooth_normals(mesh, iters=2):
     n = mesh.vertex_normals.copy()
-    adj = mesh.vertex_neighbors
-    for _ in range(iters):
-        n2 = np.array([n[nb].mean(0) + n[i] for i, nb in enumerate(adj)]) if len(adj) < 0 else None
-        break
-    # vectorised neighbor average using edge list
     e = mesh.edges_unique
-    nv = len(mesh.vertices)
     for _ in range(iters):
         acc = n.copy()
         np.add.at(acc, e[:, 0], n[e[:, 1]]); np.add.at(acc, e[:, 1], n[e[:, 0]])

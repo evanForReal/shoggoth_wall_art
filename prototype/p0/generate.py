@@ -4,7 +4,7 @@
     python prototype/p0/generate.py [--params prototype/p0/params.json] [--out prototype/p0/out]
                                     [--architecture rib_ladder|lattice|spine_beam] [--joint dovetail_bolt|tongue_pin|socket_through_bolt]
                                     [--style calcified_webbing|bone_crust|flowstone|rust_blister|mummified_ochre] [--seed N]
-                                    [--no-previews] [--variants] [--skin-only-swap]
+                                    [--no-previews] [--variants] [--skins-all]
 
 Writes (under --out): underlay.stl skin.stl assembly.stl segments/seg_NN.stl segments/seg_NN_print.stl
 segments.json joints.json geometry_manifest.json ; previews to prototype/p0/reports/previews/.
@@ -20,7 +20,7 @@ from model.structural.underlay import build_underlay          # noqa: E402
 from model.structural.segmenter import segment, print_orientation   # noqa: E402
 from model.aesthetic.skin import skin, STYLES                  # noqa: E402
 from model.aesthetic.render import sheet, PALETTES             # noqa: E402
-from model.mtools import to_trimesh, to_manifold, union, clean_mesh   # noqa: E402
+from model.mtools import to_trimesh, to_manifold, union, clean_mesh, REPAIR_LOG, reset_repair_log   # noqa: E402
 
 RHO = {"PETG": 1.27e-3, "PLA": 1.24e-3}   # g/mm^3
 
@@ -62,6 +62,7 @@ def generate(params_path, out, architecture=None, joint=None, style=None, seed=N
              write_skin=True, quiet=False):
     log = (lambda *a: None) if quiet else (lambda *a: print(*a, flush=True))
     p = json.load(open(params_path))
+    reset_repair_log()
     t0 = time.time()
     os.makedirs(os.path.join(out, "segments"), exist_ok=True)
     arch = architecture or p["architecture"]
@@ -72,7 +73,7 @@ def generate(params_path, out, architecture=None, joint=None, style=None, seed=N
 
     res = build_underlay(p, architecture=arch, joint_type=jt)
     under = res["underlay"]
-    u_mesh = clean_mesh(to_trimesh(under))
+    u_mesh = clean_mesh(to_trimesh(under), name="underlay")
     u_mesh.export(os.path.join(out, "underlay.stl"))
     log(f"underlay {arch}/{jt}: {len(u_mesh.faces)} tris, vol {under.volume():.0f} mm3, {time.time()-t0:.1f}s")
 
@@ -80,10 +81,10 @@ def generate(params_path, out, architecture=None, joint=None, style=None, seed=N
     sk_mesh = skin(env_mesh, seed=sd, style=st, keepouts=res["keepouts"], max_proud=sk_p["max_proud"],
                    min_proud=sk_p["min_proud"], edge_len=sk_p["edge_len"], inset=sk_p["inset"])
     sk_man = to_manifold(sk_mesh)
-    sk_mesh = clean_mesh(sk_mesh)
+    sk_mesh = clean_mesh(sk_mesh, name="skin")
     sk_mesh.export(os.path.join(out, "skin.stl"))
     asm = under + sk_man
-    asm_mesh = clean_mesh(to_trimesh(asm))
+    asm_mesh = clean_mesh(to_trimesh(asm), name="assembly")
     asm_mesh.export(os.path.join(out, "assembly.stl"))
     log(f"skin {st}: {len(sk_mesh.faces)} tris, vol {sk_man.volume():.0f}; assembly {len(asm_mesh.faces)} tris, {time.time()-t0:.1f}s")
 
@@ -91,7 +92,7 @@ def generate(params_path, out, architecture=None, joint=None, style=None, seed=N
     seg_info = []
     bed = p["joint"]["bed_usable"]
     for s in segs:
-        tm = clean_mesh(to_trimesh(s["man"]))
+        tm = clean_mesh(to_trimesh(s["man"]), name=f"seg_{s['index']:02d}")
         fn = os.path.join(out, "segments", f"seg_{s['index']:02d}.stl")
         tm.export(fn)
         M, ext = print_orientation(tm)
@@ -117,6 +118,8 @@ def generate(params_path, out, architecture=None, joint=None, style=None, seed=N
                        assembly_g_solid=float(asm.volume() * RHO[p["material"]]),
                        note="solid-density numbers; printed mass lower with infill. skin = non-structural added mass")
     man["hashes"] = dict(underlay=sha(u_mesh), skin=sha(sk_mesh), assembly=sha(asm_mesh))
+    man["vents"] = res["meta"]["vents"]
+    man["repairs"] = json.loads(json.dumps(REPAIR_LOG))
     man["skin"] = dict(style=st, seed=sd, max_proud=sk_p["max_proud"])
     json.dump(man, open(os.path.join(out, "geometry_manifest.json"), "w"), indent=1)
 
@@ -150,7 +153,7 @@ def main():
         tab = {}
         for st in STYLES:
             sk = skin(env, sk_p["seed"], st, r["keepouts"], sk_p["max_proud"], sk_p["min_proud"], sk_p["edge_len"], sk_p["inset"])
-            sk = clean_mesh(sk); sk.export(os.path.join(sdir, f"skin_{st}.stl"))
+            sk = clean_mesh(sk, name=f"skin_{st}"); sk.export(os.path.join(sdir, f"skin_{st}.stl"))
             added = (r["underlay"] + to_manifold(sk)).volume() - r["underlay"].volume()
             tab[st] = dict(file=f"skins/skin_{st}.stl", skin_volume_mm3=float(sk.volume), added_volume_mm3=float(added),
                            added_mass_g_solid=float(added * RHO[p["material"]]))
@@ -162,7 +165,7 @@ def main():
         for arch in p["architectures_available"]:
             for jt in p["joint"]["types_available"]:
                 r = build_underlay(p, architecture=arch, joint_type=jt)
-                clean_mesh(to_trimesh(r["underlay"])).export(os.path.join(vdir, f"underlay_{arch}__{jt}.stl"))
+                clean_mesh(to_trimesh(r["underlay"]), name="variant").export(os.path.join(vdir, f"underlay_{arch}__{jt}.stl"))
                 print("variant", arch, jt, f"vol {r['underlay'].volume():.0f}", flush=True)
 
 

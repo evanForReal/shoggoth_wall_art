@@ -10,10 +10,10 @@ from . import checks as C
 BUILD = {"+z": [0, 0, 1], "-z": [0, 0, -1], "+x": [1, 0, 0], "-x": [-1, 0, 0], "+y": [0, 1, 0], "-y": [0, -1, 0]}
 
 
-def _centerline(params, segs):
-    cl = get_centerline(params) if params else None
+def _centerline(params, segs, manifest=None):
+    cl = get_centerline(params, manifest) if params else None
     if cl is not None:
-        return cl, "params centerline"
+        return cl, "centerline from params/manifest"
     V = np.vstack([m.vertices for m in segs.values()])
     c = V.mean(0); u, s, vt = np.linalg.svd(V - c, full_matrices=False)
     t = vt[0]; pr = (V - c) @ t
@@ -31,9 +31,9 @@ def moment_profile(analytic_json, cl):
     return s, M, "FALLBACK unit-cantilever (load at s=0.8); analytic.json not provided"
 
 
-def evaluate_segments(segs, params, analytic_json, fea_fields, joints):
+def evaluate_segments(segs, params, analytic_json, fea_fields, joints, manifest=None):
     lim = C.LIM
-    cl, clsrc = _centerline(params, segs)
+    cl, clsrc = _centerline(params, segs, manifest)
     names = list(segs)
     sc = {}
     for n in names:

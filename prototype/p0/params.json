@@ -21,11 +21,12 @@
     "half_width": 74,
     "corner_radius": 12,
     "half_height": 32,
-    "keepout_margin": 20
+    "keepout_margin": 40
   },
   "architecture": "rib_ladder",
   "architectures_available": ["rib_ladder", "lattice", "spine_beam"],
-  "ribs": {"pitch": 36, "thickness": 2.4, "flange": 7, "rail_w": 5, "rail_h": 5,
+  "ribs": {"start_s": 20, "start_s_note": "rails/struts/spine start here (outboard of cross-rib plug in the dome neck; earlier -13.3 left sub-0.01 mm slits where rails met cross ribs)",
+           "pitch": 36, "thickness": 2.4, "flange": 7, "rail_w": 5, "rail_h": 5,
            "deck_web_t": 2.4, "deck_web_n": 32, "deck_rib_pitch": 30,
            "lattice_struts_per_family": 4, "lattice_turn_len": 160, "strut_w": 2.8, "strut_h": 6,
            "spine_web_t": 4.0, "spine_flange_w": 12, "spine_flange_h": 4.0, "spine_ring_pitch": 72},
@@ -33,6 +34,10 @@
   "anchor_plate": {"size": [160, 110, 8], "hole_d": 6, "hole_pattern": [120, 70],
                    "counterbore_d": 12, "boss_d": 20, "boss_h": 6, "access_bore_d": 14},
   "body_stub": {"diameter": 200, "depth": 80, "wall": 3.0, "cross_rib_t": 3.0},
+  "vents": {"note": "drain/vent holes (d>=3) through underside wall, one set per sealed chamber, axis -U; stations between ring ribs",
+            "d": 4.0, "stations": [72, 216, 368], "n_offsets": [-16, 16], "skin_clear": 3.0},
+  "materials": {"PETG": {"E": 2000, "rho_g_cm3": 1.27, "sigma_xy": 35, "sigma_z": 18, "nu": 0.38},
+                "PLA": {"E": 3200, "rho_g_cm3": 1.24, "sigma_xy": 45, "sigma_z": 20, "nu": 0.36}},
   "material": "PETG",
   "joint": {
     "type": "dovetail_bolt",

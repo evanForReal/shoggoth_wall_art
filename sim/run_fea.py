@@ -203,7 +203,8 @@ def anchor_fea(R, lc, params, mat):
     res = {}
     # configs: which screws are active
     cfgs = {"stud_2": [i for i, (y, z) in enumerate(sp_) if y > 0], "all4": list(range(len(sp_)))}
-        rw = 0.9 * lc["anchor"].get("screw_head_dia_mm", 9.0) / 2 + M.h
+    plate_t = plate_dims(params)["thickness"]
+    rw = 0.9 * lc["anchor"].get("screw_head_dia_mm", 9.0) / 2 + M.h
     keep_cache = (R.cache, R.support)
     out = {}
     for name, act in cfgs.items():

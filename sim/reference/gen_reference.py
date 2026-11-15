@@ -51,7 +51,10 @@ def tapered_tube(params=None, segs=96, tip_cap=2.4, with_skin=False, wall=None, 
     tube_poly = [(x0 - 1.0, 0.0)] + [(x0 - 1.0, ro[0])] + outer + [(x1, 0.0)]
     solid = _revolve_profile(tube_poly, segs)
     cav_poly = [(x0 - 1.0, 0.0)] + [(x0 - 1.0, ri[0])] + [(x, r) for x, r in zip(xs, ri)][:-1]
-    cav_poly += [(x1 - tip_cap, ri[-1]), (x1 - tip_cap, 0.0)]
+    if tip_cap > 0:
+        cav_poly += [(x1 - tip_cap, ri[-1]), (x1 - tip_cap, 0.0)]
+    else:
+        cav_poly += [(x1 + 1.0, ri[-1]), (x1 + 1.0, 0.0)]
     cavity = _revolve_profile(cav_poly, segs)
     tube = solid - cavity
     parts = []
@@ -81,9 +84,8 @@ def straight_bar(kind="tube", L=200.0, D=40.0, wall=2.4, plate_t=10.0, segs=128,
     solid = _revolve_profile(pts, segs)
     if kind == "solid":
         return man_to_trimesh(solid)
+    # open-ended tube (no end caps): keeps closed-form mass/stiffness exact (a tip cap adds ~3 % tip mass and ~6 % f1 shift)
     cav = _revolve_profile([(-1, 0), (-1, r - wall), (L + 1, r - wall), (L + 1, 0)], segs)
-    # closed tube: cavity interior only up to x in [wall, L-wall]? use open-both-ends interior capped by end disks of thickness wall
-    cav = _revolve_profile([(wall, 0), (wall, r - wall), (L - wall, r - wall), (L - wall, 0)], segs)
     return man_to_trimesh(solid - cav)
 
 

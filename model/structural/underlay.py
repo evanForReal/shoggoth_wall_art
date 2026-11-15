@@ -21,16 +21,21 @@ def _stations(span, ds, s0=None, s1=None):
 
 def _loft_tube(span, inset, ds):
     """Closed solid loft of the section family at given inset, incl. hemispherical tip cap."""
-    s = _stations(span, ds)
+    # finer stations on the tip ramp-down (steep, strongly curved profile: chord sag of a 3 mm loft step reaches ~0.4 mm)
+    s = _stations(span, ds, None, span.s_pad1 - 3.0)
+    s = np.concatenate([s, np.arange(span.s_pad1, span.L + 1e-9, 1.0)])
+    if s[-1] < span.L - 1e-9:
+        s = np.append(s, span.L)
     prof = section_profiles(span, s, inset)
     cen = span.point(s)
     T, N, U = span.frame(s)
     L = span.L
-    rho = float(span.radius(L)) - inset
+    p_L = section_profiles(span, np.array([L]), inset)[0]
+    rho = float(np.mean(np.linalg.norm(p_L, axis=1)))   # inner tip radius
     d_arr = np.arange(ds, 0.985 * rho, ds)
     T0, N0, U0 = span.frame(np.array([L]))
     cd = span.point(np.array([L])) + d_arr[:, None] * T0
-    pd = section_profiles(span, np.full(len(d_arr), L), inset)
+    pd = np.repeat(p_L[None], len(d_arr), 0)
     k = np.sqrt(np.clip(1 - (d_arr / rho) ** 2, 0, 1))
     pd = pd * k[:, None, None]
     cen = np.vstack([cen, cd])
@@ -81,7 +86,9 @@ def min_ABR(span, s_list, inset):
 
 
 def ring_rib(span, s, th, flange, inset):
-    A, B, R = min_ABR(span, [s - th / 2, s, s + th / 2], inset - NEG_PAD)
+    # outer edge sits 0.5*inset inside the outer surface (min over the rib thickness): penetrates the shell wall by >= 0.5*inset
+    # even on ramps, so no sliver gap opens between the rib corner and the inclined inner wall
+    A, B, R = min_ABR(span, [s - th / 2, s, s + th / 2], 0.5 * inset)
     Ai, Bi, Ri = span.ABR(np.array([s]), inset + flange)
     outer = rrect_polygon(A[0], B[0], R[0]); inner = rrect_polygon(Ai[0], Bi[0], max(Ri[0], 1.0))
     T, N, U = span.frame(np.array([s]))
@@ -132,7 +139,7 @@ def build_underlay(p, architecture=None, joint_type=None, cut_stations=None):
     for (y, z) in holes:
         parts.append(cyl((xp, y, z), (ap["size"][2] + ap["boss_h"], y, z), ap["boss_d"] / 2, 48))
 
-    s_main = _stations(span, ds, -13.3, 0.955 * L)
+    s_main = _stations(span, ds, rb.get("start_s", -13.3), 0.955 * L)
     s_pad = _stations(span, ds, span.ramp_up0 - 6, 0.955 * L)
     ins = t
     rw, rh = rb["rail_w"], rb["rail_h"]
@@ -160,7 +167,7 @@ def build_underlay(p, architecture=None, joint_type=None, cut_stations=None):
                                     rb["spine_flange_w"] / 2, rb["spine_flange_h"] / 2))
         parts += rings(np.arange(rb["spine_ring_pitch"] * 0.5, 0.955 * L, rb["spine_ring_pitch"]))
     elif arch == "lattice":
-        s_lat = _stations(span, ds, -13.3, span.ramp_up0 + 8)
+        s_lat = _stations(span, ds, rb.get("start_s", -13.3), span.ramp_up0 + 8)
         k = rb["lattice_struts_per_family"]
         for fam in (+1, -1):
             for i in range(k):
@@ -200,6 +207,21 @@ def build_underlay(p, architecture=None, joint_type=None, cut_stations=None):
     under = (under ^ envelope).trim_by_plane((1, 0, 0), 0.0)
     envelope = envelope.trim_by_plane((1, 0, 0), 0.0)
 
+    # drain/vent holes through the underside wall, one set per sealed chamber (chambers are separated by the bulkhead plugs;
+    # chamber 0 also has the screw-access bores but those get plugged). Axis along -U, offset in N, between ring ribs.
+    vp = p["vents"]
+    vent_cyls, vent_keepouts, vents_meta = [], [], []
+    for sv in vp["stations"]:
+        Tv, Nv, Uv = span.frame(np.array([float(sv)])); ov = span.point(np.array([float(sv)]))[0]
+        Bv = float(span.ABR(np.array([float(sv)]))[1][0])
+        for no in vp["n_offsets"]:
+            p0 = ov + no * Nv[0]
+            p1 = p0 - (Bv + 8.0) * Uv[0]
+            vent_cyls.append(cyl(p0, p1, vp["d"] / 2, 24))
+            vent_keepouts.append(cyl(p0 - 2.0 * Uv[0], p1 - 4.0 * Uv[0], vp["d"] / 2 + vp["skin_clear"], 32))
+            vents_meta.append(dict(s=float(sv), n_offset=float(no), d=float(vp["d"]), p0=p0.tolist(), p1=p1.tolist()))
+    under = under - union(vent_cyls)
+
     s_mid = 0.5 * (span.s_pad0 + span.s_pad1)
     T, N, U = span.frame(np.array([s_mid]))
     c0 = span.point(np.array([s_mid]))[0]
@@ -211,14 +233,14 @@ def build_underlay(p, architecture=None, joint_type=None, cut_stations=None):
                   c0, N[0], U[0], T[0])
     k_wall = box((-10, 0, 0), (25, 600, 600))
     k_bore = union([cyl((0, y, z), (80, y, z), ap["access_bore_d"] / 2 + 3, 32) for (y, z) in holes])
-    keepouts = [k_pad, k_wall, k_bore]
+    keepouts = [k_pad, k_wall, k_bore] + vent_keepouts
 
     meta = dict(
         architecture=arch, joint_type=jt, cut_stations=[float(c) for c in cuts], joints=joints_meta,
         ztop=float(ztop),
         pad_frame=dict(origin=c0.tolist(), N=N[0].tolist(), U=U[0].tolist(), T=T[0].tolist(),
                        t_range=[float(t0 + mg), float(t1 - mg)], n_half=float(span.pad_A - span.pad_R)),
-        holes=[list(h) for h in holes],
+        holes=[list(h) for h in holes], vents=vents_meta,
         tip_xyz=span.point(np.array([L]))[0].tolist(),
         span_arc3d=float(np.sum(np.linalg.norm(np.diff(span.point(np.linspace(0, L, 800)), axis=0), axis=1))),
     )

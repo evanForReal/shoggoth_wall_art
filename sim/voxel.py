@@ -29,7 +29,9 @@ class Grid:
 
 
 def load_mesh(path) -> trimesh.Trimesh:
+    """STL stores unshared vertices; merge so edge/watertight tests see real topology (no other cleanup)."""
     m = trimesh.load(str(path), force="mesh", process=False)
+    m.merge_vertices()
     return m
 
 

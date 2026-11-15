@@ -8,6 +8,7 @@ import numpy as np
 import trimesh
 
 from ..common import *
+from ..voxel import load_mesh
 from .sections import sections_along
 from .frame import solve_frame, G_ACC
 from . import anchor as anc
@@ -49,8 +50,8 @@ def station_stress(st, ef_a, mat, bdir, wall):
 
 def run(a):
     params = load_params(a.params); lc = load_loadcases(a.loadcases); mat = material(lc, params)
-    mesh = trimesh.load(a.underlay, force="mesh", process=False)
-    skin = trimesh.load(a.skin, force="mesh", process=False) if a.skin and Path(a.skin).exists() else None
+    mesh = load_mesh(a.underlay)
+    skin = load_mesh(a.skin) if a.skin and Path(a.skin).exists() else None
     manifest = load_manifest(a.params, a.underlay)
     cl = get_centerline(params, manifest)
     if cl is None:

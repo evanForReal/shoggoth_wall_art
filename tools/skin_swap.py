@@ -11,6 +11,7 @@ import manifold3d as m3d
 from scipy.spatial import cKDTree
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from sim.voxel import load_mesh
 from sim.common import *
 from sim.analytic import run_analytic as RA
 
@@ -25,7 +26,7 @@ def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--underlay", required=True); ap.add_argument("--skin", required=True); ap.add_argument("--params", required=True)
     ap.add_argument("--loadcases", default=str(P0 / "loadcases.json")); ap.add_argument("--out", required=True); ap.add_argument("--assembly"); a = ap.parse_args()
     params = load_params(a.params); lc = load_loadcases(a.loadcases); manifest = load_manifest(a.params, a.underlay)
-    U = trimesh.load(a.underlay, force="mesh", process=False); S = trimesh.load(a.skin, force="mesh", process=False)
+    U = load_mesh(a.underlay); S = load_mesh(a.skin)
     maxp = (params.get("skin") or {}).get("max_proud", 6.0)
     checks = []
     # (a) proud distance
@@ -36,7 +37,7 @@ def main():
                    "status": "PASS" if d.max() <= maxp + tol else "FAIL", "note": f"surface samples ~1 mm; tolerance +{tol} mm. Distance is to nearest underlay SAMPLE, not exact."})
     # (b) skin removes no underlay material
     try:
-        A_ = man(trimesh.load(a.assembly, force="mesh", process=False)) if a.assembly and Path(a.assembly).exists() else man(U) + man(S)
+        A_ = man(load_mesh(a.assembly)) if a.assembly and Path(a.assembly).exists() else man(U) + man(S)
         lost = float((man(U) - A_).volume())
         checks.append({"check": "underlay volume not removed by skin/assembly (U - A)", "value_mm3": lost, "status": "PASS" if lost < 1e-4 * U.volume else "FAIL"})
     except Exception as ex:
@@ -47,7 +48,7 @@ def main():
         fr = sh["frame"]; o = np.array(fr["origin"]); Tn = np.array(fr["T"]); Nn = np.array(fr["N"])
         rel = S.vertices - o
         t = rel @ Tn; n = rel @ Nn; z = S.vertices[:, 2]
-        inside = (np.abs(t) <= sh["t_range"][1]) & (np.abs(n) <= sh["n_half"])
+        inside = (np.abs(t) <= fr["t_range"][1]) & (np.abs(n) <= fr["n_half"])
         above = inside & (z >= sh["plane_z"] - 0.05 - 0.0)
         # skin below plane within rect is ok (keepout is the plane surface and above). Count vertices at/above the plane within rect
         checks.append({"check": "no skin vertices on/above shelf plane within flat rectangle", "n_violating_vertices": int(above.sum()), "status": "PASS" if above.sum() == 0 else "FAIL"})

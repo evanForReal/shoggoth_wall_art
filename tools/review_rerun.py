@@ -8,6 +8,7 @@ from pathlib import Path
 import numpy as np
 import trimesh
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from sim.voxel import load_mesh
 from sim.common import TODAY
 
 def main():
@@ -28,7 +29,7 @@ def main():
     else:
         chk("analytic rerun", False, r.stderr[-300:])
     for n in ("underlay", "skin", "assembly"):
-        m = trimesh.load(P / "out" / f"{n}.stl", force="mesh", process=False)
+        m = load_mesh(P / "out" / f"{n}.stl")
         chk(f"{n}.stl watertight+positive volume (independent trimesh check)", m.is_watertight and m.volume > 0, {"vol": float(m.volume)})
     ref = R / "fea_refine.json"
     if ref.exists():

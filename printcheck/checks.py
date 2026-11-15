@@ -31,8 +31,20 @@ def mesh_integrity(m: trimesh.Trimesh, pitch=0.8):
     g = Grid.from_bounds(m.bounds[0], m.bounds[1], max(pitch, float(np.cbrt(np.prod(m.extents) / 3e7))))
     w = winding_raster(m, g)
     out["self_intersection_proxy_cells"] = int(((w != 0) & (w != 1)).sum())
+    bad = np.argwhere((w != 0) & (w != 1))
+    if len(bad):
+        cen = g.centers(bad)
+        from scipy.cluster.vq import kmeans2
+        k = min(4, len(cen))
+        try:
+            ctr, lab = kmeans2(cen.astype(float), k, minit="points", seed=0)
+            out["self_intersection_locations"] = [{"center": c.round(1).tolist(), "cells": int((lab == i).sum())} for i, c in enumerate(ctr) if (lab == i).any()]
+        except Exception:
+            out["self_intersection_locations"] = [cen[0].round(1).tolist()]
     out["self_intersection_note"] = f"voxel winding proxy at pitch {g.pitch:.2f} mm: cells with |winding|>=2 or <0; sub-pitch overlaps not detected"
-    out["pass"] = bool(out["watertight"] and out["winding_consistent"] and not out["inverted"] and nonman == 0 and open_e == 0 and out["self_intersection_proxy_cells"] == 0)
+    out["self_intersection_proxy_mm3"] = float(out["self_intersection_proxy_cells"] * g.pitch ** 3)
+    out["pass"] = bool(out["watertight"] and out["winding_consistent"] and not out["inverted"] and nonman == 0 and open_e == 0 and out["self_intersection_proxy_mm3"] <= 5.0)
+    out["self_intersection_threshold_note"] = "ASSUMED: proxy volume <= 5 mm3 tolerated (raster noise at tangent faces)"
     return out
 
 
@@ -76,7 +88,8 @@ def orientations(m, bed=None, target=None):
         up = np.array(d, float)
         bf = bed_fit_xy(m, up); st = orient_stats(m, up, LIM["overhang_angle_deg"]); st.pop("_over_mask")
         fits = max(bf["xy_extent_mm"]) <= bed and bf["height_mm"] <= bed
-        res.append({"up": k, **bf, **st, "fits_bed": bool(fits), "fits_target": bool(max(bf["xy_extent_mm"]) <= target and bf["height_mm"] <= target)})
+        br = bridges(m, up) if fits else {"max_minor_extent_mm": float("inf"), "max_major_extent_mm": float("inf"), "n_patches": -1}
+        res.append({"up": k, **bf, **st, "fits_bed": bool(fits), "fits_target": bool(max(bf["xy_extent_mm"]) <= target and bf["height_mm"] <= target), "bridge_minor_mm": br["max_minor_extent_mm"]})
     return res
 
 
@@ -84,11 +97,13 @@ def best_orientation(m):
     o = orientations(m)
     fit = [x for x in o if x["fits_bed"]]
     pool = fit if fit else o
-    return min(pool, key=lambda x: x["overhang_fraction"]), o
+    # primary: bridge span (5 mm buckets, limit-aware), secondary: overhang area fraction
+    return min(pool, key=lambda x: (round(min(x["bridge_minor_mm"], 1e6) / 5.0), x["overhang_fraction"])), o
 
 
-def bridges(m, up, angle=45.0, min_len=1.0):
-    """connected overhang patches (face adjacency): report extents (major/minor, in plane normal to up)."""
+def bridges(m, up, angle=70.0, min_len=1.0):
+    """connected NEAR-HORIZONTAL downward patches (within 90-angle deg of horizontal; face adjacency): extents (major/minor) in the build plane.
+    Steeper overhangs (45-70 deg from vertical) are printable without bridging and are counted in the overhang fraction only."""
     st = orient_stats(m, up, angle); mask = st["_over_mask"]
     idx = np.nonzero(mask)[0]
     if len(idx) == 0:

@@ -2,7 +2,7 @@
 """Back-of-envelope checks on the *geometry* (shell-only section properties; ribs neglected = conservative).
 Not the Verification-region analytic report. Writes reports/analytic_geometry_prelim.md/.json.
     python prototype/p0/analytic_geometry_prelim.py"""
-import json, os, sys
+import argparse, json, os, sys
 import numpy as np
 import trimesh
 from shapely.geometry import Polygon
@@ -12,16 +12,22 @@ from model.structural.profile import Span, rrect_polygon   # noqa: E402
 from model.mtools import to_trimesh, to_manifold              # noqa: E402
 import manifold3d as m3d
 
-OUT = os.path.join(ROOT, "prototype/p0/out")
-p = json.load(open(os.path.join(ROOT, "prototype/p0/params.json")))
+_ap = argparse.ArgumentParser()
+_ap.add_argument("--params", default=os.path.join(ROOT, "prototype/p0/params.json"))
+_ap.add_argument("--out", default=os.path.join(ROOT, "prototype/p0/out"))
+_ap.add_argument("--report-dir", default=os.path.join(ROOT, "prototype/p0/reports"))
+_a = _ap.parse_args()
+OUT = _a.out
+p = json.load(open(_a.params))
 man = json.load(open(os.path.join(OUT, "geometry_manifest.json")))
 sp = Span(p)
-E, NU = 2000.0, 0.38
+MAT = p["materials"][p["material"]]          # E, nu, rho (g/cm3), allowables from params.json
+E, NU = float(MAT["E"]), float(MAT["nu"])
 G = E / (2 * (1 + NU))
-RHO = 1.27e-9  # t/mm3 -> N via g
+RHO_KG_MM3 = float(MAT["rho_g_cm3"]) * 1e-6  # kg/mm3
 g = 9.81
 t = p["shell_wall"]
-SIG_Z, SIG_XY = 18.0, 35.0
+SIG_Z, SIG_XY = float(MAT["sigma_z"]), float(MAT["sigma_xy"])
 
 
 def props(s):
@@ -50,9 +56,8 @@ W1 = 5 * g; W2 = 15 * g
 P_load = np.array(man["shelf"]["load_point_LC1"])
 under = to_trimesh(to_manifold(trimesh.load(os.path.join(OUT, "underlay.stl"))))
 skin = trimesh.load(os.path.join(OUT, "skin.stl"))
-mu = under.volume * RHO * 1e3 * g * 1.0   # N: volume mm3 * rho(g/mm3 = 1.27e-3) -> kg *g
-mu = under.volume * 1.27e-6 * g
-ms = skin.volume * 1.27e-6 * g * 0.8      # skin counted at 80 % (0.6 mm bond overlap is inside underlay)
+mu = under.volume * RHO_KG_MM3 * g           # N (solid density)
+ms = skin.volume * RHO_KG_MM3 * g * 0.8      # skin counted at 80 % (0.6 mm bond overlap is inside underlay)
 print("weights N: underlay %.1f skin %.1f (LC1 plant %.1f)" % (mu, ms, W1))
 
 
@@ -71,7 +76,7 @@ for s in stations:
     o = sp.point(np.array([s]))[0]
     vu, cu = outboard(under, s) if s > 0 else (under.volume, under.center_mass)
     vs, cs = outboard(skin, s) if s > 0 else (skin.volume, skin.center_mass)
-    Fsw = [(vu * 1.27e-6 * g, cu), (vs * 1.27e-6 * g * 0.8, cs)]
+    Fsw = [(vu * RHO_KG_MM3 * g, cu), (vs * RHO_KG_MM3 * g * 0.8, cs)]
     Pr = props(s)
     out = {"s": s}
     for lc, W in (("LC1", W1), ("LC2", W2)):
@@ -81,7 +86,7 @@ for s in stations:
             M += np.cross(pt - o, np.array([0, 0, -w]))
         V = sum(w for w, _ in loads)
         MN, MT, MU = M @ N, M @ T, M @ U
-        sig = abs(MN) * Pr["ymax"] / Pr["I_N"] + abs(MU) * 0  # bending about N (vertical loads)
+        sig = abs(MN) * Pr["ymax"] / Pr["I_N"]  # bending about N (vertical loads); MU not carried by the shell-only vertical-load model
         tau = abs(MT) / (2 * Pr["Am"] * t)
         vm = np.sqrt(sig ** 2 + 3 * tau ** 2)
         out[lc] = dict(M_N_Nmm=float(MN), M_T_Nmm=float(MT), V_N=float(V), sigma=float(sig), tau=float(tau), vm=float(vm))
@@ -95,15 +100,9 @@ Tv, Nv, Uv = sp.frame(ss)
 PP = [props(x) for x in ss]
 d_bend = 0.0; d_tors = 0.0
 # distributed self weight outboard of s approximated as point mass at centroid of outboard portion (per station)
-sw = []
-for x in ss:
-    if x == 0:
-        vu, cu, vs, cs = under.volume, under.center_mass, skin.volume, skin.center_mass
-    else:
-        sw.append(None); continue
 # cheaper: use LC1 plant load only + self weight lumped (mass of span outboard of root at its centroid)
 vu, cu = outboard(under, 0.01); vs, cs = outboard(skin, 0.01)
-Wsw = [(vu * 1.27e-6 * g, cu), (vs * 1.27e-6 * g * 0.8, cs)]
+Wsw = [(vu * RHO_KG_MM3 * g, cu), (vs * RHO_KG_MM3 * g * 0.8, cs)]
 for i in range(len(ss) - 1):
     mid = 0.5 * (ss[i] + ss[i + 1]); ds = ss[i + 1] - ss[i]
     o = sp.point(np.array([mid]))[0]
@@ -132,30 +131,34 @@ m_plant = 5.0 * 1e-3; m_span = (mu + ms) / g * 1e-3  # t
 f_with = np.sqrt(k / (m_plant + 0.24 * m_span)) / (2 * np.pi)
 f_without = np.sqrt(k / (0.24 * m_span)) / (2 * np.pi)
 
-# anchor screws -----------------------------------------------------------------------------------------
+# anchor screws (UNDER REVISION; Verification region owns LC5) -------------------------------------------
+# Tension from the moment about the plate Y axis only (pull-out of the top screws, plate pivoting about a bottom line).
+# Mx (torque about X = wall normal, from the plant's lateral offset) is an in-plane torque on the plate: screws carry it in
+# SHEAR (r x F about the pattern centroid), never in axial tension.
 holes = np.array(man["anchor"]["holes_yz"])
-vu0, cu0 = under.volume, under.center_mass
-def screw_loads(extra_W, pts, scale=1.0):
+def screw_loads(extra_W, pivot_z):
     loads = [(mu, under.center_mass), (ms, skin.center_mass), (extra_W, P_load)]
     M = np.zeros(3); V = 0
     for w, pt in loads:
         M += np.cross(pt, np.array([0, 0, -w])); V += w
-    # plate rotates about its bottom edge (z=-55) when top is pulled; linear strain; tension-only screws
-    zp = -55.0
-    arm = holes[:, 1] - zp
-    # vertical-bending tension: M_y about Y axis -> +x*W ; twist about X: -y*W resolved by y-offset
-    My = M[1]; Mx = M[0]
-    T_i = My * arm / np.sum(arm ** 2) + Mx * holes[:, 0] / np.sum(holes[:, 0] ** 2) * 1.0
-    T_i = np.maximum(T_i, 0)
-    return dict(Mx_Nmm=float(Mx), My_Nmm=float(My), V_N=float(V), T_each_N=T_i.round(1).tolist(),
-                T_peak=float(T_i.max()), shear_each_N=float(V / 4))
-sc1 = screw_loads(W1, holes); sc2 = screw_loads(W2, holes)
+    My, Mx = M[1], M[0]
+    arm = holes[:, 1] - pivot_z
+    T_i = np.maximum(My * arm / np.sum(arm ** 2), 0)          # linear strain about pivot line; tension-only (My only)
+    r = np.linalg.norm(holes, axis=1)
+    shear = np.hypot(V / 4, 0) * np.ones(4)                  # direct vertical share V/4 ...
+    tors = abs(Mx) / np.sum(r ** 2) * r                        # ... plus torsion share Mx*r_i/sum(r^2), directions combined worst-case
+    worst_shear = float((shear + tors).max())
+    return dict(Mx_Nmm=float(Mx), My_Nmm=float(My), V_N=float(V), pivot_z=pivot_z, T_each_N=T_i.round(1).tolist(),
+                T_peak=float(T_i.max()), shear_direct_N=float(V / 4), shear_worst_screw_N=worst_shear)
+ph = float(np.min(holes[:, 1]))
+anchor = {"LC1": {"pivot_plate_edge": screw_loads(W1, -p["anchor_plate"]["size"][1] / 2), "pivot_bottom_screws": screw_loads(W1, ph)},
+          "LC2": {"pivot_plate_edge": screw_loads(W2, -p["anchor_plate"]["size"][1] / 2), "pivot_bottom_screws": screw_loads(W2, ph)}}
 
 # --- write ---------------------------------------------------------------------------------------------
 L = []
 L.append("# analytic_geometry_prelim — Geometry region hand calcs (PRELIMINARY, shell-only)\n")
 L.append("Scope: plausibility of default params before FEA. Shell-only section (ribs/plugs neglected = conservative), "
-         "thin-wall Bredt torsion, unit-load deflection, E=2000 MPa PETG. Skin counted at 80 % solid. "
+         "thin-wall Bredt torsion, unit-load deflection, E/rho/allowables from params.json materials. Skin counted at 80 % solid. "
          "NOT the Verification analytic report. Owner: geometry-manager. [PROVISIONAL: unsigned]\n")
 L.append(f"Weights: underlay {mu:.1f} N ({mu/g:.2f} kg), skin {ms:.1f} N ({ms/g:.2f} kg eff.). LC1 plant {W1:.1f} N at shelf center "
          f"({P_load[0]:.0f},{P_load[1]:.0f},{P_load[2]:.0f}).\n")
@@ -173,21 +176,30 @@ L.append("## Tip/shelf deflection and frequency (LC1, shell-only EI/GJ)\n")
 L.append(f"- Shelf-point deflection from plant 5 kg: {d_plant:.2f} mm (bending {d_bend:.2f}, torsion {d_tors:.2f}); self-weight {d_sw:.2f} mm; "
          f"total {d_plant + d_sw:.2f} mm (limit 6).")
 L.append(f"- Stiffness at shelf k = {k:.1f} N/mm. f1 (Rayleigh, m_eff = plant + 0.24 m_span) = {f_with:.1f} Hz; without plant {f_without:.1f} Hz (limit 8).\n")
-L.append("## Anchor plate screws (4x d6 holes, 120x70; plate pivots on bottom edge, tension-only)\n")
-L.append(f"- LC1 (plant 5 kg + self weight): M_x {sc1['Mx_Nmm']/1e3:.1f} N.m, M_y {sc1['My_Nmm']/1e3:.1f} N.m, V {sc1['V_N']:.0f} N; "
-         f"peak screw tension {sc1['T_peak']:.0f} N, shear {sc1['shear_each_N']:.0f} N each.")
-L.append(f"- LC2 (15 kg): peak screw tension {sc2['T_peak']:.0f} N, shear {sc2['shear_each_N']:.0f} N each.")
-L.append("- LC5 rating: spec drywall anchor >= 25 kg = 245 N tension each -> LC2 peak {:.0f} N: {}. #8 wood screw into stud, ~25 mm embed in SPF: "
-         "withdrawal ~ 400 N conservative -> ok vs LC2 only if screws land in stud.".format(sc2['T_peak'], "PASS" if sc2['T_peak'] < 245 else "FAIL (needs stud/lag or larger pattern)"))
-L.append("- Pattern issue: 120 mm horizontal spacing cannot hit one 38 mm stud face; at 406 mm stud spacing at most one column of two screws is in a stud. "
-         "Recommend Verification evaluates (a) 4 screws all in anchors/blocking, (b) a French-cleat with 300+ mm width. Flag to Evan only if blocking is not available.\n")
+L.append("## Anchor plate screws (4x d6 holes, 120x70) - UNDER REVISION, numbers only, NO verdict\n")
+L.append("Method: tension from My only (top-screw pull-out about a bottom pivot line; two pivot assumptions). Mx (torque about the wall normal) "
+         "is carried in shear (V/4 + torsion share), not tension. The Verification region owns the corrected LC5 numbers and verdict; "
+         "treat everything below as a hand-calc input, not a conclusion.\n")
+for lc in ("LC1", "LC2"):
+    for k, v in anchor[lc].items():
+        L.append(f"- {lc}, {k}: M_y {v['My_Nmm']/1e3:.1f} N.m, M_x {v['Mx_Nmm']/1e3:.1f} N.m, V {v['V_N']:.0f} N; peak screw tension {v['T_peak']:.0f} N; "
+                 f"worst-screw shear (direct + torsion) {v['shear_worst_screw_N']:.0f} N.")
+L.append("- Pattern issue (geometry fact): 120 mm horizontal screw spacing cannot land in one 38 mm stud face; at 406 mm stud spacing at most one column of two screws is in a stud. "
+         "Options for Verification/Fabrication: blocking/anchors for all 4, or a wider French cleat.\n")
 L.append("## Other plausibility notes\n")
 L.append("- Shell local buckling (thin cylinder, classical 0.6 E t/r, r~40, t=2.4): ~72 MPa, knockdown 0.2 -> 14 MPa >> applied (<3 MPa). OK.")
 L.append("- Shelf deck: 124 mm wide top, webs at n=0,+-32, rings at 30 mm -> panel ~32x30x2.4: plate bending under 15 kg < 1 MPa. OK.")
 L.append("- Peak moment at the root/neck (s~0-60); joint cuts (s=151, 302) see lower M. Joint section = shell + 8/16 mm solid plug; "
          "bolt/pin/key stresses are Verification's.")
-open(os.path.join(ROOT, "prototype/p0/reports/analytic_geometry_prelim.md"), "w").write("\n".join(L) + "\n\n---\n*Edit log*\n\n| Date | Agent | Change | Signed-off-by |\n|------|-------|--------|---------------|\n| 2026-11-15 | geometry-manager | Initial hand calcs | [PROVISIONAL] |\n")
-json.dump(dict(rows=rows, d_plant=d_plant, d_sw=d_sw, k=k, f_with=f_with, f_without=f_without, screws_LC1=sc1, screws_LC2=sc2,
-               worst_SF_LC1=worst1, worst_SF_LC2=worst2),
-          open(os.path.join(ROOT, "prototype/p0/reports/analytic_geometry_prelim.json"), "w"), indent=1)
+_md = os.path.join(_a.report_dir, "analytic_geometry_prelim.md")
+_log = "\n\n---\n*Edit log*\n\n| Date | Agent | Change | Signed-off-by |\n|------|-------|--------|---------------|\n| 2026-11-15 | geometry-manager | Initial hand calcs | [PROVISIONAL] |\n"
+if os.path.exists(_md):           # never clobber an existing edit log (sign-offs live there)
+    _old = open(_md).read()
+    if "\n---\n*Edit log*" in _old:
+        _log = "\n" + _old[_old.index("\n---\n*Edit log*"):]
+os.makedirs(_a.report_dir, exist_ok=True)
+open(_md, "w").write("\n".join(L) + _log)
+json.dump(dict(rows=rows, d_plant=d_plant, d_sw=d_sw, k=k, f_with=f_with, f_without=f_without, anchor_under_revision=anchor,
+               material=p["material"], worst_SF_LC1=worst1, worst_SF_LC2=worst2),
+          open(os.path.join(_a.report_dir, "analytic_geometry_prelim.json"), "w"), indent=1)
 print("\n".join(L))
