@@ -42,5 +42,5 @@ Vote: pending.
 
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
-| 2026-11-15 | orchestrator | Initial creation | [PROVISIONAL] |
-| 2026-11-15 | audit-lead | Cycle 1: exec summary, RP-1 recenter proposal, takeaways | [PROVISIONAL] |
+| 2026-11-15 | orchestrator | Initial creation | docs-reviewer |
+| 2026-11-15 | audit-lead | Cycle 1: exec summary, RP-1 recenter proposal, takeaways | docs-reviewer |

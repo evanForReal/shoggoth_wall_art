@@ -69,4 +69,4 @@ Aesthetics and Structural must maintain a `## Liaison` section in their respecti
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
 | 2026-11-13 | docs-lead | Initial creation | docs-reviewer |
-| 2026-11-15 | orchestrator | Added Audit Lead to hierarchy + charters (Evan directive) | [PROVISIONAL] |
+| 2026-11-15 | orchestrator | Added Audit Lead to hierarchy + charters (Evan directive) | docs-reviewer |

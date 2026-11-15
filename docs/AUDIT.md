@@ -42,4 +42,4 @@ One audit per review-round cycle, plus on Evan's request.
 
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
-| 2026-11-15 | orchestrator | Initial charter (Evan directive) | [PROVISIONAL] |
+| 2026-11-15 | orchestrator | Initial charter (Evan directive) | docs-reviewer |
