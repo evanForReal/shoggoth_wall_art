@@ -26,7 +26,7 @@ Evan (human — reviews only via swipe board)
 | **Orchestrator** | Drives pipeline, assembles review rounds, presents to Evan, backprops verdicts. |
 | **Aesthetics Lead** | Owns visual language, mood boards, style axes. Interfaces with Structural on tentacle count/geometry. |
 | **Structural Lead** | Owns load-bearing design, mount engineering, weight/strength trade-offs. Interfaces with Aesthetics and CAD. |
-| **CAD Lead** | Converts approved geometry to engineering-grade mesh; tolerances, hardware specs. |
+| **CAD Lead** | Owns step-2 geometry: turns approved 2D concepts into 3D sculpt geometry, then into engineering-grade mesh; tolerances, hardware specs. (Geometry ownership assigned 2026-11-15, DECISIONS.) |
 | **Fabrication Lead** | Segmentation strategy, joint design, printer constraints, assembly sequence. |
 | **Infra Lead** | Manages review-app deployment, GitHub Pages, email ping, issue ingestion. |
 | **Audit Lead** | Verifies all teams' work against the rubric in docs/AUDIT.md; produces evidence-grounded exec summaries for Evan; chairs recentering votes. Independent of delivery teams. |
@@ -63,6 +63,13 @@ Both the editing agent and the confirming agent append to the edit log in the sa
 
 Aesthetics and Structural must maintain a `## Liaison` section in their respective STATUS.md files. This section holds active constraints exchanged between the two teams (tentacle count, thickness ranges, mount-load estimates). Both leads must sign off on liaison entries.
 
+## Deviation log
+
+Departures from policy. Append only.
+
+- **2026-11-14, Haiku sign-offs.** Cause: account 5-hour Sonnet rate limit cut off all Sonnet subagents (reset 19:10 UTC) while Evan directed work to continue. Sign-offs ran on Haiku, labelled "(haiku)". Affected: DECISIONS edit-log rows (r02+r03 verdicts, r04 verdict) and aesthetics STATUS rows (r02/r03 backprop, r04 backprop). Cost: haiku signed wrong r02/r03 tallies; caught and superseded by the DECISIONS correction row (ee57a70). Model policy not amended.
+- **2026-11-14, orchestrator trawled r04 mask group inline.** Separation-of-duties exception (orchestrator trawled, assembled, backpropped). Cause: same rate limit. Disclosed in round-04 manifest notes.
+
 ---
 *Edit log*
 
@@ -70,3 +77,5 @@ Aesthetics and Structural must maintain a `## Liaison` section in their respecti
 |------|-------|--------|---------------|
 | 2026-11-13 | docs-lead | Initial creation | docs-reviewer |
 | 2026-11-15 | orchestrator | Added Audit Lead to hierarchy + charters (Evan directive) | docs-reviewer |
+| 2026-11-15 | docs-worker | Added Deviation log section | [PROVISIONAL] |
+| 2026-11-15 | orchestrator | CAD charter amended: owns step-2 geometry | [PROVISIONAL] |

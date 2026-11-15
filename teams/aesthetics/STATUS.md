@@ -5,12 +5,13 @@
 
 ## Exec Summary (newest first)
 
+- 2026-11-15: Hygiene pass (audit RP-1 item 4): takeaways r02-r04 added, rejected list added, r04 prompts + hotlink inventory committed. NB: round-05 has no manifest/directory yet; charter only, blocked on Canva credits.
 - 2026-11-14: Round-01 verdicts backpropped (issue #1). Round-02 trawl initiated: cutesy-horror, wall-integration, surface-finish.
 - 2026-11-13: Round-01 trawl initiated. 12 images queued across 3 axes.
 
 ## Current State
 
-**Round-05 (mask-direction generation round) in progress.** R04 backpropped: concept direction VALIDATED (c01/c02 loved). Round-05 is all-generated: group A = mask studies on the winning body (carved-serene vs flat-graphic vs void-mouth vs none; asymmetric placements); group B = body refinement (more horrific/less octopus, asymmetry, sleek Beksiński; Gaudí gradient + Shlian crisp emergence; root-grip plant shelves).
+**Round-05 (mask-direction generation round): CHARTERED, BLOCKED on Canva AI credits** (sole generator; no in-environment fallback exists — logged as a single-point dependency per RP-1 item 6). R04 backpropped: concept direction VALIDATED (c01/c02 loved). Round-05 is all-generated: group A = mask studies on the winning body (carved-serene vs flat-graphic vs void-mouth vs none; asymmetric placements); group B = body refinement (more horrific/less octopus, asymmetry, sleek Beksiński; Gaudí gradient + Shlian crisp emergence; root-grip plant shelves).
 
 Locked by r01-r04: Beksiński surface core (webbing/ochre/bone-crust/flowstone/rust, gloss accent only); refined-room, non-centerpiece decor; bas-relief body + multi-anchor freeform spread with strong depth variance; mask carved into mass (serene monumental or flat graphic), never a worn/applied object; tentacle-grips-pot plant shelves; horrific asymmetry; no chibi, no comical, no trophy, no corner-wrap (shelved).
 
@@ -35,6 +36,38 @@ Locked by r01-r04: Beksiński surface core (webbing/ochre/bone-crust/flowstone/r
 - Format: wall relief / trophy formats all loved *(superseded r03: trophy/plaque dead, f06)*; freeform, wall-concentrated spread preferred over framed/contained.
 - Mask: literal historical/menacing mask refs dead (09/10/11 all disliked). Happy-face mask direction → benign/cute, probed in round-02 cutesy-horror axis.
 
+**Round-02 (issue #2; 0 love / 3 like / 4 dislike of 7):**
+- Chibi/plush = hard no. Reference is Beksiński artwork, not cute.
+- Gaudí organic architecture: strong direction (05, liked w/ note).
+- Mosaic sprawl: right volume, wrong venue (07).
+- Coral texture out (10; confirmed r03 s07).
+
+**Round-03 (issue #3; 15 love / 13 like / 20 dislike of 48; no notes, locks inferred from votes):**
+- Artistic: Beksiński sweep loved (AA78, 1984, Y, 1957 relief; Beksiński-idiom digital art). Historic-medium outliers dead.
+- Surface core: calcified webbing (s01), mummified ochre (s02), bone crust (s03), flowstone (s05), rust (s06). Gloss (urushi/scarab/raku/verdigris) = accent only. Coral/barnacle repeat textures dead.
+- Decor: refined dark rooms win (velvet salon d03 loved; d10, d07, d08 liked). Cluttered gothic + whole-room Giger dead.
+- Format: Ghiberti bas-relief (f02) + Wu Zei multi-anchor spread (f04) loved = depth-variance hybrid. Trophy/plaque dead (f06). Tensegrity assist liked (f11).
+
+**Round-04 (issue #4; 6 love / 18 like / 19 dislike of 43):**
+- Concepts validated: c01 velvet-salon baseline + c02 stone-smile loved.
+- Directives: horrific asymmetry + sleek Beksiński (c03); less octopus-literal (c07); not a centerpiece (c05); mask gets its own design round (c04).
+- Mask: Bayon m01 loved; m12, smiley graphic m07, Bomarzo void-mouth m08 liked. All applied-object masks dead. Mask carved into mass, never worn. (Applied-mask rule is orchestrator inference from votes, not an Evan statement.)
+- Plants: root-over-rock bonsai p07 loved, so tentacle-grips-pot. Trailing/kokedama/planter-tile/living-wall liked. Creature-covered-in-plants dead.
+- Depth: Gaudí gradient v03 + Shlian crisp projection v08 loved. v01/v04/v06/v11 liked. Dead: v02, v05, v07, v09, v10, v12.
+- Corner-wrap shelved (c05 note: "worth exploring down the road").
+
+## Rejected (do not revisit without Evan)
+
+- Chibi / plush / toy-cute (r02, hard no)
+- Literal historical masks (r01 09/10/11)
+- Applied or worn mask objects (r04: gold/Noh/Budai/comedy/Venetian/folk)
+- Giger biomech skin (r01 01)
+- Gothic vertebral (r01 02)
+- Trophy plaque format (r03 f06)
+- Coral/barnacle repeat textures (r02 10, r03 s07)
+- Historic-medium novelties: ukiyo-e, tapestry, stained glass (r03)
+- Corner-wrap: shelved, not dead (r04 c05)
+
 ---
 *Edit log*
 
@@ -46,3 +79,4 @@ Locked by r01-r04: Beksiński surface core (webbing/ochre/bone-crust/flowstone/r
 | 2026-11-14 | orchestrator | Round-03 charter + board assembled 48/48 | docs-reviewer (flagged: outliers per group are 4-6, not 4-7) |
 | 2026-11-14 | orchestrator | R02/r03 backprop, sketch constraints, round-04 charter | docs-reviewer (haiku) |
 | 2026-11-14 | orchestrator | R04 backprop, locked constraints, round-05 charter | docs-reviewer (haiku) |
+| 2026-11-15 | docs-worker | Hygiene pass: takeaways r02-r04, rejected list, exec summary line | [PROVISIONAL] |

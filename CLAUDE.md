@@ -16,19 +16,22 @@
 CLAUDE.md                        ← this file
 docs/
   AGENTS.md                      ← hierarchy, charters, protocols
+  AUDIT.md                       ← audit charter + rubric
   DECISIONS.md                   ← append-only human-verdict log
 teams/
   aesthetics/STATUS.md
   structural/STATUS.md
   cad/STATUS.md
   fabrication/STATUS.md
+  audit/STATUS.md
+  */analysis/                    ← team working analyses (calcs, diagrams)
 review/
   rounds/round-NN/               ← per-round manifests + assets (DO NOT EDIT)
 review-app/                      ← GitHub Pages swipe-board (DO NOT EDIT)
 aesthetics vision/               ← raw human input (DO NOT EDIT)
 agent orchestration/
 artifacts/
-knobs that we can tweak/
+  audit/                         ← audit exec summaries
 ```
 
 ## Ground Rules
@@ -52,3 +55,4 @@ knobs that we can tweak/
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
 | 2026-11-13 | docs-lead | Initial creation | docs-reviewer |
+| 2026-11-15 | docs-worker | Repo map: dropped nonexistent knobs dir; added AUDIT.md, teams/audit, analysis/, artifacts/audit | [PROVISIONAL] |
