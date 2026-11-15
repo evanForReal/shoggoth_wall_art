@@ -13,7 +13,9 @@ Evan (human — reviews only via swipe board)
         │     └── Workers (Sonnet)
         ├── Fabrication Lead (Sonnet)
         │     └── Workers (Sonnet)
-        └── Infra Lead       (Sonnet)
+        ├── Infra Lead       (Sonnet)
+        │     └── Workers (Sonnet)
+        └── Audit Lead       (Sonnet) — independent; reports to Evan via Orchestrator
               └── Workers (Sonnet)
 ```
 
@@ -27,6 +29,7 @@ Evan (human — reviews only via swipe board)
 | **CAD Lead** | Converts approved geometry to engineering-grade mesh; tolerances, hardware specs. |
 | **Fabrication Lead** | Segmentation strategy, joint design, printer constraints, assembly sequence. |
 | **Infra Lead** | Manages review-app deployment, GitHub Pages, email ping, issue ingestion. |
+| **Audit Lead** | Verifies all teams' work against the rubric in docs/AUDIT.md; produces evidence-grounded exec summaries for Evan; chairs recentering votes. Independent of delivery teams. |
 
 ## Escalation Protocol
 
@@ -66,3 +69,4 @@ Aesthetics and Structural must maintain a `## Liaison` section in their respecti
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
 | 2026-11-13 | docs-lead | Initial creation | docs-reviewer |
+| 2026-11-15 | orchestrator | Added Audit Lead to hierarchy + charters (Evan directive) | [PROVISIONAL] |
