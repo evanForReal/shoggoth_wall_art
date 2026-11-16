@@ -1,0 +1,16 @@
+{
+ "tag": "main",
+ "amp_rib": 0.9,
+ "amp_mem": 0.35,
+ "taubin": 8,
+ "subdiv": 1,
+ "verts": 5347850,
+ "tris": 10697520,
+ "taubin_max_move_mm": 0.44,
+ "taubin_mean_move_mm": 0.1,
+ "disp_mean_mm": 0.191,
+ "disp_p99_mm": 0.717,
+ "disp_max_mm": 0.893,
+ "bpy_validate_changed": false,
+ "seconds": 53.7
+}

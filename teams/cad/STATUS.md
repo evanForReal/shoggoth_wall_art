@@ -4,6 +4,7 @@
 
 ## Exec Summary (newest first)
 
+- 2026-11-16: GATE 2 built (`gate2/`), hybrid per DECISIONS: Gate-1C field (irregular bays, 27 flow streamlines) -> clamp -> bpy-hosted character pass (Taubin, 1 subdivision to 10.7 M tris, flow-aligned ridged displacement 0.7-2 mm grain, outward-only, gap-limited). Sculpted mesh re-validated: closed 2-manifold, manifold3d NoError, 223 x 203 x 160 mm, 677 g solid PETG upper bound (+13%), no net min-wall thinning on re-voxelisation (calibrated both ways). 0.3 mm grain not resolvable (0.24 mm mesh); STL is a decimated preview only. Verdict: grain lands in close-up only (regular striation, not fibre mat); bays dissolved into the tangle; not c02 yet. [PROVISIONAL]
 - 2026-11-16: GATE 1C built (`gate1c/`): 4 large oval voids with rims and membrane rings, global streamline flow (18 ribs), recessed back membrane inside ovals, depth/concavity crevice shading, limb separated, bead knobs reduced, sliver voids plugged. Min-wall clamp: 0 thin ridge components, 99.1% volume in features >= 2 mm. Void rule: 72% -> 0% of void area under 6 mm, but by converting 160 voids to blind pockets; only 10 through-voids >= 6 mm remain (proposal logged to relax rule for blind relief). Mesh watertight, manifold3d NoError, 220 x 200 x 159 mm, 2.64 M tris, 597 g solid PETG upper bound. Verdict: strong tonal gain, hierarchy diagrammatic (ring-like ovals), flow only partial, no fibre surface texture; still not c02. [PROVISIONAL]
 - 2026-11-16: GATE 1B built (`gate1b/`): fibre vocabulary (flow-traced sagged fibres, fibre-fan shelf underside), torn/crisp membrane edges, 2.6x cell density (280 vs 109), heavy-tail strand widths, stronger colour contrast. Field-based skeleton/ridge/opening min-wall check: the Gate 1 fail was REAL (persists at 0.25 mm voxel); clamp pass leaves 0 thin ridge components, 99.0% of volume in features >= 2 mm (+4.1% volume). Mesh watertight, manifold3d NoError, 220 x 200 x 159 mm, 2.87 M tris, 592 g solid PETG upper bound. 6 mm through-void rule NOT met (17 voids >= 6 mm vs 25 in Gate 1; slivers). Verdict: denser coral/root-mat, still not c02 (no large smooth voids, weak flow, bead knobs). [PROVISIONAL]
 - 2026-11-16: GATE 1 test patch built (`gate1/`): limb + shelf stub + 200 x 200 mm perforated web, flat back, 0.5 mm voxels, procedural SDF. Mesh watertight, manifold3d NoError, 220 x 200 x 162 mm, 2.69 M tris, 605 g solid PETG upper bound; STL 19 MB. Verdict: not yet c01/c02-family (reads as root/vein network with perforated membranes, not dense calcified mat); method not ruled out. Min-strand sample FAILS (11% of medial samples < 2 mm). Needs Evan verdict on renders.
@@ -19,12 +20,14 @@ ACTIVE enabling work; no final geometry.
 - `gate1/`: generator, validator, renderer, 4 renders, STL, validation.json, README (self-assessment). Awaiting board verdict; then second strand vocabulary (thin fibres, traced flow curves) and min-wall pass.
 - `gate1b/`: fibres + denser web + min-wall measure/clamp + void rule; README has blunt c02 self-assessment and next steps (large oval voids with ringed membrane, streamline flow, sliver cleanup).
 - `gate1c/`: hierarchy + flow + layering + crevice shading + sliver plug; README has blunt c02 assessment and next steps (irregular bays, streamline-derived cell field, fibre-scale surface, fab checks). Void-rule relaxation for blind relief proposed to Structural (unsigned).
+- `gate2/`: hybrid SDF + bpy character pass; README has feasibility numbers, post-sculpt validation (both voxelisation bounds), blunt c02 assessment. Next: membrane-coverage pass with irregular bays, adaptive subdivision for a finer filament octave, strand-end fray.
 - Next (superseded, done as Gate 1): first test patch (one limb + shelf + 200 mm web) from SDF code, rendered against c01/c02 for a board; round-05 mask direction (blocked on credits) is an input for the mask carving.
 - Open: Evan's printer model/bed; coupon calibration of clearances; Cycles CPU render test.
 
 ## Liaison
 
 - 2026-11-15, cad→structural: mesh-spec-v1 adopts load-model-v1 hard-point/shelf/strut requirements; requests structural sign-off on [PROPOSED] limb min I >= 6,300 mm^4, keep-out margins, shelf p set 150-300 mm (p = 100 mm case dropped: cannot hold 150 mm footprint). [PROVISIONAL]
+- 2026-11-16, cad→structural: [PROVISIONAL] cad→structural: propose relaxing 6 mm through-void rule for blind relief pockets (floor on build plate prints normally); through-voids keep the rule. Awaiting structural sign-off.
 
 ## Takeaways
 
@@ -40,3 +43,4 @@ None yet.
 | 2026-11-16 | cad-lead | Gate 1 test patch: added gate1/ (scripts, renders, STL, README); exec line + Current State | docs-reviewer (flagged: README s.4/s.5 xref error; STL gitignored, STATUS lists it; README has no edit log) |
 | 2026-11-16 | cad-lead | Gate 1B: added gate1b/ (fibres, density, min-wall measure/clamp, void rule, renders, README); exec line + Current State | unsigned [PROVISIONAL] |
 | 2026-11-16 | cad-lead | Gate 1C: added gate1c/ (ovals, streamlines, back membrane, crevice shading, sliver plug, renders, README); exec line + Current State | unsigned [PROVISIONAL] |
+| 2026-11-16 | cad-lead | Gate 2: added gate2/ (hybrid pipeline: field + bpy sculpt pass, re-validation, renders, README); exec line + Current State; liaison line (6 mm blind-pocket relaxation) | unsigned [PROVISIONAL] |

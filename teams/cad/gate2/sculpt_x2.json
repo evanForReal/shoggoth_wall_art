@@ -1,0 +1,18 @@
+{
+ "tag": "x2",
+ "amp_rib": 1.8,
+ "amp_mem": 0.7,
+ "taubin": 8,
+ "along_scale": 2.4,
+ "grain_scale": 0.8,
+ "subdiv": 1,
+ "verts": 5347850,
+ "tris": 10697520,
+ "taubin_max_move_mm": 0.44,
+ "taubin_mean_move_mm": 0.1,
+ "disp_mean_mm": 0.364,
+ "disp_p99_mm": 1.435,
+ "disp_max_mm": 1.794,
+ "bpy_validate_changed": false,
+ "seconds": 54.1
+}
