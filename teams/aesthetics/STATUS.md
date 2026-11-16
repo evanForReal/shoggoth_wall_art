@@ -12,7 +12,9 @@
 
 ## Current State
 
-**Round-05 RE-CHARTERED (2026-11-16): full-piece composition round, generated IN-HOUSE** by the CAD geometry pipeline (Gate-2 vocabulary approved by Evan). Canva blocker moot for this round. Board will carry composition variants: mask placement/treatment (carved-serene vs flat-graphic), tentacle layout, shelf placement, maw presence — rendered via bpy with the locked shader. R04 backpropped: concept direction VALIDATED (c01/c02 loved). Round-05 is all-generated: group A = mask studies on the winning body (carved-serene vs flat-graphic vs void-mouth vs none; asymmetric placements); group B = body refinement (more horrific/less octopus, asymmetry, sleek Beksiński; Gaudí gradient + Shlian crisp emergence; root-grip plant shelves).
+**Round-05 VERDICTS IN (issue #5, 1L/2L/10D) + Evan re-center.** Locked: side-profile depth (h4 love), shelf arrangement A + placement, radial layout, local Beksiński texture quality. Central design = classic smiley emoticon (serious, monumental execution — v1's cartoon version rejected) + gaping maw with asymmetric horrific teeth. Develop: eye-covered writhing surface, masquerading-face motif, muscular tentacles (not pale whips), integrated buttress, restored cohesive creature form + organic tones. Round-06 = fullpiece v2 board on these directives.
+
+Superseded round-05 charter: **full-piece composition round, generated IN-HOUSE** by the CAD geometry pipeline (Gate-2 vocabulary approved by Evan). Canva blocker moot for this round. Board will carry composition variants: mask placement/treatment (carved-serene vs flat-graphic), tentacle layout, shelf placement, maw presence — rendered via bpy with the locked shader. R04 backpropped: concept direction VALIDATED (c01/c02 loved). Round-05 is all-generated: group A = mask studies on the winning body (carved-serene vs flat-graphic vs void-mouth vs none; asymmetric placements); group B = body refinement (more horrific/less octopus, asymmetry, sleek Beksiński; Gaudí gradient + Shlian crisp emergence; root-grip plant shelves).
 
 Locked by r01-r04: Beksiński surface core (webbing/ochre/bone-crust/flowstone/rust, gloss accent only); refined-room, non-centerpiece decor; bas-relief body + multi-anchor freeform spread with strong depth variance; mask carved into mass (serene monumental or flat graphic), never a worn/applied object; tentacle-grips-pot plant shelves; horrific asymmetry; no chibi, no comical, no trophy, no corner-wrap (shelved).
 
@@ -57,9 +59,21 @@ Locked by r01-r04: Beksiński surface core (webbing/ochre/bone-crust/flowstone/r
 - Depth: Gaudí gradient v03 + Shlian crisp projection v08 loved. v01/v04/v06/v11 liked. Dead: v02, v05, v07, v09, v10, v12.
 - Corner-wrap shelved (c05 note: "worth exploring down the road").
 
+**Round-05 (issue #5; 1 love / 2 like / 10 dislike of 13):**
+- h4 side profile loved: depth/relief profile locked.
+- Shelves A + placement praised (h1); v4/B dead; v3 diagonal dead; radial stands.
+- Serene blank face dead (h3); v1 cartoon smiley execution dead; no-maw (v2) dead.
+- Maw must read as a real monstrous mouth; buttress must integrate; creature form/organic tones lost to texture — restore (h1/h2).
+- Re-center (direct chat): smiley emoticon + horrific asymmetric-toothed maw central; eye-covered writhing surface, masquerading face, muscular tentacles.
+
 ## Rejected (do not revisit without Evan)
 
 - Chibi / plush / toy-cute (r02, hard no)
+- Serene blank/nondescript carved face (r05 h3)
+- Cartoon/sticker smiley execution (r05 v1 — the emoticon concept itself is approved, this execution is not)
+- Maw-less composition (r05 v2)
+- Diagonal-sweep layout (r05 v3)
+- Shelf arrangement B (r05 v4)
 - Literal historical masks (r01 09/10/11)
 - Applied or worn mask objects (r04: gold/Noh/Budai/comedy/Venetian/folk)
 - Giger biomech skin (r01 01)
@@ -82,3 +96,4 @@ Locked by r01-r04: Beksiński surface core (webbing/ochre/bone-crust/flowstone/r
 | 2026-11-14 | orchestrator | R04 backprop, locked constraints, round-05 charter | docs-reviewer (haiku) |
 | 2026-11-15 | docs-worker | Hygiene pass: takeaways r02-r04, rejected list, exec summary line | docs-reviewer |
 | 2026-11-16 | orchestrator | Round-05 board assembled (exec line); manifest + images committed | docs-reviewer |
+| 2026-11-16 | orchestrator | R05 backprop: verdicts + re-center into Current State, takeaways, rejected list | docs-reviewer (flagged: re-center items incl. "muscular tentacles (not pale whips)" are chat-sourced, not in issue #5; superseded r05 charter paragraph retained below new state) |
