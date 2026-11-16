@@ -1,0 +1,42 @@
+{
+  "source": {
+    "issue": 2,
+    "url": "https://github.com/evanForReal/shoggoth_wall_art/issues/2"
+  },
+  "round": "round-02",
+  "reviewed": "2026-11-14",
+  "verdicts": [
+    {
+      "id": "01",
+      "verdict": "dislike",
+      "notes": "gross, grungy, not a wall decor. not detsiled"
+    },
+    {
+      "id": "02",
+      "verdict": "dislike",
+      "notes": "slightly right direction but you’ve def gone too far with cutesy. it should not be chibi at all and should focus on the artwork of beksinski."
+    },
+    {
+      "id": "05",
+      "verdict": "like",
+      "notes": "great great direction here."
+    },
+    {
+      "id": "07",
+      "verdict": "dislike",
+      "notes": "not a wall deco, but good amount of volume. see my initial design vision."
+    },
+    {
+      "id": "09",
+      "verdict": "like"
+    },
+    {
+      "id": "10",
+      "verdict": "dislike"
+    },
+    {
+      "id": "11",
+      "verdict": "like"
+    }
+  ]
+}
