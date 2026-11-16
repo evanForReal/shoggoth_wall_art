@@ -46,5 +46,5 @@
 | 2026-11-15 | docs-worker | Disclosure: the 2026-11-14 correction row (r02/r03 tallies, commit ee57a70) had no edit-log entry when committed. Row body unchanged; logged here by append | docs-reviewer |
 | 2026-11-15 | orchestrator | Appended RP-1 adoption + geometry-ownership rows | docs-reviewer (flagged: step-2 method row not covered by this log line) |
 | 2026-11-15 | orchestrator | Appended step-2 geometry-method row (covers reviewer flag above) | docs-reviewer (content reviewed in RP-1 pass) |
-| 2026-11-16 | orchestrator | Appended hybrid geometry-method row (Evan verdict) | [PROVISIONAL] |
-| 2026-11-16 | orchestrator | Appended vocabulary approval + round-05 re-charter (Evan verdicts) | [PROVISIONAL] |
+| 2026-11-16 | orchestrator | Appended hybrid geometry-method row (Evan verdict) | docs-reviewer |
+| 2026-11-16 | orchestrator | Appended vocabulary approval + round-05 re-charter (Evan verdicts) | docs-reviewer (flagged: vocabulary row sits above the earlier hybrid row, chronological order inverted; no earlier rows modified) |

@@ -5,6 +5,7 @@
 
 ## Exec Summary (newest first)
 
+- 2026-11-16: Round-05 board ASSEMBLED (13 cards, review/rounds/round-05/): hero (4 views) + 4 one-axis variants (2 views each) + comparison sheet vs c01, all rendered in-house from the real parametric geometry. Axes on the ballot: mask carved-serene vs smiley, maw y/n, radial vs diagonal layout, shelves A vs B. CAD self-assessment in manifest notes (body not yet c01 sprawl; refinement continues post-verdict). Awaiting Evan deploy+ping approval.
 - 2026-11-15: Hygiene pass (audit RP-1 item 4): takeaways r02-r04 added, rejected list added, r04 prompts + hotlink inventory committed. NB: round-05 has no manifest/directory yet; charter only, blocked on Canva credits.
 - 2026-11-14: Round-01 verdicts backpropped (issue #1). Round-02 trawl initiated: cutesy-horror, wall-integration, surface-finish.
 - 2026-11-13: Round-01 trawl initiated. 12 images queued across 3 axes.
@@ -80,3 +81,4 @@ Locked by r01-r04: Beksiński surface core (webbing/ochre/bone-crust/flowstone/r
 | 2026-11-14 | orchestrator | R02/r03 backprop, sketch constraints, round-04 charter | docs-reviewer (haiku) |
 | 2026-11-14 | orchestrator | R04 backprop, locked constraints, round-05 charter | docs-reviewer (haiku) |
 | 2026-11-15 | docs-worker | Hygiene pass: takeaways r02-r04, rejected list, exec summary line | docs-reviewer |
+| 2026-11-16 | orchestrator | Round-05 board assembled (exec line); manifest + images committed | docs-reviewer |

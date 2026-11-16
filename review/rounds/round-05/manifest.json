@@ -1,0 +1,113 @@
+{
+  "round": "round-05",
+  "title": "Shoggoth wall art — round 05: full-piece composition (in-house renders)",
+  "created": "2026-11-16",
+  "issue_repo": "evanForReal/shoggoth_wall_art",
+  "notes": "13 cards, ALL rendered in-house from the real parametric geometry (no Canva; these are the actual 914 mm piece at composition resolution, Gate-2 surface vocabulary + locked shader). Each variant changes ONE axis vs the hero — vote the axes: (a) mask carved-serene vs flat-graphic smiley (hero vs v1), (b) maw vs no maw (hero vs v2), (c) radial sprawl vs diagonal sweep (hero vs v3), (d) shelf arrangement A vs B (hero vs v4). CAD's blunt self-assessment: body reads emblem-like starburst at wall distance, not yet c01's fleshy sprawl; mask is too focal for the not-a-centerpiece rule; body-vocabulary refinement continues next round whatever you pick — your axis verdicts steer it. Engineering numbers are composition proxies; full print validation happens at print resolution after your pick.",
+  "cards": [
+    {
+      "id": "h1",
+      "image": "images/hero_front.png",
+      "axis": "hero",
+      "title": "HERO — front, wall distance",
+      "rationale": "Baseline: carved-serene mask + maw, radial sprawl, shelves A (upper-L, R, lower-L). Judge the overall silhouette and wall presence.",
+      "source": "generated in-house (gen_fullpiece.py, hero)"
+    },
+    {
+      "id": "h2",
+      "image": "images/hero_tq.png",
+      "axis": "hero",
+      "title": "HERO — three-quarter",
+      "rationale": "Depth variance and shelf protrusion read best here. Buttress limb at lower left.",
+      "source": "generated in-house (gen_fullpiece.py, hero)"
+    },
+    {
+      "id": "h3",
+      "image": "images/hero_rake.png",
+      "axis": "hero",
+      "title": "HERO — raking close-up on mask",
+      "rationale": "Gate-2 surface at close range: grain, crevice shading, recessed serene face in its bone bezel. CAD rates this the strongest image.",
+      "source": "generated in-house (gen_fullpiece.py, hero)"
+    },
+    {
+      "id": "h4",
+      "image": "images/hero_side.png",
+      "axis": "hero",
+      "title": "HERO — side profile",
+      "rationale": "Relief depth profile: flat back, bas-to-mid body, shelves at 200-290 mm. Is the protrusion variance enough?",
+      "source": "generated in-house (gen_fullpiece.py, hero)"
+    },
+    {
+      "id": "v1a",
+      "image": "images/v1_smiley_front.png",
+      "axis": "mask-treatment",
+      "title": "V1 — flat-graphic smiley mask, front",
+      "rationale": "Axis (a): the r04 m07 graphic-smiley direction on the real body. CAD flags it reading like a sticker — do you agree?",
+      "source": "generated in-house (gen_fullpiece.py, v1_smiley)"
+    },
+    {
+      "id": "v1b",
+      "image": "images/v1_smiley_tq.png",
+      "axis": "mask-treatment",
+      "title": "V1 — flat-graphic smiley, three-quarter",
+      "rationale": "Axis (a) at an angle: does the flat disc hold up off-axis, or does carved-serene win?",
+      "source": "generated in-house (gen_fullpiece.py, v1_smiley)"
+    },
+    {
+      "id": "v2a",
+      "image": "images/v2_nomaw_front.png",
+      "axis": "maw",
+      "title": "V2 — mask only, no maw, front",
+      "rationale": "Axis (b): drops the sketch's second mouth. CAD finds this calmer and cleaner than the hero. Keep the maw or not?",
+      "source": "generated in-house (gen_fullpiece.py, v2_nomaw)"
+    },
+    {
+      "id": "v2b",
+      "image": "images/v2_nomaw_tq.png",
+      "axis": "maw",
+      "title": "V2 — no maw, three-quarter",
+      "rationale": "Axis (b) at an angle: body mass without the dark void and fibre teeth.",
+      "source": "generated in-house (gen_fullpiece.py, v2_nomaw)"
+    },
+    {
+      "id": "v3a",
+      "image": "images/v3_diagonal_front.png",
+      "axis": "tentacle-layout",
+      "title": "V3 — diagonal sweep, front",
+      "rationale": "Axis (c): body rotated 38°, elongated, whips trailing up-right/down-left. Biggest silhouette change of the set.",
+      "source": "generated in-house (gen_fullpiece.py, v3_diagonal)"
+    },
+    {
+      "id": "v3b",
+      "image": "images/v3_diagonal_tq.png",
+      "axis": "tentacle-layout",
+      "title": "V3 — diagonal sweep, three-quarter",
+      "rationale": "Axis (c) at an angle. Note: currently 4-5 mm over the 914 mm box; trivially clipped at print res if you pick it.",
+      "source": "generated in-house (gen_fullpiece.py, v3_diagonal)"
+    },
+    {
+      "id": "v4a",
+      "image": "images/v4_shelvesB_front.png",
+      "axis": "shelf-layout",
+      "title": "V4 — shelf arrangement B, front",
+      "rationale": "Axis (d): left-mid, right-upper, right-lower (longest carries the buttress). CAD says B breaks the wing-symmetry of A — better horrific asymmetry.",
+      "source": "generated in-house (gen_fullpiece.py, v4_shelvesB)"
+    },
+    {
+      "id": "v4b",
+      "image": "images/v4_shelvesB_tq.png",
+      "axis": "shelf-layout",
+      "title": "V4 — shelves B, three-quarter",
+      "rationale": "Axis (d) at an angle: shelf heights 210/240/280 mm protrusion.",
+      "source": "generated in-house (gen_fullpiece.py, v4_shelvesB)"
+    },
+    {
+      "id": "s1",
+      "image": "images/variants_sheet.png",
+      "axis": "comparison",
+      "title": "SHEET — all five vs the c01 reference",
+      "rationale": "Side-by-side: hero + 4 variants + the c01 you loved. The gap to c01's fleshy sprawl is the next body-refinement target; this card is for calibration, vote the gap's severity.",
+      "source": "generated in-house (variants_sheet)"
+    }
+  ]
+}
