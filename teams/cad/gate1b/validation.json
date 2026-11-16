@@ -1,0 +1,45 @@
+{
+ "raw_tris": 2895248,
+ "shells_before_cleanup": 610,
+ "shells_dropped": 609,
+ "dropped_volume_mm3": 1072.1668976209942,
+ "shells_final": 1,
+ "watertight": true,
+ "winding_consistent": true,
+ "tris": 2866566,
+ "verts": 1432027,
+ "bbox_min_mm": [
+  -110.25,
+  -100.25,
+  0.0
+ ],
+ "bbox_max_mm": [
+  110.25,
+  100.25,
+  159.0
+ ],
+ "bbox_size_mm": [
+  220.5,
+  200.5,
+  159.0
+ ],
+ "manifold3d_status": "Error.NoError",
+ "manifold3d_volume_mm3": 465763.80262754025,
+ "volume_cm3": 465.76,
+ "mass_g_solid_PETG_1.27": 591.5,
+ "surface_area_cm2": 2669.9,
+ "back_plane_z_range": [
+  0.0,
+  0.6
+ ],
+ "shelf_top_flatness_mm": 0.0439,
+ "shelf_top_flat_area_cm2": 230.0,
+ "decimated": {
+  "tris": 378988,
+  "watertight": true,
+  "winding_consistent": true,
+  "manifold3d_status": "Error.NoError",
+  "volume_change_pct": -0.08,
+  "stl_MB": 18.9
+ }
+}
