@@ -1,0 +1,55 @@
+{
+ "raw_tris": 2708738,
+ "shells_before_cleanup": 559,
+ "shells_dropped": 558,
+ "dropped_volume_mm3": 602.5363805365638,
+ "shells_final": 1,
+ "watertight": true,
+ "winding_consistent": true,
+ "tris": 2687838,
+ "verts": 1342763,
+ "bbox_min_mm": [
+  -110.25,
+  -100.25,
+  0.0
+ ],
+ "bbox_max_mm": [
+  110.25,
+  100.25,
+  162.0
+ ],
+ "bbox_size_mm": [
+  220.5,
+  200.5,
+  162.0
+ ],
+ "manifold3d_status": "Error.NoError",
+ "manifold3d_volume_mm3": 476682.01169366436,
+ "volume_cm3": 476.68,
+ "mass_g_solid_PETG_1.27": 605.4,
+ "surface_area_cm2": 2564.3,
+ "back_plane_z_range": [
+  0.0,
+  0.6
+ ],
+ "shelf_top_flatness_mm": 0.1027,
+ "shelf_top_flat_area_cm2": 177.2,
+ "strand_check": {
+  "medial_samples": 227267,
+  "thickness_p1_mm": 1.0,
+  "thickness_p5_mm": 1.0,
+  "thickness_p50_mm": 4.0,
+  "frac_below_2mm": 0.1148,
+  "frac_below_1p5mm": 0.1102,
+  "note": "medial-ridge EDT sample; voxel quantisation +-0.50 mm; tips/junction shoulders inflate low tail"
+ },
+ "opening_2mm_volume_retained_frac": 0.9711,
+ "decimated": {
+  "tris": 379694,
+  "watertight": true,
+  "winding_consistent": true,
+  "manifold3d_status": "Error.NoError",
+  "volume_change_pct": -0.01,
+  "stl_MB": 19.0
+ }
+}
