@@ -59,6 +59,13 @@ Risk: lossy for anyone reading STATUS alone; DECISIONS remains the full record. 
 
 **SL-18** · 17:05 · Verdict snapshots + extended tally script committed (4dd6f70) after re-running the script myself (5/5 PASS, exit 0). The worker hand-transcribed the issue JSON; counts and ids are machine-checked against manifests and DECISIONS, note text only eyeballed. · `[judgment]`
 
+**SL-19** · ~17:20 · RP-2 CARRIES: Orchestrator 3 + Fabrication Lead 1 = 4 of 7 (majority). CAD and Structural votes still requested for the record; they cannot change the outcome. · `[judgment]`
+
+**SL-20** · ~17:20 · Fabrication's v2 fab-risk list split by me into FORM-level (forwarded to the running CAD worker now: eyes >= 12 mm, front-facing only, chamfered lids; teeth base >= 4 mm / tip r >= 0.75 mm / height <= 3x base; throat as plugged recess; D-section tentacles; smile V-groove >= 90 deg) vs PRINT-RES (overhang limiter, per-feature IDs, orientation per segment, pocket table, coupon plate — deferred to the print-res pass). · `[judgment]`
+Why now: form changes are cheap before renders and expensive after Evan votes on a shape that can't print. Cost: eyes restricted to front faces narrows the "eye-covered" look on tentacle flanks — accepted; flat dimples allowed there. Alternative rejected: wait and fold in at print res (risks Evan approving an unprintable eye/tooth language). Changed my SL-05 eye size floor 10 → 12 mm.
+
+**SL-21** · ~17:20 · 6 mm blind-pocket relaxation: Fabrication CONDITIONAL (C1-C6: mouth faces within 45 deg of print-up, no undercut, mouth >= 2 mm, depth <= 3x mouth, floor >= 2.6 mm). Not adopted yet — waits on Structural's independent verdict. Fab's limits are [GENERAL] FDM practice, unmeasured; Evan's printer is still unknown. · `[judgment]`
+
 ---
 *Edit log*
 

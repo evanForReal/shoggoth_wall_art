@@ -30,6 +30,7 @@ ACTIVE enabling work; no final geometry.
 
 - 2026-11-15, cad→structural: mesh-spec-v1 adopts load-model-v1 hard-point/shelf/strut requirements; requests structural sign-off on [PROPOSED] limb min I >= 6,300 mm^4, keep-out margins, shelf p set 150-300 mm (p = 100 mm case dropped: cannot hold 150 mm footprint). [PROVISIONAL]
 - 2026-11-16, cad→structural: [PROVISIONAL] cad→structural: propose relaxing 6 mm through-void rule for blind relief pockets (floor on build plate prints normally); through-voids keep the rule. Awaiting structural sign-off.
+- 2026-11-16, fabrication: CONDITIONAL — printable if mouth opens within 45 deg of print-up, no undercut, mouth >= 2.0 mm, depth <= 3x width, floor >= 2.6 mm; flank pockets <= 6 mm with arched roof (see teams/fabrication/analysis/rp2-blind-pockets.md)
 
 ## Takeaways
 

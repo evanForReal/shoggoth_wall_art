@@ -4,12 +4,16 @@
 
 ## Exec Summary (newest first)
 
+- 2026-11-16: RP-2 item 3. Blind-pocket relaxation (< 6 mm mouth): CONDITIONAL counter-sign. Printable if pocket opens within 45 deg of print-up, no undercut, mouth >= 2.0 mm, depth <= 3x width (wash-only to 6x), floor >= 2.6 mm; flank pockets <= 6 mm with arched roof. Evidence is size-only; depth, axis and wall angle are unmeasured by CAD. Own heightfield of gate1c/gate2 preview STLs: ~85-90% of narrow depressions <= 6 mm deep, 4-6% > 24 mm (breaks the depth rule). v2 fab-risk list: eyelids, tooth tips, maw undercuts, tentacle undersides/suckers. Vote on RP-2: FOR. Segment/mass refresh deferred to the v2 mesh. See `analysis/rp2-blind-pockets.md`. [PROVISIONAL]
 - 2026-11-15: Enabling pass (RP-1 item 3). 3x3 ft on 256 mm bed: plan 16 segments (range 12-20; 3x2: ~12). Print time ~17 printer-days nominal (range 5-45) at ~30 g/h, ~12.6 kg incl. supports. PETG baseline, ASA if hot/sunny wall. Top risks: supports in lattice, strands below printable floor, seams/tolerance stack. See `enabling-v1.md`.
 - 2026-11-13: Stub created. No fabrication work started.
 
 ## Current State
 
-ACTIVE enabling work; no CAD mesh yet.
+ACTIVE enabling work; CAD has produced Gate 1-2 patches and a composition-grade fullpiece (not print-res); fullpiece-v2 in build.
+
+- `analysis/rp2-blind-pockets.md`: blind-pocket verdict (conditional, C1-C6), evidence from gate2/validation_sculpt.json, coupon plan, v2 feature fab-risk table, RP-2 vote (FOR).
+- Segment/mass/print-time numbers in `enabling-v1.md` are stale against a 914 mm, 22 kg-solid proxy; refresh DEFERRED until the v2 mesh lands.
 
 - `enabling-v1.md`: segment-count arithmetic (grid + area), joint shortlist (rear splice strap + pin/adhesive primary; dovetail + axial rod at shelf tips), material plan, print-time range with stated assumptions, feasibility read on c01/c02 webbing, Evan-board probes (seam visibility, material finish, perforation density).
 - Still waiting for CAD geometry before: actual segmentation, joint detailing, assembly sequence, slicer profiles.
@@ -30,3 +34,4 @@ None yet.
 |------|-------|--------|---------------|
 | 2026-11-13 | docs-lead | Initial creation | docs-reviewer |
 | 2026-11-15 | fabrication-lead | Status STUB→ACTIVE (enabling); exec summary, current state, liaison; added enabling-v1.md | docs-reviewer |
+| 2026-11-16 | fabrication-lead | RP-2 item 3: added analysis/rp2-blind-pockets.md; exec line + Current State | [PROVISIONAL] |

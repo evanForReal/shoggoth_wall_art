@@ -16,6 +16,7 @@ ap.add_argument('--samples', type=int, default=48)
 a = ap.parse_args(); os.makedirs(a.out, exist_ok=True)
 d = np.load(os.path.join(a.dir, a.variant + '.npz')); v = d['v'].astype(np.float64); f = d['f'].astype(np.int64)
 meta = json.load(open(os.path.join(a.dir, a.variant + '_meta.json')))
+aux = d['aux']; calm_v, maw_sd, eye_t, teeth_t = aux[:, 0], aux[:, 1], aux[:, 2], aux[:, 3]
 x, y, z = v[:, 0], v[:, 1], v[:, 2]
 
 
@@ -28,6 +29,8 @@ gx = np.clip(((x + 465) / res).astype(int), 0, nxg - 1); gy = np.clip(((y + 465)
 H = np.zeros((nxg, nxg)); o = np.argsort(z); H[gx[o], gy[o]] = z[o]
 Hf = ndi.gaussian_filter(ndi.maximum_filter(H, size=15), 2.0)
 depth = ndi.map_coordinates(Hf, [np.clip((x + 465) / res, 0, nxg - 1), np.clip((y + 465) / res, 0, nxg - 1)], order=1) - z
+HL = ndi.gaussian_filter(ndi.maximum_filter(H, size=41), 4.0)
+depthL = ndi.map_coordinates(HL, [np.clip((x + 465) / res, 0, nxg - 1), np.clip((y + 465) / res, 0, nxg - 1)], order=1) - z
 for sh in meta['shelves']:                         # under-shelf fibre fans sit in shadow of the plate
     inx = (x > sh['x_range'][0] - 10) & (x < sh['x_range'][1] + 10) & (y < sh['top_y'] - 8) & (y > sh['top_y'] - 200)
     depth = np.where(inx & (z > 40), depth + 40 * sstep((sh['top_y'] - y) / 120.0), depth)
@@ -44,18 +47,34 @@ vn /= np.linalg.norm(vn, axis=1)[:, None] + 1e-12
 cav = ((m - v) * vn).sum(1)
 del A, e, m
 rng = np.random.default_rng(3); n1 = Noise(rng, 330.0, lo=(-520, -520, -20), hi=(520, 520, 330)); n3 = Noise(rng, 30.0, lo=(-520, -520, -20), hi=(520, 520, 330))
-dark = np.clip(0.85 * sstep(depth / 40.0) + 0.50 * sstep(cav / 4.5) - 0.12 * sstep(-cav / 3.0), 0, 1)
+dark = np.clip(0.85 * sstep(depth / 40.0) + 0.45 * sstep(depthL / 110.0) + 0.50 * sstep(cav / 4.5) - 0.12 * sstep(-cav / 3.0), 0, 1)
 dark = np.clip(dark + 0.10 * (n3(x, y, z) - 0.3), 0, 1)
-pale = np.array([0.84, 0.74, 0.55]); mid = np.array([0.46, 0.29, 0.13]); deep = np.array([0.045, 0.028, 0.018])
+dark = np.where(calm_v > 0.6, dark * (1.0 - 0.22 * np.clip(calm_v, 0, 1)), dark)          # calm muscle bellies read lighter/smoother
+dark = np.clip(np.maximum(dark, 0.93 * (maw_sd < 6) * sstep((60 - z) / 40.0) * (teeth_t < 0.5)), 0, 1)   # maw interior: unmistakably dark
+# tonal zones (ochre / bone / rust) from low-frequency noise, per the locked palette
+nz_ = n1(x * 0.9 + 70, y * 0.9 - 40, z * 0.1)
+zb_ = sstep((-nz_ - 0.05) / 0.5)[:, None]; zr_ = sstep((nz_ - 0.15) / 0.5)[:, None]
+pale_o, mid_o = np.array([0.80, 0.62, 0.31]), np.array([0.45, 0.27, 0.10])
+pale_b, mid_b = np.array([0.82, 0.73, 0.55]), np.array([0.50, 0.35, 0.19])
+pale_r, mid_r = np.array([0.66, 0.36, 0.17]), np.array([0.38, 0.16, 0.07])
+pale = pale_o * (1 - zb_ - zr_) + pale_b * zb_ + pale_r * zr_; mid = mid_o * (1 - zb_ - zr_) + mid_b * zb_ + mid_r * zr_
+deep = np.array([0.045, 0.028, 0.018])
 lo = np.clip(dark / 0.5, 0, 1)[:, None]; hi = np.clip((dark - 0.5) / 0.5, 0, 1)[:, None]
 col = np.where(dark[:, None] < 0.5, pale * (1 - lo) + mid * lo, mid * (1 - hi) + deep * hi)
 rw = 0.40 * sstep(n1(x, y, z * 0.2) + 0.2) * (4 * dark * (1 - dark))
 col = col * (1 - rw[:, None]) + np.array([0.50, 0.19, 0.06]) * rw[:, None] * (0.4 + dark)[:, None]
-# mask: pale carved bone, slightly shaded by cavity (features stay readable)
-mk = meta['mask']; t_ = np.deg2rad(mk['deg']); dx, dy = x - mk['centre'][0], y - mk['centre'][1]
-mq = np.sqrt(((dx * np.cos(t_) + dy * np.sin(t_)) / mk['semi'][0]) ** 2 + ((-dx * np.sin(t_) + dy * np.cos(t_)) / mk['semi'][1]) ** 2)
-mw = (1 - sstep((mq - 1.0) / 0.08)) * (z > 20)
-bone = np.array([0.80, 0.74, 0.60]) * (0.62 + 0.38 * (1 - sstep(cav / 3.0)))[:, None]
+# teeth: dirty ivory;  eyes: sickly sclera (iris pits go dark by cavity)
+tw = (0.65 * teeth_t * (1 - 0.6 * sstep(depth / 60.0)))[:, None]
+col = col * (1 - tw) + np.array([0.72, 0.62, 0.42]) * tw * (1 - 0.5 * dark[:, None])
+ew = (0.55 * eye_t * (1 - 0.8 * sstep(cav / 2.0)))[:, None]
+col = col * (1 - ew) + np.array([0.78, 0.66, 0.40]) * ew * (1 - 0.6 * dark[:, None])
+# mask: pale carved bone (the ONE clean contrasting element), weathered: cavity-shaded + stain streaks, darker in the groove/eyes
+mk = meta['mask']; dx, dy = x - mk['centre'][0], y - mk['centre'][1]
+mq = np.sqrt((dx / mk['semi'][0]) ** 2 + (dy / mk['semi'][1]) ** 2)
+mw = (1 - sstep((mq - 1.0) / 0.06)) * (z > 20)
+stain = np.clip(0.55 * sstep(n3(x * 0.6, y * 0.25, z * 0.2) * 0.8 + 0.1) * (0.4 + 0.6 * sstep((-dy / mk['semi'][1] + 0.3) / 1.0)) * (0.5 + meta['mask']['weather']), 0, 0.7)
+bone = np.array([0.86, 0.80, 0.66]) * (0.55 + 0.45 * (1 - sstep(cav / 3.0)))[:, None] * (1 - stain)[:, None] + np.array([0.45, 0.30, 0.14]) * stain[:, None]
+bone = bone * (1 - 0.65 * sstep(depth / 28.0))[:, None]
 col = col * (1 - mw[:, None]) + bone * mw[:, None]
 col = np.clip(col, 0, 1) ** 2.2
 print('colours done', flush=True)
@@ -108,7 +127,8 @@ cam_d = bpy.data.cameras.new('cam'); cam = bpy.data.objects.new('cam', cam_d); s
 VIEWS = {
     'front': dict(loc=(0, 0.02, 1.9), tgt=(0, 0.02, 0.05), lens=40, wall=True, key=(-0.55, 1.1, 1.3), kp=95),
     'tq': dict(loc=(0.95, 0.45, 1.55), tgt=(-0.02, 0.0, 0.08), lens=40, wall=True, key=(-0.55, 1.1, 1.3), kp=95),
-    'rake': dict(loc=(-0.30, 0.20, 0.62), tgt=(-0.12, 0.12, 0.06), lens=50, wall=True, key=(-1.0, 0.10, 0.18), kp=55),
+    'rake': dict(loc=(-0.30, 0.20, 0.62), tgt=(-0.105, 0.165, 0.06), lens=50, wall=True, key=(-1.0, 0.10, 0.18), kp=55),
+    'maw': dict(loc=(-0.02, -0.02, 0.62), tgt=(-0.095, -0.078, 0.04), lens=45, wall=True, key=(-0.45, 0.45, 0.55), kp=60),
     'side': dict(loc=(2.2, 0.0, 0.15), tgt=(0.0, 0.0, 0.15), ortho=1.25, wall=False, key=(0.5, 1.2, 0.9), kp=90),
 }
 for nm in a.views.split(','):

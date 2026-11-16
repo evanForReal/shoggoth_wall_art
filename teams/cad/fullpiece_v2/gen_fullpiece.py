@@ -45,12 +45,12 @@ SHELF_ARR = {
     'A': [dict(side='L', ys=250.5, xc=-345.0, p=250.0), dict(side='R', ys=170.5, xc=345.0, p=200.0), dict(side='L', ys=-89.5, xc=-345.0, p=290.0)],
 }
 VARIANTS = {   # each differs from hero by ONE axis
-    'hero':            dict(masq='fingers', eyes=26, maw_scale=1.0, teeth='mixed', weather=0.55, shelves='A', seed=7),
-    'v1_liftedge':     dict(masq='lift', eyes=26, maw_scale=1.0, teeth='mixed', weather=0.55, shelves='A', seed=7),
-    'v2_eyes_heavy':   dict(masq='fingers', eyes=40, maw_scale=1.0, teeth='mixed', weather=0.55, shelves='A', seed=7),
-    'v3_maw_big':      dict(masq='fingers', eyes=26, maw_scale=1.28, teeth='fangs', weather=0.55, shelves='A', seed=7),
-    'v4_weathered':    dict(masq='fingers', eyes=26, maw_scale=1.0, teeth='mixed', weather=1.0, shelves='A', seed=7),
-    'v5_eyes_sparse':  dict(masq='fingers', eyes=15, maw_scale=1.0, teeth='mixed', weather=0.55, shelves='A', seed=7),
+    'hero':            dict(masq='fingers', eyes=26, maw_scale=1.0, teeth='mixed', weather=0.55, shelves='A', seed=7, whips=list(range(8)), whip_scale=1.0),
+    'v1_liftedge':     dict(masq='lift', eyes=26, maw_scale=1.0, teeth='mixed', weather=0.55, shelves='A', seed=7, whips=list(range(8)), whip_scale=1.0),
+    'v2_eyes_heavy':   dict(masq='fingers', eyes=40, maw_scale=1.0, teeth='mixed', weather=0.55, shelves='A', seed=7, whips=list(range(8)), whip_scale=1.0),
+    'v3_maw_big':      dict(masq='fingers', eyes=26, maw_scale=1.28, teeth='fangs', weather=0.55, shelves='A', seed=7, whips=list(range(8)), whip_scale=1.0),
+    'v4_weathered':    dict(masq='fingers', eyes=26, maw_scale=1.0, teeth='mixed', weather=1.0, shelves='A', seed=7, whips=list(range(8)), whip_scale=1.0),
+    'v5_tentacles5':   dict(masq='fingers', eyes=26, maw_scale=1.0, teeth='mixed', weather=0.55, shelves='A', seed=7, whips=[0, 2, 4, 5, 7], whip_scale=1.3),
 }
 sstep = gp.smoothstep
 
@@ -110,7 +110,9 @@ def build_limbs(pr, rng, shelves):
         meta['arms'].append(dict(shelf=k, root=[float(R[0]), float(R[1])]))
     specs = [(212, 520, 0.9, 44, 0), (246, 380, -0.8, 40, 14), (272, 500, 0.7, 46, 6), (306, 420, -0.9, 40, 20),
              (334, 560, 0.7, 44, 0), (38, 330, 0.9, 36, 10), (74, 220, -0.7, 30, 4), (112, 170, 0.8, 26, 0)]
-    for (ang, L, bend, r0, zoff) in specs:
+    for wi, (ang, L, bend, r0, zoff) in enumerate(specs):
+        if wi not in pr['whips']: continue
+        r0 = r0 * pr['whip_scale']; L = L * 1.2
         a = np.deg2rad(ang + rng.uniform(-6, 6)); d0 = np.array([np.cos(a), np.sin(a)])
         start = c0 + d0 * rng.uniform(95, 140) + (np.array([100.0, -60.0]) if 200 < ang < 330 else 0)
         pts3, r, xy, t = tentacle(rng, start, ang, L, bend, r0, 7.5, zoff, rng.uniform(2.6, 3.8))
