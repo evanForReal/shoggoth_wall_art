@@ -1,0 +1,52 @@
+{
+ "vox": 0.5,
+ "skeleton_voxels": 76798,
+ "thickness_p1_mm": 0.75,
+ "thickness_p5_mm": 0.75,
+ "thickness_p25_mm": 1.99,
+ "thickness_p50_mm": 3.49,
+ "thickness_p95_mm": 8.86,
+ "frac_below_thin": 0.1783,
+ "frac_below_1p25": 0.1529,
+ "thin_mm": 1.75,
+ "ridge": {
+  "samples": 227738,
+  "p1": 0.75,
+  "p5": 0.75,
+  "p50": 3.75,
+  "frac_below_thin": 0.1166,
+  "thin_components": 2513,
+  "thin_components_ge_min": 204,
+  "thin_voxels_in_kept_components": 17691
+ },
+ "width_hist_mm": {
+  "<1.5": 13691,
+  "1.5-2": 8503,
+  "2-3": 11173,
+  "3-4": 14097,
+  "4-6": 15151,
+  "6-8": 8204,
+  ">8": 5979
+ },
+ "opening_2mm_volume_retained_frac": 0.9709,
+ "voids": {
+  "interior_voids": 208,
+  "inscribed_diam_bins_mm": "<2,2-6,6-10,10-20,20-40,>40",
+  "counts": [
+   154,
+   44,
+   10,
+   0,
+   0,
+   0
+  ],
+  "n_below_6mm": 198,
+  "n_ge_6mm": 10,
+  "area_frac_below_6mm": 0.7231,
+  "total_interior_void_area_cm2": 26.8,
+  "median_inscribed_diam_mm": 0.8,
+  "mean_equiv_diam_mm": 2.9,
+  "note": "voids = z-projection gaps not touching the array border; ragged-silhouette notches that open to the exterior are excluded"
+ },
+ "thin_skeleton_voxels": 29957
+}
