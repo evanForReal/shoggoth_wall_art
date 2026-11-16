@@ -55,6 +55,10 @@ Risk: lossy for anyone reading STATUS alone; DECISIONS remains the full record. 
 
 **SL-16** · 16:55 · Committed the RP-2 orchestrator edits (AGENTS protocol, DECISIONS disclosure + order rule, CLAUDE map, aesthetics trim, this log) as [PROVISIONAL] before sign-off, so they survive a container reclaim; sign-off batched with the Structural/Fabrication/docs-worker returns. · `[judgment]`
 
+**SL-17** · 17:05 · Added `teams/cad/.gitignore` (stl/ply/obj/npy/npz/blend/pycache) covering every CAD package. Cause: fullpiece_v2/ had no ignore rule; per-gate ignores existed only in gate1..gate2. A 1.4 M-tri STL is ~70 MB. Per-gate ignores left in place (redundant, harmless). · `[judgment]`
+
+**SL-18** · 17:05 · Verdict snapshots + extended tally script committed (4dd6f70) after re-running the script myself (5/5 PASS, exit 0). The worker hand-transcribed the issue JSON; counts and ids are machine-checked against manifests and DECISIONS, note text only eyeballed. · `[judgment]`
+
 ---
 *Edit log*
 

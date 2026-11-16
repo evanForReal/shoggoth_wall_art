@@ -1,0 +1,8 @@
+# Regenerable geometry outputs; never commit (see each package run_all.sh)
+*.stl
+*.ply
+*.obj
+*.npy
+*.npz
+*.blend
+__pycache__/
