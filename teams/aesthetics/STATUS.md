@@ -11,7 +11,7 @@
 
 ## Current State
 
-**Round-05 (mask-direction generation round): CHARTERED, BLOCKED on Canva AI credits** (sole generator; no in-environment fallback exists — logged as a single-point dependency per RP-1 item 6). R04 backpropped: concept direction VALIDATED (c01/c02 loved). Round-05 is all-generated: group A = mask studies on the winning body (carved-serene vs flat-graphic vs void-mouth vs none; asymmetric placements); group B = body refinement (more horrific/less octopus, asymmetry, sleek Beksiński; Gaudí gradient + Shlian crisp emergence; root-grip plant shelves).
+**Round-05 RE-CHARTERED (2026-11-16): full-piece composition round, generated IN-HOUSE** by the CAD geometry pipeline (Gate-2 vocabulary approved by Evan). Canva blocker moot for this round. Board will carry composition variants: mask placement/treatment (carved-serene vs flat-graphic), tentacle layout, shelf placement, maw presence — rendered via bpy with the locked shader. R04 backpropped: concept direction VALIDATED (c01/c02 loved). Round-05 is all-generated: group A = mask studies on the winning body (carved-serene vs flat-graphic vs void-mouth vs none; asymmetric placements); group B = body refinement (more horrific/less octopus, asymmetry, sleek Beksiński; Gaudí gradient + Shlian crisp emergence; root-grip plant shelves).
 
 Locked by r01-r04: Beksiński surface core (webbing/ochre/bone-crust/flowstone/rust, gloss accent only); refined-room, non-centerpiece decor; bas-relief body + multi-anchor freeform spread with strong depth variance; mask carved into mass (serene monumental or flat graphic), never a worn/applied object; tentacle-grips-pot plant shelves; horrific asymmetry; no chibi, no comical, no trophy, no corner-wrap (shelved).
 
