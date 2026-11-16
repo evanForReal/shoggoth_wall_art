@@ -5,82 +5,45 @@
 
 ## Exec Summary (newest first)
 
-- 2026-11-16: Round-05 board ASSEMBLED (13 cards, review/rounds/round-05/): hero (4 views) + 4 one-axis variants (2 views each) + comparison sheet vs c01, all rendered in-house from the real parametric geometry. Axes on the ballot: mask carved-serene vs smiley, maw y/n, radial vs diagonal layout, shelves A vs B. CAD self-assessment in manifest notes (body not yet c01 sprawl; refinement continues post-verdict). Awaiting Evan deploy+ping approval.
-- 2026-11-15: Hygiene pass (audit RP-1 item 4): takeaways r02-r04 added, rejected list added, r04 prompts + hotlink inventory committed. NB: round-05 has no manifest/directory yet; charter only, blocked on Canva credits.
-- 2026-11-14: Round-01 verdicts backpropped (issue #1). Round-02 trawl initiated: cutesy-horror, wall-integration, surface-finish.
-- 2026-11-13: Round-01 trawl initiated. 12 images queued across 3 axes.
+- 2026-11-16: R05 verdicts in (issue #5: 1 love / 2 like / 10 dislike) + Evan re-center: smiley emoticon + horrific toothed maw central. Fullpiece-v2 building for round-06.
+- 2026-11-16: Round-05 board assembled and deployed: 13 in-house renders (hero + 4 one-axis variants + sheet vs c01).
+- 2026-11-15: Hygiene pass (RP-1 item 4): takeaways, rejected list, r04 prompts + hotlink inventory committed.
+- 2026-11-14: Rounds 02-04 run and backpropped; methodology restructured to 4 groups x 12.
+- 2026-11-13: Round-01 trawl initiated.
 
 ## Current State
 
-**Round-05 VERDICTS IN (issue #5, 1L/2L/10D) + Evan re-center.** Locked: side-profile depth (h4 love), shelf arrangement A + placement, radial layout, local Beksiński texture quality. Central design = classic smiley emoticon (serious, monumental execution — v1's cartoon version rejected) + gaping maw with asymmetric horrific teeth. Develop: eye-covered writhing surface, masquerading-face motif, muscular tentacles (not pale whips), integrated buttress, restored cohesive creature form + organic tones. Round-06 = fullpiece v2 board on these directives.
+**Round-06 = fullpiece-v2 board.** Central design: classic smiley emoticon (exact canonical geometry, executed monumental/eroded, pale bone, carved in; v1 cartoon execution rejected) + gaping maw with asymmetric horrific teeth. Develop: eye-covered writhing surface, masquerading-face device, muscular tentacles, buttress integrated as a limb, cohesive creature form with organic tonal zones. Kept from r05: side-profile depth (h4 love), shelf arrangement A layout (conditional on restoring 300 mm headroom — v1 S3 had ~160 mm, undisclosed on the r05 board; see session log SL-02/SL-10), radial layout, local texture.
 
-Superseded round-05 charter: **full-piece composition round, generated IN-HOUSE** by the CAD geometry pipeline (Gate-2 vocabulary approved by Evan). Canva blocker moot for this round. Board will carry composition variants: mask placement/treatment (carved-serene vs flat-graphic), tentacle layout, shelf placement, maw presence — rendered via bpy with the locked shader. R04 backpropped: concept direction VALIDATED (c01/c02 loved). Round-05 is all-generated: group A = mask studies on the winning body (carved-serene vs flat-graphic vs void-mouth vs none; asymmetric placements); group B = body refinement (more horrific/less octopus, asymmetry, sleek Beksiński; Gaudí gradient + Shlian crisp emergence; root-grip plant shelves).
-
-Locked by r01-r04: Beksiński surface core (webbing/ochre/bone-crust/flowstone/rust, gloss accent only); refined-room, non-centerpiece decor; bas-relief body + multi-anchor freeform spread with strong depth variance; mask carved into mass (serene monumental or flat graphic), never a worn/applied object; tentacle-grips-pot plant shelves; horrific asymmetry; no chibi, no comical, no trophy, no corner-wrap (shelved).
+**Locked r01-r05:** Beksiński surface core (webbing/ochre/bone-crust/flowstone/rust; gloss accent only); refined-room, non-centerpiece decor; bas-relief body + multi-anchor freeform spread, strong depth variance; mask carved into the mass, never worn/applied, emoticon form; tentacle-grips-pot plant shelves; horrific asymmetry.
 
 ## Vision Constraints
 
-- Style references: HR Giger (visual), Zdzisław Beksiński (visual), HP Lovecraft + top-rated fan art (conceptual)
+- Style: Giger + Beksiński (visual), Lovecraft + top fan art (conceptual)
 - Subject: Shoggoth; happy-face mask is the one clean, contrasting element
-- Complexity: visually rich and detailed — no sparse or minimal interpretations
-- Scale: ~3×2–3×3 ft final piece; early drafts small/exploratory
+- Complexity: visually rich; no sparse/minimal interpretations
+- Scale: ~3x2-3x3 ft
 
 ## Liaison
 
-*(Exchange active constraints with Structural here. Both leads must sign off.)*
+*(Active constraints exchanged with Structural. Both leads sign.)*
 
-- 2026-11-14, aesthetics→structural: Format converging on wall-concentrated piece — flat-back relief or trophy-proud body with freeform tentacle spread across wall plane (round-01: 06/07/08 loved, 05 note). Mount design should assume multiple tentacle terminations contacting the wall, not a single contained silhouette. Signed: aesthetics-lead (orchestrator), structural-lead (docs-reviewer).
+- 2026-11-14, aesthetics->structural: wall-concentrated piece, flat-back relief, multiple tentacle terminations contacting the wall. Signed: aesthetics-lead (orchestrator), structural-lead (docs-reviewer).
 
-## Takeaways
+## Takeaways (full rows: docs/DECISIONS.md)
 
-**Round-01 (issue #1):**
-- Surface: Beksiński decay palette > Giger biomech. Giger acceptable only as architecture merging with wall (08).
-- New hard constraints: blend with interior decor; mild-cutesy element wanted.
-- Format: wall relief / trophy formats all loved *(superseded r03: trophy/plaque dead, f06)*; freeform, wall-concentrated spread preferred over framed/contained.
-- Mask: literal historical/menacing mask refs dead (09/10/11 all disliked). Happy-face mask direction → benign/cute, probed in round-02 cutesy-horror axis.
-
-**Round-02 (issue #2; 0 love / 3 like / 4 dislike of 7):**
-- Chibi/plush = hard no. Reference is Beksiński artwork, not cute.
-- Gaudí organic architecture: strong direction (05, liked w/ note).
-- Mosaic sprawl: right volume, wrong venue (07).
-- Coral texture out (10; confirmed r03 s07).
-
-**Round-03 (issue #3; 15 love / 13 like / 20 dislike of 48; no notes, locks inferred from votes):**
-- Artistic: Beksiński sweep loved (AA78, 1984, Y, 1957 relief; Beksiński-idiom digital art). Historic-medium outliers dead.
-- Surface core: calcified webbing (s01), mummified ochre (s02), bone crust (s03), flowstone (s05), rust (s06). Gloss (urushi/scarab/raku/verdigris) = accent only. Coral/barnacle repeat textures dead.
-- Decor: refined dark rooms win (velvet salon d03 loved; d10, d07, d08 liked). Cluttered gothic + whole-room Giger dead.
-- Format: Ghiberti bas-relief (f02) + Wu Zei multi-anchor spread (f04) loved = depth-variance hybrid. Trophy/plaque dead (f06). Tensegrity assist liked (f11).
-
-**Round-04 (issue #4; 6 love / 18 like / 19 dislike of 43):**
-- Concepts validated: c01 velvet-salon baseline + c02 stone-smile loved.
-- Directives: horrific asymmetry + sleek Beksiński (c03); less octopus-literal (c07); not a centerpiece (c05); mask gets its own design round (c04).
-- Mask: Bayon m01 loved; m12, smiley graphic m07, Bomarzo void-mouth m08 liked. All applied-object masks dead. Mask carved into mass, never worn. (Applied-mask rule is orchestrator inference from votes, not an Evan statement.)
-- Plants: root-over-rock bonsai p07 loved, so tentacle-grips-pot. Trailing/kokedama/planter-tile/living-wall liked. Creature-covered-in-plants dead.
-- Depth: Gaudí gradient v03 + Shlian crisp projection v08 loved. v01/v04/v06/v11 liked. Dead: v02, v05, v07, v09, v10, v12.
-- Corner-wrap shelved (c05 note: "worth exploring down the road").
-
-**Round-05 (issue #5; 1 love / 2 like / 10 dislike of 13):**
-- h4 side profile loved: depth/relief profile locked.
-- Shelves A + placement praised (h1); v4/B dead; v3 diagonal dead; radial stands.
-- Serene blank face dead (h3); v1 cartoon smiley execution dead; no-maw (v2) dead.
-- Maw must read as a real monstrous mouth; buttress must integrate; creature form/organic tones lost to texture — restore (h1/h2).
-- Re-center (direct chat): smiley emoticon + horrific asymmetric-toothed maw central; eye-covered writhing surface, masquerading face, muscular tentacles.
+- **r01:** Beksiński decay > Giger biomech; must blend with decor; freeform wall-concentrated spread.
+- **r02:** chibi hard no; Gaudí organic architecture strong.
+- **r03:** Beksiński sweep loved; surface core locked; refined dark rooms; bas-relief + multi-anchor spread.
+- **r04:** c01/c02 concepts loved; horrific asymmetry, less octopus, not a centerpiece; Bayon mask loved; carved never applied; root-over-rock shelves.
+- **r05:** side profile loved; serene face, cartoon smiley, no-maw, diagonal, shelves B dead; maw must exist; buttress must integrate; restore creature form/organic tones. v2-v4 rejections are bare dislikes (reason inferred).
 
 ## Rejected (do not revisit without Evan)
 
-- Chibi / plush / toy-cute (r02, hard no)
-- Serene blank/nondescript carved face (r05 h3)
-- Cartoon/sticker smiley execution (r05 v1 — the emoticon concept itself is approved, this execution is not)
-- Maw-less composition (r05 v2)
-- Diagonal-sweep layout (r05 v3)
-- Shelf arrangement B (r05 v4)
-- Literal historical masks (r01 09/10/11)
-- Applied or worn mask objects (r04: gold/Noh/Budai/comedy/Venetian/folk)
-- Giger biomech skin (r01 01)
-- Gothic vertebral (r01 02)
-- Trophy plaque format (r03 f06)
-- Coral/barnacle repeat textures (r02 10, r03 s07)
-- Historic-medium novelties: ukiyo-e, tapestry, stained glass (r03)
+- Chibi/plush/toy-cute (r02) · Giger biomech skin, gothic vertebral (r01) · literal historical masks (r01)
+- Applied/worn mask objects (r04) · serene blank carved face (r05 h3) · cartoon/sticker smiley execution (r05 v1; concept approved)
+- Maw-less (r05 v2) · diagonal sweep (r05 v3) · shelf arrangement B (r05 v4)
+- Trophy plaque (r03 f06) · coral/barnacle repeat textures (r02/r03) · ukiyo-e/tapestry/stained glass (r03)
 - Corner-wrap: shelved, not dead (r04 c05)
 
 ---
@@ -97,3 +60,4 @@ Locked by r01-r04: Beksiński surface core (webbing/ochre/bone-crust/flowstone/r
 | 2026-11-15 | docs-worker | Hygiene pass: takeaways r02-r04, rejected list, exec summary line | docs-reviewer |
 | 2026-11-16 | orchestrator | Round-05 board assembled (exec line); manifest + images committed | docs-reviewer |
 | 2026-11-16 | orchestrator | R05 backprop: verdicts + re-center into Current State, takeaways, rejected list | docs-reviewer (flagged: re-center items incl. "muscular tentacles (not pale whips)" are chat-sourced, not in issue #5; superseded r05 charter paragraph retained below new state) |
+| 2026-11-16 | orchestrator | Trimmed to cap (audit cycle 2): superseded r05 charter dropped, r01-r04 takeaways folded to one line each (detail in DECISIONS), r05 exec line, locked line updated for r05 (serene mask removed), headroom condition on shelves A | [PROVISIONAL] |

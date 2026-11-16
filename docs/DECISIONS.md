@@ -2,6 +2,8 @@
 
 **Append-only.** Never delete or modify existing entries.
 
+**Row order (from 2026-11-16):** new rows insert directly under the table header (newest-first). Rows above the 2026-11-16 rows predate this rule and are not reordered.
+
 ## Schema
 
 | Field | Description |
@@ -50,4 +52,5 @@
 | 2026-11-15 | orchestrator | Appended step-2 geometry-method row (covers reviewer flag above) | docs-reviewer (content reviewed in RP-1 pass) |
 | 2026-11-16 | orchestrator | Appended hybrid geometry-method row (Evan verdict) | docs-reviewer |
 | 2026-11-16 | orchestrator | Appended vocabulary approval + round-05 re-charter (Evan verdicts) | docs-reviewer (flagged: vocabulary row sits above the earlier hybrid row, chronological order inverted; no earlier rows modified) |
+| 2026-11-16 | orchestrator | Disclosure (audit cycle 2, RP-2 item 6): commit 3e58215 edited the body of the existing 2026-11-15 "Step-2 geometry ownership" row in place — old text ended "Method ... to be selected from the toolchain assessment; selection will be logged here."; new text ends "Method selected same day — see the Step-2 geometry method row." Meaning unchanged (forward pointer resolved), but it breached append-only and was not logged. Row left as-is; this entry is the record. Also added the row-order rule to the header. | [PROVISIONAL] |
 | 2026-11-16 | orchestrator | Appended round-05 verdict row + aesthetic re-center row (issue #5 + Evan direct chat) | docs-reviewer (flagged: re-center row is chat-sourced, unverifiable, no contradiction with issue notes; v2/v3/v4 rejections are inferred from bare dislikes without notes) |

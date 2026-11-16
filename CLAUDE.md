@@ -30,8 +30,11 @@ review/
 review-app/                      ← GitHub Pages swipe-board (DO NOT EDIT)
 aesthetics vision/               ← raw human input (DO NOT EDIT)
 agent orchestration/
+review/verdicts/round-NN.json    ← verdict snapshots from GitHub issues
+tools/                           ← repo scripts (verify_tallies.py)
 artifacts/
   audit/                         ← audit exec summaries
+  session-log/                   ← orchestrator judgment-call log (non-verdict choices)
 ```
 
 ## Ground Rules
@@ -56,3 +59,4 @@ artifacts/
 |------|-------|--------|---------------|
 | 2026-11-13 | docs-lead | Initial creation | docs-reviewer |
 | 2026-11-15 | docs-worker | Repo map: dropped nonexistent knobs dir; added AUDIT.md, teams/audit, analysis/, artifacts/audit | docs-reviewer (flagged: tools/ missing from map) |
+| 2026-11-16 | orchestrator | Repo map: added tools/ (closes flag above), review/verdicts/, artifacts/session-log/ | [PROVISIONAL] |

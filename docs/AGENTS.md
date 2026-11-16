@@ -49,6 +49,13 @@ date | agent | change | signed-off-by
 
 Both the editing agent and the confirming agent append to the edit log in the same commit. No self-sign-off.
 
+**Sign-off substance rules (RP-2, 2026-11-16):**
+- The signed-off-by cell names what was verified (e.g. `docs-reviewer (verified: tally vs issue #5, 3 notes)`), not just the reviewer.
+- An open flag is not a signature: the cell reads `FLAG OPEN: <issue>` until the flag is resolved by a later row. Only cosmetic/no-action flags may be signed through, and must say so.
+- Clearing a sign-off also clears the matching `[PROVISIONAL]` tags in the file body, in the same commit.
+- A review board may ship cards that depend on unsigned sources only if the manifest notes name the unsigned source.
+- Engineering numbers in READMEs/STATUS must trace to a committed JSON or script output; unsourced numbers are cut or marked "unsourced".
+
 ## Review-Round Lifecycle
 
 1. **Trawl** — Workers generate assets per axes defined by Aesthetics Lead.
@@ -69,6 +76,8 @@ Departures from policy. Append only.
 
 - **2026-11-14, Haiku sign-offs.** Cause: account 5-hour Sonnet rate limit cut off all Sonnet subagents (reset 19:10 UTC) while Evan directed work to continue. Sign-offs ran on Haiku, labelled "(haiku)". Affected: DECISIONS edit-log rows (r02+r03 verdicts, r04 verdict) and aesthetics STATUS rows (r02/r03 backprop, r04 backprop). Cost: haiku signed wrong r02/r03 tallies; caught and superseded by the DECISIONS correction row (ee57a70). Model policy not amended.
 - **2026-11-14, orchestrator trawled r04 mask group inline.** Separation-of-duties exception (orchestrator trawled, assembled, backpropped). Cause: same rate limit. Disclosed in round-04 manifest notes.
+- **2026-11-16, orchestrator model.** The model policy ("all subagents run Sonnet") governs subagents; the Orchestrator runs in the main session on whatever model Evan selects. Commit trailers name the Orchestrator's model, which is why they differ from the subagent model. Evan switched the Orchestrator's model mid-session on 2026-11-16 and asked for an Orchestrator session log so its choices can be audited later: artifacts/session-log/. Closes audit cycle-2 carry-over (RP-2 item 8). Model policy for subagents unchanged.
+- **2026-11-16, orchestrator signs as aesthetics-lead.** The Orchestrator has been acting as Aesthetics Lead (liaison signature in teams/aesthetics/STATUS.md). Consequence: in council votes the Orchestrator does not also cast an aesthetics-lead vote (would double-count one actor). Logged at RP-2 vote.
 
 ---
 *Edit log*
@@ -79,3 +88,4 @@ Departures from policy. Append only.
 | 2026-11-15 | orchestrator | Added Audit Lead to hierarchy + charters (Evan directive) | docs-reviewer |
 | 2026-11-15 | docs-worker | Added Deviation log section | docs-reviewer |
 | 2026-11-15 | orchestrator | CAD charter amended: owns step-2 geometry | docs-reviewer |
+| 2026-11-16 | orchestrator | Sign-off substance rules (RP-2 item 5); deviation-log entries: orchestrator model, orchestrator-as-aesthetics-lead | [PROVISIONAL] |
