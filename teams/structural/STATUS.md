@@ -1,9 +1,10 @@
 # Structural Team — STATUS.md
 
-**Status:** ACTIVE — engineering pass v1 delivered, peer-signed. Design case locked (DECISIONS 2026-11-15). Awaiting CAD mass model.
+**Status:** ACTIVE — engineering pass v1 delivered, peer-signed. Design case locked (DECISIONS 2026-11-15). Awaiting CAD mass model. RP-2 item 3 numbers issued 2026-11-16 [PROVISIONAL].
 
 ## Exec Summary (newest first)
 
+- 2026-11-16: RP-2 item 3 delivered (`analysis/rp2-strut-limb-voids.md`). (a) 6 mm rule for blind pockets: CONDITIONAL SIGN (floor >= 2.0 mm, exclusion zones). (b) ONE strut spec: embedded core I >= 11,000 mm^4 (24 x 3.0 tube or 22 mm solid, L_eff 500 mm, chord <= 470 mm); fullpiece v1 solid r15 FAILS creep buckling (87 N < 104 N); mesh-spec 6,300 rejected. (c) shelf arm root I >= 1.2e5 mm^4, solid core d >= 40 mm (creep sag governs). (d) 22 kg is a solid proxy; realistic ~11 kg (7-15); mount D/C 0.42-0.46 at 14-22 kg. Hand calcs, E/creep unmeasured. [PROVISIONAL]
 - 2026-11-15: Engineering pass v1 (peer-signed): shelf moment governs (worst 295 N tension per upper anchor); stud-fastened cleat passes, nails and single toggles fail; sculpture est. 5-14 kg. See `analysis/load-model-v1.md`.
 - 2026-11-14: Liaison from Aesthetics: mount design to assume multiple wall-contacting tentacle terminations, freeform spread (not a contained silhouette).
 - 2026-11-13: Stub created. Functional constraints captured. No structural work started.
@@ -23,6 +24,8 @@ Engineering pass v1 delivered and peer-signed. Hand calcs, no FEA, no mesh yet. 
 - `analysis/load-model-v1.md`: plant-shelf cantilever (5 kg x 1.5 SF = 73.6 N, p = 10-30 cm, s = 8-12 cm), sculpture self-weight (5-14 kg, nominal ~9 kg), anchor options table with D/C verdicts, multi-anchor spread (6-10), whip stiffness, cable vs strut assist, open questions.
 - `analysis/side-profile-cantilever.svg`: protrusion variance + loaded shelf free body.
 - `analysis/front-anchor-map.svg`: 8-anchor map over c01 silhouette (6 shelf + 2 hold-down).
+- `analysis/rp2-strut-limb-voids.md` [PROVISIONAL]: blind-pocket verdict + conditions, strut core spec (Euler + creep, beam-column, foot pad/fastener), shelf-arm min I, mass/mount check, assumptions table. Supersedes load-model-v1 Section 6 strut member and mesh-spec-v1 Section 5 member row.
+- Open: coupon test for E and creep (all [GENERAL]); fullpiece_v2 review (mass, hard-points); Evan stud map and room temperature.
 - Blocked on: CAD mass model from real mesh. (Wall-construction answer received: drywall on wood studs.)
 
 ## Liaison
@@ -31,6 +34,8 @@ Engineering pass v1 delivered and peer-signed. Hand calcs, no FEA, no mesh yet. 
 
 - 2026-11-14, aesthetics→structural: Format converging on wall-concentrated piece — flat-back relief or trophy-proud body with freeform tentacle spread across wall plane (round-01: 06/07/08 loved, 05 note). Mount design should assume multiple tentacle terminations contacting the wall, not a single contained silhouette. Signed: aesthetics-lead (orchestrator), structural-lead (docs-reviewer).
 - 2026-11-14, liaison v2 (r03 verdicts + vision sketch IMG_0073): (a) trophy-plaque format dead; body is bas-to-mid relief, tentacles spread freeform with multiple wall anchors (f02+f04 loved). (b) NEW LOAD CASE: the 3 load-bearing tentacle spans are plant shelves — flat tops, protrusion clear of vertical obstruction, must carry potted-plant load (soil+water weight, est. 2-5 kg per span) plus sculpture self-weight; anchor spec (e.g. nails per sketch — recommend upgrading to screw/cleat) to be engineered. (c) Strong horizontal protrusion variance wanted across the piece. (d) Tension-cable assist acceptable aesthetically (f11 liked). Signed: aesthetics-lead (orchestrator), structural-lead (docs-reviewer/haiku).
+
+- 2026-11-16, structural→cad: [PROVISIONAL] build to three numbers (calcs in `analysis/rp2-strut-limb-voids.md`). (1) Strut core: I >= 11,000 mm^4 at every section, min OD 24 mm hollow (wall >= 3.0 mm) or 22 mm solid, chord <= 470 mm (else I >= 0.0498 c^2), axis within 10 mm of tip/foot node centroids, 8 mm steel rod through any splice (core too long for the 256 mm bed); wrap uncredited. Replaces load-model 20 x 1.2, mesh-spec 26 mm / 6,300, fullpiece solid r15. (2) Shelf arm root: I >= 1.2e5 mm^4, Z >= 3,400 mm^3, solid core d >= 40 mm (or hollow equivalent, wall >= 3.0 mm), held to 0.5 p, axis in XY at print. (3) Strut foot: pad >= 75 x 60 mm at datum, stand-off <= 30 mm, two #10 x 2.5 in stud screws 40 mm apart, on a stud line or the cleat extension, never bare drywall. Also: seat embed 25 mm (v1 has 16); blind pockets < 6 mm allowed only floor >= 2.0 mm and outside seat/pad/strut/arm-root/joint-land zones; mesh-spec Section 0 buttress rule becomes "p > 250 mm or drywall-only"; report real hollowed mass (nominal ~11 kg, cap 14).
 
 ## Takeaways
 
@@ -48,3 +53,4 @@ Engineering pass v1 delivered and peer-signed. Hand calcs, no FEA, no mesh yet. 
 | 2026-11-14 | orchestrator | Liaison v2: plant-shelf load case, relief+spread format, depth variance | docs-reviewer (haiku) |
 | 2026-11-15 | structural-lead | Engineering pass v1: load model, anchor options, diagrams | docs-reviewer |
 | 2026-11-15 | structural-lead | Rev after peer review: strut statics corrected (295 to ~92 N, not ~18 N), stud-screw conversion, rounding, labels | docs-reviewer |
+| 2026-11-16 | structural-lead | RP-2 item 3: added analysis/rp2-strut-limb-voids.md; exec line, Current State, Liaison to CAD (strut core, arm root, foot), blind-pocket verdict | [PROVISIONAL] |

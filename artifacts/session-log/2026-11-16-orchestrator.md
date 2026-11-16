@@ -66,6 +66,14 @@ Why now: form changes are cheap before renders and expensive after Evan votes on
 
 **SL-21** · ~17:20 · 6 mm blind-pocket relaxation: Fabrication CONDITIONAL (C1-C6: mouth faces within 45 deg of print-up, no undercut, mouth >= 2 mm, depth <= 3x mouth, floor >= 2.6 mm). Not adopted yet — waits on Structural's independent verdict. Fab's limits are [GENERAL] FDM practice, unmeasured; Evan's printer is still unknown. · `[judgment]`
 
+**SL-22** · ~17:35 · Blind-pocket relaxation ADOPTED as the UNION of Structural's and Fabrication's conditions (stricter value wins: floor 2.6 mm from Fab over Structural's 2.0). Logged as an RP-2 outcome row in DECISIONS, explicitly marked "not an Evan verdict". · `[judgment]`
+Why in DECISIONS: AUDIT.md step 4 requires adopted proposals to be appended there; RP-1 set the precedent.
+
+**SL-23** · ~17:35 · Forwarded Structural's numbers to the running CAD worker as hard build targets: buttress core 22 solid / 24x3 tube, foot pad >= 75x60 mm, shelf-arm root solid core >= 40 mm to 0.5 p, no-pocket/no-eye load zones, keep solid-mass proxy <= 22 kg. Left the 26 mm-vs-22 mm core choice to CAD (26 solid passes). · `[judgment]`
+Consequence for the look: 40 mm arm roots make the shelf limbs visibly thicker — this pushes TOWARD Evan's "muscular tentacle" ask, so no conflict expected. No-eye zones around arm roots and pads reduce eye coverage near shelves.
+
+**SL-24** · ~17:35 · Did not act on Structural's suggested mesh-spec rewording ("buttress required only for p > 250 mm or drywall-only"). Shelf arrangement A's p=290 shelf still gets the buttress; Evan approved the buttress tentacle, and making it optional is a design change he should see, not a spec edit. · `[judgment]`
+
 ---
 *Edit log*
 
