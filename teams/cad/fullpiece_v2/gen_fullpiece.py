@@ -252,14 +252,14 @@ def run(vname, vox, outdir):
     # fingers (masquerade B): tendrils over the bezel from behind, tips pressed on the face rim
     fing = []
     if pr['masq'] == 'fingers':
-        for angd in (60, 98, 128, 12, -28):
+        for angd in (22, 62, 112, 148, -22):
             a = np.deg2rad(angd + rng.uniform(-5, 5)); dvec = np.array([np.cos(a), np.sin(a)])
             Rm = MASK_R
-            P0 = np.array(MASK_C) + dvec * Rm * 2.15; P3 = np.array(MASK_C) + dvec * Rm * 0.86
+            P0 = np.array(MASK_C) + dvec * Rm * 1.75; P3 = np.array(MASK_C) + dvec * Rm * 0.86
             Pm = np.array(MASK_C) + dvec * Rm * 1.30
             perp = np.array([-dvec[1], dvec[0]]) * rng.uniform(-20, 20)
-            P = np.array([[P0[0], P0[1], 62.0], [Pm[0] + perp[0] * 1.5, Pm[1] + perp[1] * 1.5, 116.0],
-                          [0.5 * (Pm + P3)[0] + perp[0] * 0.6, 0.5 * (Pm + P3)[1] + perp[1] * 0.6, 116.0], [P3[0], P3[1], 84.0]])
+            P = np.array([[P0[0], P0[1], 66.0], [Pm[0] + perp[0] * 1.5, Pm[1] + perp[1] * 1.5, 114.0],
+                          [0.5 * (Pm + P3)[0] + perp[0] * 0.6, 0.5 * (Pm + P3)[1] + perp[1] * 0.6, 112.0], [P3[0], P3[1], 80.0]])
             s_ = np.r_[0, np.cumsum(np.linalg.norm(np.diff(P, axis=0), axis=1))]
             pts = PchipInterpolator(s_, P, axis=0)(np.linspace(0, s_[-1], int(s_[-1] / 1.2) + 10)); t = np.linspace(0, 1, len(pts))
             r = 13.0 * (1 - t) ** 0.7 + 5.5 + 2.0 * np.sin(2 * np.pi * 1.5 * t + angd)
@@ -404,12 +404,12 @@ def run(vname, vox, outdir):
 
     def base_f(z, k):
         """web (gated) + belly mounds + muscular limbs with root fillets."""
-        f = np.maximum(web_f(z), Hm - z)
+        f = np.maximum(web_f(z), np.where(Hm > 0.5, Hm - z, -9.0))
         if k < zlim_limb:
             P3 = np.concatenate([PTS, np.full((len(PTS), 1), z)], 1)
             lf = limbs.field(P3).reshape(X.shape)
             lf = lf + 4.0 * N['rel'](X, Y, z) * (lf > -6)
-            near = (lf > -25) & (f > -25)
+            near = (lf > -6) & (f > -6)
             f = np.where(near, lse(f, lf, 11.0), np.maximum(f, lf))
         return f
 
