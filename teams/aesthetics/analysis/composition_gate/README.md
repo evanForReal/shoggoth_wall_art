@@ -1,0 +1,115 @@
+# Composition gate (RP-3 item 3)
+
+Objective, repeatable composition numbers computed from a (front render, binary mask) pair and compared to bands derived from a trace of c01 (the loved target). Author: aesthetics-analyst (non-CAD). Tool: `tools/composition_gate.py`. Status: [PROVISIONAL] until signed off.
+
+```
+python3 -I tools/composition_gate.py <render.png> <mask.png> [--ref teams/aesthetics/analysis/composition_gate/c01_metrics.json] [--no-diag]
+```
+Render and mask must be pixel-aligned (mask resized nearest if not). Mask: white = creature only. Exit 0 = PASS (all 7), 1 = FAIL. Output also carries `verdict_excl_iou` (see Limitations) and a warning if wall luminance > 15%.
+
+## 1. c01 trace (manual steps, all of them)
+
+Source: `review/rounds/round-04/images/c01_baseline-velvet-salon.jpg` (904x1200). Script: `trace_c01.py`.
+
+1. **Automatic segmentation was tried and rejected.** HSV value > 0.27, green-hue removal: failed. The spotlight pools on the wall (V 0.2-0.4) and dark limb undersides (V 0.13, same as wall) overlap the creature's value range. Not usable even with morphology.
+2. **Outline = manual polygon (~190 vertices)**, read off 3x zoomed, gridded crops (`/tmp` helper, not kept) in four quadrants. Estimated accuracy +-6 px on a 700 px creature (+-1%). Rules applied: creature body, hair/hood halo, mask, three shelf slabs (they are limb flares, per DESIGN_PRINCIPLES 2.1), root fringe to y 748 as one smoothed blob (hair-thin rootlets omitted).
+3. **Excluded by hand:** both pots + plants, hanging string-of-pearls (x 130-175, y 210-350), ferns, lamp, sofa, side table, candle, floor, wall panelling, spotlight pools, the dripping strand tips beyond ~y 425 on the right arm.
+4. **Maw filled** (it is an inset cavity in the chest, not wall; silhouette-level read).
+5. **Interior see-through holes** (wall visible through the limb loops): 5 manual ellipses, kept as holes only where pixel V < 0.22: UL arm loops (293,258) and (257,330); UR arm loops (673,347), (633,372); ML arm loop (227,567). Small lace perforations (<~15 px) are left filled: silhouette, not texture.
+6. **Envelope:** mask bbox 700 x 682 px at (103,82)-(803,764); padded to a centred 700 px square, resampled to 512 x 512 (`c01_mask_envelope.png`). `c01_mask.png` is the same mask at full frame (pixel-aligned with the JPEG) so the tool can take (jpg, mask) as a pair.
+7. **Centreline:** skeleton of the hole-filled mask opened with a disk r = 1.5% of envelope (drops fringe/drips), spurs < 5% pruned iteratively. `c01_centreline.png` (512 px) and `c01_overlay.png` (cyan edge, magenta centreline, yellow limb tips, orange torso blob).
+
+Trace risk: this is a hand trace of AI concept art. The sensitivity sweep below shows which metrics move with trace error.
+
+## 2. Metrics (all on the 512 x 512 envelope unless noted)
+
+| # | Metric | Definition | Maps to |
+|---|---|---|---|
+| 1 | `fill_ratio` | mask area (holes empty) / envelope area | s.4 #10 fill |
+| 2 | `wedge_count` | connected background regions inside the mask's convex hull with area >= 2% of envelope [GENERAL] | s.4 #10 wedges |
+| 3 | `torso_width_frac` | bbox width of the largest blob of the hole-filled mask after opening with a disk r = 12% of envelope [GENERAL], / envelope width | s.4 #2, RP-3 "torso width fraction" |
+| 4 | `limb_reach_ratio` | mean over limbs of (distance from limb tip to torso blob) / torso width | RP-3 "limb reach / torso" |
+| 5 | `limb_count` | pruned-skeleton endpoints with branch length >= 8% of envelope to first junction AND tip >= 5% outside the torso blob [GENERAL] | s.4 #6 |
+| 6 | `head_vs_flesh` | median luma of head blob / median luma of flesh ring. Head = connected region >= 85% of max inside-mask luma after Gaussian blur sigma 1.5% (s.8 recipe); ring = mask pixels within 8% of the head blob, minus a 1% buffer | s.4 #4, #14 |
+| 7 | `iou_vs_c01` | IoU of envelope masks (bbox-aligned, centred in square) vs `c01_mask_envelope.png` | RP-3 item 1 |
+
+Diagnostics (not gating, in `--` output): `empty_hull_ratio`, `wedge_areas_frac`, `torso_height_frac`, `limb_reach_max_ratio`, `head_vs_wall`, `wall_luma`, head centre / area, per-limb tips.
+
+**Deviation from the brief: opening radius.** Brief said ~6% of envelope. At 6% the c01 "torso" blob is 0.87 of envelope width (arms are 14-16% thick lace slabs and survive). 8%: 0.85. 10%: 0.62. 12%: 0.48, a clean head + chest + root column. Used 12%. The number is only comparable between renders using the same 12%.
+
+**Wedge count at 2%** gives 7 for c01 (areas 8.5, 5.5, 5.0, 4.9, 4.7, 3.1, 3.1% of envelope). At the s.4 #10 threshold of 4% it is 5.
+
+## 3. c01 values and pass bands
+
+Tolerances are all [GENERAL]: chosen from trace sensitivity and the s.4 numbers, not fitted to any hero/study. Sensitivity sweep on c01's own mask (edge +-4/8 px, rotate +-4 deg, mirror):
+
+| perturbation | fill | wedges | torso w | reach | limbs | head/flesh | IoU |
+|---|---|---|---|---|---|---|---|
+| base | 0.464 | 7 | 0.479 | 0.532 | 6 | 1.74 | 1.00 |
+| erode 8 px | 0.412 | 7 | 0.463 | 0.423 | 6 | 1.67 | 0.89 |
+| erode 4 px | 0.437 | 7 | 0.469 | 0.450 | 6 | 1.70 | 0.94 |
+| dilate 4 px | 0.488 | 7 | 0.486 | 0.540 | 6 | 1.78 | 0.95 |
+| dilate 8 px | 0.511 | 7 | 0.619 | 0.372 | 6 | 1.80 | 0.91 |
+| rot -4 deg | 0.443 | 7 | 0.465 | 0.533 | 6 | 1.76 | 0.74 |
+| rot +4 deg | 0.434 | 7 | 0.463 | 0.531 | 6 | 1.76 | 0.75 |
+| mirror L-R | 0.464 | 7 | 0.479 | 0.533 | 6 | 1.74 | 0.52 |
+
+| Metric | c01 | Band (pass) | Rule |
+|---|---|---|---|
+| fill_ratio | 0.464 | 0.371 - 0.557 | x0.80..x1.20; trace sweep spans 0.89x-1.10x |
+| wedge_count | 7 | 5 - 9 | +-2; s.4 #10 wants >= 3 at 4% |
+| torso_width_frac | 0.479 | 0.359 - 0.598 | x0.75..x1.25 |
+| limb_reach_ratio | 0.532 | 0.372 - 0.692 | x0.70..x1.30; sweep spans 0.70x-1.02x (most trace-sensitive metric) |
+| limb_count | 6 (3 shelf arms, 2 lower tentacles, 1 curl) | 6 - 8 | lo = s.4 #6 (>= 6); hi = c01 + 2 |
+| head_vs_flesh | 1.74 (head luma 0.62, ring 0.35; wall 0.12, head/wall 5.0) | 1.22 - 3.48 | x0.70..x2.0 |
+| iou_vs_c01 | 1.00 | 0.70 - 1.00 | c01 rotated 4 deg = 0.74; mirrored = 0.52. Below a ~5 deg rotation of c01 = a different figure. No upper bound |
+
+Note c01 fill is 0.46, above the 35-40% eyeballed in DESIGN s.2.1 / 30-45% in s.4 #10: this trace fills lace perforations. Use the trace value; s.4 #10's number should be recalibrated to it (not edited here).
+c01 has 6 skeleton limbs, not the 7 + fringe counted by eye in s.2.1: the 4th lower limb is the right curl and root tendrils are pruned.
+
+## 4. Self-test
+
+Hero masks: `make_hero_masks.py` (wall = per-channel quadratic fit to outer 5% frame; creature = luma > wall + 0.07 or saturation > wall + 0.12; close 3 px; drop specks; fill holes < 0.02% of frame). Shadow on the wall keeps wall hue/saturation, so it is rejected. Visual check: edge follows the geometry; shelf undersides and posts are included (real geometry).
+
+| Render | Result | Pass | Failed | Values |
+|---|---|---|---|---|
+| c01 (jpg + c01_mask.png) | **PASS** | 7/7 | - | (the base row above) |
+| r06 hero (`teams/cad/fullpiece_v2_1/renders/hero_front.png`) | **FAIL** | 4/7 | limb_reach_ratio 0.303 (< 0.372), limb_count 11 (> 8), iou 0.584 (< 0.70) | fill 0.472, wedges 5, torso 0.547, head/flesh 1.45 |
+| r05 hero (`teams/cad/fullpiece/renders/hero_front.png`) | **FAIL** | 4/7 | torso_width_frac 0.758 (> 0.598), limb_reach_ratio 0.152 (< 0.372), iou 0.609 (< 0.70) | fill 0.446, wedges 5, limbs 6, head/flesh 1.39 |
+
+Both heroes carry the wall-luminance warning (0.26 and 0.25 vs <= 0.15 required).
+
+Reading: r06 = spiky clutter (11 skeleton limbs: fingers, posts, spines; limbs short relative to body). r05 = body is a single mass 0.76 of envelope wide, limbs hardly reach out of it (reach 0.15 vs 0.53). Matches Evan's verdicts ("blob", "clunky/cluttered"). Fill, wedge count and head contrast do NOT separate them from c01.
+
+## 5. Round-07 studies (`teams/cad/composition_r07/renders/`)
+
+Scored with `score_r07.py` (reads `study_<id>_front.png` + `study_<id>_mask.png`; writes `r07_scores.json`, `r07_scores.md`). At the time of writing only G1a existed (the other 7 studies in `build/` had no renders yet).
+
+| id | pass | fill | wedges | torso | reach | limbs | head/flesh | IoU | failed |
+|---|---|---|---|---|---|---|---|---|---|
+| G1a | 6/7 (PASS excl. IoU) | 0.392 | 8 | 0.463 | 0.592 | 6 | 1.48 | 0.594 | iou_vs_c01 |
+
+Re-run `score_r07.py` when the other studies land.
+
+## 6. Limitations
+
+- **Single reference, hand-traced.** Bands are c01 +- tolerance, not a population. One trace, +-1% edge error. Reach is the most sensitive (0.70x under 8 px erosion).
+- **Weak discriminators.** fill, wedge count and head/flesh pass both failed heroes. They are necessary-not-sufficient. The discriminating ones are torso width, reach, limb count, IoU.
+- **IoU is chiral and gesture-specific.** c01 mirrored scores 0.52. A study that deliberately explores another gesture (DESIGN s.5 options) will fail IoU legitimately. For those, read `verdict_excl_iou`. IoU is the right check for a study claiming to be the c01 figure; the RP-3 item 1 build gate (>= 0.85 vs the Evan-approved mask) is a separate, stricter use of the same function.
+- **Silhouette only.** No gesture-line, tentacle taper, straight-run, furniture-geometry or shelf-triangle checks (DESIGN s.4 #7, #9, #11, #12). No check that the mask is the single brightest region (#4 beyond head/flesh). Limb count cannot tell a limb from a shelf post or finger; bands cap it at 8.
+- **Head = brightest blurred blob in the mask.** Wrong if a spec highlight, tooth ring or pale limb outshines the mask; check `head_centre_xy` in diagnostics (c01: 0.53, 0.12).
+- **Wall luminance.** Head contrast vs wall is diagnostic only because renders use 25-26% walls versus c01 12%. Render at <= 15% (s.0).
+- **Mask provenance.** For CAD renders the mask should come from the renderer (study masks do) not from thresholding; thresholded hero masks are approximate.
+- **Maw/holes.** c01 trace fills the maw; study masks must too (G1a does) or the maw is counted as a wedge.
+- Parameters marked [GENERAL] are judgment calls; changing one changes every value. Lead may reset (record in edit log).
+
+## Files
+
+`trace_c01.py` (c01 trace), `build_ref.py` (values, bands, overlay), `make_hero_masks.py`, `score_r07.py`, `c01_mask.png`, `c01_mask_envelope.png`, `c01_centreline.png`, `c01_overlay.png`, `c01_metrics.json`, `c01_trace_meta.json`, `hero_r05_mask.png`, `hero_r06_mask.png`, `r07_scores.{json,md}`.
+
+---
+*Edit log*
+
+| Date | Agent | Change | Signed-off-by |
+|------|-------|--------|---------------|
+| 2026-11-17 | aesthetics-analyst | Initial creation: c01 trace, gate metrics/bands, tool, self-test | [PROVISIONAL] |

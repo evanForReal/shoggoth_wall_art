@@ -1,0 +1,142 @@
+{
+ "source": "review/rounds/round-04/images/c01_baseline-velvet-salon.jpg",
+ "ref_mask_envelope": "c01_mask_envelope.png",
+ "params": {
+  "wedge_min_area": 0.02,
+  "torso_open_r": 0.12,
+  "skel_open": 0.015,
+  "spur_prune": 0.05,
+  "limb_min_len": 0.08,
+  "limb_beyond": 0.05,
+  "head_blur": 0.015,
+  "head_frac": 0.85,
+  "ring_out": 0.08
+ },
+ "N": 512,
+ "c01_values": {
+  "fill_ratio": 0.4638,
+  "wedge_count": 7,
+  "torso_width_frac": 0.4785,
+  "limb_reach_ratio": 0.532,
+  "limb_count": 6,
+  "head_vs_flesh": 1.74,
+  "iou_vs_c01": 1.0
+ },
+ "bands": {
+  "fill_ratio": {
+   "lo": 0.371,
+   "hi": 0.5566,
+   "rule": "x0.80..x1.20 [GENERAL]; trace sensitivity (+-8px edge shift) spans x0.89..x1.10"
+  },
+  "wedge_count": {
+   "lo": 5.0,
+   "hi": 9.0,
+   "rule": "+-2 [GENERAL]; DESIGN s.4 #10 needs >=3 at 4%"
+  },
+  "torso_width_frac": {
+   "lo": 0.3589,
+   "hi": 0.5981,
+   "rule": "x0.75..x1.25 [GENERAL]"
+  },
+  "limb_reach_ratio": {
+   "lo": 0.3724,
+   "hi": 0.6916,
+   "rule": "x0.70..x1.30 [GENERAL]; sensitivity x0.70..x1.02"
+  },
+  "limb_count": {
+   "lo": 6.0,
+   "hi": 8.0,
+   "rule": "lo = DESIGN s.4 #6 (>=6); hi = c01+2 [GENERAL]"
+  },
+  "head_vs_flesh": {
+   "lo": 1.218,
+   "hi": 3.48,
+   "rule": "x0.70..x2.0 [GENERAL] (one-sided in spirit: brighter head is fine)"
+  },
+  "iou_vs_c01": {
+   "lo": 0.7,
+   "hi": 1.0,
+   "rule": "lo 0.70 [GENERAL]: c01 rotated +-4deg = 0.74, edge shift +-8px = 0.89, c01 mirrored = 0.52; below a ~5deg rotation of c01 = different figure. No upper bound"
+  }
+ },
+ "c01_diagnostics": {
+  "wedge_areas_frac": [
+   0.0851,
+   0.0546,
+   0.0503,
+   0.0494,
+   0.0468,
+   0.0313,
+   0.0312,
+   0.0046
+  ],
+  "empty_hull_ratio": 0.4385096380312001,
+  "torso_height_frac": 0.947265625,
+  "torso_area_frac": 0.2975959777832031,
+  "limb_reach_max_ratio": 0.6780057485636689,
+  "head_luma": 0.6152815686274509,
+  "flesh_ring_luma": 0.3536062745098039,
+  "wall_luma": 0.12316862745098041,
+  "head_vs_wall": 4.995440652063167,
+  "head_area_frac": 0.007251832771943729,
+  "head_centre_xy": [
+   0.5295862607338018,
+   0.11721571688784804
+  ],
+  "envelope_box_xy_side": [
+   103,
+   73,
+   700
+  ]
+ },
+ "c01_limbs": [
+  {
+   "tip": [
+    0.021484375,
+    0.205078125
+   ],
+   "branch_len": 0.597612705905106,
+   "reach": 0.3244363445275369
+  },
+  {
+   "tip": [
+    0.97265625,
+    0.275390625
+   ],
+   "branch_len": 0.5168405593048564,
+   "reach": 0.22623393470673364
+  },
+  {
+   "tip": [
+    0.025390625,
+    0.623046875
+   ],
+   "branch_len": 0.5559030593048567,
+   "reach": 0.2971896461706155
+  },
+  {
+   "tip": [
+    0.94921875,
+    0.6875
+   ],
+   "branch_len": 0.4807603091770859,
+   "reach": 0.26057937625246747
+  },
+  {
+   "tip": [
+    0.822265625,
+    0.875
+   ],
+   "branch_len": 0.34630597239277683,
+   "reach": 0.15380161814539087
+  },
+  {
+   "tip": [
+    0.17578125,
+    0.96875
+   ],
+   "branch_len": 0.4557047874490656,
+   "reach": 0.2651794286790196
+  }
+ ]
+}

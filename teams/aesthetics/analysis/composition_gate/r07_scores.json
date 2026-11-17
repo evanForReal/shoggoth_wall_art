@@ -1,0 +1,21 @@
+[
+ {
+  "id": "G1a",
+  "verdict": "FAIL",
+  "verdict_excl_iou": "PASS",
+  "n_pass": 6,
+  "failed": [
+   "iou_vs_c01"
+  ],
+  "values": {
+   "fill_ratio": 0.3922,
+   "wedge_count": 8,
+   "torso_width_frac": 0.4629,
+   "limb_reach_ratio": 0.5916,
+   "limb_count": 6,
+   "head_vs_flesh": 1.4778,
+   "iou_vs_c01": 0.5937
+  },
+  "warnings": null
+ }
+]
