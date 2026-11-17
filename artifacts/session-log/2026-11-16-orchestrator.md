@@ -135,6 +135,20 @@ Risk: a silhouette board may read as regress after six rounds. Mitigation: board
 **SL-42** · ~03:25 · Round-07 composition build given to a FRESH CAD agent, not the v1-v2.1 agent. Why: that agent's ~430k-token context is saturated with the feature-union approach the principles doc identifies as the failure; anchoring risk outweighs its context. Method instruction: body as a FIGURE (gesture spline → swept/skinned body → limbs as continuous tapered sweeps rooted in it), no surface detail, value-blocked renders, 8 studies = gestures G1-G4 x 2, doc checklist #1-13 scripted per study; fail >= 3 → fix before report. Started before the audit verdict on method: silhouettes are cheap, and the audit can still redirect the detail stage. · `[judgment]`
 Shelf rule: 3 flat tops >= 150 mm, >= 300 mm headroom, non-collinear; arrangement A (r05 "placement" praise) is NOT enforced — composition wins, deviations disclosed on the board. `[judgment]` — Evan's praise was for a shelf layout he didn't know was unusable (SL-29).
 
+**SL-43** · 02:15 · Audit cycle 3 (artifacts/audit/2026-11-17-exec-summary.md): 1 RED (CAD R1), RP-3 fired. Owning its findings on this log: · `[judgment]`
+- **Correction to SL-35 → `[error]`.** I boarded a hero I had just read as "nowhere near c01" (SL-34), on the premise that the 3x3 ft envelope was what blocked sprawl. That premise was never demonstrated: the auditor's c01 estimate puts limb reach at ~500-570 mm at 914 mm width, and the generator rooted whips 95-140 mm off-centre into a 440 mm clip — the authoring, not the envelope, cut them. The round cost 11 dislikes and asked Evan a question that wasn't the real constraint. Retracted: the envelope is not shown to block composition.
+- **Missing choice 1 (mass):** v2 brief said keep solid proxy <= v1's 22 kg (SL-23); my v2.1 brief raised it to <= 25 kg with no Structural concurrence and no entry. `[error]` (unlogged). Structural's mount check covered 14 kg printed / 22 kg solid; anything above stays unreviewed until v3.
+- **Missing choice 2 (locks):** commit 1015353 dropped "kept from r05: shelves A placement, radial layout, local texture" from aesthetics STATUS with no DECISIONS row and no entry. `[error]` (unlogged). Going to Evan on the round-07 board as RP-3 item 4.
+- **Missing choice 3 (reviews):** v2 and v2.1 went to the board without Structural/Fabrication mesh review, despite RP-2 item 3 asking for it. `[error]` (unlogged). Formally waived for v2/v2.1 (composition renders, superseded); Structural + Fab review moves to the first mesh built from an Evan-approved skeleton (v3).
+- **Timestamps:** entries SL-07..SL-42 carry estimated times that ran ~1 h ahead of git. From SL-43 on, times come from `date -u` at write time.
+
+**SL-44** · 02:15 · RP-3 vote: Orchestrator 3 FOR all 8 items, with two amendments. · `[judgment]`
+- Item 2 (c01-trace test): satisfied in first instance by the round-07 G1 study (c01-derived) scored by the independent composition gate (item 3) incl. silhouette IoU vs a c01 trace; dedicated trace-into-old-generator test runs only if G1 fails the gate. Why: the old generator is being retired as an authoring method either way; testing it costs a rate-limit window for a question the new stage answers.
+- Item 6 (DO-NOT-EDIT carve-out): NOT adding a pre-deploy carve-out to CLAUDE.md myself — that relaxes Evan's own rule in my favour. Instead: boards are assembled in `review/staging/round-NN/` and moved into `review/rounds/` only at deploy, after which they are never edited. SL-36's pre-deploy edit of review/rounds/round-06 is recorded as a breach of the rule as written. `[error]`
+- Cross-team edits: adopting the rule — wording-only fixes "orchestrator on behalf of <team>", owner confirms next spawn; new analysis/scripts/votes come from the owner. SL-32c (heightfield script authored under Fabrication's name) and SL-32a (votes relayed into audit's file) crossed it; Fabrication to re-run/own the script at next spawn.
+- Item 8 stop rule accepted: two composition rounds without a rising like-rate → escalate to Evan for a sketch / pick-from-spread session.
+Lead votes requested from the CAD lead (in flight); majority needs 1 more vote.
+
 ---
 *Edit log*
 
@@ -149,3 +163,4 @@ Shelf rule: 3 flat tops >= 150 mm, >= 300 mm headroom, non-collinear; arrangemen
 | 2026-11-17 | orchestrator | Appended SL-37 (round-06 deploy) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-38..40 (r06 backprop, method change, audit 3) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-41..42 (principles adopted, fresh CAD for r07) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Appended SL-43..44 (audit-3 findings owned, RP-3 vote) | [PROVISIONAL] |

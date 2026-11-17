@@ -1,9 +1,10 @@
 # Audit Team — STATUS.md
 
-**Status:** ACTIVE — cycle 2 complete (2026-11-16); RP-1 held. RP-2 (CAD) filed, awaiting council vote.
+**Status:** ACTIVE — cycle 3 complete (2026-11-17). RP-2 adopted (5 of 8 items held, 3 partial). RP-3 (CAD R1 RED + Orchestration R1/R4) filed, awaiting council vote; items 1 and 4 escalate to Evan.
 
 ## Exec Summary (newest first)
 
+- 2026-11-17: Cycle 3 done. Verdict: the method as practiced (body = union of fixed ellipses + independent features, no figure/skeleton/gesture) cannot reach c01 composition; the SDF/2.5D kernel is not the blocker. r05 1/2/10 and r06 0/1/11 are one failure (composition; side profile is the only thing that works). Orchestrator's composition-first decision (SL-39): agree, amend 4 points. 1 RED (CAD R1), 12 YELLOW. Recenter fires on CAD and on Orchestration/process (R1 Y + R4 Y). RP-3 filed. RP-2: 5 held, 3 partial (Structural/Fab did not review v2 before board; banner buries the question). Log is working; 3 unlogged choices (mass target 22 to 25 kg, lock release, v2 review skipped). Separation of duties: acceptable once, now a pattern; SL-32c crossed the line. Full report: artifacts/audit/2026-11-17-exec-summary.md.
 - 2026-11-16: Cycle 2 done. Verdict: RP-1 held (owner, method, five CAD gates, fullpiece, round-05, board notes all real). r05 backprop verified exact from issue #5: 1 love / 2 like / 10 dislike of 13. 11 YELLOW, 0 RED. Recenter fires on CAD (R1 Y + R4 Y): hero violates the 300 mm plant-headroom constraint and the board did not say so; several README numbers have no committed source; Gate 2 "no net thinning" is selective. Structural and Fabrication idle ~22 h while CAD ran ahead. Sign-offs honored in form, thin in substance (batch-flipped ae60df5). RP-2 filed. Full report: artifacts/audit/2026-11-16-exec-summary.md.
 - 2026-11-15: Cycle 1 done. Verdict: aesthetics record verified and accurate (issues #1-#4 recounted, tallies match). Downstream pipeline has no on-ramp (step-2 geometry unowned; structural/CAD/fab idle; round-05 does not exist yet). 9 YELLOW, 0 RED. Full report: artifacts/audit/2026-11-15-exec-summary.md.
 - 2026-11-15: Team chartered (docs/AUDIT.md, Evan directive). Audit cycle 1 launched: full-project rubric pass + first exec summary.
@@ -51,6 +52,22 @@ Proposed reprioritization:
 
 Vote: ADOPTED 6 of 7 — Orchestrator 3 FOR (session log SL-09); Fabrication 1 FOR (teams/fabrication/analysis/rp2-blind-pockets.md s.7); Structural 1 FOR and CAD 1 FOR (both given in the leads' hand-back reports to the Orchestrator, not written into their own files; relayed here by the Orchestrator 2026-11-17); aesthetics-lead not cast (same actor as Orchestrator, docs/AGENTS.md deviation log). Outcome row: docs/DECISIONS.md 2026-11-16 RP-2 adoption + 2026-11-17 vote-record row.
 
+**RP-3 (2026-11-17, Audit Lead). Trigger: CAD R1 RED; Orchestration/process R1 Y + R4 Y. Items 1 and 4 touch the vision (composition target, release of inferred locks): escalate to Evan via the round-07 board. Remaining items: council vote.** [PROVISIONAL]
+
+Drift: two rounds (r05 1/2/10, r06 0/1/11) failed the named target on composition. Evidence: fullpiece_v2_1/gen_fullpiece.py L25-34 (BODY, BELLIES, mass_ells) and L148-176 (whip `specs`, fixed centre): body is a union of features, no figure; review/verdicts/round-06.json h1, vb2, vc2; fullpiece_v2_1/README.md s.5 (self-grade C on sprawl, "not c01"); session log SL-34 vs SL-35 (board a hero read as nowhere near c01); 1015353 (locks dropped from aesthetics STATUS, no row).
+
+Proposed reprioritization:
+1. **Bind SL-39.** Composition stage authored as a FIGURE (head, torso, N limbs with gesture curves; shelves at limb tips), not a feature set. Evan-approved silhouette + skeleton is a hard input to the 3D generator; build check = silhouette IoU vs approved mask (start >= 0.85, [GENERAL], aesthetics lead may reset). Source of silhouettes: 2D concepts (generated or drawn) or procedural 2D; not CAD's current generator. Owner: Aesthetics lead; CAD consumes.
+2. **c01-trace capability test** before any new 3D: trace c01 silhouette + limb centrelines, feed as mass input to the existing generator, render the same view. Pass = kernel fine, authoring is the issue. Fail = also change the relief/kernel (Option B/D). One worker, hours. Owner: CAD lead.
+3. **Objective composition gate.** DESIGN_PRINCIPLES defines 4-5 numbers from a c01 trace (fill ratio, negative-space ratio, torso width fraction, limb reach / torso, limb count, head-vs-background value contrast). Computed by a non-CAD agent on every silhouette and hero render. Do not board a hero whose self-grade is C or worse on a verdict-named axis unless the card is that question.
+4. **Lock hygiene (Evan).** DECISIONS row: shelf arrangement A placement, radial layout, local-texture-stands are released or re-conditioned; depth profile (h4 x2), smiley + maw motif, Gate-2 vocabulary, 300 mm headroom stand. Mark which locks were inferred. Put on the round-07 board.
+5. **Board mechanics.** Decision-critical question first (card, or notes <= ~200 chars above the 5.6 em fold). Banner CSS change needs Evan OK.
+6. **Cross-team edit rule.** Orchestrator may correct wording (no new numbers) in another team's file with an edit-log row "orchestrator on behalf of <team>", confirmed by the owner at next spawn. New analysis, scripts, votes: owner writes. Add pre-deploy carve-out sentence to CLAUDE.md for review/rounds. Sign the open [PROVISIONAL] edit-log rows (~10: session log 2, DECISIONS 2, aesthetics 2, audit 3 incl. mine, fab 1; plus RP-2 body tag in audit STATUS) within round-07.
+7. **Log the three missing choices** (mass target 22 to 25 kg with Structural concurrence; lock release; skipped Structural/Fab review of v2) and a correction entry for SL-35's envelope premise. Structural review + Fabrication refresh move to the first mesh built from an approved skeleton (v3), stated as waived for v2/v2.1. Waive 2/4/5 tentacle alternates formally until a composition exists, or ask Evan once.
+8. **Stop rule.** If two composition rounds do not raise the like rate, the problem is the brief: escalate to Evan for a sketch or pick-from-spread session; consider Option F (human sculpt of body).
+
+Vote: pending.
+
 ## Takeaways
 
 - Verify verdicts from the issue API, not STATUS prose; recount is cheap (script it).
@@ -64,6 +81,13 @@ Vote: ADOPTED 6 of 7 — Orchestrator 3 FOR (session log SL-09); Fabrication 1 F
 - The 2026-11-16 sign-off burst: real flags on 3 of 7 rows, clean on 4, one miss found by me (Gate 2). Batch sign-off after dependent work shipped is ritual; fix per RP-2 item 5.
 - Silent teams are a signal: Structural and Fabrication unchanged ~22 h while the mesh they were "awaiting" appeared.
 - Next audit (cycle 3, at round-06): fullpiece_v2 vs RP-2 items; Structural/Fabrication sign-offs; r06 backprop recount from issue #6; whether [PROVISIONAL] tags clear with sign-off.
+- Cycle 3: when two rounds fail on the same axis the cause is the method, not the pass. Check what the code can express: v1-v2.1 had no parameter for gesture, silhouette or hierarchy, so verdicts on those could not be acted on.
+- A self-grade of C on a verdict-named axis is a stop sign for boarding. SL-34 and README s.5 predicted r06 exactly.
+- Evan loved the side profile in both rounds; 2.5D depth is the pipeline's strength. Keep it as the depth lock while composition is rebuilt.
+- Disclosure placement matters as much as content: a 1,428-char note in a 4-line scroll banner buries the one question Evan needed to answer.
+- The Orchestrator log works (tags, owned errors, reads written before CAD's). Check it against git for choices that never got an entry: mass target, lock release, skipped review.
+- Orchestrator fixing other teams' flags is fine for wording, not for evidence or votes.
+- Next audit (cycle 4, at round-07): silhouette board vs DESIGN_PRINCIPLES metrics; c01-trace test result; whether the approved silhouette bound the 3D build; RP-3 outcomes; lock release row; [PROVISIONAL] backlog.
 
 ---
 *Edit log*
@@ -74,3 +98,4 @@ Vote: ADOPTED 6 of 7 — Orchestrator 3 FOR (session log SL-09); Fabrication 1 F
 | 2026-11-15 | audit-lead | Cycle 1: exec summary, RP-1 recenter proposal, takeaways | docs-reviewer |
 | 2026-11-16 | audit-lead | Cycle 2: exec line, RP-2 recenter proposal (CAD), takeaways; artifacts/audit/2026-11-16-exec-summary.md | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | RP-2 Vote line: recorded 6 of 7 with a source per vote (Structural/CAD relayed from hand-backs) | [PROVISIONAL] |
+| 2026-11-17 | audit-lead | Cycle 3: exec line, RP-3 recenter proposal, takeaways; artifacts/audit/2026-11-17-exec-summary.md | [PROVISIONAL] |
