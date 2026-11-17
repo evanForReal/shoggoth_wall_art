@@ -2,7 +2,7 @@
 """checks.py items #1-13 + tools/composition_gate.py for every study -> checks.json (merged)."""
 import json, subprocess, sys, os
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.abspath(os.path.join(HERE, '..', '..', '..'))
-IDS = 'S1 S2 S3 S4'.split(); out = {'spec': 'DESIGN_PRINCIPLES s.4 #1-13 (checks.py) + tools/composition_gate.py; see README', 'studies': {}, 'gate': {}}
+IDS = 'S1 S2 S3 S4 S5 S6'.split(); out = {'spec': 'DESIGN_PRINCIPLES s.4 #1-13 (checks.py) + tools/composition_gate.py; see README', 'studies': {}, 'gate': {}}
 for s in IDS:
     subprocess.run([sys.executable, '-I', os.path.join(HERE, 'checks.py'), s], check=True, capture_output=True)
     out['studies'][s] = json.load(open(f'{HERE}/checks/{s}.json'))

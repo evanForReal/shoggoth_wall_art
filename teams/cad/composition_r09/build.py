@@ -127,7 +127,11 @@ def build(S):
         f.add_fn((B['c'][0] - B['a'] - 40, B['c'][1] - B['b'] - 40, 0), (B['c'][0] + B['a'] + 40, B['c'][1] + B['b'] + 40, 200), ellipsoid(B['c'], B['a'], B['b'], (B.get('z', 40), B.get('h', 46))), k=34, kind=1)
     # ---- limbs: smooth sweeps root-to-tip (one continuous curve each), shelf grip at the end
     for Lm in S['limbs']:
-        nm = Lm['name']; c, t, ln = curve(Lm['pts'], 1.5); R = tent_r(t, Lm['R0'], Lm.get('r_tip', 6.0), Lm.get('p', 0.6))
+        nm = Lm['name']
+        if Lm.get('n', 1) > 1:
+            c, t, R, ln = f.add_bundle2(nm, Lm['pts'], Lm['R0'], n=Lm['n'], p=Lm.get('p', 0.7), r_tip=Lm.get('r_tip', 6.0), lump=0.14, nodes=2, seed=Lm.get('seed', 0.0), rngseed=sum(map(ord, nm)) % 997, spread=0.68, rs=0.35, k=3.5)
+            meta['limbs'].append(dict(name=nm, shelf=False, length=float(ln), r0=Lm['R0'], c=c[::8].tolist(), r=R[::8].tolist(), t=t[::8].tolist())); continue
+        c, t, ln = curve(Lm['pts'], 1.5); R = tent_r(t, Lm['R0'], Lm.get('r_tip', 6.0), Lm.get('p', 0.6))
         R = R * (1 + Lm.get('lump', 0.035) * np.sin(7 * t + Lm.get('seed', 0)) + 0.02 * np.sin(19 * t))
         R = np.maximum(R, Lm.get('r_tip', 6.0)); f.sweep(nm, c, R, Lm.get('k', 16.0), kind=2); f.parts[nm] = dict(c=c, r=R)
         meta['limbs'].append(dict(name=nm, shelf=bool(Lm.get('shelf')), length=float(ln), r0=Lm['R0'], c=c[::8].tolist(), r=R[::8].tolist(), t=t[::8].tolist()))
@@ -173,20 +177,36 @@ def build(S):
     def rim_pts(a0, a1, off, n=24): return [(mcx + (rimr(th) + off) * np.cos(th), mcy + (rimr(th) + off) * np.sin(th)) for th in np.radians(np.linspace(a0, a1, n))]
     f.add_rib('maw_rib_L', rim_pts(-100, -260, 14), r0=8.0, r1=5.0, lift=3.0); f.add_rib('maw_rib_R', rim_pts(70, -30, 12), r0=7.0, r1=4.6, lift=3.0)
     # teeth: front row along the rim (varied, some broken), second row shorter and deeper; one dominant fang
-    nt = S.get('teeth', 26); ntot = 0; fang = S.get('fang_angle', 140.0)
-    for row in (0, 1):
-        n_ = nt if row == 0 else nt // 2
-        angs_t = np.sort(rng.uniform(-180, 180, n_)) if row == 1 else np.linspace(-180, 180, n_, endpoint=False) + rng.uniform(-4, 4, n_)
-        for k_, a_deg in enumerate(angs_t):
-            th = np.radians(a_deg); rr0 = rimr(th) - (4 if row == 0 else 26)
-            bx, by = mcx + rr0 * np.cos(th), mcy + rr0 * np.sin(th)
-            if abs(((a_deg - fang + 180) % 360) - 180) < 6 and row == 0: bw, Lt = 15.0, 44.0
-            else:
-                bw = rng.uniform(9, 16) * (0.8 if row else 1.0); Lt = min(bw * rng.uniform(1.8, 2.95), 3 * bw)
-                if abs(np.cos(th)) < 0.35: Lt *= 0.55           # top/bottom commissures: short needles
-            dirv = -np.array([np.cos(th), np.sin(th)]) * 0.92 + np.array([-np.sin(th), np.cos(th)]) * rng.uniform(-0.35, 0.35); dirv /= np.linalg.norm(dirv)
-            z0 = 58.0 if row == 0 else 40.0
-            add_tooth(f, (bx, by, z0 + rng.uniform(-3, 3)), dirv, Lt, bw, bool(rng.random() < 0.14), rng.uniform(4, 16) + (10 if row else 0), rng.uniform(-6, 6), rng); ntot += 1
+    tc = S.get('teeth_cfg')
+    if tc:      # r09 S5/S6: more and longer blades (fangs 34-46 mm), angled inward and down into the throat (tip drops ~0.5 L), a few broken
+        ntot = 0; nf, nb = tc['front'], tc['back']; fang_set = set(tc['fangs'])
+        for row, n_ in ((0, nf), (1, nb)):
+            angs_t = np.linspace(-180, 180, n_, endpoint=False) + rng.uniform(-3.5, 3.5, n_)
+            for k_, a_deg in enumerate(angs_t):
+                th = np.radians(a_deg); rr0 = rimr(th) - (6 if row == 0 else 30); bx, by = mcx + rr0 * np.cos(th), mcy + rr0 * np.sin(th)
+                is_f = row == 0 and k_ in fang_set
+                if is_f: bw = rng.uniform(13, 15.5); Lt = min(3 * bw, rng.uniform(40, 46))
+                else:
+                    bw = rng.uniform(9, 14) * (0.8 if row else 1.0); Lt = min(bw * rng.uniform(2.0, 3.0), 3 * bw)
+                    if abs(np.cos(th)) < 0.3: Lt *= 0.6
+                dirv = -np.array([np.cos(th), np.sin(th)]) * 0.9 + np.array([-np.sin(th), np.cos(th)]) * rng.uniform(-0.3, 0.3); dirv /= np.linalg.norm(dirv)
+                z0 = (70.0 if row == 0 else 54.0) + rng.uniform(-3, 3)
+                add_tooth(f, (bx, by, z0), dirv, Lt, bw, bool((not is_f) and rng.random() < 0.15), 0.5 * Lt + (6 if row else 0), rng.uniform(-6, 6), rng); ntot += 1
+    else:
+        nt = S.get('teeth', 26); ntot = 0; fang = S.get('fang_angle', 140.0)
+        for row in (0, 1):
+            n_ = nt if row == 0 else nt // 2
+            angs_t = np.sort(rng.uniform(-180, 180, n_)) if row == 1 else np.linspace(-180, 180, n_, endpoint=False) + rng.uniform(-4, 4, n_)
+            for k_, a_deg in enumerate(angs_t):
+                th = np.radians(a_deg); rr0 = rimr(th) - (4 if row == 0 else 26)
+                bx, by = mcx + rr0 * np.cos(th), mcy + rr0 * np.sin(th)
+                if abs(((a_deg - fang + 180) % 360) - 180) < 6 and row == 0: bw, Lt = 15.0, 44.0
+                else:
+                    bw = rng.uniform(9, 16) * (0.8 if row else 1.0); Lt = min(bw * rng.uniform(1.8, 2.95), 3 * bw)
+                    if abs(np.cos(th)) < 0.35: Lt *= 0.55
+                dirv = -np.array([np.cos(th), np.sin(th)]) * 0.92 + np.array([-np.sin(th), np.cos(th)]) * rng.uniform(-0.35, 0.35); dirv /= np.linalg.norm(dirv)
+                z0 = 58.0 if row == 0 else 40.0
+                add_tooth(f, (bx, by, z0 + rng.uniform(-3, 3)), dirv, Lt, bw, bool(rng.random() < 0.14), rng.uniform(4, 16) + (10 if row else 0), rng.uniform(-6, 6), rng); ntot += 1
     meta['teeth'] = ntot
     # ---- eyes (after body/limbs so surface z is known)
     for e in S.get('eyes', []):

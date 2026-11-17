@@ -4,17 +4,17 @@ import os, glob
 import numpy as np
 from PIL import Image, ImageDraw
 HERE = os.path.dirname(os.path.abspath(__file__)); R = os.path.join(HERE, 'renders')
-IDS = 'S1 S2 S3 S4'.split()
-CW, CH = 480, 360; sheet = Image.new('RGB', (CW * 3, CH * 2), (8, 8, 8)); d = ImageDraw.Draw(sheet)
+IDS = 'S1 S2 S3 S4 S5 S6'.split()
+CW, CH = 480, 360; sheet = Image.new('RGB', (CW * 4, CH * 2), (8, 8, 8)); d = ImageDraw.Draw(sheet)
 for i, s in enumerate(IDS):
-    im = Image.open(f'{R}/study_{s}_front.png').convert('RGB').resize((CW, CH), Image.LANCZOS); x, y = (i % 3) * CW, (i // 3) * CH; sheet.paste(im, (x, y)); d.text((x + 8, y + 6), s, fill=(235, 235, 235))
-rA = Image.open(os.path.join(HERE, '..', 'composition_r08c', 'renders', 'study_G1a_b_front.png')).convert('RGB').resize((CW, CH), Image.LANCZOS); sheet.paste(rA, (CW, CH)); d.text((CW + 8, CH + 6), 'r08c A (Evan: extreme improvement; crown rejected)', fill=(235, 235, 235))
+    im = Image.open(f'{R}/study_{s}_front.png').convert('RGB').resize((CW, CH), Image.LANCZOS); x, y = (i % 4) * CW, (i // 4) * CH; sheet.paste(im, (x, y)); d.text((x + 8, y + 6), s, fill=(235, 235, 235))
+rA = Image.open(os.path.join(HERE, '..', 'composition_r08c', 'renders', 'study_G1a_b_front.png')).convert('RGB').resize((CW, CH), Image.LANCZOS); sheet.paste(rA, (2 * CW, CH)); d.text((2 * CW + 8, CH + 6), 'r08c A (Evan: extreme improvement; crown rejected)', fill=(235, 235, 235))
 sheet.quantize(256, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.FLOYDSTEINBERG).save(f'{R}/contact_sheet.png', optimize=True)
 ref = Image.open('/home/user/shoggoth_wall_art/teams/aesthetics/analysis/composition_gate/c01_mask_envelope.png').convert('L'); cells = []
 for s in IDS:
     m = Image.open(f'{R}/study_{s}_mask.png').convert('L'); cells.append((s, m.crop((600 - 390, 450 - 390, 600 + 390, 450 + 390)).resize((128, 128), Image.BOX)))
 
-sw = Image.new('L', (8 + 4 * 136, 8 + 1 * 142), 255); dd = ImageDraw.Draw(sw)
+sw = Image.new('L', (8 + 6 * 136, 8 + 1 * 142), 255); dd = ImageDraw.Draw(sw)
 for i, (n, e) in enumerate(cells):
     x = 8 + i * 136; y = 8; sw.paste(Image.eval(e, lambda v: 255 - v), (x, y)); dd.text((x + 2, y + 128), n, fill=0)
 sw.save(f'{R}/silhouette_sheet_128.png', optimize=True)

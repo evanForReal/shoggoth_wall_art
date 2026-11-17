@@ -36,9 +36,27 @@ Gate bands (fill 0.371-0.557, wedges 5-9, reach, limb_count 4-?) were fit to c01
 ## 5. Reproduce
 `python3 build.py S1` (45 s) -> `python3 render_comp.py S1 --views front,tq --mask --samples 24` (2.5 min) -> `python3 run_checks.py` -> `python3 measure_extra.py` -> `python3 make_sheets.py`. Contact sheet `renders/contact_sheet.png` (S1-S4 + r08c A). `build/` is large; not for commit.
 
+
+## 6. Addendum: S5 and S6 (A's body, edited per Evan's notes)
+S1-S4 untouched. S5 = r08c G1a_b body: ribbed narrow trunk (3 ribs per side + 2 maw ribs), mask D 200 at (8, 262), crown removed (flesh ring closes over the mask), hanging root cascade thinned from 7 to 5 strands (H1 3-strand bundle with hooked tip, H2 2-strand, H3 spiral tip, H4, H6; root dia 48-88 mm), 2 catenary-edged webs (one under the UR tentacle, one under the LL tentacle, each with a drip strand). A's three arms replaced by three single-sweep tentacles at A's shelf positions: massive (root dia 104) to LL (-335, -190), medium (62) to UR (335, 150), whip (30) to UL (-335, 285); suckers 11 and 8; rim-gripping fingers. Teeth: 52 (34 front + 18 back), 5 long fangs 40-46 mm (base 13-15.5), the rest 12-35 mm, tips drop ~0.5 L into the throat (about 27 deg below the wall plane, not horizontal), ~15% broken. S6 = S5 with eyes pushed: 66 mm hooded slit-pupil eye high on the trunk right of the mask, clouded 46 mm eye low-left off-axis, three small eyes (26 blown, 22 slit turret, 20) displaced on a right-flank swelling, plus a 36 mm slit eye on the massive tentacle root. S5 keeps the r09 cluster (64 hood-slit, 40 clouded, 26, 22, 36 on tentacle).
+
+| id | COMP | failed | gate (7) | verdict_excl_iou | gate fails | gate values | IoU vs c01 (info) | torso | maw:mask | maw lum % | wedges >= 4% |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| S5 | 5/13 | 1,2,4,5,7,8,10,11 | 4/7 | FAIL | fill, limb_count, iou_vs_c01 | fill 0.338, wedges 6, reach 0.45, limbs 5 | 0.533 | 0.449 | 1.09 | 17.3 | 2 |
+| S6 | 5/13 | 1,2,4,5,7,8,10,11 | 4/7 | FAIL | fill, limb_count, iou_vs_c01 | fill 0.347, wedges 6, reach 0.42, limbs 5 | 0.538 | 0.469 | 1.09 | 19.3 | 2 |
+Shelf flat tops (volume): 178x172 / 180x194 / 174x174 mm, 300 mm clear above each (checks.py #12 also 300). Wall 13.1-13.2%, mask 100%. #4 (mask the single brightest) margin falls to 13 (S5) and 6 (S6) at p99.5 because pale teeth and the clouded eye approach the mask value; still passes the top-level test only barely in S6. Gate failures are now fill 0.34 (band >= 0.371), the limb_count band, and c01 IoU. Torso 0.45-0.47 and wedges 6 pass (S1-S4 had 2-4 wedges).
+
+Self-assessment vs Evan's notes:
+- **A, "extreme improvement":** the body is A's. Ribbed trunk, narrow shoulders, root cascade, jagged maw and web texture are back, so it is no longer a bowling pin; the cascade and root skirts do the gothic work. Less rotten than A: webs are 2 small catenary wedges, the trunk surface between ribs is still smooth and the arms (now tentacles) are smooth tubes. A's lace is gone.
+- **"do not do a crown":** met. Head is a quiet dome plus the flesh ring. At thumbnail size the bright smiley on a round pale-ringed head still reads cute; the teeth and eye are what fight that.
+- **"flow towards the platforms ... distinct tentacles":** met in weight (104 / 62 / 30) and continuity. But with A's shelf positions the arms are short (150-250 mm visible) so they read as stubs with shelves, not long tentacles; the massive one at LL is hidden behind the cascade root, and the whip UL is a thin stalk. The flow is better than A, weaker than S1/S2 where the limbs are long.
+- **"too crowded":** denser than S1-S4 by design (cascade 5 strands + ribs + 2 webs + eyes), clearly lighter than A. Detail is concentrated at mask, mouth, eyes and cascade; the lower body is busy.
+- **"tentacled, horrific, octopus-like, vicious mouth, disturbing eyes":** the mouth now reads vicious at full view: 52 pale blades with 5 long fangs in a dark slot (maw luminance 17-19%, was 10-12%). Fab caveat remains: teeth angled 27 deg below the wall plane are overhangs on a face-up print (needs rotation or supports, CAD decision). Eyes: S6 reads better than S5; the 66 mm hooded slit eye registers at full view as a face feature; the clouded eye reads as a white ball (low contrast, looks like a bead, not clouded flesh); the small displaced eyes read as bumps. S5's cluster sits on a swelling beside the tentacle root and is crowded by it.
+
 ---
 *Edit log*
 
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
 | 2026-11-17 | cad-worker | Initial creation: round-09 studies | [PROVISIONAL] |
+| 2026-11-17 | cad-worker | Added S5, S6 (A body + tentacles + bigger teeth + pushed eyes), contact sheet to 7 images, section 6 | [PROVISIONAL] |
