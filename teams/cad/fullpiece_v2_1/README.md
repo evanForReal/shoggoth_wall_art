@@ -1,6 +1,6 @@
 # Full-piece V2.1 (texture, eyes, palette, root-grip pass on v2)
 
-**Status:** [PROVISIONAL] CAD Lead, 2026-11-17. Copy of `../fullpiece_v2/` (untouched) with the coordinator's seven fixes. 2.0 mm voxel, SEED = 7, same Gate-2 helpers and 1C shader family, dark-wall lighting. Every number below has a key in `engineering_checks.json`. KEPT from v2: maw (asymmetric broken teeth), canonical carved smiley with gripping-finger masquerade, headroom >= 300 mm, structural numbers (22 mm solid core, 84 x 66 mm pad, seat 28 mm, arm roots), hard envelope clip, sourced checks.
+**Status:** [PROVISIONAL] CAD Lead, 2026-11-17. Copy of `../fullpiece_v2/` (untouched) with the coordinator's seven fixes. 2.0 mm voxel, SEED = 7, same Gate-2 helpers and 1C shader family, dark-wall lighting. Measured numbers below have a key in `engineering_checks.json` (measured values: tables in s.3 have keys in `engineering_checks.json`; design constants such as radii, groove sizes, strand widths are `gen_fullpiece.py` inputs, not measurements; anything else is marked or is an estimate). Unsourced estimates: s.4 item 1 per-zone mass breakdown, s.4 item 2 membrane spans/radial starts, s.7 edge thickness, "figure fills ~60% of box width". KEPT from v2: maw (asymmetric broken teeth), canonical carved smiley with gripping-finger masquerade, headroom >= 300 mm, structural numbers (22 mm solid core, 84 x 66 mm pad, seat 28 mm, arm roots), hard envelope clip, sourced checks.
 
 ## 1. Variants (each differs from hero by one axis)
 
@@ -59,7 +59,7 @@ Headroom method: verts inside the footprint x range (2.5 mm inset), z < p, from 
 vs the seven fixes (A = done to brief, F = missed):
 1. Eyes read as eyes: **B-**. Slit lids, pale ball, dark iris, half-closed/sagging, clustered on the body; but small and in one cluster; two variants under count.
 2. Texture/webbing: **B-**. Sinew wraps limbs and bellies, web remains in non-calm zones, membranes between roots; flesh no longer plastic. Still far from c02's fibre mat; membranes small.
-3. Sprawl: **C**. Longer, thicker whips than v2 but silhouette still compact, whips under 60 % of requested length.
+3. Sprawl: **C**. Longer, thicker whips than v2 but silhouette still compact, whips 45-65 % of requested length (engineering_checks.json whips length / length_requested).
 4. Palette: **B+**. Desaturated ochre/bone/umber; maw lip dark, teeth ivory, mask the only pale clean element. Fingers and eyeballs are the next pale items.
 5. Shelves + buttress: **B-**. Thin organic plates, grips, arms run under the plates, buttress limb continues the arm with the same sinew. Seat rectangles and peg-like grips remain.
 6. Smile: **B**. Deeper shadow within the 90 deg rule, wider mouth.
@@ -80,4 +80,5 @@ Hollowing to 9-14 kg; shell the 6.8 kg mask zone; soften or hide seat rectangles
 
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
-| 2026-11-17 | cad-lead | Initial creation (v2.1 package) | [PROVISIONAL] |
+| 2026-11-17 | cad-lead | Initial creation (v2.1 package) | FLAG OPEN: same as CAD STATUS V2.1 row: s.3 table verified vs JSON (all 4 variants); open: s.4 item 1 mass breakdown, s.4 item 2 membranes 90-230 mm / radial starts 100-190 mm, s.7 7-9 mm edges unsourced; s.5 item 3 'under 60 %' wrong (45-65 %); header 'every number has a key' overstated |
+| 2026-11-17 | orchestrator | Resolves FLAG OPEN above: "every number keyed" softened to measured-vs-design-constant split; unsourced estimates named (v2.1); whip % 45-65; v2.1 render count 11 + sheet; boarded-in-round-06 | [PROVISIONAL] |

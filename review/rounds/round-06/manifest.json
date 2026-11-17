@@ -3,7 +3,7 @@
   "title": "Shoggoth wall art — round 06: smiley + maw re-center (in-house renders)",
   "created": "2026-11-17",
   "issue_repo": "evanForReal/shoggoth_wall_art",
-  "notes": "12 cards: your r05 re-center built for real (classic smiley + gaping toothed maw, almond eyes on the body, masquerade fingers, muscular sinew-wrapped tentacles, Beksiński palette). Hero + 3 one-axis variants: (a) masquerade = lifted edge vs fingers, (b) 5 vs 8 tentacles, (c) big maw. QUESTION FOR YOUR ISSUE NOTES: c01's sprawl was drawn about sofa-wide; inside 3x3 ft the long tentacles get clipped by the frame and the shelf clear zones (they reach 310-430 mm of the 520-820 mm asked). Keep 3x3 ft, or allow ~4 ft wide for c01-grade sprawl (more print segments)? CORRECTION to r05: the r05 hero you liked had only ~12 mm clear above 2 of its 3 shelves (unusable for plants) and the board didn't say so. Fixed here: 300 mm clear above every shelf, by moving the top shelf up 94 mm and the bottom one down 20 mm. KNOWN GAPS (not fixed, listed so you can weigh them): still compact vs c01; shelf grip tendrils read as pegs; shelf mounting blocks show as dark rectangles; buttress still reads as a table leg; mass over target (~26 kg solid proxy, est. ~13 kg printed vs 14 kg cap); variants b/c have fewer eyes (11/8) than hero (~20); nothing print-validated yet. CAD's own review of these renders is not yet peer-signed.",
+  "notes": "12 cards: your r05 re-center built for real (classic smiley + gaping toothed maw, almond eyes on the body, masquerade fingers, muscular sinew-wrapped tentacles, Beksiński palette). Hero + 3 one-axis variants: (a) masquerade = lifted edge vs fingers, (b) 5 vs 8 tentacles, (c) big maw. QUESTION FOR YOUR ISSUE NOTES: c01's sprawl was drawn about sofa-wide; inside 3x3 ft the long tentacles get clipped by the frame and the shelf clear zones (they reach 310-430 mm of the 520-820 mm asked). Keep 3x3 ft, or allow ~4 ft wide for c01-grade sprawl (more print segments)? CORRECTION to r05: the r05 hero you liked had only ~12 mm clear above 2 of its 3 shelves (unusable for plants) and the board didn't say so. Fixed here: 300 mm clear above every shelf, by moving the top shelf up 94 mm and the bottom one down 20 mm. KNOWN GAPS (not fixed, listed so you can weigh them): still compact vs c01; shelf grip tendrils read as pegs; shelf mounting blocks show as dark rectangles; our read: buttress still looks like a table leg; mass over target (~26 kg solid proxy vs 25 target; est. ~13 kg printed vs 14 kg cap); eyes small and mostly in one lower-right cluster, iris painted not modelled; smile groove at the 90-degree print limit, still a bit cartoon up close; fingers and grips are overhangs; variants b/c have fewer eyes (11/8) than hero (~20); nothing print-validated yet. CAD's own review of these renders is not yet peer-signed.",
   "cards": [
     {
       "id": "h1",
@@ -42,7 +42,7 @@
       "image": "images/hero_maw.png",
       "axis": "hero",
       "title": "HERO — maw close-up",
-      "rationale": "Gaping maw, asymmetric broken teeth, dark lips, saliva strands. Your r05 note said the mouth didn't exist; does it now?",
+      "rationale": "Gaping maw, asymmetric broken teeth, dark lips, sagging throat strands. Your r05 note said the mouth didn't exist; does it now?",
       "source": "generated in-house (fullpiece_v2_1, hero)"
     },
     {
@@ -97,7 +97,7 @@
       "id": "s1",
       "image": "images/variants_sheet.png",
       "axis": "comparison",
-      "title": "SHEET — c01 vs r05-era v2 vs this round",
+      "title": "SHEET — c01 vs unboarded v2 vs this round",
       "rationale": "c01 (the target you loved), an unboarded intermediate (v2, top middle), this round's hero and variants. The remaining gap is c01's open sprawl — see the board notes' size question and answer it in your issue notes.",
       "source": "generated in-house (variants_sheet)"
     }

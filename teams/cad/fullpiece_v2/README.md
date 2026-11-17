@@ -1,6 +1,6 @@
 # Full-piece V2 composition (round-05 verdicts implemented)
 
-**Status:** [PROVISIONAL] CAD Lead, 2026-11-16/17. For Evan's eyes, not the printer: 2.0 mm voxel (SEED = 7), same Gate-2 helpers (`../gate2/gen_patch.py`), same 1C shader and dark-wall lighting as `../fullpiece/` (v1), shader extended with tone zones, maw/teeth/eye tags. Every number below has a key in `engineering_checks.json`; v1 comparison numbers are back-filled in `../fullpiece/engineering_checks.json` from the retained v1 meshes by `measure.py`.
+**Status:** [PROVISIONAL] CAD Lead, 2026-11-16/17. For Evan's eyes, not the printer: 2.0 mm voxel (SEED = 7), same Gate-2 helpers (`../gate2/gen_patch.py`), same 1C shader and dark-wall lighting as `../fullpiece/` (v1), shader extended with tone zones, maw/teeth/eye tags. Measured numbers below have a key in `engineering_checks.json` (measured values: tables in s.3 have keys in `engineering_checks.json`; design constants such as radii, groove sizes, strand widths are `gen_fullpiece.py` inputs, not measurements; anything else is marked or is an estimate); v1 comparison numbers are back-filled in `../fullpiece/engineering_checks.json` from the retained v1 meshes by `measure.py`.
 
 LOCKED (unchanged vs v1): shelf arrangement A (L/R/L, p 250/200/290, 190 mm flat tops), radial sprawl whip angles, Gate-2 local texture, flat back, 914 x 914 x 300 envelope, cleat seat zones. Changed: shelf heights, see s.4.
 
@@ -82,4 +82,5 @@ Notes: headroom counts vertices inside the footprint x range (2.5 mm inset) with
 
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
-| 2026-11-17 | cad-lead | Initial creation (v2 package, README) | [PROVISIONAL] |
+| 2026-11-17 | cad-lead | Initial creation (v2 package, README) | FLAG OPEN: same as CAD STATUS V2 row: README header 'Every number below has a key in engineering_checks.json' overstated; tables s.3 (bbox, headroom, relief, mass, eyes, teeth, buttress, seat, flats, back plane, v1 column) all verified against JSON/v1 JSON, but s.2/s.4/s.6 constants listed in that row lack a JSON key; cite gen_fullpiece.py or mark unsourced |
+| 2026-11-17 | orchestrator | Resolves FLAG OPEN above: "every number keyed" softened to measured-vs-design-constant split; unsourced estimates named (v2.1); whip % 45-65; v2.1 render count 11 + sheet; boarded-in-round-06 | [PROVISIONAL] |
