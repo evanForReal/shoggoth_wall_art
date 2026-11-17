@@ -27,12 +27,13 @@ teams/
   audit/STATUS.md
   */analysis/                    ← team working analyses (calcs, diagrams)
 review/
+  staging/round-NN/              ← board being assembled; moves to rounds/ at deploy
   rounds/round-NN/               ← per-round manifests + assets (DO NOT EDIT)
 review-app/                      ← GitHub Pages swipe-board (DO NOT EDIT)
 aesthetics vision/               ← raw human input (DO NOT EDIT)
 agent orchestration/
 review/verdicts/round-NN.json    ← verdict snapshots from GitHub issues
-tools/                           ← repo scripts (verify_tallies.py)
+tools/                           ← repo scripts (verify_tallies.py, composition_gate.py)
 artifacts/
   audit/                         ← audit exec summaries
   session-log/                   ← orchestrator judgment-call log (non-verdict choices)
@@ -62,3 +63,4 @@ artifacts/
 | 2026-11-15 | docs-worker | Repo map: dropped nonexistent knobs dir; added AUDIT.md, teams/audit, analysis/, artifacts/audit | docs-reviewer (flagged: tools/ missing from map) |
 | 2026-11-16 | orchestrator | Repo map: added tools/ (closes flag above), review/verdicts/, artifacts/session-log/ | docs-reviewer (verified: tools/ exists with verify_tallies.py, review/verdicts/ holds round-01..05.json, artifacts/session-log/ exists; `git diff 1ebb51a HEAD` adds only these three map lines; closes the tools/ flag above. Cosmetic, signed through: review/verdicts and tools lines sit directly under "agent orchestration/" with no spacing, reads as children) |
 | 2026-11-17 | orchestrator | Repo map: added docs/DESIGN_PRINCIPLES.md (Evan r06 directive) | docs-reviewer (verified: docs/DESIGN_PRINCIPLES.md exists (310 lines); CLAUDE.md map line 21 sits in the docs/ block; `git show 0a33441 -- CLAUDE.md` adds only that map line and this log row; "Evan r06 directive" matches review/verdicts/round-06.json h1 ("do some review on basic elements of design ... take notes in a log somewhere for agents to view"). No body [PROVISIONAL] tag belongs to this row. Non-blocking, signed through (outside this row; Orchestrator to add with its own row): map still omits review/staging/, and the tools/ line lists only verify_tallies.py although composition_gate.py landed in 4111ef4) |
+| 2026-11-17 | orchestrator | Repo map: added review/staging/, composition_gate.py (closes reviewer note above) | [PROVISIONAL] |
