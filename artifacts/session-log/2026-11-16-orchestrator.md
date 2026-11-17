@@ -230,6 +230,8 @@ Round-09 plan: concept-art round, 8 generations planned + 2 held in reserve for 
 **SL-70** · 20:41 · My read of r09 S1-S4: brief met literally (no crown, 3 distinct weight-ladder tentacles, uncrowded, teeth, eyes) but the stripping overshot — without A's root cascade/webs/texture the body reads as a smooth bowling-pin alien with a smiley (comical risk); S3 limb reads as plumbing; S4's drooping limbs form an inverted V (stance); eyes are bumps; teeth too small. Root cause is MY brief: I treated "distinct tentacles" + "uncrowded" as a rebuild instead of edits to A, which Evan called "an extreme improvement". `[error]` (brief scope)
 Fix: added S5 (A exactly, minus crown, shelf arms → weight-ladder tentacles, cascade thinned, 1-2 webs kept, ribbed texture kept) and S6 (S5 + pushed eyes); bigger inward-angled fangs in both. Board plan: S5, S6, S1, S2 + A reference; S3/S4 dropped (pipe, stance). · `[judgment]`
 
+**SL-71** · 20:49 · My read of S6: mouth now reads vicious at full view (pale fangs against a dark slot); the 66 mm slit eye lands; body still smooth between ribs (cartoon edge, disclosed); clouded eye reads as a white bead. Round-09 staged: S6, S5, S1, S2 + A reference (front + tq diptychs). Notes lead with the vote + standing sketch ask (Evan: ask every round, never wait); Canva credit status disclosed. Teeth tilted below the wall plane are print overhangs — flagged for the build stage, not the board. · `[judgment]`
+
 ---
 *Edit log*
 
@@ -261,3 +263,4 @@ Fix: added S5 (A exactly, minus crown, shelf arms → weight-ladder tentacles, c
 | 2026-11-17 | orchestrator | Appended SL-68 (sketch gating removed, Canva budget, r09 plan) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-69 (Canva quota, 3D round-09) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-70 (r09 read, S5/S6 added) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Appended SL-71 (S6 read, round-09 staged) | [PROVISIONAL] |

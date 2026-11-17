@@ -1,0 +1,49 @@
+{
+  "round": "round-09",
+  "title": "Shoggoth wall art — round 09: no crown, distinct tentacles, vicious mouth",
+  "created": "2026-11-17",
+  "issue_repo": "evanForReal/shoggoth_wall_art",
+  "notes": "Vote S6/S5/S1/S2. Which body carries forward, and which tentacle flow? Got sketches? Send any time; we won't wait. ··· Built from your round-08 notes: no crown; three distinct tentacles of clearly different weight (massive / medium / thin whip), each one sweep to its shelf; uncrowded; octopus-like with suckers; a vicious mouth (52 blade teeth, 40-46 mm fangs); mismatched unhealthy eyes. S5/S6 are your round-08 A edited; S1/S2 are new flow layouts from the brainstorm. Our honest read: the mouth now reads vicious and S6's big slit eye lands, but the bodies are smooth between ribs, which keeps a cartoon edge; A's lace texture is reduced. S1/S2 flow best to the shelves; S5/S6 keep the most of A. Canva concept art: approved by you, but the account has no AI credits — add credits at canva.com and we'll generate up to 10 concepts. Not yet peer-signed: the CAD write-up for these studies (composition_r09).",
+  "cards": [
+    {
+      "id": "s6",
+      "image": "images/S6.jpg",
+      "axis": "body + eyes",
+      "title": "S6 — A without crown, distinct tentacles, fangs, big eyes",
+      "rationale": "Your round-08 A, edited: crown gone; three weight-ladder tentacles grip the shelves; root cascade thinned; long inward fangs; a 66 mm hooded slit-pupil eye beside the mask, a clouded eye low-left, small eyes clustered and one on the massive tentacle.",
+      "source": "generated in-house (composition_r09, S6)"
+    },
+    {
+      "id": "s5",
+      "image": "images/S5.jpg",
+      "axis": "body + eyes",
+      "title": "S5 — same as S6, quieter eyes",
+      "rationale": "S6's body and mouth with smaller, subtler eyes — the eye-intensity question.",
+      "source": "generated in-house (composition_r09, S5)"
+    },
+    {
+      "id": "s1",
+      "image": "images/S1.jpg",
+      "axis": "flow",
+      "title": "S1 — fan: body left, limbs fan across bare wall",
+      "rationale": "Brainstorm idea 'weight ladder + asymmetric fan': the body sits left, the massive limb runs low, the medium mid, the whip rises to a top shelf; lots of bare wall for the eye to rest.",
+      "source": "generated in-house (composition_r09, S1)"
+    },
+    {
+      "id": "s2",
+      "image": "images/S2.jpg",
+      "axis": "flow",
+      "title": "S2 — reach: body low, limbs climb a diagonal",
+      "rationale": "Brainstorm idea 'reach': the body sits low-left and the three limbs climb up and to the right, one shelf per step.",
+      "source": "generated in-house (composition_r09, S2)"
+    },
+    {
+      "id": "a",
+      "image": "images/A.jpg",
+      "axis": "reference",
+      "title": "A — round-08, for comparison",
+      "rationale": "The round-08 study you called an extreme improvement (crown rejected). Compare what S5/S6 kept and lost.",
+      "source": "generated in-house (composition_r08c, G1a_b)"
+    }
+  ]
+}
