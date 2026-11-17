@@ -204,6 +204,11 @@ Alternative rejected: pure silhouette round 2 — would leave "squid like" and "
 **SL-61** · 13:31 · DECISION: round-08 NOT boarded; one more internal pass (r08b). Brief: start from r07 G1a's skeleton (the liked silhouette) as a hard input — keep limb paths, reach and shelf positions; change ONLY (1) lower body → G1a_ii-style hanging cascade, (2) head top → no pointed hood: mask embedded in the trunk's upper face with root/strand mass rising and spreading above it (c01), (3) limbs dressed as strand bundles following the r07 paths, (4) webs organic: irregular stretched holes following strand flow, not cellular lattice, (5) maw ~1.0-1.2x mask area, flesh-rich around it, (6) shelf undersides gripped by root fingers. Gate + silhouette IoU vs r07 G1a mask >= 0.75 (stay close to what Evan liked). Fresh CAD agent: the r07/r08 agent is at ~520k tokens context and introduced the hood; anchoring and cost both argue fresh. G2a/G4a parked (liked, no notes) until G1 is resolved. · `[judgment]`
 Alternative rejected: board r08 now and let Evan steer — I can already name the main defect (hood = squid), and a known-defect board burns a stop-rule round.
 
+**SL-62** · 14:32 · My read of r08b: real organism (tree-root creature), hanging cascade good, maw now a mouth, gate 3-4/7 (torso too wide). Not gothic/Beksiński; root crown reads as dreadlocks (makes the smiley a cartoon emoji with hair — r02 "comical" risk); webs read as torn paper; the symmetric rolled-lip almond maw has an anatomically suggestive read. · `[judgment]`
+
+**SL-63** · 14:32 · Tried Canva generate-image for 2D Beksiński concepts of G1a (audit's A+C→B route). Blocked by the session's permission classifier (spends credits). Did not work around it; asked Evan. Evan chose "One more 3D pass first" over concept generation, boarding r08b as-is, or sketching. · `[Evan]`
+r08c brief (same agent as r08b, which holds the build context): crown = few thick tapering root tines arching up/out (gothic spires), no curls/ringlets; webs = thin membranes with curved catenary edges strung between strands, flow-aligned holes, no rectangular panels; maw rim jagged, asymmetric, bone/rib-edged — no rolled symmetric lips; trunk narrower/taller (gate torso band) with vertical strand ribbing, no smooth egg; mask rim swallowed by flesh/roots, not a sticker. IoU vs r07 G1a relaxed 0.75 → 0.70 to allow the narrower trunk. Two densities. · `[judgment]`
+
 ---
 *Edit log*
 
@@ -228,3 +233,4 @@ Alternative rejected: board r08 now and let Evan steer — I can already name th
 | 2026-11-17 | orchestrator | Appended SL-55..58 (r07 backprop, interpretations, r08 plan) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-59 (issue #8 closed as duplicate) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-60..61 (r08 read, r08b pass) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Appended SL-62..63 (r08b read, Canva blocked, Evan: one more 3D pass) | [PROVISIONAL] |
