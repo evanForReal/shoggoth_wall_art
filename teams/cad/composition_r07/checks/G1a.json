@@ -12,11 +12,11 @@
   },
   "2": {
    "pass_": false,
-   "body_pct": 20.38,
-   "body_vs_largest_limb": 5.97,
-   "head_w": 260,
-   "neck_w": 240,
-   "shoulder_w": 301,
+   "body_pct": 19.65,
+   "body_vs_largest_limb": 5.37,
+   "head_w": 258,
+   "neck_w": 228,
+   "shoulder_w": 300,
    "neck_step": false
   },
   "3": {
@@ -27,14 +27,14 @@
    "ring_or_crown": false
   },
   "4": {
-   "pass_": false,
-   "mask_median_lum": 208.0,
-   "brightest_nonmask_p99_5": 211.0,
-   "brightest_nonmask_max": 228.0,
-   "margin_p99_5": -3.0,
-   "margin_max": -20.0,
-   "top_level_frac_in_mask": 0.787,
-   "largest_rival_pct": 0.496,
+   "pass_": true,
+   "mask_median_lum": 239.0,
+   "brightest_nonmask_p99_5": 207.0,
+   "brightest_nonmask_max": 216.0,
+   "margin_p99_5": 32.0,
+   "margin_max": 23.0,
+   "top_level_frac_in_mask": 0.922,
+   "largest_rival_pct": 0.27,
    "note": "top level = lum >= 0.85 x mask median (image is mostly wall, so percentile V4 would not isolate the mask)"
   },
   "5": {
@@ -43,9 +43,9 @@
    "maw_w": 215,
    "maw_h": 320,
    "orient": "v",
-   "maw_interior_lum": 12.2,
-   "rim_lum": 61.1,
-   "body_mean_lum": 94.9,
+   "maw_interior_lum": 17.4,
+   "rim_lum": 64.8,
+   "body_mean_lum": 100.7,
    "centre_sep_mm": 292,
    "mask_height": 200
   },
@@ -66,24 +66,24 @@
    "pass_": false,
    "limbs": {
     "S1_UL": {
-     "root_w": 107,
+     "root_w": 110,
      "tip_w": 21.2,
-     "taper": 5.0,
+     "taper": 5.2,
      "len_mm": 424,
      "len_over_W": 0.46,
-     "len_over_rootw": 4.0,
+     "len_over_rootw": 3.9,
      "monotone": true,
      "ok": true
     },
     "S2_UR": {
-     "root_w": 103,
+     "root_w": 106,
      "tip_w": 20.7,
-     "taper": 5.0,
+     "taper": 5.1,
      "len_mm": 396,
      "len_over_W": 0.43,
-     "len_over_rootw": 3.8,
+     "len_over_rootw": 3.7,
      "monotone": true,
-     "ok": false
+     "ok": true
     },
     "S3_LL": {
      "root_w": 106,
@@ -96,24 +96,24 @@
      "ok": true
     },
     "F1": {
-     "root_w": 85,
+     "root_w": 87,
      "tip_w": 16.9,
-     "taper": 5.0,
+     "taper": 5.1,
      "len_mm": 558,
      "len_over_W": 0.61,
-     "len_over_rootw": 6.6,
+     "len_over_rootw": 6.4,
      "monotone": true,
      "ok": true
     },
     "F2": {
-     "root_w": 89,
+     "root_w": 90,
      "tip_w": 17.8,
-     "taper": 5.0,
+     "taper": 5.1,
      "len_mm": 578,
      "len_over_W": 0.63,
-     "len_over_rootw": 6.5,
+     "len_over_rootw": 6.4,
      "monotone": true,
-     "ok": false
+     "ok": true
     },
     "F3": {
      "root_w": 82,
@@ -140,86 +140,80 @@
   },
   "8": {
    "pass_": false,
-   "largest_over_second": 5.97,
+   "largest_over_second": 5.37,
    "top6": [
     [
      "body",
-     170.2
+     164.2
     ],
     [
      "F2",
-     28.5
+     30.6
     ],
     [
      "F1",
-     24.8
+     27.1
     ],
     [
      "S1_UL",
-     24.6
+     27.0
     ],
     [
      "S3_LL",
-     23.6
+     24.4
     ],
     [
      "S2_UR",
-     21.6
+     23.1
     ]
    ],
    "rival_pairs": [
     [
      "F2",
      "F1",
-     0.87,
+     0.89,
      0.04
     ],
     [
      "F2",
      "S1_UL",
-     0.86,
+     0.88,
      0.37
-    ],
-    [
-     "F2",
-     "S3_LL",
-     0.83,
-     0.44
     ],
     [
      "F1",
      "S1_UL",
-     0.99,
+     1.0,
      0.32
     ],
     [
      "F1",
      "S3_LL",
-     0.95,
+     0.9,
      0.38
     ],
     [
      "F1",
      "S2_UR",
-     0.87,
+     0.85,
      0.41
     ],
     [
      "S1_UL",
      "S3_LL",
-     0.96,
+     0.9,
      0.05
     ],
     [
      "S1_UL",
      "S2_UR",
-     0.88,
+     0.85,
      0.07
     ],
     [
      "S3_LL",
      "S2_UR",
-     0.92,
+     0.95,
      0.02
     ]
    ],
@@ -227,7 +221,7 @@
   },
   "9": {
    "pass_": true,
-   "body_mass_within_half_head_width": 0.944,
+   "body_mass_within_half_head_width": 0.945,
    "max_turn_per_100mm_deg": 11.8,
    "inflections": 2,
    "named": "G1 vertical spine, slight S (head +8 mm)",
@@ -235,48 +229,52 @@
   },
   "10": {
    "pass_": false,
-   "fill_pct": 44.1,
+   "fill_pct": 44.0,
    "wedges_ge4pct": [
-    11.4,
+    11.6,
     6.4,
-    5.5
+    5.4
    ],
    "wedges_all": [
-    11.4,
+    11.6,
     6.4,
-    5.5,
+    5.4,
+    3.9,
     3.7,
-    3.6,
-    3.0,
-    2.0,
+    2.9,
+    1.9,
     1.9
    ],
-   "empty_hull_ratio": 0.491,
+   "empty_hull_ratio": 0.494,
    "limb_pairs_closer_than_60mm_over_150mm": [
     [
      "F2",
      "F3",
-     180
+     156
+    ],
+    [
+     "F2",
+     "F4",
+     192
     ]
    ]
   },
   "11": {
-   "pass_": false,
-   "longest_nonshelf_run_mm": 159,
+   "pass_": true,
+   "longest_nonshelf_run_mm": 115,
    "shelf_top_runs_mm": [
-    125,
-    246
+    202,
+    239,
+    248
    ],
    "all_runs_ge100": [
-    105,
-    114,
-    121,
-    113,
-    106,
+    112,
+    108,
     110,
-    159,
-    125,
-    246
+    202,
+    115,
+    239,
+    248
    ],
    "note": "shelf-top runs are the spec flat top (>=150 mm): inherent conflict with the 120 mm rule, listed apart; JUDGMENT: plate corners R26, plan outline wobbled superellipse, no posts, shelf is the tangent flare of the limb tail"
   },
@@ -293,6 +291,7 @@
    "periphery": true,
    "headroom": {
     "S1_UL": {
+     "top_flatness_mm": 15.0,
      "top_y": 300,
      "flat_top_mm": [
       184,
@@ -302,6 +301,7 @@
      "ok": true
     },
     "S2_UR": {
+     "top_flatness_mm": 0.0,
      "top_y": 175,
      "flat_top_mm": [
       184,
@@ -311,44 +311,45 @@
      "ok": true
     },
     "S3_LL": {
+     "top_flatness_mm": 0.0,
      "top_y": -150,
      "flat_top_mm": [
       184,
       148
      ],
-     "clear_above_mm": 4,
+     "clear_above_mm": 46,
      "ok": false
     }
    }
   },
   "13": {
    "pass_": true,
-   "centroid_x_mm": -14,
-   "centroid_y_from_top_H": 0.479,
-   "LR_weight_ratio": 1.1,
-   "mirror_iou": 0.467
+   "centroid_x_mm": -20,
+   "centroid_y_from_top_H": 0.483,
+   "LR_weight_ratio": 1.12,
+   "mirror_iou": 0.459
   }
  },
  "passed": [
   3,
+  4,
   5,
   6,
   9,
+  11,
   13
  ],
  "failed": [
   1,
   2,
-  4,
   7,
   8,
   10,
-  11,
   12
  ],
- "score": "5/13",
- "wall_luminance_pct": 9.0,
- "flesh_luminance_pct": 37.2,
- "mask_luminance_pct": 81.6,
- "maw_luminance_pct": 4.8
+ "score": "7/13",
+ "wall_luminance_pct": 11.6,
+ "flesh_luminance_pct": 39.5,
+ "mask_luminance_pct": 93.7,
+ "maw_luminance_pct": 6.8
 }
