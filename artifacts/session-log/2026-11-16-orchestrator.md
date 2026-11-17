@@ -227,6 +227,9 @@ Round-09 plan: concept-art round, 8 generations planned + 2 held in reserve for 
 **SL-69** · 20:04 · Canva attempt 1/10 failed: quota_exceeded — the account has no AI credits; Evan's approval doesn't add them (he must top up / upgrade at canva.com). Per "don't pend any round": round-09 proceeds in 3D now; concept cards get added if credits appear before deploy. · `[judgment]`
 3D round-09 brief (same CAD agent as r08b/r08c — it holds the liked A body): r08c-A body, NO crown; uncrowded (part budget, 3 size classes, bare-wall wedges); three DISTINCT tentacles of different weight carrying the eye to the shelves; octopus-like now WANTED (r08 recenter supersedes r04) — suckers on inner faces allowed; vicious mouth with real teeth; disturbing asymmetric unhealthy eyes (3-9, mismatched sizes, displaced, one clouded); 4 studies = brainstorm ideas 4+6 (fan), 4+9 (reach diagonal), 1 (serpentine), 7 (hanging). `[judgment]`
 
+**SL-70** · 20:41 · My read of r09 S1-S4: brief met literally (no crown, 3 distinct weight-ladder tentacles, uncrowded, teeth, eyes) but the stripping overshot — without A's root cascade/webs/texture the body reads as a smooth bowling-pin alien with a smiley (comical risk); S3 limb reads as plumbing; S4's drooping limbs form an inverted V (stance); eyes are bumps; teeth too small. Root cause is MY brief: I treated "distinct tentacles" + "uncrowded" as a rebuild instead of edits to A, which Evan called "an extreme improvement". `[error]` (brief scope)
+Fix: added S5 (A exactly, minus crown, shelf arms → weight-ladder tentacles, cascade thinned, 1-2 webs kept, ribbed texture kept) and S6 (S5 + pushed eyes); bigger inward-angled fangs in both. Board plan: S5, S6, S1, S2 + A reference; S3/S4 dropped (pipe, stance). · `[judgment]`
+
 ---
 *Edit log*
 
@@ -257,3 +260,4 @@ Round-09 plan: concept-art round, 8 generations planned + 2 held in reserve for 
 | 2026-11-17 | orchestrator | Appended SL-67 (r08 backprop, round-09 blocked on sketches) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-68 (sketch gating removed, Canva budget, r09 plan) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-69 (Canva quota, 3D round-09) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Appended SL-70 (r09 read, S5/S6 added) | [PROVISIONAL] |
