@@ -88,4 +88,4 @@ Departures from policy. Append only.
 | 2026-11-15 | orchestrator | Added Audit Lead to hierarchy + charters (Evan directive) | docs-reviewer |
 | 2026-11-15 | docs-worker | Added Deviation log section | docs-reviewer |
 | 2026-11-15 | orchestrator | CAD charter amended: owns step-2 geometry | docs-reviewer |
-| 2026-11-16 | orchestrator | Sign-off substance rules (RP-2 item 5); deviation-log entries: orchestrator model, orchestrator-as-aesthetics-lead | [PROVISIONAL] |
+| 2026-11-16 | orchestrator | Sign-off substance rules (RP-2 item 5); deviation-log entries: orchestrator model, orchestrator-as-aesthetics-lead | docs-reviewer (verified: rules bullets 1-4 match RP-2 item 5 in teams/audit/STATUS.md and SL-11; both deviation entries vs git trailers (Fable 5 through ca9747f, Opus 5.5 from 0671872), SL-07, SL-09 and the aesthetics STATUS liaison line; no body [PROVISIONAL] tag belongs to this row. Non-blocking, signed through: bullet 5 (engineering numbers trace to committed JSON or script) is beyond item 5 text, it generalises RP-2 item 2; Orchestrator to confirm intended) |

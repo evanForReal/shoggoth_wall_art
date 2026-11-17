@@ -49,7 +49,7 @@ Proposed reprioritization:
 7. **Alt tentacle counts (2/4/5)**: still untested since init_vision. Put one card in round-06 or log Evan's waiver.
 8. Carry-overs from cycle 1: tools/ in CLAUDE.md map; tally script that actually checks verdicts; deviation-log entry for Fable 5 trailers vs the Sonnet policy.
 
-Vote: pending (Orchestrator 3, each active Team Lead 1, Auditor chairs).
+Vote: ADOPTED 6 of 7 — Orchestrator 3 FOR (session log SL-09); Fabrication 1 FOR (teams/fabrication/analysis/rp2-blind-pockets.md s.7); Structural 1 FOR and CAD 1 FOR (both given in the leads' hand-back reports to the Orchestrator, not written into their own files; relayed here by the Orchestrator 2026-11-17); aesthetics-lead not cast (same actor as Orchestrator, docs/AGENTS.md deviation log). Outcome row: docs/DECISIONS.md 2026-11-16 RP-2 adoption + 2026-11-17 vote-record row.
 
 ## Takeaways
 
@@ -73,3 +73,4 @@ Vote: pending (Orchestrator 3, each active Team Lead 1, Auditor chairs).
 | 2026-11-15 | orchestrator | Initial creation | docs-reviewer |
 | 2026-11-15 | audit-lead | Cycle 1: exec summary, RP-1 recenter proposal, takeaways | docs-reviewer |
 | 2026-11-16 | audit-lead | Cycle 2: exec line, RP-2 recenter proposal (CAD), takeaways; artifacts/audit/2026-11-16-exec-summary.md | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | RP-2 Vote line: recorded 6 of 7 with a source per vote (Structural/CAD relayed from hand-backs) | [PROVISIONAL] |

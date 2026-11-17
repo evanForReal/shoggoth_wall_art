@@ -1,0 +1,50 @@
+{
+ "H_gate1c.npy": {
+  "core_area_cm2": 291.4,
+  "narrow_area_cm2": 85.2,
+  "narrow_area_frac": 0.292,
+  "depth_p50_p90_p99_max_mm": [
+   2.0,
+   8.6,
+   121.5,
+   136.2
+  ],
+  "depth_band_share": {
+   "0.5-3": 0.612,
+   "3-6": 0.248,
+   "6-12": 0.068,
+   "12-24": 0.016,
+   "24-inf": 0.056
+  },
+  "share_le_6mm_deep": 0.86,
+  "relief_p10_p50_p90_mm": [
+   2.6,
+   12.5,
+   48.7
+  ]
+ },
+ "H_gate2.npy": {
+  "core_area_cm2": 298.3,
+  "narrow_area_cm2": 97.2,
+  "narrow_area_frac": 0.326,
+  "depth_p50_p90_p99_max_mm": [
+   1.8,
+   9.4,
+   105.1,
+   133.4
+  ],
+  "depth_band_share": {
+   "0.5-3": 0.644,
+   "3-6": 0.197,
+   "6-12": 0.083,
+   "12-24": 0.033,
+   "24-inf": 0.044
+  },
+  "share_le_6mm_deep": 0.84,
+  "relief_p10_p50_p90_mm": [
+   2.9,
+   13.7,
+   70.7
+  ]
+ }
+}

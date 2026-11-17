@@ -55,7 +55,7 @@ Read for printability:
 - The sculpt pass moves the wrong way for pockets: outward-only displacement up to 1.3 mm per face. On a 3 mm mouth that can remove up to 2.6 mm of width where gap-limiting does not fully zero it (mask: gaps < 1.8 mm). The post-sculpt share < 6 mm rose 22% to 33% (inclusive). C3 measures mouths on the sculpted mesh for this reason. Grain at pocket rims should ramp to 0 within ~1 mm of a rim.
 - Across-flow grain wavelengths of 0.68 / 1.1 / 2.25 mm are at or below the spec emboss floor (1.0 mm) and the 0.45 mm line width: the finest octave will not print crisply (gate2 README says the same). Treat <= 1.0 mm grain as non-printed texture.
 
-Fabrication cross-check (own measurement, indicative): z-buffer heightfield of the gate1c and gate2 preview STLs (380k-triangle decimations, 0.5 mm grid, interior 40 px margin excluded, top surface only so undercuts are invisible, grain smoothed out). Depressions narrower than 6 mm (morphological closing r = 3 mm minus surface):
+Fabrication cross-check (own measurement, indicative; script + output: `heightfield/heightfield_check.py`, `heightfield/heightfield_check.json`): z-buffer heightfield of the gate1c and gate2 preview STLs (380k-triangle decimations, 0.5 mm grid, interior 40 px margin excluded, top surface only so undercuts are invisible, grain smoothed out). Depressions narrower than 6 mm (morphological closing r = 3 mm minus surface):
 
 | | gate1c | gate2 |
 |---|---|---|
@@ -63,7 +63,7 @@ Fabrication cross-check (own measurement, indicative): z-buffer heightfield of t
 | Depth P50 / P90 / P99 | 2.0 / 8.6 / 121 mm | 1.8 / 9.4 / 105 mm |
 | Area share by depth, mm: 0.5-3 / 3-6 / 6-12 / 12-24 / > 24 | 61 / 25 / 7 / 2 / 6% | 64 / 20 / 8 / 3 / 4% |
 
-Reading: ~85-90% of narrow depressions are <= 6 mm deep, i.e. shallow dimples that pass C4 for any mouth >= 2 mm. A tail of 4-6% of narrow-depression area is > 24 mm deep (slots between tall features such as limb and fibre fans, depth up to ~135 mm). That tail breaks C4. It is where primer will not reach and where a flank ridge exceeds 10:1. Patch relief is shallow (median 13 mm); the full piece targets 60 mm mean relief, so the deep tail grows unless CAD enforces C4 at piece scale. Caveats: decimated preview meshes; patch scale, not piece scale; closing width is an approximation of mouth width; no undercut or axis data.
+Reading: 84-86% of narrow-depression area is <= 6 mm deep, i.e. shallow dimples that pass C4 for any mouth >= 2 mm. A tail of 4-6% of narrow-depression area is > 24 mm deep (slots between tall features such as limb and fibre fans, depth up to ~135 mm). That tail breaks C4. It is where primer will not reach and where a flank ridge exceeds 10:1. Patch relief is shallow (median 13 mm); the full piece targets 60 mm mean relief, so the deep tail grows unless CAD enforces C4 at piece scale. Caveats: decimated preview meshes; patch scale, not piece scale; closing width is an approximation of mouth width; no undercut or axis data.
 
 ## 4. Where this is not safe
 
@@ -101,4 +101,5 @@ Not touched: segment count, mass, print time, joint detail. Those stay at enabli
 
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
-| 2026-11-16 | fabrication-lead | Initial creation (RP-2 item 3 verdict, conditions, v2 fab-risk list) | [PROVISIONAL] |
+| 2026-11-16 | fabrication-lead | Initial creation (RP-2 item 3 verdict, conditions, v2 fab-risk list) | FLAG OPEN: same as STATUS row, s.3 "Fabrication cross-check" table (gate1c/gate2 heightfield areas, depth percentiles, depth-share bands) has no committed script or output; mark "unsourced" or commit it. s.3 first table verified against validation_sculpt.json. Body [PROVISIONAL] tag kept |
+| 2026-11-17 | orchestrator | Resolves FLAG OPEN above: heightfield numbers now sourced (analysis/heightfield/heightfield_check.py + .json, re-run on the retained gate1c/gate2 heightfields, reproduces every table value); "85-90%" corrected to 84-86% | [PROVISIONAL] |

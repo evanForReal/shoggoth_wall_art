@@ -1,6 +1,6 @@
 # RP-2 Item 3: Strut Spec, Limb Min I, Blind-Pocket Relaxation, Mass Check
 
-**Status:** [PROVISIONAL] structural-lead, 2026-11-16. Hand calcs, no FEA, no coupon test. Extends `load-model-v1.md`; where numbers conflict, this file supersedes load-model Section 6 strut member and mesh-spec-v1 Section 5 "Member" row. Fabrication reviews (a) independently on printability; nothing here speaks for them.
+**Status:** structural-lead, 2026-11-16. Hand calcs, no FEA, no coupon test. Extends `load-model-v1.md`; where numbers conflict, this file supersedes load-model Section 6 strut member and mesh-spec-v1 Section 5 "Member" row. Fabrication reviews (a) independently on printability; nothing here speaks for them.
 
 ## 0. Exec summary
 
@@ -231,4 +231,4 @@ Mount passes at 14 kg and at 22 kg. The proxy is a mass-reporting problem, not a
 
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
-| 2026-11-16 | structural-lead | Initial creation: RP-2 item 3 (blind-pocket verdict, one strut spec, limb min I, mass check) | [PROVISIONAL] |
+| 2026-11-16 | structural-lead | Initial creation: RP-2 item 3 (blind-pocket verdict, one strut spec, limb min I, mass check) | docs-reviewer (verified: same calcs as STATUS row, sections 2.2, 2.3, 2.7, 3.2 recomputed; assumptions table A1-A12 present. Body status tag cleared. Prose in s.6 item 1 ("precondition to freezing the numbers beyond PROVISIONAL") is about coupon-test status of E/creep, left as written) |

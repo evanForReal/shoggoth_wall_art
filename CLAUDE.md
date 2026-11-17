@@ -59,4 +59,4 @@ artifacts/
 |------|-------|--------|---------------|
 | 2026-11-13 | docs-lead | Initial creation | docs-reviewer |
 | 2026-11-15 | docs-worker | Repo map: dropped nonexistent knobs dir; added AUDIT.md, teams/audit, analysis/, artifacts/audit | docs-reviewer (flagged: tools/ missing from map) |
-| 2026-11-16 | orchestrator | Repo map: added tools/ (closes flag above), review/verdicts/, artifacts/session-log/ | [PROVISIONAL] |
+| 2026-11-16 | orchestrator | Repo map: added tools/ (closes flag above), review/verdicts/, artifacts/session-log/ | docs-reviewer (verified: tools/ exists with verify_tallies.py, review/verdicts/ holds round-01..05.json, artifacts/session-log/ exists; `git diff 1ebb51a HEAD` adds only these three map lines; closes the tools/ flag above. Cosmetic, signed through: review/verdicts and tools lines sit directly under "agent orchestration/" with no spacing, reads as children) |
