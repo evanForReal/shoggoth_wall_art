@@ -1,0 +1,290 @@
+{
+ "G1a_a": {
+  "shelves": {
+   "S1_UL": {
+    "flat_top_x_mm": 158,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 0.0,
+    "top_y": 285
+   },
+   "S2_UR": {
+    "flat_top_x_mm": 194,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 0.0,
+    "top_y": 150
+   },
+   "S3_LL": {
+    "flat_top_x_mm": 172,
+    "flat_top_z_mm": 172,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 66.0,
+    "top_y": -190
+   }
+  },
+  "maw_to_mask_area": 1.09,
+  "bundle_strands": {
+   "S1_UL": 4,
+   "S2_UR": 4,
+   "S3_LL": 4,
+   "H1": 3,
+   "H2": 2,
+   "H3": 1,
+   "H4": 2,
+   "H5": 4,
+   "H6": 2
+  },
+  "n_crown": 6,
+  "hang_strands": 6,
+  "webs": [
+   {
+    "open_frac": 0.26,
+    "area_cm2": 158
+   },
+   {
+    "open_frac": 0.24,
+    "area_cm2": 158
+   },
+   {
+    "open_frac": 0.37,
+    "area_cm2": 166
+   },
+   {
+    "open_frac": 0.38,
+    "area_cm2": 211
+   },
+   {
+    "open_frac": 0.23,
+    "area_cm2": 80
+   },
+   {
+    "open_frac": 0.09,
+    "area_cm2": 46
+   },
+   {
+    "open_frac": 0.24,
+    "area_cm2": 68
+   },
+   {
+    "open_frac": 0.01,
+    "area_cm2": 49
+   }
+  ],
+  "min_strand_diameter_mm": 9.0,
+  "note_min_strand": "by construction: strand radius floor 4.5 mm (engine add_bundle2), tips floor r 6-7 mm; fingers 3.8-7.6 mm radius, taper to 7.6 mm dia at the tip (below 9; claw tips)",
+  "iou_vs_r07_G1a_png": 0.7913,
+  "iou_vs_r07_G1a_grid": 0.7867
+ },
+ "G1a_b": {
+  "shelves": {
+   "S1_UL": {
+    "flat_top_x_mm": 158,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 0.0,
+    "top_y": 285
+   },
+   "S2_UR": {
+    "flat_top_x_mm": 194,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 44.0,
+    "top_y": 150
+   },
+   "S3_LL": {
+    "flat_top_x_mm": 172,
+    "flat_top_z_mm": 172,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 68.0,
+    "top_y": -190
+   }
+  },
+  "maw_to_mask_area": 1.09,
+  "bundle_strands": {
+   "S1_UL": 5,
+   "S2_UR": 5,
+   "S3_LL": 5,
+   "H1": 3,
+   "H7": 1,
+   "H2": 2,
+   "H3": 1,
+   "H4": 2,
+   "H5": 4,
+   "H6": 2,
+   "H8": 1
+  },
+  "n_crown": 9,
+  "hang_strands": 8,
+  "webs": [
+   {
+    "open_frac": 0.22,
+    "area_cm2": 194
+   },
+   {
+    "open_frac": 0.22,
+    "area_cm2": 195
+   },
+   {
+    "open_frac": 0.32,
+    "area_cm2": 207
+   },
+   {
+    "open_frac": 0.35,
+    "area_cm2": 310
+   },
+   {
+    "open_frac": 0.24,
+    "area_cm2": 80
+   },
+   {
+    "open_frac": 0.19,
+    "area_cm2": 115
+   },
+   {
+    "open_frac": 0.21,
+    "area_cm2": 120
+   },
+   {
+    "open_frac": 0.17,
+    "area_cm2": 132
+   },
+   {
+    "open_frac": 0.34,
+    "area_cm2": 226
+   },
+   {
+    "open_frac": 0.32,
+    "area_cm2": 110
+   },
+   {
+    "open_frac": 0.0,
+    "area_cm2": 36
+   },
+   {
+    "open_frac": 0.2,
+    "area_cm2": 80
+   },
+   {
+    "open_frac": 0.02,
+    "area_cm2": 122
+   }
+  ],
+  "min_strand_diameter_mm": 9.0,
+  "note_min_strand": "by construction: strand radius floor 4.5 mm (engine add_bundle2), tips floor r 6-7 mm; fingers 3.8-7.6 mm radius, taper to 7.6 mm dia at the tip (below 9; claw tips)",
+  "iou_vs_r07_G1a_png": 0.7699,
+  "iou_vs_r07_G1a_grid": 0.7666
+ },
+ "G1a_c": {
+  "shelves": {
+   "S1_UL": {
+    "flat_top_x_mm": 158,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 0.0,
+    "top_y": 285
+   },
+   "S2_UR": {
+    "flat_top_x_mm": 194,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 32.0,
+    "top_y": 150
+   },
+   "S3_LL": {
+    "flat_top_x_mm": 172,
+    "flat_top_z_mm": 172,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 70.0,
+    "top_y": -190
+   }
+  },
+  "maw_to_mask_area": 1.07,
+  "bundle_strands": {
+   "S1_UL": 7,
+   "S2_UR": 7,
+   "S3_LL": 7,
+   "H1": 3,
+   "H7": 1,
+   "H2": 2,
+   "H3": 1,
+   "H8": 1,
+   "H4": 2,
+   "H5": 4,
+   "H6": 2,
+   "H9": 1
+  },
+  "n_crown": 13,
+  "hang_strands": 9,
+  "webs": [
+   {
+    "open_frac": 0.26,
+    "area_cm2": 231
+   },
+   {
+    "open_frac": 0.25,
+    "area_cm2": 232
+   },
+   {
+    "open_frac": 0.26,
+    "area_cm2": 207
+   },
+   {
+    "open_frac": 0.25,
+    "area_cm2": 304
+   },
+   {
+    "open_frac": 0.23,
+    "area_cm2": 78
+   },
+   {
+    "open_frac": 0.19,
+    "area_cm2": 115
+   },
+   {
+    "open_frac": 0.16,
+    "area_cm2": 120
+   },
+   {
+    "open_frac": 0.17,
+    "area_cm2": 132
+   },
+   {
+    "open_frac": 0.31,
+    "area_cm2": 299
+   },
+   {
+    "open_frac": 0.29,
+    "area_cm2": 140
+   },
+   {
+    "open_frac": 0.27,
+    "area_cm2": 108
+   },
+   {
+    "open_frac": 0.0,
+    "area_cm2": 38
+   },
+   {
+    "open_frac": 0.26,
+    "area_cm2": 162
+   },
+   {
+    "open_frac": 0.21,
+    "area_cm2": 79
+   },
+   {
+    "open_frac": 0.02,
+    "area_cm2": 60
+   },
+   {
+    "open_frac": 0.01,
+    "area_cm2": 118
+   }
+  ],
+  "min_strand_diameter_mm": 9.0,
+  "note_min_strand": "by construction: strand radius floor 4.5 mm (engine add_bundle2), tips floor r 6-7 mm; fingers 3.8-7.6 mm radius, taper to 7.6 mm dia at the tip (below 9; claw tips)",
+  "iou_vs_r07_G1a_png": 0.7666,
+  "iou_vs_r07_G1a_grid": 0.7639
+ }
+}
