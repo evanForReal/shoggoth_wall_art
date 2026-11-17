@@ -1,0 +1,65 @@
+{
+  "round": "round-07",
+  "title": "Shoggoth wall art — round 07: body & pose (composition only)",
+  "created": "2026-11-17",
+  "issue_repo": "evanForReal/shoggoth_wall_art",
+  "notes": "PICK THE BODY + POSE to build. Silhouettes only: surface, hands, teeth, eyes come after. G3a vs G3b = vertical vs horizontal maw. ··· Why this round: r05/r06 had no defined organism (your notes). These are built as one creature — head set into a trunk, limbs rooted along it, shelves at limb ends, 300 mm clear above each shelf. Left of each card: 3-value silhouette (mask white, maw black, body dark). Right: the 3D massing, smooth on purpose. ALSO, in your issue notes: (1) keep or release r05's shelf placement and radial layout? (we already keep: side-profile depth, smiley + maw, 300 mm plant clearance); (2) the 3x3 ft size question from r06 is withdrawn — size wasn't the real limit, our authoring method was.",
+  "cards": [
+    {
+      "id": "g1a",
+      "image": "images/G1a.jpg",
+      "axis": "pose",
+      "title": "G1a — c01-style: tall trunk, arms to three shelves",
+      "rationale": "Closest to c01: head set into the top of a tall trunk, maw in the chest, shelves high-left / mid-right / low-left (your r05 arrangement), three tentacles below.",
+      "source": "generated in-house (composition_r07, G1a)"
+    },
+    {
+      "id": "g1b",
+      "image": "images/G1b.jpg",
+      "axis": "pose",
+      "title": "G1b — same body, head offset, trunk leaning",
+      "rationale": "G1a's anatomy with more asymmetry: head pushed left, trunk leaning, shelves re-staggered (high-right, mid-left, low-right).",
+      "source": "generated in-house (composition_r07, G1b)"
+    },
+    {
+      "id": "g2a",
+      "image": "images/G2a.jpg",
+      "axis": "pose",
+      "title": "G2a — diagonal emergence, head upper right",
+      "rationale": "The creature climbs the wall on a diagonal; a whip rises over the head. Big empty wall wedges. (r05's diagonal had no body — this one does.)",
+      "source": "generated in-house (composition_r07, G2a)"
+    },
+    {
+      "id": "g3a",
+      "image": "images/G3a.jpg",
+      "axis": "pose + maw",
+      "title": "G3a — low crouch, horns, VERTICAL maw",
+      "rationale": "Hunched, wide trunk, two horn-limbs over the head, eight limbs. Maw vertical like c01.",
+      "source": "generated in-house (composition_r07, G3a)"
+    },
+    {
+      "id": "g3b",
+      "image": "images/G3b.jpg",
+      "axis": "pose + maw",
+      "title": "G3b — low crouch, horns, HORIZONTAL maw",
+      "rationale": "Same as G3a with the maw turned horizontal — vote this pair to settle maw orientation.",
+      "source": "generated in-house (composition_r07, G3b)"
+    },
+    {
+      "id": "g4a",
+      "image": "images/G4a.jpg",
+      "axis": "pose",
+      "title": "G4a — sinuous ribbon (closest to your sketch)",
+      "rationale": "S-curved ribbon body, head upper left, from your original sketch. Our composition gate scores it weakest (bean-shaped body, crowded lower half) — shown so your sketch direction gets a fair vote.",
+      "source": "generated in-house (composition_r07, G4a)"
+    },
+    {
+      "id": "ref",
+      "image": "images/c01_ref.jpg",
+      "axis": "reference",
+      "title": "c01 — the target you loved, and its traced silhouette",
+      "rationale": "Reference for judging the poses: head in a tall trunk, six limbs, three shelves at limb ends, open wall between limbs. Vote like if it should stay the north star.",
+      "source": "round-04 c01 + composition-gate trace"
+    }
+  ]
+}

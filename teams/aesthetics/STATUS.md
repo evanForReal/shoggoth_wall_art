@@ -5,6 +5,7 @@
 
 ## Exec Summary (newest first)
 
+- 2026-11-17: Round-07 composition board staged (review/staging/round-07/): 6 pose studies as notan + massing diptychs (G1a, G1b, G2a, G3a/G3b maw pair, G4a) + c01 reference. Gate: 5 of 6 pass all but IoU (G4a 4/7, shown as Evan-sketch direction). Lock-hygiene question in notes.
 - 2026-11-17: R06 verdicts in (issue #6: 0/1/11). Side profile loved again; composition named the root failure ("cluttered clockwork", body lost). Method change: design-principles log + feature reference study, then round-07 composition (silhouette) board before more detail. Envelope unchanged (size question unanswered).
 - 2026-11-17: Round-06 board assembled (12 cards, review/rounds/round-06/): fullpiece-v2.1 hero (5 views) + 3 one-axis variants (masquerade, tentacle count, maw size) + sheet vs c01. Notes disclose r05 headroom correction, known gaps, and ask Evan: keep 3x3 ft or widen for c01 sprawl. v2 (intermediate) not boarded (session log SL-30). DEPLOYED 2026-11-17 (main 88b8f46), Evan pinged; awaiting issue verdicts.
 - 2026-11-16: R05 verdicts in (issue #5: 1 love / 2 like / 10 dislike) + Evan re-center: smiley emoticon + horrific toothed maw central. Fullpiece-v2 building for round-06.
@@ -68,3 +69,4 @@
 | 2026-11-17 | orchestrator | Round-06 assembled (exec line); manifest + images | docs-reviewer (resolved, was FLAG OPEN: exec line 8 matches manifest (12 cards, 5 hero views + 3 variants + sheet vs c01, headroom correction, known gaps, 3x3 ft question; SL-30 exists), but the manifest it ships has open corrections (RP-2 item 1 gaps missing from notes, see review report); re-sign once the manifest is fixed. Resolved by manifest corrections in c98627b, re-verified in c98627b: manifest notes now list eyes small/clustered with painted iris, smile at 90-deg limit, overhangs, 25 kg target; "throat strands"; "our read"; sheet title "unboarded"; JSON valid, 12 cards, 12 images exist; exec line 8 still matches) |
 | 2026-11-17 | orchestrator | Round-06 deployed (exec line) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | R06 backprop: exec line, Current State (round-07 composition board), r06 takeaway | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Round-07 staged (exec line) | [PROVISIONAL] |

@@ -154,6 +154,14 @@ Lead votes requested from the CAD lead (in flight); majority needs 1 more vote.
 **SL-46** · 02:30 · First r07 study G1a passes 6/7 gate metrics but, to my eye, reads as a cute mascot octopus (small head on a pinched neck, hollow donut torso, equal rubbery limbs from one hub, curly tips) — collides with r02 no-chibi and r04 less-octopus. The gate cannot see "cute": a passing gate is necessary, not sufficient; Orchestrator visual read stays in the loop. Sent CAD c01-structure corrections (no neck; head embedded in a tall bulky trunk; limbs rooted at staggered heights with varied weights; maw as recess inside the trunk; fewer curls; asymmetry). G1a kept for comparison. · `[judgment]`
 Open question for later: value-blocked smooth renders may themselves read "plush" to Evan regardless of form; consider flat silhouette + single-value mask cards, or a light grain pass, when assembling the board.
 
+**SL-47** · 03:18 · RP-3 CARRIES 4 of 7 (Orchestrator 3 + CAD Lead 1, in CAD's own report and teams/cad/STATUS.md). CAD's caveats noted for the aesthetics lead: IoU 0.85 build-gate start is unreachable by procedural authoring (G1a 0.60) → proposal 0.60; DESIGN_PRINCIPLES #2 body band 12-20% contradicts the c01 trunk (gate measured c01 torso 0.48 W) → reconcile. Not changed yet. · `[judgment]`
+
+**SL-48** · 03:18 · Round-07 board design (staging, review/staging/round-07/): · `[judgment]`
+- My read of the 8 studies: real figures now (gate: 6 of 8 pass all but IoU), but the smooth tan renders read as clay octopus toys. Showing them as-is would make Evan judge material, not pose. So each card is a DIPTYCH: 3-value notan (wall light, body dark, maw black, mask white — generated from CAD's own render + mask by make_cards.py, no geometry change) + small shaded massing labelled "no surface yet".
+- Cards: G1a, G1b, G2a, G3a+G3b (maw-orientation pair), G4a + c01 reference = 7. Dropped G2b (knotted) and G4b (gate 4/7, CAD advises drop). Kept G4a despite gate 4/7 because it's the only study from Evan's own sketch — his direction deserves a vote; disclosed on the card.
+- Notes lead with the decision in < 140 chars (RP-3 item 5). Lock hygiene (RP-3 item 4) asked in notes: keep/release r05 shelf placement + radial layout; stated keeps: side-profile depth, smiley+maw, 300 mm headroom. Size question explicitly withdrawn (SL-43).
+- Stop-rule clock (RP-3 item 8): this is composition round 1 of 2.
+
 ---
 *Edit log*
 
@@ -170,3 +178,4 @@ Open question for later: value-blocked smooth renders may themselves read "plush
 | 2026-11-17 | orchestrator | Appended SL-41..42 (principles adopted, fresh CAD for r07) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-43..44 (audit-3 findings owned, RP-3 vote) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-45..46 (gate, G1a read) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Appended SL-47..48 (RP-3 carried, r07 board design) | [PROVISIONAL] |
