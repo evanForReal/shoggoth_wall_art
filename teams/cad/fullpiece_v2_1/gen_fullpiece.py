@@ -133,11 +133,11 @@ def tentacle(rng, start, ang, L, bend, r0, rtip, zoff, nsw, boxes=()):
     for _ in range(40):
         th = np.deg2rad(ang); pts = [np.array(start, float)]
         for i in range(6):
-            th += bend * 0.55 * np.sin(i * 0.9 + pph[i]) + bend * 0.20
+            th += 0.62 * (bend * 0.55 * np.sin(i * 0.9 + pph[i]) + bend * 0.20)
             pts.append(pts[-1] + np.array([np.cos(th), np.sin(th)]) * L / 6)
         xy, t = bend_curve(np.array(pts))
         r = ((r0 - rtip) * (1 - t) ** 0.8 + rtip) * (1 + 0.20 * np.sin(2 * np.pi * nsw * t + ph) * (0.4 + 0.6 * (1 - t)))
-        bad = (np.abs(xy) + 0.6 * r[:, None] > 440.0).any()
+        bad = (np.abs(xy) + 0.5 * r[:, None] > 446.0).any()
         for (x0, x1, y0, y1) in boxes:
             bad |= ((xy[:, 0] > x0 - r) & (xy[:, 0] < x1 + r) & (xy[:, 1] > y0 - r) & (xy[:, 1] < y1 + r)).any()
         if not bad: break
@@ -163,7 +163,7 @@ def build_limbs(pr, rng, shelves):
         curves.append((np.column_stack([xy, 0.30 * r]), r)); lines2d.append((xy, r * 1.1 + 16.0 * (1 - t) ** 2))
         meta['arms'].append(dict(shelf=k, root=[float(R[0]), float(R[1])], r_end=float(r[-1])))
     specs = [(212, 800, 0.9, 44, 0), (246, 640, -0.8, 40, 14), (272, 720, 0.7, 46, 6), (306, 660, -0.9, 40, 20),
-             (334, 820, 0.7, 44, 0), (38, 700, 0.9, 36, 10), (74, 560, -0.7, 30, 4), (112, 520, 0.8, 26, 0)]
+             (334, 820, 0.7, 44, 0), (38, 700, 0.9, 36, 10), (74, 560, -0.7, 30, 4), (112, 520, -0.5, 26, 0)]
     for wi, (ang, L, bend, r0, zoff) in enumerate(specs):
         if wi not in pr['whips']: continue
         r0 = r0 * 0.95 * pr['whip_scale']; L = L * pr['whip_len']
