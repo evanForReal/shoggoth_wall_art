@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Narrow-depression depth check behind rp2-blind-pockets.md s.3 "Fabrication cross-check".
+"""Owner: Fabrication (authored by Orchestrator 2026-11-17, re-run and adopted by Fabrication Lead 2026-11-17)
+
+Narrow-depression depth check behind rp2-blind-pockets.md s.3 "Fabrication cross-check".
 
 Step 1 (heightfield): z-buffer of a patch mesh, top surface only, 0.5 mm grid
   python3 heightfield_check.py build <mesh.stl> <tag>     -> H_<tag>.npy
