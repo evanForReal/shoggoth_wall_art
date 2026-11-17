@@ -12,7 +12,7 @@ d = np.load(os.path.join(B, a.id + '.npz')); v = d['v'].astype(np.float64); f = 
 meta = json.load(open(os.path.join(B, a.id + '_meta.json')))
 nv = len(v); z = v[:, 2]
 def sstep(t): t = np.clip(t, 0, 1); return t * t * (3 - 2 * t)
-FLESH = np.array([0.44, 0.31, 0.21]); MASK = np.array([1.0, 0.96, 0.84]); MAWC = np.array([0.012, 0.008, 0.006])
+FLESH = np.array([0.39, 0.28, 0.19]); MASK = np.array([1.0, 0.96, 0.84]); MAWC = np.array([0.012, 0.008, 0.006])
 col = FLESH[None] * (0.82 + 0.30 * sstep(z / 220.0))[:, None]
 dark = 1 - sstep(dm / 38.0)                       # maw interior + rim falloff (rim never lighter than body)
 col = col * (1 - 0.88 * dark)[:, None] + MAWC[None] * (0.88 * dark)[:, None]
@@ -58,7 +58,7 @@ sc.view_settings.view_transform = 'Standard'; sc.view_settings.look = 'None'
 cam = bpy.data.objects.new('cam', bpy.data.cameras.new('cam')); sc.collection.objects.link(cam); sc.camera = cam
 VIEWS = {'front': dict(loc=(0, 0, 2.0), tgt=(0, 0, 0), ortho=1.41), 'tq': dict(loc=(0.85, 0.35, 1.7), tgt=(0, 0, 0.05), lens=42)}
 # LOCKED lighting (identical for every study): soft raking key from upper-left, faint cool fill
-KEY = (-0.95, 0.62, 0.78); WARM = (1.0, 0.80, 0.58)
+KEY = (-0.95, 0.62, 0.78); WARM = (1.0, 0.90, 0.78)
 def setup_lights():
     for o_ in [o_ for o_ in sc.objects if o_.type == 'LIGHT']: bpy.data.objects.remove(o_)
     light('key', 'AREA', KEY, (0, 0, 0.05), 120, WARM, 1.4)
@@ -69,6 +69,7 @@ for nm in a.views.split(','):
     if 'ortho' in cfg: cam.data.type = 'ORTHO'; cam.data.ortho_scale = cfg['ortho']
     else: cam.data.type = 'PERSP'; cam.data.lens = cfg['lens']
     sc.render.filepath = os.path.join(OUT, f'study_{a.id}_{nm}.png'); bpy.ops.render.render(write_still=True); print('rendered', nm, flush=True)
+    from PIL import Image as _I; _I.open(sc.render.filepath).convert('RGB').save(sc.render.filepath, optimize=True, compress_level=9)   # <= 1 MB
 if a.mask:
     for o_ in [o_ for o_ in sc.objects if o_.type == 'LIGHT']: bpy.data.objects.remove(o_)
     cfg = VIEWS['front']; cam.location = cfg['loc']; cam.rotation_euler = look(cfg['loc'], cfg['tgt']); cam.data.type = 'ORTHO'; cam.data.ortho_scale = cfg['ortho']

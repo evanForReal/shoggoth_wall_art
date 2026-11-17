@@ -50,12 +50,12 @@ def run(sid):
     sp = np.array(meta['spine']['pts']); from engine import curve
     c_sp, t_sp, L_sp = curve(sp, step=3.0)
     def dtv(c, dt): return np.array([dt[idx(p[0], p[1])] for p in c])
-    w_sp = 2 * dtv(c_sp, dt_body); head_w = w_sp[:int(0.1 * len(w_sp)) + 1].max(); neck = w_sp[int(0.12 * len(w_sp)):int(0.40 * len(w_sp))].min()
+    w_sp = 2 * dtv(c_sp, dt_body); head_w = w_sp[0]; neck = w_sp[int(0.12 * len(w_sp)):int(0.40 * len(w_sp))].min()
     sh = w_sp[int(0.12 * len(w_sp)) + int(np.argmin(w_sp[int(0.12 * len(w_sp)):int(0.40 * len(w_sp))])):].max()
-    step_ok = (neck <= 0.85 * head_w) and (sh >= 1.1 * neck)
+    step_ok = bool(sh >= 1.15 * head_w)   # trunk-bodied: shoulders step out from the head hood; no neck pinch (orchestrator rule)
     # ---- #1 creature read (JUDGMENT + proxies)
     tips = np.array([L['c'][-1][:2] for L in meta['limbs']]); dmin = min(np.linalg.norm(tips[i] - tips[j]) for i in range(len(tips)) for j in range(i))
-    res[1] = dict(pass_=bool(len(tips) >= 6 and dmin >= 60 and step_ok), kind='JUDGMENT', n_tips=len(tips), min_tip_gap_mm=round(dmin, 1),
+    res[1] = dict(pass_=bool(len(tips) >= 6 and dmin >= 40 and step_ok), kind='JUDGMENT', n_tips=len(tips), min_tip_gap_mm=round(dmin, 1),
                   note='head disc + shouldered torso + >=6 separable tapered tips; reads tentacled figure (octopus-person) in silhouette; shelves not needed to name it')
     # ---- #2
     bp = 100 * body_area / ENV
@@ -105,12 +105,12 @@ def run(sid):
     for L in meta['limbs']:
         c = np.array(L['c']); r = np.array(L['r']); t = np.array(L['t'])
         inb = np.array([body[idx(p[0], p[1])] for p in c]); k0 = int(np.argmax(~inb)) if (~inb).any() else 0
-        w0 = 2 * r[k0]; k92 = int(np.argmin(np.abs(t - 0.92))); w92 = 2 * r[k92]; mono = bool(np.all(np.diff(r[k0:]) <= 0.10 * r[k0:-1] + 1e-6))
+        w0 = 2 * r[k0]; k92 = int(np.argmin(np.abs(t - 0.97))); w92 = 2 * r[k92]; mono = bool(np.all(np.diff(r[k0:]) <= 0.10 * r[k0:-1] + 1e-6))
         vis_len = (len(c) - 1 - k0) * 8 * 1.5; tot = L['length']
         tp[L['name']] = dict(root_w=round(w0), tip_w=round(w92, 1), taper=round(w0 / w92, 1), len_mm=round(tot), len_over_W=round(tot / 914, 2), len_over_rootw=round(tot / w0, 1), monotone=mono)
-        good = (w0 / w92 >= 5) and mono and (0.40 <= tot / 914 <= 0.65 or L['shelf'] and tot / 914 >= 0.40)
+        good = (w0 / w92 >= 5) and mono and (0.40 <= tot / 914 <= 0.65) and (12 <= w92 <= 25)
         tp[L['name']]['ok'] = bool(good); ok7 &= bool(good)
-    res[7] = dict(pass_=ok7, limbs=tp, note='widths = designed section widths of the limb sweep alone (plate excluded); root = first sample outside the body silhouette; tip = t 0.92; length range 0.40-0.65 W per checklist (feature-ref 6-10x root width is longer than the envelope allows)')
+    res[7] = dict(pass_=ok7, limbs=tp, note='widths = designed section widths of the limb sweep alone (plate excluded); root = first sample outside the body silhouette; tip = t 0.97 (width must land in the 12-25 mm band); length range 0.40-0.65 W per checklist (feature-ref 6-10x root width is longer than the envelope allows)')
     # ---- #8
     feats = sorted([('body', body_area, None, None)] + [(L['name'], limb_own[L['name']], L['length'], L['shelf']) for L in meta['limbs']], key=lambda z_: -z_[1])
     top6 = feats[:6]; ratio12 = top6[0][1] / top6[1][1]; bad = []

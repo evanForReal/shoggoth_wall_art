@@ -26,6 +26,13 @@ def tent_r(t, r0, r_tip=6.0, p=0.75):
     lin = r88 + (r_tip - r88) * np.clip((t - 0.88) / 0.12, 0, 1)
     return np.maximum(np.where(t <= 0.88, a, lin), r_tip)
 
+def apply_wave(c, t, wave):
+    if not wave: return c
+    A, cyc, ph, tmax = wave; tg = np.gradient(c[:, :2], axis=0); tg /= np.linalg.norm(tg, axis=1)[:, None] + 1e-9
+    win = np.sin(np.pi * np.clip(t / tmax, 0, 1)) * (t < tmax); off = A * np.sin(cyc * np.pi * t / tmax + ph) * win
+    c = c.copy(); c[:, 0] += -tg[:, 1] * off; c[:, 1] += tg[:, 0] * off
+    return c
+
 class Field:
     def __init__(s):
         s.F = np.full((NX, NY, NZ), 1e3, np.float32); s.parts = {}
@@ -38,7 +45,8 @@ class Field:
         X, Y, Z = np.meshgrid(XS[sl[0]], YS[sl[1]], ZS[sl[2]], indexing='ij'); return X, Y, Z
     def add_sweep(s, name, pts, rfun, k=30.0, zs=1.0, pad=None, wave=None):
         c, t, L = curve(pts)
-        if wave:   # lateral S-wave in the wall plane: A mm, half-cycles, phase, window end tmax (root and window end unchanged)
+        c = apply_wave(c, t, wave)
+        if False:   # lateral S-wave in the wall plane: A mm, half-cycles, phase, window end tmax (root and window end unchanged)
             A, cyc, ph, tmax = wave; tg = np.gradient(c[:, :2], axis=0); tg /= np.linalg.norm(tg, axis=1)[:, None] + 1e-9
             win = np.sin(np.pi * np.clip(t / tmax, 0, 1)) ** 1.0 * (t < tmax)
             off = A * np.sin(cyc * np.pi * t / tmax + ph) * win

@@ -1,105 +1,118 @@
-"""Eight round-07 composition studies as FIGURE data (spine, limbs, shelves). No surface detail.
-Coordinates mm: x right, y up, z out of the wall; envelope +-457. Shelf limbs pass under their plate (attach y = top-44),
-then continue past it and curl up/under the rim as a cradle. Free limbs taper by tent_r (c01/feature-ref law)."""
+"""Round-07 composition studies as FIGURE data (v2: trunk-bodied, per orchestrator read of G1a).
+Coordinates mm: x right, y up, z out of the wall; envelope +-457. Body = ONE variable-radius sweep (head hood merges into a bulky trunk, NO neck pinch).
+Limbs root at staggered heights on the trunk, differ in weight (r0), taper by tent_r. Shelf limbs pass under their plate (attach y = top-44), plate
+carved flat on top, tail continues past the plate and lifts a little at the rim (cradle). Curls: <= 2 per study. G1a_neck = superseded first pass (kept in studies_v0_neck.py)."""
+import numpy as np
 S = {}
-NECK = [(0, 128), (0.09, 126), (0.25, 74), (0.42, 142), (0.64, 140), (0.85, 118), (1, 108)]
 def shelf(cx, top, cz=105, a=118, b=100, seed=1): return dict(cx=cx, top=top, cz=cz, a=a, b=b, seed=seed)
-def sl(name, sh, pts, r0=60): return dict(name=name, r0=r0, shelf=sh, pts=pts)
+def arm(name, sh, root, r0=52):
+    """shelf arm: leaves the trunk at `root`, is LEVEL at the plate's inner edge (never above the plate top inside its footprint), passes under the plate, tail lifts at the rim."""
+    cx, top = sh['cx'], sh['top']; ya = top - 44; sd = 1 if cx > root[0] else -1; ap = (cx - sd * 135, ya)
+    sm = lambda u: u * u * (3 - 2 * u)
+    p1 = (root[0] + 0.32 * (ap[0] - root[0]), root[1] + (ya - root[1]) * 0.15); p2 = (root[0] + 0.68 * (ap[0] - root[0]), root[1] + (ya - root[1]) * 0.75)
+    return dict(name=name, r0=r0, shelf=sh, pts=[(root[0], root[1], 35), (p1[0], p1[1], 55), (p2[0], p2[1], 75), (ap[0], ap[1], 90), (cx, ya, 100)] + tail(cx, ya, sd))
 def fl(name, pts, r0=50, r_tip=6.0): return dict(name=name, r0=r0, pts=pts, r_tip=r_tip)
+def trunk(mx, end=120, head=138): return [(0, head), (0.18, 0.93 * mx), (0.45, mx), (0.75, 0.88 * mx), (1, end)]
+def tail(cx, ytop_att, sg=1):   # standard shelf tail past the plate, gentle lift at the rim
+    return [(cx + sg * 55, ytop_att, 108), (cx + sg * 95, ytop_att - 3, 112), (cx + sg * 113, ytop_att + 14, 112)]
 
-# ---------------- G1 Descending Figure (c01-derived)
-S['G1a'] = dict(id='G1a', name='G1a Descending Figure: centred head, 7 limbs', gesture='G1 vertical spine, slight S (head +8 mm)', seed=1,
-  spine=[(8, 262, 15), (5, 150, 12), (0, 40, 10), (5, -70, 10), (0, -170, 8)],
-  spine_r=NECK,
-  mask=dict(c=(8, 262), D=200, z=78, dz=24), maw=dict(c=(0, -30), w=215, h=320, orient='v'),
+# ---------------- G1 Descending Figure (c01-derived, trunk-bodied)
+S['G1a'] = dict(id='G1a', name='G1a Descending Figure (c01-faithful): tall trunk + root column, head set into trunk top, 6 limbs staggered', gesture='G1 vertical trunk, slight S (head +8 mm)', seed=1,
+  spine=[(8, 262, 15), (3, 150, 12), (-3, 20, 10), (0, -110, 8), (2, -250, 6)], spine_r=[(0, 138), (0.13, 172), (0.32, 184), (0.5, 170), (0.7, 124), (1, 100)],
+  mask=dict(c=(8, 262), D=200, z=115, dz=28), maw=dict(c=(0, -20), w=200, h=300, orient='v'),
   limbs=[
-   sl('S1_UL', shelf(-325, 300), [(-90, 110, 35), (-190, 170, 55), (-265, 225, 80), (-325, 256, 100), (-385, 254, 108), (-428, 244, 112), (-446, 268, 112)]),
-   sl('S2_UR', shelf(330, 175, seed=2), [(90, 60, 35), (190, 75, 55), (270, 100, 70), (330, 131, 90), (385, 131, 105), (428, 125, 110), (446, 152, 110)]),
-   sl('S3_LL', shelf(-330, -150, seed=3), [(-90, -110, 30), (-170, -130, 50), (-250, -175, 80), (-330, -194, 100), (-390, -196, 108), (-432, -186, 110), (-446, -160, 110)]),
-   fl('F1', [(-30, -170, 30), (-90, -250, 45), (-160, -330, 70), (-240, -395, 95), (-325, -430, 110), (-390, -420, 115), (-410, -385, 112), (-385, -362, 108)]),
-   fl('F2', [(40, -190, 30), (130, -250, 45), (230, -300, 70), (330, -305, 95), (410, -260, 110), (440, -195, 120), (425, -150, 125), (395, -140, 125)]),
-   fl('F3', [(15, -230, 30), (40, -320, 45), (100, -385, 70), (165, -425, 95), (225, -435, 105), (262, -410, 110), (255, -380, 110)], r0=46),
-   fl('F4', [(100, -90, 30), (190, -120, 50), (290, -165, 75), (370, -150, 100), (425, -105, 115), (420, -65, 115)], r0=42),
+   arm('S1_UL', shelf(-335, 285), (-105, 150)),
+   arm('S2_UR', shelf(335, 150, seed=2), (70, 60)),
+   arm('S3_LL', shelf(-335, -190, seed=3), (-70, -100)),
+   fl('T1', [(-30, -250, 30), (-90, -320, 45), (-180, -380, 70), (-280, -415, 95), (-360, -445, 108), (-415, -440, 112)], r0=64),
+   fl('T2', [(90, -120, 30), (190, -150, 45), (290, -170, 70), (380, -215, 95), (428, -290, 108), (430, -370, 112), (405, -430, 112)], r0=62),
+   fl('T3', [(0, -200, 30), (50, -300, 45), (110, -370, 70), (200, -415, 92), (300, -440, 100), (380, -450, 106)], r0=46),
+  ])
+S['G1b'] = dict(id='G1b', name='G1b Descending Figure: head offset left, S-leaning trunk, shelves re-staggered', gesture='G1 S-trunk, head -85 mm', seed=2,
+  spine=[(-62, 262, 15), (-48, 150, 12), (-20, 30, 10), (5, -110, 8)], spine_r=trunk(190, 120),
+  mask=dict(c=(-62, 262), D=200, z=115, dz=28), maw=dict(c=(-8, -20), w=200, h=300, orient='v', tilt=0.10),
+  limbs=[
+   arm('S1_UR', shelf(330, 310, seed=4), (110, 150)),
+   arm('S2_UL', shelf(-360, 135, seed=5), (-110, 60)),
+   arm('S3_LR', shelf(335, -190, seed=6), (80, -120)),
+   fl('T1', [(-60, -190, 30), (-120, -270, 45), (-190, -340, 70), (-280, -400, 95), (-360, -435, 108), (-410, -425, 112), (-425, -395, 110)], r0=60),
+   fl('T2', [(10, -180, 30), (-20, -260, 45), (10, -340, 70), (90, -395, 90), (180, -420, 100), (270, -440, 106), (330, -445, 106)], r0=38),
+   fl('T3', [(-150, -80, 30), (-230, -130, 50), (-310, -190, 75), (-390, -250, 95), (-440, -300, 105)], r0=40),
   ])
 
-S['G1b'] = dict(id='G1b', name='G1b Descending Figure: head offset left, S-spine, shelves mirrored', gesture='G1 vertical S-spine, head -80 mm', seed=2,
-  spine=[(-80, 268, 15), (-58, 150, 12), (-15, 40, 10), (25, -70, 10), (10, -170, 8)],
-  spine_r=NECK,
-  mask=dict(c=(-80, 268), D=200, z=78, dz=24), maw=dict(c=(-8, -30), w=215, h=320, orient='v', tilt=0.10),
-  limbs=[
-   sl('S1_UR', shelf(330, 295, seed=4), [(70, 110, 35), (165, 165, 55), (250, 225, 80), (330, 251, 100), (390, 249, 108), (432, 240, 112), (446, 264, 112)]),
-   sl('S2_UL', shelf(-350, 150, seed=5), [(-70, 60, 35), (-165, 85, 55), (-255, 100, 75), (-350, 106, 95), (-405, 108, 105), (-440, 104, 110), (-452, 130, 110)]),
-   sl('S3_LR', shelf(335, -120, seed=6), [(70, -120, 30), (160, -150, 50), (250, -165, 80), (335, -164, 100), (395, -166, 108), (436, -156, 110), (448, -130, 110)]),
-   fl('F1', [(-10, -190, 30), (-70, -260, 45), (-140, -330, 70), (-220, -395, 95), (-300, -430, 110), (-370, -420, 115), (-392, -385, 112), (-365, -365, 108)]),
-   fl('F2', [(40, -200, 30), (80, -290, 45), (120, -380, 70), (190, -435, 95), (255, -440, 105), (285, -410, 110), (265, -385, 110)], r0=46),
-   fl('F3', [(-30, -130, 30), (-120, -185, 50), (-215, -250, 75), (-320, -285, 100), (-405, -250, 115), (-438, -190, 120), (-420, -150, 125), (-392, -148, 125)]),
-  ])
-
-# ---------------- G2 Diagonal Emergence (head upper-right, body on the diagonal); heavy vs lean
+# ---------------- G2 Diagonal Emergence (head upper-right); heavy vs lean trunk
 def g2(id_, heavy):
-    k = 1.0 if heavy else 0.78
-    return dict(id=id_, name=f'{id_} Diagonal Emergence: ' + ('heavy' if heavy else 'lean') + ' body', gesture='G2 diagonal C, head upper right', seed=3,
-  spine=[(215, 225, 15), (125, 125, 12), (25, 12, 10), (-65, -90, 10), (-150, -185, 8)],
-  spine_r=([(0, 128), (0.09, 126), (0.25, 76), (0.44, 150), (0.68, 148), (0.88, 126), (1, 114)] if heavy else [(0, 128), (0.09, 126), (0.25, 70), (0.44, 112), (0.68, 108), (0.88, 90), (1, 78)]),
-  mask=dict(c=(215, 225), D=200, z=78, dz=24), maw=dict(c=(45, 15), w=215, h=320, orient='v', tilt=-0.35),
+    mx = 186 if heavy else 150; end = 120 if heavy else 92
+    return dict(id=id_, name=f'{id_} Diagonal Emergence: ' + ('heavy' if heavy else 'lean') + ' trunk', gesture='G2 diagonal C, head upper right', seed=3,
+  spine=[(215, 230, 15), (130, 140, 12), (20, 20, 10), (-90, -100, 8)], spine_r=trunk(mx, end),
+  mask=dict(c=(215, 230), D=200, z=115, dz=28), maw=dict(c=(40, 25), w=200, h=300, orient='v', tilt=-0.35),
   limbs=[
-   sl('S1_UL', shelf(-320, 330, seed=7), [(60, 100, 35), (-50, 180, 55), (-150, 250, 80), (-240, 282, 95), (-320, 286, 100), (-385, 282, 108), (-430, 272, 112), (-448, 296, 112)]),
-   sl('S2_LR', shelf(330, -215, seed=8), [(-30, -90, 30), (60, -150, 45), (170, -230, 70), (270, -262, 90), (330, -259, 100), (390, -258, 108), (432, -266, 112), (448, -240, 112)]),
-   sl('S3_ML', shelf(-340, -60, seed=9), [(-90, -40, 30), (-170, -55, 50), (-255, -80, 75), (-340, -104, 95), (-398, -106, 105), (-436, -100, 110), (-450, -74, 110)]),
-   fl('F1', [(-160, -200, 30), (-225, -285, 45), (-285, -365, 70), (-350, -425, 95), (-410, -440, 105), (-440, -405, 108), (-415, -385, 106)]),
-   fl('F2', [(-120, -230, 30), (-95, -330, 45), (-35, -410, 70), (55, -445, 95), (130, -430, 105), (140, -395, 108), (110, -380, 106)], r0=46),
-   fl('F3', [(-60, -140, 30), (30, -170, 45), (110, -150, 70), (175, -105, 90), (205, -45, 100), (180, 5, 105)], r0=44),
+   arm('S1_UL', shelf(-320, 330, seed=7), (-30, 150)),
+   arm('S2_LR', shelf(345, -290, seed=8), (90, -170)),
+   arm('S3_ML', shelf(-340, -60, seed=9), (-60, -30)),
+   fl('T1', [(-160, -190, 30), (-220, -270, 45), (-280, -340, 70), (-350, -400, 95), (-410, -440, 108), (-440, -420, 108)], r0=58),
+   fl('T2', [(-110, -210, 30), (-100, -310, 45), (-50, -390, 70), (30, -440, 92), (100, -452, 100)], r0=40),
+   fl('T3', [(-10, 170, 30), (-40, 280, 55), (-20, 380, 80), (60, 436, 95), (140, 446, 105)], r0=38),
   ])
 S['G2a'] = g2('G2a', True); S['G2b'] = g2('G2b', False)
 
-# ---------------- G3 Low Crouch, limbs rising; vertical vs horizontal maw (the one difference)
+# ---------------- G3 Low Crouch: wide hunched trunk, limbs rising; maw vertical vs horizontal
 def g3(id_, orient):
     horiz = orient == 'h'
-    return dict(id=id_, name=f'{id_} Low Crouch: ' + ('horizontal' if horiz else 'vertical') + ' maw', gesture='G3 inverted-U arch, low heavy body', seed=4,
-  spine=[(-45, 185, 15), (-40, 100, 12), (-20, 10, 12), (10, -90, 10), (20, -190, 8)],
-  spine_r=[(0, 128), (0.12, 125), (0.27, 80), (0.48, 176), (0.78, 160), (1, 130)],
-  mask=dict(c=(-45, 185), D=200, z=78, dz=24),
-  maw=dict(c=(10, -60) if horiz else (5, -105), w=215, h=320, orient=orient),
+    return dict(id=id_, name=f'{id_} Low Crouch: ' + ('horizontal' if horiz else 'vertical') + ' maw', gesture='G3 inverted-U arch, low heavy trunk', seed=4,
+  spine=[(-45, 185, 15), (-35, 90, 12), (-10, -20, 10), (15, -150, 8)], spine_r=[(0, 134), (0.2, 168), (0.5, 192), (0.8, 170), (1, 120)],
+  mask=dict(c=(-45, 185), D=200, z=115, dz=28),
+  maw=dict(c=(0, -95) if horiz else (0, -100), w=200, h=300, orient=orient),
   limbs=[
-   sl('S1_UL', shelf(-335, 300, seed=10), [(-170, 20, 35), (-250, 80, 55), (-310, 160, 80), (-335, 226, 100), (-340, 256, 105), (-385, 256, 108), (-430, 248, 112), (-446, 272, 112)]),
-   sl('S2_UR', shelf(335, 150, seed=11), [(150, 10, 35), (230, 40, 55), (300, 80, 75), (335, 106, 95), (392, 108, 105), (432, 104, 110), (448, 130, 110)]),
-   sl('S3_LR', shelf(335, -275, seed=12), [(80, -190, 30), (170, -250, 50), (260, -310, 75), (335, -319, 95), (395, -321, 105), (435, -312, 110), (448, -285, 110)]),
-   fl('F1', [(-170, -50, 30), (-260, -75, 45), (-350, -130, 70), (-425, -200, 95), (-447, -270, 108), (-420, -320, 110), (-385, -300, 108)]),
-   fl('F2', [(-110, -230, 30), (-170, -310, 45), (-250, -385, 70), (-340, -435, 95), (-405, -430, 105), (-415, -395, 108), (-385, -385, 106)]),
-   fl('F3', [(25, -260, 30), (50, -350, 45), (110, -415, 70), (180, -440, 95), (245, -425, 105), (250, -392, 108)], r0=46),
-   fl('F4', [(60, 130, 30), (130, 200, 55), (175, 290, 80), (160, 380, 100), (110, 435, 110), (62, 420, 112)], r0=44),
-   fl('F5', [(-130, 120, 30), (-190, 190, 55), (-205, 280, 80), (-180, 370, 100), (-130, 430, 110), (-85, 415, 112)], r0=44),
+   arm('S1_UL', shelf(-335, 305, seed=10), (-90, 100)),
+   arm('S2_UR', shelf(335, 150, seed=11), (90, 40)),
+   arm('S3_LR', shelf(335, -335, seed=12), (90, -190)),
+   fl('H1', [(20, 90, 30), (110, 170, 45), (170, 250, 65), (190, 330, 85), (160, 400, 100), (100, 445, 110)], r0=50),
+   fl('H2', [(-90, 90, 30), (-135, 170, 45), (-175, 250, 65), (-185, 330, 85), (-150, 400, 100), (-100, 445, 108)], r0=36),
+   fl('T1', [(-160, -60, 30), (-250, -100, 45), (-340, -160, 70), (-420, -230, 95), (-450, -300, 108), (-425, -350, 110)], r0=62),
+   fl('T2', [(-30, -170, 30), (-100, -260, 45), (-180, -340, 70), (-260, -400, 92), (-340, -440, 105)], r0=44),
+   fl('T3', [(0, -190, 30), (30, -290, 45), (90, -370, 70), (180, -420, 95), (270, -445, 105), (340, -450, 106)], r0=36),
   ])
 S['G3a'] = g3('G3a', 'v'); S['G3b'] = g3('G3b', 'h')
 
-# ---------------- G4 Sinuous Spiral (sketch-derived); 6 limbs vs 9 limbs
-def coil(cx, y, sgn=1):  # tail under plate: out, up-curl beneath rim
-    return [(cx + 70, y - 2, 105), (cx + 112, y - 22, 108), (cx + 118, y - 62, 110), (cx + 82, y - 82, 110), (cx + 52, y - 62, 108)]
-def g4(id_, extra):
+# ---------------- G4 Sinuous Spiral: S-ribbon trunk, head upper-left; fan of limbs (a) vs ribbon running through into a long lower-right tail (b)
+SP4 = [(-250, 235, 15), (-208, 130, 12), (-122, 50, 10), (-10, 5, 10), (90, -70, 10), (135, -170, 8)]
+R4 = [(0, 134), (0.15, 150), (0.40, 150), (0.65, 132), (0.85, 108), (1, 88)]
+SP4B = SP4 + [(190, -262, 8), (280, -335, 6), (370, -372, 6), (430, -372, 6)]
+R4B = [(0, 134), (0.10, 150), (0.28, 150), (0.43, 132), (0.55, 100), (0.72, 50), (0.9, 22), (1, 7)]
+def g4(id_, ribbon_tail):
     L = [
-   sl('S1_UR', shelf(315, 330, seed=13), [(-30, 60, 35), (50, 130, 55), (150, 235, 80), (235, 282, 95), (315, 286, 100)] + coil(315, 286) + []),
-   sl('S2_LL', shelf(-330, -215, seed=14), [(50, -70, 30), (-40, -110, 45), (-140, -170, 70), (-240, -230, 90), (-330, -259, 100)] + [(-330 - 70, -260, 105), (-330 - 112, -282, 108), (-330 - 118, -322, 110), (-330 - 82, -342, 110), (-330 - 52, -322, 108)]),
-   sl('S3_R', shelf(330, -80, seed=15), [(100, -30, 30), (190, -60, 50), (270, -100, 75), (330, -124, 95)] + coil(330, -124)),
-   fl('F1', [(150, -200, 30), (215, -290, 45), (290, -365, 70), (370, -405, 95), (430, -385, 105), (435, -340, 108), (400, -325, 106)], r0=52),
-   fl('F2', [(100, -230, 30), (40, -320, 45), (-30, -385, 70), (-120, -430, 95), (-200, -440, 105), (-235, -410, 108), (-210, -385, 106)], r0=52),
-   fl('F3', [(60, -230, 30), (65, -330, 45), (100, -410, 70), (160, -450, 90)], r0=44, r_tip=7),
+   arm('S1_UR', shelf(315, 330, seed=13), (-20, 100)),
+   arm('S2_LL', shelf(-330, -365, seed=14), (-20, -200)),
+   arm('S3_R', shelf(330, -115, seed=15), (100, -95)),
+   fl('F2', [(100, -230, 30), (70, -330, 45), (20, -410, 70), (-60, -448, 95), (-140, -452, 100)], r0=48),
+   fl('W1', [(-40, 120, 30), (-10, 220, 45), (30, 320, 70), (70, 400, 92), (130, 440, 100)], r0=34),
     ]
-    if extra:
-        L += [fl('W1', [(-120, 20, 30), (-210, -10, 45), (-290, -60, 70), (-345, -130, 95)], r0=34),
-              fl('W2', [(-60, 130, 30), (-100, 220, 45), (-150, 310, 70), (-175, 400, 95)], r0=34),
-              fl('W3', [(180, -130, 30), (260, -170, 45), (340, -215, 70), (405, -250, 95), (440, -230, 105)], r0=34)]
-    return dict(id=id_, name=f'{id_} Sinuous Spiral: ' + ('9' if extra else '6') + ' limbs', gesture='G4 diagonal S ribbon, head upper-left', seed=5,
-  spine=[(-250, 235, 15), (-215, 120, 12), (-120, 40, 10), (-10, 5, 10), (90, -60, 10), (130, -170, 8), (150, -215, 6)],
-  spine_r=[(0, 128), (0.10, 126), (0.22, 74), (0.40, 136), (0.62, 138), (0.82, 122), (1, 110)],
-  mask=dict(c=(-250, 235), D=200, z=78, dz=24), maw=dict(c=(-75, 28), w=215, h=320, orient='v', tilt=-0.30), limbs=L)
-S['G4a'] = g4('G4a', False); S['G4b'] = g4('G4b', True)
+    if ribbon_tail:
+        L += [fl('F3', [(40, -150, 30), (-10, -260, 45), (-20, -340, 70), (30, -410, 90), (100, -445, 100)], r0=44)]
+    else:
+        L += [fl('F1', [(150, -200, 30), (215, -290, 45), (290, -365, 70), (370, -405, 95), (430, -385, 105), (435, -340, 108), (400, -325, 106)], r0=60)]
+    return dict(id=id_, name=f'{id_} Sinuous Spiral: ' + ('ribbon runs through into a lower-right tail' if ribbon_tail else 'fan of limbs from the pelvis'), gesture='G4 diagonal S ribbon, head upper-left', seed=5,
+  spine=SP4, spine_r=R4,
+  mask=dict(c=(-250, 235), D=200, z=115, dz=28), maw=dict(c=(-75, 28), w=200, h=300, orient='v', tilt=-0.30), limbs=L)
+S['G4a'] = g4('G4a', False)
+import copy
+S['G4b'] = copy.deepcopy(S['G4a']); S['G4b']['id'] = 'G4b'
+S['G4b']['name'] = 'G4b Sinuous Spiral: lean ribbon (same limbs, body weight cut)'
+S['G4b']['spine_r'] = [(0, 130), (0.15, 118), (0.40, 112), (0.65, 98), (0.85, 84), (1, 70)]
 
-import numpy as np
+ORDER = {'G1a': ['S1_UL', 'S2_UR', 'S3_LL', 'T2', 'T1', 'T3'], 'G1b': ['S1_UR', 'S3_LR', 'S2_UL', 'T2', 'T3', 'T1'],
+         'G2a': ['S2_LR', 'S1_UL', 'S3_ML', 'T1', 'T2', 'T3'], 'G2b': ['S2_LR', 'S1_UL', 'S3_ML', 'T1', 'T2', 'T3'],
+         'G3a': ['S2_UR', 'S1_UL', 'S3_LR', 'T3', 'H1', 'T1', 'T2', 'H2'], 'G3b': ['S2_UR', 'S1_UL', 'S3_LR', 'T3', 'H1', 'T1', 'T2', 'H2'],
+         'G4a': ['S1_UR', 'S2_LL', 'S3_R', 'F1', 'F2', 'W1'], 'G4b': ['S1_UR', 'S2_LL', 'S3_R', 'F1', 'F2', 'W1']}
 def _post():
+    for k, st in S.items():
+        st['order'] = ORDER[k]
+        for n_, L in enumerate([L for L in st['limbs'] if L.get('shelf')]): L['r0'] = [70, 58, 48][n_]
     for i, (k, st) in enumerate(S.items()):
         for j, L in enumerate(st['limbs']):
             p = np.array(L['pts'], float); ln = np.linalg.norm(np.diff(p[:, :2], axis=0), axis=1).sum()
             sg = 1 if (i + j) % 2 == 0 else -1
-            L['wave'] = (sg * 0.055 * ln, 2.0, 0.0, 0.50 if L.get('shelf') else 0.82)
+            L['wave'] = (sg * 0.07 * ln, 2.0, 0.0, 0.50 if L.get('shelf') else 0.85)
 _post()
 STUDIES = S
