@@ -215,6 +215,12 @@ r08c brief (same agent as r08b, which holds the build context): crown = few thic
 
 **SL-66** · 15:01 · Round-08 deployed on Evan's tap: staging → review/rounds/round-08 (git mv), main fast-forwarded to 8195932 (ancestor check passed), ping sent with the crown and 3D-vs-concept-art questions. · `[Evan]`
 
+**SL-67** · 19:40 · Round-08 backprop (issue #9, 0/2/2). Tally verified. Readings: · `[inference]` unless quoted
+- Stop rule: like rate 5/7 → 2/4 fell, and Evan himself asked to sketch before round 9 → round-09 is BLOCKED on his sketches (this is the RP-3 item 8 escalation, initiated by Evan). No 3D work until they arrive.
+- c01 demoted from north star ("try one of the other preferred concepts"). Candidates from his loved list: c02 stone-smile (r04 love), r03 loved Beksiński references. Not chosen by me — his sketches decide.
+- "octopus-like" in his recenter REVERSES r04's "less octopus-literal" (c07 note). His latest words govern; logged as a supersession, not a contradiction.
+- "do some brainstorming" (A note) on distinct tentacles + flow to the platforms is a direct ask: a brainstorm doc is in scope now; 3D is not.
+
 ---
 *Edit log*
 
@@ -242,3 +248,4 @@ r08c brief (same agent as r08b, which holds the build context): crown = few thic
 | 2026-11-17 | orchestrator | Appended SL-62..63 (r08b read, Canva blocked, Evan: one more 3D pass) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-64..65 (r08c read, round-08 staged) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-66 (round-08 deploy) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Appended SL-67 (r08 backprop, round-09 blocked on sketches) | [PROVISIONAL] |

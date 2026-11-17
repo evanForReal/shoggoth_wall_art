@@ -5,6 +5,7 @@
 
 ## Exec Summary (newest first)
 
+- 2026-11-17: R08 verdicts in (issue #9: 0/2/2). A "extreme improvement" but no crown (comical), distinct tentacles, better flow to shelves; B too crowded; c01 demoted ("try one of the other preferred concepts"). Recenter: tentacled, horrific, octopus-like, vicious mouth, disturbing asymmetric unhealthy eyes. ROUND-09 BLOCKED on Evan's sketches.
 - 2026-11-17: Round-08 DEPLOYED (main 8195932, Evan pinged; awaiting verdicts). Staged as (review/staging/round-08/, now review/rounds/round-08/): 3 character passes on the G1a pose (A/B horn-spire crown + ribbed trunk + jagged maw, C root-curl crown) + c01. Notes ask crown choice and 3D-vs-concept-art (Canva credits).
 - 2026-11-17: R07 verdicts in (issue #7/#8: 0/5/2) — composition-first works. G1a "definitely has potential" (fix squid-like, make gothic/Beksiński, no base that could sit flat); no two-legged look; vertical maw locked; G2a, G4a, c01 liked. Round-08 = composition round 2 with first character pass.
 - 2026-11-17: Round-07 DEPLOYED (main bd9a375, Evan pinged; awaiting issue verdicts). Staged as (review/staging/round-07/, now review/rounds/round-07/): 6 pose studies as notan + massing diptychs (G1a, G1b, G2a, G3a/G3b maw pair, G4a) + c01 reference. Gate: 4 of 6 pass all but IoU (G1a, G1b, G3a, G3b); G2a 5/7 (also torso width); G4a 4/7, shown as Evan-sketch direction. Lock-hygiene question in notes.
@@ -41,6 +42,7 @@
 - **r02:** chibi hard no; Gaudí organic architecture strong.
 - **r03:** Beksiński sweep loved; surface core locked; refined dark rooms; bas-relief + multi-anchor spread.
 - **r04:** c01/c02 concepts loved; horrific asymmetry, less octopus, not a centerpiece; Bayon mask loved; carved never applied; root-over-rock shelves.
+- **r08:** 0/2/2. A extreme improvement; no crown; distinct tentacles; flow to platforms; B too crowded (let eyes linger); C "justin bieber"; c01 demoted; octopus-like now WANTED (supersedes r04); Evan sketching before r09.
 - **r07:** 0/5/2. G1a potential; not squid-like; gothic + Beksiński; no flat/standing base; no two-legged look; vertical maw; G2a/G4a/c01 liked.
 - **r06:** side profile loved (2nd time); everything else disliked: cluttered clockwork composition, body lost, blob; hands/smiley/bone/mouth/teeth/eyes directives (DECISIONS r06 row).
 - **r05:** side profile loved; serene face, cartoon smiley, no-maw, diagonal, shelves B dead; maw must exist; buttress must integrate; restore creature form/organic tones. v2-v4 rejections are bare dislikes (reason inferred).
@@ -78,3 +80,4 @@
 | 2026-11-17 | orchestrator | R07 backprop: exec line, r07 takeaway | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Round-08 staged (exec line) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Round-08 deployed (exec line) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | R08 backprop: exec line, r08 takeaway | [PROVISIONAL] |
