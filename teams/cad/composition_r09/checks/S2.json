@@ -1,0 +1,268 @@
+{
+ "id": "S2",
+ "name": "S2 reach: rising diagonal",
+ "gesture": "body low-left, limbs climb right/up",
+ "checks": {
+  "1": {
+   "pass_": false,
+   "kind": "JUDGMENT",
+   "n_tips": 5,
+   "min_tip_gap_mm": 91.7,
+   "note": "head disc + shouldered torso + >=6 separable tapered tips; reads tentacled figure (octopus-person) in silhouette; shelves not needed to name it"
+  },
+  "2": {
+   "pass_": false,
+   "body_pct": 17.63,
+   "body_vs_largest_limb": 4.53,
+   "head_w": 238,
+   "neck_w": 238,
+   "shoulder_w": 265,
+   "neck_step": false
+  },
+  "3": {
+   "pass_": false,
+   "mask_pct": 3.76,
+   "D": 200,
+   "centre_y_from_top_H": 0.369,
+   "ring_or_crown": false
+  },
+  "4": {
+   "pass_": false,
+   "mask_median_lum": 255.0,
+   "brightest_nonmask_p99_5": 216.0,
+   "brightest_nonmask_max": 255.0,
+   "margin_p99_5": 39.0,
+   "margin_max": 0.0,
+   "top_level_frac_in_mask": 0.951,
+   "largest_rival_pct": 0.089,
+   "note": "top level = lum >= 0.85 x mask median (image is mostly wall, so percentile V4 would not isolate the mask)"
+  },
+  "5": {
+   "pass_": false,
+   "maw_to_mask_area": 1.09,
+   "maw_w": 150,
+   "maw_h": 316,
+   "orient": "v",
+   "maw_interior_lum": 26.7,
+   "rim_lum": 70.0,
+   "body_mean_lum": 81.2,
+   "centre_sep_mm": 277,
+   "mask_height": 200
+  },
+  "6": {
+   "pass_": false,
+   "n_limbs": 5,
+   "n_shelf": 3,
+   "outward_or_rising_free": [],
+   "min_tip_gap_mm": 91.7,
+   "note": "tips distinct at 64 px (14.3 mm/px) if gap >= 2 px = 28.6 mm"
+  },
+  "7": {
+   "pass_": false,
+   "limbs": {
+    "T_massive": {
+     "root_w": 103,
+     "tip_w": 19.2,
+     "taper": 5.4,
+     "len_mm": 512,
+     "len_over_W": 0.56,
+     "len_over_rootw": 5.0,
+     "monotone": true,
+     "ok": true
+    },
+    "T_medium": {
+     "root_w": 62,
+     "tip_w": 14.3,
+     "taper": 4.3,
+     "len_mm": 613,
+     "len_over_W": 0.67,
+     "len_over_rootw": 9.9,
+     "monotone": true,
+     "ok": false
+    },
+    "T_whip": {
+     "root_w": 30,
+     "tip_w": 10.2,
+     "taper": 3.0,
+     "len_mm": 527,
+     "len_over_W": 0.58,
+     "len_over_rootw": 17.5,
+     "monotone": true,
+     "ok": false
+    },
+    "H1": {
+     "root_w": 12,
+     "tip_w": 12.3,
+     "taper": 1.0,
+     "len_mm": 194,
+     "len_over_W": 0.21,
+     "len_over_rootw": 15.8,
+     "monotone": true,
+     "ok": false
+    },
+    "H2": {
+     "root_w": 12,
+     "tip_w": 12.0,
+     "taper": 1.0,
+     "len_mm": 140,
+     "len_over_W": 0.15,
+     "len_over_rootw": 11.6,
+     "monotone": true,
+     "ok": false
+    }
+   },
+   "note": "widths = designed section widths of the limb sweep alone (plate excluded); root = first sample outside the body silhouette; tip = t 0.97 (width must land in the 12-25 mm band); length range 0.40-0.65 W per checklist (feature-ref 6-10x root width is longer than the envelope allows)"
+  },
+  "8": {
+   "pass_": true,
+   "largest_over_second": 4.53,
+   "top6": [
+    [
+     "body",
+     147.3
+    ],
+    [
+     "T_massive",
+     32.5
+    ],
+    [
+     "T_medium",
+     25.2
+    ],
+    [
+     "T_whip",
+     10.3
+    ],
+    [
+     "H2",
+     0.3
+    ],
+    [
+     "H1",
+     0.3
+    ]
+   ],
+   "rival_pairs": [],
+   "min_adjacent_length_gap": 0.03
+  },
+  "9": {
+   "pass_": true,
+   "body_mass_within_half_head_width": 0.961,
+   "max_turn_per_100mm_deg": 0.0,
+   "inflections": 0,
+   "named": "body low-left, limbs climb right/up",
+   "spine_len_mm": 510
+  },
+  "10": {
+   "pass_": false,
+   "fill_pct": 36.9,
+   "wedges_ge4pct": [
+    17.2,
+    6.6
+   ],
+   "wedges_all": [
+    17.2,
+    6.6,
+    3.3,
+    1.7
+   ],
+   "empty_hull_ratio": 0.494,
+   "limb_pairs_closer_than_60mm_over_150mm": []
+  },
+  "11": {
+   "pass_": false,
+   "longest_nonshelf_run_mm": 160,
+   "shelf_top_runs_mm": [
+    260,
+    253,
+    236
+   ],
+   "all_runs_ge100": [
+    160,
+    118,
+    121,
+    260,
+    106,
+    106,
+    113,
+    253,
+    109,
+    236
+   ],
+   "note": "shelf-top runs are the spec flat top (>=150 mm): inherent conflict with the 120 mm rule, listed apart; JUDGMENT: plate corners R26, plan outline wobbled superellipse, no posts, shelf is the tangent flare of the limb tail"
+  },
+  "12": {
+   "pass_": true,
+   "triangle_area_mm2": 72912,
+   "top_ys": [
+    -230,
+    165,
+    360
+   ],
+   "min_height_gap": 195,
+   "highest_in_upper_third": true,
+   "periphery": true,
+   "headroom": {
+    "T_massive": {
+     "top_flatness_mm": 10.0,
+     "top_y": -230,
+     "flat_top_mm": [
+      212,
+      212
+     ],
+     "clear_above_mm": 300,
+     "ok": true
+    },
+    "T_medium": {
+     "top_flatness_mm": 12.0,
+     "top_y": 165,
+     "flat_top_mm": [
+      212,
+      212
+     ],
+     "clear_above_mm": 300,
+     "ok": true
+    },
+    "T_whip": {
+     "top_flatness_mm": 10.0,
+     "top_y": 360,
+     "flat_top_mm": [
+      212,
+      212
+     ],
+     "clear_above_mm": 300,
+     "ok": true
+    }
+   }
+  },
+  "13": {
+   "pass_": false,
+   "centroid_x_mm": -112,
+   "centroid_y_from_top_H": 0.471,
+   "LR_weight_ratio": 2.99,
+   "mirror_iou": 0.25
+  }
+ },
+ "passed": [
+  8,
+  9,
+  12
+ ],
+ "failed": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  10,
+  11,
+  13
+ ],
+ "score": "3/13",
+ "wall_luminance_pct": 13.3,
+ "flesh_luminance_pct": 31.8,
+ "mask_luminance_pct": 100.0,
+ "maw_luminance_pct": 10.5
+}

@@ -1,0 +1,393 @@
+{
+ "S1": {
+  "shelves": {
+   "T_massive@340": {
+    "flat_top_x_mm": 154,
+    "flat_top_z_mm": 192,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 20.0,
+    "top_y": -330
+   },
+   "T_medium@340": {
+    "flat_top_x_mm": 196,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 0.0,
+    "top_y": 68
+   },
+   "T_whip@70": {
+    "flat_top_x_mm": 178,
+    "flat_top_z_mm": 170,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 0.0,
+    "top_y": 446
+   }
+  },
+  "maw_to_mask_area": 1.1,
+  "eyes": [
+   {
+    "x": -301,
+    "y": 202,
+    "G": 64,
+    "lid": "hood",
+    "pupil": "slit",
+    "clouded": false,
+    "gaze": [
+     -0.18,
+     0.1
+    ]
+   },
+   {
+    "x": -343,
+    "y": 132,
+    "G": 40,
+    "lid": "ring",
+    "pupil": "none",
+    "clouded": true,
+    "gaze": [
+     0,
+     0
+    ]
+   },
+   {
+    "x": -309,
+    "y": 94,
+    "G": 26,
+    "lid": "turret",
+    "pupil": "round",
+    "clouded": false,
+    "gaze": [
+     0.2,
+     -0.15
+    ]
+   },
+   {
+    "x": -365,
+    "y": 246,
+    "G": 22,
+    "lid": "ring",
+    "pupil": "none",
+    "clouded": false,
+    "gaze": [
+     0,
+     0
+    ]
+   },
+   {
+    "x": -20.28669084097045,
+    "y": -219.75239018548405,
+    "G": 36,
+    "lid": "hood",
+    "pupil": "slit",
+    "clouded": false,
+    "gaze": [
+     0.1,
+     -0.1
+    ]
+   }
+  ],
+  "n_teeth": 39,
+  "limb_R0_diam_mm": {
+   "T_massive": 104,
+   "T_medium": 62,
+   "T_whip": 30,
+   "H1": 56,
+   "H2": 34,
+   "H3": 28
+  },
+  "n_limbs_total": 6,
+  "n_webs": 0
+ },
+ "S2": {
+  "shelves": {
+   "T_massive@215": {
+    "flat_top_x_mm": 178,
+    "flat_top_z_mm": 172,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 20.0,
+    "top_y": -230
+   },
+   "T_medium@345": {
+    "flat_top_x_mm": 180,
+    "flat_top_z_mm": 194,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 0.0,
+    "top_y": 165
+   },
+   "T_whip@40": {
+    "flat_top_x_mm": 176,
+    "flat_top_z_mm": 176,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 0.0,
+    "top_y": 360
+   }
+  },
+  "maw_to_mask_area": 1.09,
+  "eyes": [
+   {
+    "x": -341,
+    "y": 60,
+    "G": 64,
+    "lid": "hood",
+    "pupil": "slit",
+    "clouded": false,
+    "gaze": [
+     -0.18,
+     0.1
+    ]
+   },
+   {
+    "x": -383,
+    "y": -10,
+    "G": 40,
+    "lid": "ring",
+    "pupil": "none",
+    "clouded": true,
+    "gaze": [
+     0,
+     0
+    ]
+   },
+   {
+    "x": -349,
+    "y": -48,
+    "G": 26,
+    "lid": "turret",
+    "pupil": "round",
+    "clouded": false,
+    "gaze": [
+     0.2,
+     -0.15
+    ]
+   },
+   {
+    "x": -405,
+    "y": 104,
+    "G": 22,
+    "lid": "ring",
+    "pupil": "none",
+    "clouded": false,
+    "gaze": [
+     0,
+     0
+    ]
+   },
+   {
+    "x": -42.746332579265776,
+    "y": -206.27778855287374,
+    "G": 36,
+    "lid": "hood",
+    "pupil": "slit",
+    "clouded": false,
+    "gaze": [
+     0.1,
+     -0.1
+    ]
+   }
+  ],
+  "n_teeth": 39,
+  "limb_R0_diam_mm": {
+   "T_massive": 104,
+   "T_medium": 62,
+   "T_whip": 30,
+   "H1": 48,
+   "H2": 30
+  },
+  "n_limbs_total": 5,
+  "n_webs": 0
+ },
+ "S3": {
+  "shelves": {
+   "T_dominant@335": {
+    "flat_top_x_mm": 184,
+    "flat_top_z_mm": 184,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 26.0,
+    "top_y": -56
+   },
+   "T_dominant@-240": {
+    "flat_top_x_mm": 196,
+    "flat_top_z_mm": 160,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 116.0,
+    "top_y": -330
+   },
+   "T_dominant@-335": {
+    "flat_top_x_mm": 172,
+    "flat_top_z_mm": 180,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 0.0,
+    "top_y": 330
+   }
+  },
+  "maw_to_mask_area": 1.1,
+  "eyes": [
+   {
+    "x": 126,
+    "y": 202,
+    "G": 64,
+    "lid": "hood",
+    "pupil": "slit",
+    "clouded": false,
+    "gaze": [
+     0.18,
+     0.1
+    ]
+   },
+   {
+    "x": 168,
+    "y": 132,
+    "G": 40,
+    "lid": "ring",
+    "pupil": "none",
+    "clouded": true,
+    "gaze": [
+     0,
+     0
+    ]
+   },
+   {
+    "x": 134,
+    "y": 94,
+    "G": 26,
+    "lid": "turret",
+    "pupil": "round",
+    "clouded": false,
+    "gaze": [
+     -0.2,
+     -0.15
+    ]
+   },
+   {
+    "x": 190,
+    "y": 246,
+    "G": 22,
+    "lid": "ring",
+    "pupil": "none",
+    "clouded": false,
+    "gaze": [
+     0,
+     0
+    ]
+   },
+   {
+    "x": 426.00874602380014,
+    "y": -118.66631233878373,
+    "G": 36,
+    "lid": "hood",
+    "pupil": "slit",
+    "clouded": false,
+    "gaze": [
+     0.1,
+     -0.1
+    ]
+   }
+  ],
+  "n_teeth": 39,
+  "limb_R0_diam_mm": {
+   "T_dominant": 108,
+   "T_stub_a": 52,
+   "T_stub_b": 40
+  },
+  "n_limbs_total": 3,
+  "n_webs": 0
+ },
+ "S4": {
+  "shelves": {
+   "T_massive@335": {
+    "flat_top_x_mm": 176,
+    "flat_top_z_mm": 176,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 116.0,
+    "top_y": -200
+   },
+   "T_medium@-320": {
+    "flat_top_x_mm": 202,
+    "flat_top_z_mm": 162,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 116.0,
+    "top_y": -300
+   },
+   "T_whip@-335": {
+    "flat_top_x_mm": 200,
+    "flat_top_z_mm": 180,
+    "clear_above_flat_mm": 300,
+    "max_rise_above_top_mm": 12.0,
+    "top_y": 150
+   }
+  },
+  "maw_to_mask_area": 1.09,
+  "eyes": [
+   {
+    "x": 146,
+    "y": 240,
+    "G": 64,
+    "lid": "hood",
+    "pupil": "slit",
+    "clouded": false,
+    "gaze": [
+     0.18,
+     0.1
+    ]
+   },
+   {
+    "x": 188,
+    "y": 170,
+    "G": 40,
+    "lid": "ring",
+    "pupil": "none",
+    "clouded": true,
+    "gaze": [
+     0,
+     0
+    ]
+   },
+   {
+    "x": 154,
+    "y": 132,
+    "G": 26,
+    "lid": "turret",
+    "pupil": "round",
+    "clouded": false,
+    "gaze": [
+     -0.2,
+     -0.15
+    ]
+   },
+   {
+    "x": 210,
+    "y": 284,
+    "G": 22,
+    "lid": "ring",
+    "pupil": "none",
+    "clouded": false,
+    "gaze": [
+     0,
+     0
+    ]
+   },
+   {
+    "x": 155.61063819441827,
+    "y": -27.8479002785489,
+    "G": 36,
+    "lid": "hood",
+    "pupil": "slit",
+    "clouded": false,
+    "gaze": [
+     0.1,
+     -0.1
+    ]
+   }
+  ],
+  "n_teeth": 39,
+  "limb_R0_diam_mm": {
+   "T_massive": 100,
+   "T_medium": 62,
+   "T_whip": 30,
+   "H1": 40,
+   "H2": 28
+  },
+  "n_limbs_total": 5,
+  "n_webs": 0
+ }
+}
