@@ -1,0 +1,65 @@
+{
+  "source": {
+    "issue": 6,
+    "url": "https://github.com/evanForReal/shoggoth_wall_art/issues/6"
+  },
+  "round": "round-06",
+  "reviewed": "2026-11-17",
+  "verdicts": [
+    {
+      "id": "h1",
+      "verdict": "dislike",
+      "notes": "weird clunky cluttered clockwork look. poor compositional skills. do some review on basic elements of design that draw the viewer’s attention, and take notes in a log somewhere for agents to view."
+    },
+    {
+      "id": "h2",
+      "verdict": "dislike"
+    },
+    {
+      "id": "h3",
+      "verdict": "dislike",
+      "notes": "clever idea with the hand. however i would like these mods: a) the hands should be elongated, horrific, and bony, but also should have anatomically correct orientation from a hand. right now they are sporadic. b) the face should be the more iconic smiley, as opposed to this bland one. c) the bone should be reworked. right now it is not distinguished from random texture."
+    },
+    {
+      "id": "h4",
+      "verdict": "like",
+      "notes": "LOVE THIS"
+    },
+    {
+      "id": "h5",
+      "verdict": "dislike",
+      "notes": "great step towards a mouth. however, review the mouth design and proportions of relevant horror art for geometry; right now the mouth proportions are distinctly off. the throat strands are not necessary. the teeth must look believable, and the do not currently."
+    },
+    {
+      "id": "va1",
+      "verdict": "dislike"
+    },
+    {
+      "id": "va2",
+      "verdict": "dislike"
+    },
+    {
+      "id": "vb1",
+      "verdict": "dislike",
+      "notes": "closer. however the eyes look plastered on and no attempt to be photorealistic. these eyes don’t need to be hyper real, but they must look creepy and bulging."
+    },
+    {
+      "id": "vb2",
+      "verdict": "dislike",
+      "notes": "tentacles are not obvious in the design. this was a step away from the right texture. now it looks more like a blob on the wall."
+    },
+    {
+      "id": "vc1",
+      "verdict": "dislike"
+    },
+    {
+      "id": "vc2",
+      "verdict": "dislike",
+      "notes": "the actually integral body of the creature has been almost entirely lost. fully revise your design around a clearly defined organism. it should have an organic, defined body. review the original concept art and notice how far this is from that."
+    },
+    {
+      "id": "s1",
+      "verdict": "dislike"
+    }
+  ]
+}

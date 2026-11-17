@@ -5,6 +5,7 @@
 
 ## Exec Summary (newest first)
 
+- 2026-11-17: R06 verdicts in (issue #6: 0/1/11). Side profile loved again; composition named the root failure ("cluttered clockwork", body lost). Method change: design-principles log + feature reference study, then round-07 composition (silhouette) board before more detail. Envelope unchanged (size question unanswered).
 - 2026-11-17: Round-06 board assembled (12 cards, review/rounds/round-06/): fullpiece-v2.1 hero (5 views) + 3 one-axis variants (masquerade, tentacle count, maw size) + sheet vs c01. Notes disclose r05 headroom correction, known gaps, and ask Evan: keep 3x3 ft or widen for c01 sprawl. v2 (intermediate) not boarded (session log SL-30). DEPLOYED 2026-11-17 (main 88b8f46), Evan pinged; awaiting issue verdicts.
 - 2026-11-16: R05 verdicts in (issue #5: 1 love / 2 like / 10 dislike) + Evan re-center: smiley emoticon + horrific toothed maw central. Fullpiece-v2 building for round-06.
 - 2026-11-16: Round-05 board assembled and deployed: 13 in-house renders (hero + 4 one-axis variants + sheet vs c01).
@@ -14,9 +15,9 @@
 
 ## Current State
 
-**Round-06 = fullpiece-v2 board.** Central design: classic smiley emoticon (exact canonical geometry, executed monumental/eroded, pale bone, carved in; v1 cartoon execution rejected) + gaping maw with asymmetric horrific teeth. Develop: eye-covered writhing surface, masquerading-face device, muscular tentacles, buttress integrated as a limb, cohesive creature form with organic tonal zones. Kept from r05: side-profile depth (h4 love), shelf arrangement A layout (conditional on restoring 300 mm headroom — v1 S2/S3 had only ~12 mm clear, undisclosed on the r05 board; v2 restores >= 300 mm by moving S1 up 94 mm, S3 down 20 mm; see session log SL-02/SL-29), radial layout, local texture.
+**Round-07 = COMPOSITION board (silhouettes, no surface detail).** Root failure per r06: no defined organism, cluttered feature-stacking. Next: docs/DESIGN_PRINCIPLES.md + teams/aesthetics/analysis/feature-references.md, then several value-blocked organism gestures (head = smiley mask, torso = maw, obvious tentacles, shelves at limb ends) vs c01. Feature directives queued for the detail pass: elongated bony anatomically-oriented hands; MORE iconic smiley; bone distinct from texture; horror-art mouth proportions, believable teeth, no throat strands; bulging creepy eyes; obvious tentacles. Side profile (loved r05+r06) is the depth basis. Envelope 3x3 ft unchanged.
 
-**Locked r01-r05:** Beksiński surface core (webbing/ochre/bone-crust/flowstone/rust; gloss accent only); refined-room, non-centerpiece decor; bas-relief body + multi-anchor freeform spread, strong depth variance; mask carved into the mass, never worn/applied, emoticon form; tentacle-grips-pot plant shelves; horrific asymmetry.
+**Locked r01-r06:** Beksiński surface core (webbing/ochre/bone-crust/flowstone/rust; gloss accent only); refined-room, non-centerpiece decor; bas-relief body + multi-anchor freeform spread, strong depth variance; mask carved into the mass, never worn/applied, emoticon form; tentacle-grips-pot plant shelves; horrific asymmetry.
 
 ## Vision Constraints
 
@@ -37,6 +38,7 @@
 - **r02:** chibi hard no; Gaudí organic architecture strong.
 - **r03:** Beksiński sweep loved; surface core locked; refined dark rooms; bas-relief + multi-anchor spread.
 - **r04:** c01/c02 concepts loved; horrific asymmetry, less octopus, not a centerpiece; Bayon mask loved; carved never applied; root-over-rock shelves.
+- **r06:** side profile loved (2nd time); everything else disliked: cluttered clockwork composition, body lost, blob; hands/smiley/bone/mouth/teeth/eyes directives (DECISIONS r06 row).
 - **r05:** side profile loved; serene face, cartoon smiley, no-maw, diagonal, shelves B dead; maw must exist; buttress must integrate; restore creature form/organic tones. v2-v4 rejections are bare dislikes (reason inferred).
 
 ## Rejected (do not revisit without Evan)
@@ -65,3 +67,4 @@
 | 2026-11-17 | orchestrator | Resolves FLAG OPEN above: headroom wording corrected ~160 mm -> ~12 mm (S2/S3), cites SL-29 and v2 shelf moves | docs-reviewer (verified: Current State line 17 now reads S2/S3 ~12 mm and cites SL-02/SL-29; v1 fullpiece/engineering_checks.json hero headroom S2 12.0 (855 verts) and S3 12.0 (60,607), S1 clear; v2 shelf moves S1 +94 (250.5 to 344.5), S3 -20 (-89.5 to -109.5) vs fullpiece_v2 JSON; no body [PROVISIONAL] tag belongs to this row) |
 | 2026-11-17 | orchestrator | Round-06 assembled (exec line); manifest + images | docs-reviewer (resolved, was FLAG OPEN: exec line 8 matches manifest (12 cards, 5 hero views + 3 variants + sheet vs c01, headroom correction, known gaps, 3x3 ft question; SL-30 exists), but the manifest it ships has open corrections (RP-2 item 1 gaps missing from notes, see review report); re-sign once the manifest is fixed. Resolved by manifest corrections in c98627b, re-verified in c98627b: manifest notes now list eyes small/clustered with painted iris, smile at 90-deg limit, overhangs, 25 kg target; "throat strands"; "our read"; sheet title "unboarded"; JSON valid, 12 cards, 12 images exist; exec line 8 still matches) |
 | 2026-11-17 | orchestrator | Round-06 deployed (exec line) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | R06 backprop: exec line, Current State (round-07 composition board), r06 takeaway | [PROVISIONAL] |

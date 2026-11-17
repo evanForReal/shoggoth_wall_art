@@ -118,6 +118,18 @@ Note: I edited CAD's README/STATUS prose instead of re-spawning the CAD lead —
 
 **SL-37** · 02:45 · Round-06 deployed on Evan's tap ("Deploy + email ping"): main fast-forwarded to 88b8f46 (verified ancestor first), ping sent to the established review address. Email repeats the 3x3-ft-vs-sprawl question and the r05 headroom correction so they reach him even if he skims the board notes. · `[Evan]`
 
+**SL-38** · ~03:00 · Round-06 backprop: issue #6 = 0/1/11, verdicts snapshotted (review/verdicts/round-06.json), DECISIONS row appended, tally script 6/6 PASS. No answer to the 3x3-vs-4 ft question → envelope unchanged (`[inference]`: silence = keep). · `[Evan]`
+
+**SL-39** · ~03:00 · DIAGNOSIS + METHOD CHANGE. Two consecutive full-detail rounds (r05 1/2/10, r06 0/1/11) failed on the same root cause Evan named: composition ("cluttered clockwork", "body almost entirely lost", "blob"). My diagnosis: the pipeline composes by STACKING PARAMETRIC FEATURES (mask ring + maw ring + eye scatter + tentacle list + shelf boxes) inside a fixed envelope, with no gesture, no figure, no focal hierarchy. More feature polish on that base will fail again. My own briefs (SL-05, SL-30) were feature lists too — I share the cause. · `[judgment]`
+New sequence before any more full-detail 3D:
+1. Design-principles log `docs/DESIGN_PRINCIPLES.md` (Evan directive h1): attention/focal principles, c01 + vision-sketch composition analysis, critique of r05/r06 heroes, CAD-actionable composition checklist + organism blueprint.
+2. Feature reference study `teams/aesthetics/analysis/feature-references.md`: iconic smiley spec, horror mouth proportions + believable teeth, elongated bony anatomically-oriented hands, bulging creepy eyes, bone-vs-flesh distinction, tentacle legibility (all h3/h5/vb1/vb2 directives).
+3. Round-07 = COMPOSITION board: simple value-blocked silhouettes of a defined organism (head-mask / torso-maw / limbs), several distinct gestures vs c01 — no surface detail — so Evan rules on composition cheaply before detail is spent.
+Alternative rejected: v3 full-detail pass now with the feature fixes (hands, smiley, teeth, eyes) — fixes symptoms Evan listed but not the composition he called the core failure.
+Risk: a silhouette board may read as regress after six rounds. Mitigation: board notes state why; side profile (loved twice) shown as the depth basis.
+
+**SL-40** · ~03:00 · Audit cycle 3 started now (charter: one per round). Scoped to R1 drift r05-r06 and whether the CAD pipeline can reach the vision at all. · `[judgment]`
+
 ---
 *Edit log*
 
@@ -130,3 +142,4 @@ Note: I edited CAD's README/STATUS prose instead of re-spawning the CAD lead —
 | 2026-11-17 | orchestrator | Appended SL-34..35 (v2.1 read, board decision) | docs-reviewer (verified, factual claims only: SL-35 whip numbers 310-433 of 520-820 match fullpiece_v2_1/engineering_checks.json (min 309.8, max 432.5; requested min 520, max 820); mass 26.4 kg, 2 variants under 15 eyes (11, 8), peg-like grips and seat blocks all present in round-06 manifest notes; 'c01 sofa-wide' consistent with the c01 image (piece spans ~ sofa width), not stated in any repo text; SL-34 refs SL-26/28 (sucker eyes) exist; judgment not assessed; 576613d exists (v2.1 complete commit); no body [PROVISIONAL] tag belongs to this row) |
 | 2026-11-17 | orchestrator | Appended SL-36 (round-06 sign-off corrections) | docs-reviewer (verified, factual claims only: manifest edits listed in SL-36 match git diff 9390773 c98627b (two gaps added plus overhangs and 25 target, saliva to throat strands, 'our read', sheet title); edit-log rows exist in each CAD file; round-06 absent from review-app/ so manifest was undeployed. Cosmetic, signed through: 'no numbers changed' is loose, whip % (under 60 to 45-65) and render count (15 to 11) were corrected, no measured value changed. Judgment (editing review/rounds/round-06 pre-deploy vs CLAUDE.md DO-NOT-EDIT) not assessed; no body [PROVISIONAL] tag belongs to this row) |
 | 2026-11-17 | orchestrator | Appended SL-37 (round-06 deploy) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Appended SL-38..40 (r06 backprop, method change, audit 3) | [PROVISIONAL] |
