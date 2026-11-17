@@ -181,6 +181,22 @@ Stop-rule clock: composition round 1 of 2 is now with Evan.
 Open items carried forward, owners named (not fixed by me — cross-team rule): (a) aesthetics: tools/composition_gate.py IoU band is still 0.70 while DESIGN_PRINCIPLES s.4.1 says 0.60 for c01-gesture builds — tool and doc disagree; c01's own maw:mask ratio 1.26 sits under checklist #5's 1.3. (b) CAD: composition README #10 bullet omits G4a. (c) fabrication: stale [PROVISIONAL] on a 2026-11-15 liaison line (STATUS L24) with no matching row. (d) RP-3 item 5 banner-CSS change not done — needs Evan's OK to edit review-app; current mitigation is decision-first notes.
 Waiting on: Evan's round-07 issue.
 
+**SL-55** · 12:34 · Orchestrator model switched again by Evan (/model). SL-55 onward on the current model. · `[Evan]`
+
+**SL-56** · 12:34 · Round-07 backprop: issues #7 and #8 carry identical verdict JSON (resubmission); counted once, snapshot cites both. 0/5/2. Tally script 7/7 PASS. STOP RULE (RP-3 item 8): like rate rose sharply (r06 1/12 → r07 5/7) → continue composition work, no escalation. · `[Evan]` / `[judgment]` (stop-rule reading)
+
+**SL-57** · 12:34 · Interpretations of r07 notes (all `[inference]`):
+- "a base that would not be able to sit flat on the floor; see the original concepts": G1a's two lower tentacles splay left/right at the bottom like a stance, so the figure looks like it could stand. In c01 the trunk continues DOWN into a pendant cascade of root-tentacles that hang and trail. Reading: no stance — nothing paired or splayed at the bottom, no horizontal underside; the lower body hangs/drips/trails, asymmetric, odd count.
+- "two-legged look" (G1b, G3a): two dominant lower limbs from a common hip = legs. Rule: never exactly two dominant lower limbs; lower limbs vary in thickness and do not mirror.
+- "squid like": smooth uniform tubes + bulbous head-top. Fix via c01 vocabulary: root/sinew/lace-web limbs, webs spanning between limbs and trunk, not smooth tubes.
+- "gothic and beksinki": vertical emphasis, elongation, pointed/arched rib forms (Beksiński's cathedral-organic architecture), decay surface.
+- G3a/G3b pair: vertical maw LOCKED.
+- Lock question unanswered (2nd time): r05 shelf placement + radial layout remain non-binding.
+
+**SL-58** · 12:34 · DECISION: round-08 = composition round 2 WITH a first character pass (not pure silhouette): G1a developed (3 base solutions) + G2a and G4a carried forward with the same fixes = 5 studies; each card = notan + a render with first-pass Beksiński macro-character (root/lace-web limbs, webbing, ribbed gothic verticality, iconic carved smiley per feature-references, dark vertical almond maw); NO hands/teeth/eyes yet. · `[judgment]`
+Why: Evan's top note on the leading study asks for gothic/Beksiński character, which a smooth silhouette can't show; and "squid like" is a material/form read, not an outline. Same CAD agent (it built the figure engine; keeping it beats re-onboarding). Gate: G1 studies IoU >= 0.60 (s.4.1); G2/G4 use verdict_excl_iou.
+Alternative rejected: pure silhouette round 2 — would leave "squid like" and "gothic" unaddressed for another round.
+
 ---
 *Edit log*
 
@@ -202,3 +218,4 @@ Waiting on: Evan's round-07 issue.
 | 2026-11-17 | orchestrator | Appended SL-50..51 (model switch, round-07 deploy) | docs-reviewer (verified, factual claims only: Opus 5.5 trailers through 2d15de0 (03:35) and Fable 5.2 trailers from bd9a375 (05:00), consistent with the SL-50 model switch; bd9a375 exists, is an ancestor of HEAD and equals origin/main; review/rounds/round-07/ holds only manifest.json + images (7 cards); teams/aesthetics/analysis/round-07-cards/make_cards.py exists; manifest notes name the two unsigned write-ups. Not assessed: Evan's tap, the email ping, 'owner-fix workers killed by a restart' (unverifiable from git)) |
 | 2026-11-17 | orchestrator | Appended SL-52..53 (owner fixes, mask size) | docs-reviewer (verified, factual claims only: 2840b57 exists (CAD numbers, RP-3 vote, liaison counter-signature) and 277ab7c exists (DESIGN_PRINCIPLES reconciliation, feature-references, gate README + sensitivity_sweep.py, SL-52..53); DESIGN s.4.1 sets IoU 0.60 start, ratchet 0.70 then 0.85; DESIGN s.5 mask 150 x 190 mm; feature-references D >= 230 mm at 0.065 D = 15 mm; CAD README s.4 item 1 'D = 200 mm' (D 230 = 4.97% fails #3, D 200 = 3.76%); 0.065 x 200 = 13 mm, 2 mm under 15 mm. Not assessed: the 'I concur' and mask-size decision (judgment)) |
 | 2026-11-17 | orchestrator | Appended SL-54 (sign-off state, carried items) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Appended SL-55..58 (r07 backprop, interpretations, r08 plan) | [PROVISIONAL] |

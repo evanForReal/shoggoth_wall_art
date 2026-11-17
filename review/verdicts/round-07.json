@@ -1,0 +1,46 @@
+{
+  "source": {
+    "issue": 7,
+    "url": "https://github.com/evanForReal/shoggoth_wall_art/issues/7",
+    "duplicate": {
+      "issue": 8,
+      "url": "https://github.com/evanForReal/shoggoth_wall_art/issues/8",
+      "note": "identical verdict JSON, resubmitted 2026-11-17T12:32Z"
+    }
+  },
+  "round": "round-07",
+  "reviewed": "2026-11-17",
+  "verdicts": [
+    {
+      "id": "g1a",
+      "verdict": "like",
+      "notes": "definitely has potential. a bit squid like and will need careful attention to make it sufficiently gothic and beksinki, and i prefer it to have a base that would not be able to sit flat on the floor; see the original concepts and look for this."
+    },
+    {
+      "id": "g1b",
+      "verdict": "dislike",
+      "notes": "i don’t like the vaguely two-legged appearance of this."
+    },
+    {
+      "id": "g2a",
+      "verdict": "like"
+    },
+    {
+      "id": "g3a",
+      "verdict": "like",
+      "notes": "pretty good but do not do two-legged look"
+    },
+    {
+      "id": "g3b",
+      "verdict": "dislike"
+    },
+    {
+      "id": "g4a",
+      "verdict": "like"
+    },
+    {
+      "id": "ref",
+      "verdict": "like"
+    }
+  ]
+}
