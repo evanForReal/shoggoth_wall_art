@@ -213,6 +213,8 @@ r08c brief (same agent as r08b, which holds the build context): crown = few thic
 
 **SL-65** · 15:00 · Round-08 board staged per Evan's "one more 3D pass first" (pass done → board). 4 cards: A = r08c medium, B = r08c dense, C = r08b medium (other crown/maw treatment), c01 ref. Front + three-quarter diptychs (no notan — this round is about character, not outline). Notes lead (< 200 chars) with the two questions: crown treatment, and continue 3D vs approve Canva credits for concept art (the method decision belongs to Evan, SL-63). G2a/G4a parked, disclosed. Unsigned CAD write-ups named per the unsigned-source rule. Stop-rule clock: this is composition round 2 of 2 — if the like rate does not hold, escalate per RP-3 item 8. · `[judgment]`
 
+**SL-66** · 15:01 · Round-08 deployed on Evan's tap: staging → review/rounds/round-08 (git mv), main fast-forwarded to 8195932 (ancestor check passed), ping sent with the crown and 3D-vs-concept-art questions. · `[Evan]`
+
 ---
 *Edit log*
 
@@ -239,3 +241,4 @@ r08c brief (same agent as r08b, which holds the build context): crown = few thic
 | 2026-11-17 | orchestrator | Appended SL-60..61 (r08 read, r08b pass) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-62..63 (r08b read, Canva blocked, Evan: one more 3D pass) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-64..65 (r08c read, round-08 staged) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Appended SL-66 (round-08 deploy) | [PROVISIONAL] |

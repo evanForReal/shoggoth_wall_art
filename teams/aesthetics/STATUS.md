@@ -5,7 +5,7 @@
 
 ## Exec Summary (newest first)
 
-- 2026-11-17: Round-08 staged (review/staging/round-08/): 3 character passes on the G1a pose (A/B horn-spire crown + ribbed trunk + jagged maw, C root-curl crown) + c01. Notes ask crown choice and 3D-vs-concept-art (Canva credits).
+- 2026-11-17: Round-08 DEPLOYED (main 8195932, Evan pinged; awaiting verdicts). Staged as (review/staging/round-08/, now review/rounds/round-08/): 3 character passes on the G1a pose (A/B horn-spire crown + ribbed trunk + jagged maw, C root-curl crown) + c01. Notes ask crown choice and 3D-vs-concept-art (Canva credits).
 - 2026-11-17: R07 verdicts in (issue #7/#8: 0/5/2) — composition-first works. G1a "definitely has potential" (fix squid-like, make gothic/Beksiński, no base that could sit flat); no two-legged look; vertical maw locked; G2a, G4a, c01 liked. Round-08 = composition round 2 with first character pass.
 - 2026-11-17: Round-07 DEPLOYED (main bd9a375, Evan pinged; awaiting issue verdicts). Staged as (review/staging/round-07/, now review/rounds/round-07/): 6 pose studies as notan + massing diptychs (G1a, G1b, G2a, G3a/G3b maw pair, G4a) + c01 reference. Gate: 4 of 6 pass all but IoU (G1a, G1b, G3a, G3b); G2a 5/7 (also torso width); G4a 4/7, shown as Evan-sketch direction. Lock-hygiene question in notes.
 - 2026-11-17: R06 verdicts in (issue #6: 0/1/11). Side profile loved again; composition named the root failure ("cluttered clockwork", body lost). Method change: design-principles log + feature reference study, then round-07 composition (silhouette) board before more detail. Envelope unchanged (size question unanswered).
@@ -77,3 +77,4 @@
 | 2026-11-17 | orchestrator | Round-07 deployed (exec line) | docs-reviewer (verified: exec line 'DEPLOYED ... main bd9a375': bd9a375 exists, is an ancestor of HEAD and equals origin/main; commit message 'Round-07 deploy: staging -> review/rounds/round-07'; review/rounds/round-07/ holds manifest.json + images with 7 cards (6 pose studies + c01 ref); review/staging/ is empty; 'Gate: 4 of 6 ...' clause matches score_r07.py (see Round-07 staged rows); lock-hygiene question present in manifest notes ('keep'/'release' ask); 'awaiting issue verdicts' consistent with no round-07 verdict file in review/verdicts/. Not assessed: the email ping itself, Evan's tap. No body [PROVISIONAL] tag belongs to this row) |
 | 2026-11-17 | orchestrator | R07 backprop: exec line, r07 takeaway | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Round-08 staged (exec line) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Round-08 deployed (exec line) | [PROVISIONAL] |
