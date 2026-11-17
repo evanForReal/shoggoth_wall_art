@@ -3,16 +3,14 @@
 import os, glob
 from PIL import Image, ImageDraw
 D = os.path.dirname(os.path.abspath(__file__)); R = os.path.join(D, 'renders')
-TW, TH = 480, 360
+TW, TH = 560, 420
 tiles = [('c01 reference (r04)', os.path.join(D, '../../../review/rounds/round-04/images/c01_baseline-velvet-salon.jpg')),
-         ('v1 hero (BEFORE, fullpiece/)', os.path.join(D, '../fullpiece/renders/hero_front.png')),
-         ('v2 hero', os.path.join(R, 'hero_front.png')),
-         ('a: v1_liftedge (masquerade A: lifted edge)', os.path.join(R, 'v1_liftedge_front.png')),
-         ('b: v2_eyes_heavy (40 eyes)', os.path.join(R, 'v2_eyes_heavy_front.png')),
-         ('c: v3_maw_big (1.28x maw, fangs)', os.path.join(R, 'v3_maw_big_front.png')),
-         ('d: v4_weathered (smiley weathering 1.0)', os.path.join(R, 'v4_weathered_front.png')),
-         ('e: v5_tentacles5 (5 major whips)', os.path.join(R, 'v5_tentacles5_front.png'))]
-sheet = Image.new('RGB', (3 * TW, 3 * TH), (14, 12, 11)); dr = ImageDraw.Draw(sheet)
+         ('v2 hero (BEFORE, fullpiece_v2/)', os.path.join(D, '../fullpiece_v2/renders/hero_front.png')),
+         ('v2.1 hero', os.path.join(R, 'hero_front.png')),
+         ('a: v1_liftedge (masquerade: lifted edge, no fingers)', os.path.join(R, 'v1_liftedge_front.png')),
+         ('b: v2_tentacles5 (5 heavy tentacles vs 8)', os.path.join(R, 'v2_tentacles5_front.png')),
+         ('c: v3_maw_big (1.45x maw, fangs)', os.path.join(R, 'v3_maw_big_front.png'))]
+sheet = Image.new('RGB', (3 * TW, 2 * TH), (14, 12, 11)); dr = ImageDraw.Draw(sheet)
 for i, (lab, p) in enumerate(tiles):
     if not os.path.exists(p): continue
     im = Image.open(p).convert('RGB'); im.thumbnail((TW, TH)); x, y = (i % 3) * TW + (TW - im.width) // 2, (i // 3) * TH + (TH - im.height) // 2

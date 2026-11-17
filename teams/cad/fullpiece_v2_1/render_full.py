@@ -16,7 +16,7 @@ ap.add_argument('--samples', type=int, default=48)
 a = ap.parse_args(); os.makedirs(a.out, exist_ok=True)
 d = np.load(os.path.join(a.dir, a.variant + '.npz')); v = d['v'].astype(np.float64); f = d['f'].astype(np.int64)
 meta = json.load(open(os.path.join(a.dir, a.variant + '_meta.json')))
-aux = d['aux']; calm_v, maw_sd, eye_t, teeth_t = aux[:, 0], aux[:, 1], aux[:, 2], aux[:, 3]
+aux = d['aux']; calm_v, maw_sd, eye_t, teeth_t, gdep_v = aux[:, 0], aux[:, 1], aux[:, 2], aux[:, 3], aux[:, 4]
 x, y, z = v[:, 0], v[:, 1], v[:, 2]
 
 
@@ -54,20 +54,25 @@ dark = np.clip(np.maximum(dark, 0.93 * (maw_sd < 6) * sstep((60 - z) / 40.0) * (
 # tonal zones (ochre / bone / rust) from low-frequency noise, per the locked palette
 nz_ = n1(x * 0.9 + 70, y * 0.9 - 40, z * 0.1)
 zb_ = sstep((-nz_ - 0.05) / 0.5)[:, None]; zr_ = sstep((nz_ - 0.15) / 0.5)[:, None]
-pale_o, mid_o = np.array([0.80, 0.62, 0.31]), np.array([0.45, 0.27, 0.10])
-pale_b, mid_b = np.array([0.82, 0.73, 0.55]), np.array([0.50, 0.35, 0.19])
-pale_r, mid_r = np.array([0.66, 0.36, 0.17]), np.array([0.38, 0.16, 0.07])
+pale_o, mid_o = np.array([0.62, 0.50, 0.30]), np.array([0.34, 0.24, 0.12])
+pale_b, mid_b = np.array([0.66, 0.59, 0.45]), np.array([0.38, 0.30, 0.19])
+pale_r, mid_r = np.array([0.50, 0.31, 0.19]), np.array([0.27, 0.14, 0.08])
 pale = pale_o * (1 - zb_ - zr_) + pale_b * zb_ + pale_r * zr_; mid = mid_o * (1 - zb_ - zr_) + mid_b * zb_ + mid_r * zr_
 deep = np.array([0.045, 0.028, 0.018])
 lo = np.clip(dark / 0.5, 0, 1)[:, None]; hi = np.clip((dark - 0.5) / 0.5, 0, 1)[:, None]
 col = np.where(dark[:, None] < 0.5, pale * (1 - lo) + mid * lo, mid * (1 - hi) + deep * hi)
 rw = 0.40 * sstep(n1(x, y, z * 0.2) + 0.2) * (4 * dark * (1 - dark))
-col = col * (1 - rw[:, None]) + np.array([0.50, 0.19, 0.06]) * rw[:, None] * (0.4 + dark)[:, None]
+col = col * (1 - rw[:, None]) + np.array([0.36, 0.17, 0.09]) * rw[:, None] * (0.4 + dark)[:, None]
+lipw = (sstep((maw_sd + 2) / 6.0) * (1 - sstep((maw_sd - 46) / 14.0)) * (teeth_t < 0.5))[:, None]
+col = col * (1 - 0.55 * lipw) + np.array([0.26, 0.13, 0.08]) * 0.55 * lipw * (0.5 + 0.5 * (1 - dark))[:, None]
 # teeth: dirty ivory;  eyes: sickly sclera (iris pits go dark by cavity)
 tw = (0.65 * teeth_t * (1 - 0.6 * sstep(depth / 60.0)))[:, None]
 col = col * (1 - tw) + np.array([0.72, 0.62, 0.42]) * tw * (1 - 0.5 * dark[:, None])
-ew = (0.55 * eye_t * (1 - 0.8 * sstep(cav / 2.0)))[:, None]
-col = col * (1 - ew) + np.array([0.78, 0.66, 0.40]) * ew * (1 - 0.6 * dark[:, None])
+lidw = ((eye_t > 0.2) & (eye_t < 0.7))[:, None] * 0.35
+col = col * (1 - lidw) + np.array([0.30, 0.15, 0.10]) * lidw * (1 - 0.5 * dark[:, None])           # lids: dark flesh rim
+bw = (eye_t > 0.7)[:, None]; col = np.where(bw, np.array([0.80, 0.74, 0.58]) * (1 - 0.35 * dark[:, None]), col)     # eyeball band: pale
+iw = (eye_t > 1.5)[:, None]; col = np.where(iw, np.array([0.12, 0.07, 0.04]), col)                                 # iris: dark
+pw = (eye_t > 2.5)[:, None]; col = np.where(pw, np.array([0.015, 0.01, 0.008]), col)                               # pupil
 # mask: pale carved bone (the ONE clean contrasting element), weathered: cavity-shaded + stain streaks, darker in the groove/eyes
 mk = meta['mask']; dx, dy = x - mk['centre'][0], y - mk['centre'][1]
 mq = np.sqrt((dx / mk['semi'][0]) ** 2 + (dy / mk['semi'][1]) ** 2)
@@ -75,6 +80,8 @@ mw = (1 - sstep((mq - 1.0) / 0.06)) * (z > 20)
 stain = np.clip(0.55 * sstep(n3(x * 0.6, y * 0.25, z * 0.2) * 0.8 + 0.1) * (0.4 + 0.6 * sstep((-dy / mk['semi'][1] + 0.3) / 1.0)) * (0.5 + meta['mask']['weather']), 0, 0.7)
 bone = np.array([0.92, 0.86, 0.72]) * (0.55 + 0.45 * (1 - sstep(cav / 3.0)))[:, None] * (1 - stain)[:, None] + np.array([0.45, 0.30, 0.14]) * stain[:, None]
 bone = bone * (1 - 0.28 * sstep(depth / 50.0))[:, None]
+bone = bone * (1 - 0.80 * sstep(gdep_v / 9.0))[:, None]                      # smile groove + eye pits: shadow
+
 col = col * (1 - mw[:, None]) + bone * mw[:, None]
 col = np.clip(col, 0, 1) ** 2.2
 print('colours done', flush=True)

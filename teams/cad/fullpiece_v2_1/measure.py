@@ -10,7 +10,8 @@ def measure(v, shelves):
     for sh in shelves:
         x0, x1 = sh['x_range']
         inb = (v[:, 0] > x0 + 2.5) & (v[:, 0] < x1 - 2.5) & (v[:, 2] < sh['p']) & (v[:, 1] > sh['top_y'] + 12.0) & (v[:, 1] < sh['top_y'] + 300.0)
-        out['headroom'].append(dict(top_y=sh['top_y'], intruding_verts_above_12mm_lip=int(inb.sum()),
+        band = int((inb & (v[:, 1] <= sh['top_y'] + 62.0)).sum()); inb = inb & (v[:, 1] > sh['top_y'] + 62.0)
+        out['headroom'].append(dict(top_y=sh['top_y'], tendril_band_verts_12_to_62mm=band, intruding_verts_above_62mm=int(inb.sum()),
                                     clear_height_mm=round(float(v[inb, 1].min() - sh['top_y']), 1) if inb.any() else '>= 300 (none)'))
     G = np.zeros((229, 229)); gi = np.clip(((v[:, 0] + HALF) / 4.0).astype(int), 0, 228); gj = np.clip(((v[:, 1] + HALF) / 4.0).astype(int), 0, 228)
     np.maximum.at(G, (gi, gj), v[:, 2]); body = G > 5

@@ -23,7 +23,7 @@ HALF = 457.0                  # domain half-size -> 914 mm
 Z_MAX = 300.0
 CLIP_XY = 454.0               # field hard clip (grain + vertex clamp finish at 457)
 BODY = [((-95.0, 45.0), (235.0, 275.0), -18.0), ((120.0, -135.0), (175.0, 125.0), 14.0)]   # (centre, semi-axes, deg)
-RELIEF = (16.0, 120.0)
+RELIEF = (16.0, 90.0)
 MASK_C, MASK_R = (-105.0, 200.0), 92.0                 # circular emoticon face, radius
 MAW_C, MAW_AB, MAW_DEG = (-95.0, -100.0), (118.0, 82.0), 6.0
 BAYS = [((70.0, 95.0), (68.0, 40.0), 30.0), ((70.0, -215.0), (60.0, 36.0), 50.0), ((125.0, -80.0), (50.0, 32.0), 20.0)]
@@ -36,8 +36,8 @@ SEEDS_R = (34.0, 64.0)
 RIB_W = (9.0, 14.0)
 RIB_TAIL = 8.0
 WARP = (22.0, 260.0)
-OPEN_P = (0.15, 0.50)
-SKIN_T = 16.0
+OPEN_P = (0.28, 0.62)
+SKIN_T = 12.0
 SL_COUNT = 150
 SHELF_W, PLATE_T = 190.0, 10.0
 SEAT_DEPTH = 28.0
@@ -45,10 +45,10 @@ SHELF_ARR = {
     'A': [dict(side='L', ys=344.5, xc=-345.0, p=250.0), dict(side='R', ys=170.5, xc=345.0, p=200.0), dict(side='L', ys=-109.5, xc=-345.0, p=290.0)],
 }
 VARIANTS = {   # each differs from hero by ONE axis
-    'hero':          dict(masq='fingers', eyes=22, maw_scale=1.0, maw_dy=0.0, teeth='mixed', weather=0.55, shelves='A', seed=7, whips=list(range(8)), whip_scale=1.0, whip_len=1.0),
-    'v1_liftedge':   dict(masq='lift', eyes=22, maw_scale=1.0, maw_dy=0.0, teeth='mixed', weather=0.55, shelves='A', seed=7, whips=list(range(8)), whip_scale=1.0, whip_len=1.0),
-    'v2_tentacles5': dict(masq='fingers', eyes=22, maw_scale=1.0, maw_dy=0.0, teeth='mixed', weather=0.55, shelves='A', seed=7, whips=[0, 2, 4, 5, 7], whip_scale=1.5, whip_len=1.1),
-    'v3_maw_big':    dict(masq='fingers', eyes=22, maw_scale=1.45, maw_dy=-22.0, teeth='fangs', weather=0.55, shelves='A', seed=7, whips=list(range(8)), whip_scale=1.0, whip_len=1.0),
+    'hero':          dict(masq='fingers', eyes=22, maw_scale=1.0, maw_dy=0.0, teeth='mixed', weather=0.80, shelves='A', seed=7, whips=list(range(8)), whip_scale=1.0, whip_len=1.0),
+    'v1_liftedge':   dict(masq='lift', eyes=22, maw_scale=1.0, maw_dy=0.0, teeth='mixed', weather=0.80, shelves='A', seed=7, whips=list(range(8)), whip_scale=1.0, whip_len=1.0),
+    'v2_tentacles5': dict(masq='fingers', eyes=22, maw_scale=1.0, maw_dy=0.0, teeth='mixed', weather=0.80, shelves='A', seed=7, whips=[0, 2, 4, 5, 7], whip_scale=1.5, whip_len=1.1),
+    'v3_maw_big':    dict(masq='fingers', eyes=22, maw_scale=1.45, maw_dy=-22.0, teeth='fangs', weather=0.80, shelves='A', seed=7, whips=list(range(8)), whip_scale=1.0, whip_len=1.0),
 }
 sstep = gp.smoothstep
 
@@ -142,7 +142,7 @@ def tentacle(rng, start, ang, L, bend, r0, rtip, zoff, nsw, boxes=()):
             bad |= ((xy[:, 0] > x0 - r) & (xy[:, 0] < x1 + r) & (xy[:, 1] > y0 - r) & (xy[:, 1] < y1 + r)).any()
         if not bad: break
         L *= 0.97
-    return np.column_stack([xy, zoff + 0.30 * r]), r, xy, t, L
+    return np.column_stack([xy, zoff + 0.20 * r]), r, xy, t, L
 
 
 def build_limbs(pr, rng, shelves):
@@ -160,19 +160,37 @@ def build_limbs(pr, rng, shelves):
         P = np.array([A, A + 0.35 * d + nrm * bulge, A + 0.72 * d + nrm * bulge * 0.35, R])
         xy, t = bend_curve(P)
         r = (42.0 - 16.0 * t) * (1 + 0.16 * np.sin(2 * np.pi * 1.5 * t + 0.6 * k))
-        curves.append((np.column_stack([xy, 0.30 * r]), r)); lines2d.append((xy, r * 1.1 + 16.0 * (1 - t) ** 2))
+        curves.append((np.column_stack([xy, 0.20 * r]), r)); lines2d.append((xy, r * 1.1 + 16.0 * (1 - t) ** 2))
         meta['arms'].append(dict(shelf=k, root=[float(R[0]), float(R[1])], r_end=float(r[-1])))
     specs = [(212, 800, 0.9, 44, 0), (246, 640, -0.8, 40, 14), (272, 720, 0.7, 46, 6), (306, 660, -0.9, 40, 20),
              (334, 820, 0.7, 44, 0), (38, 700, 0.9, 36, 10), (74, 560, -0.7, 30, 4), (112, 520, -0.5, 26, 0)]
     for wi, (ang, L, bend, r0, zoff) in enumerate(specs):
         if wi not in pr['whips']: continue
-        r0 = r0 * 1.12 * pr['whip_scale']; L = L * pr['whip_len']
+        r0 = r0 * 1.0 * pr['whip_scale']; L = L * pr['whip_len']
         a = np.deg2rad(ang + rng.uniform(-6, 6)); d0 = np.array([np.cos(a), np.sin(a)])
         start = c0 + d0 * rng.uniform(95, 140) + (np.array([100.0, -60.0]) if 200 < ang < 330 else 0)
         pts3, r, xy, t, Lf = tentacle(rng, start, ang, L, bend, r0, 6.0, zoff, rng.uniform(2.6, 3.8), boxes)
         curves.append((pts3, r)); lines2d.append((xy, r * 1.1 + 18.0 * (1 - t) ** 2)); wl.append((ang, xy, r))
         roots.append((start - d0 * 0.2 * r0, r0)); meta['whips'].append(dict(angle=ang, length=float(Lf), length_requested=float(L), r_root=r0))
     return curves, lines2d, roots, wl, meta
+
+
+def grip_tendrils(rng, sh, n_front=3, n_side=2):
+    """Root-grip: tendrils curl over the plate rim (<= 60 mm above the flat incl. radius) and press their tips on the top face near the edge."""
+    xs0, xs1 = sh['xc'] - SHELF_W / 2, sh['xc'] + SHELF_W / 2; ys0 = sh['ys']; p = sh['p']
+    out_x = xs0 if sh['side'] == 'L' else xs1; so = -1.0 if sh['side'] == 'L' else 1.0
+    curves = []
+    specs = [('f', rng.uniform(xs0 + 25, xs1 - 25)) for _ in range(n_front)] + [('s', rng.uniform(70.0, p - 60.0)) for _ in range(n_side)]
+    for kind, s in specs:
+        j = rng.uniform(-4, 4)
+        if kind == 'f':
+            P = np.array([[s + j, ys0 - 16, p - 8], [s, ys0 - 8, p + 6], [s - 2, ys0 + 22, p + 7], [s + 3, ys0 + 42, p - 3], [s + 6, ys0 + 10, p - 24]])
+        else:
+            P = np.array([[out_x - so * 8, ys0 - 16, s + j], [out_x + so * 6, ys0 - 8, s], [out_x + so * 7, ys0 + 22, s - 2], [out_x + so * 0.0, ys0 + 42, s + 3], [out_x - so * 24, ys0 + 10, s + 6]])
+        d = np.r_[0, np.cumsum(np.linalg.norm(np.diff(P, axis=0), axis=1))]
+        pts = PchipInterpolator(d, P, axis=0)(np.linspace(0, d[-1], int(d[-1] / 1.0) + 10)); t = np.linspace(0, 1, len(pts))
+        curves.append((pts, 7.5 - 3.0 * t + 0.8 * np.sin(2 * np.pi * 2 * t)))
+    return curves
 
 
 def shelf_fibres_full(rng, sh, n_f=20, n_l=14):
@@ -236,7 +254,7 @@ def maw_teeth(rng, c, ab, deg, style):
         L = frac * dist
         r0 = (7.5 + 0.13 * L + rng.uniform(0, 4.0)) * (1.25 if fangs else 1.0)
         L = min(L, 6.0 * r0)                                           # height <= 3 x base width (fab rule)
-        z0 = 74.0 + rng.uniform(-6, 8); z1 = z0 - rng.uniform(0.10, 0.65) * L
+        z0 = 62.0 + rng.uniform(-6, 8); z1 = z0 - rng.uniform(0.10, 0.65) * L
         perp = np.array([-u[1], u[0]]) * rng.uniform(-0.28, 0.28) * L
         P0 = np.array([base[0], base[1], z0]); P2 = np.array([base[0] + u[0] * L, base[1] + u[1] * L, z1])
         Cc = 0.5 * (P0 + P2) + np.array([perp[0], perp[1], rng.uniform(-3, 8)])
@@ -262,7 +280,7 @@ def mask_top(Xg, Yg, N, W, masq, th0):
     u = (Xg - MASK_C[0]) / MASK_R; v = (Yg - MASK_C[1]) / MASK_R
     q = np.hypot(u, v); th = np.arctan2(v, u)
     er1 = N['rel'](Xg, Yg, 5.0); er2 = N['hf'](Xg, Yg, 5.0); er3 = N['hfine'](Xg, Yg, 7.0)
-    zf = 64.0 + 20.0 * (1 - np.minimum(q, 1.2) ** 2) + 4.0 * np.exp(-((u / 0.8) ** 2 + ((v - 0.35) / 0.25) ** 2))
+    zf = 50.0 + 18.0 * (1 - np.minimum(q, 1.2) ** 2) + 4.0 * np.exp(-((u / 0.8) ** 2 + ((v - 0.35) / 0.25) ** 2))
     zf -= W * (3.5 * er1 + 1.6 * er2 + 1.2 * er3)                                   # erosion: sag + pitting
     zf -= W * 9.0 * sstep((-v - 0.10) / 0.8) * (0.6 + 0.4 * er3) * (1 + 0.5 * (u < 0))  # gravity slump, asymmetric (left worse)
     # crack (hairline, 5 mm wide) running from the lower-left rim up toward (but not into) the left eye
@@ -287,11 +305,11 @@ def mask_top(Xg, Yg, N, W, masq, th0):
         zf += 17.0 * lw * sstep((q - 0.45) / 0.5)
     else: lw = np.zeros_like(q)
     edge = 0.96 + 0.015 * er3 * W
-    crown = 106.0 - W * 16.0 * sstep(0.9 * er2 + 0.25) - W * 8.0 * sstep(er1)     # chipped bezel
+    crown = 86.0 - W * 14.0 * sstep(0.9 * er2 + 0.25) - W * 8.0 * sstep(er1)     # chipped bezel
     wall = sstep((q - edge) / 0.14)
     top_in = zf * (1 - wall) + crown * wall
     fall = sstep((q - 1.12) / 0.45)
-    top = np.where(q < 1.12, top_in, crown * (1 - fall) + 68.0 * fall)
+    top = np.where(q < 1.12, top_in, crown * (1 - fall) + 58.0 * fall)
     return top, q, lw, th, np.where(q < 1.0, gdep, 0.0)
 
 
@@ -317,7 +335,7 @@ def build_membranes(X, Y, whip_lines, c0, N, rng):
         r_e = r_lo + Lm * (1 - 0.55 * np.sin(np.pi * np.clip(frac, 0, 1)) ** 0.9) + 9.0 * N['hfine'](X, Y, 11.0 + a)
         inside = ok & (frac > 0.0) & (frac < 1.0) & (R > r_lo - 20.0) & (R < r_e)
         de = r_e - R
-        Ht = 9.0 + 19.0 * sstep(de / 80.0) + 3.5 * (0.5 + 0.5 * np.cos(2 * np.pi * frac * 3.0)) * sstep(de / 30.0)
+        Ht = 7.0 + 13.0 * sstep(de / 80.0) + 3.5 * (0.5 + 0.5 * np.cos(2 * np.pi * frac * 3.0)) * sstep(de / 30.0)
         top = np.where(inside, np.maximum(top, Ht), top); n_m += 1
         for fh, rf in ((0.5, 0.42), (0.28 + 0.4 * rng.random(), 0.62)):
             th_h = np.interp(r_lo + rf * Lm, ra, tha) + fh * wrap(np.interp(r_lo + rf * Lm, rb, thb) - np.interp(r_lo + rf * Lm, ra, tha))
@@ -345,14 +363,14 @@ def run(vname, vox, outdir):
     # fingers (masquerade B): tendrils over the bezel from behind, tips pressed on the face rim
     fing = []
     if pr['masq'] == 'fingers':
-        for angd in (22, 62, 112, 148, -22):
+        for angd in (22, 62, 112, 148, 168):
             a = np.deg2rad(angd + rng.uniform(-5, 5)); dvec = np.array([np.cos(a), np.sin(a)])
             Rm = MASK_R
             P0 = np.array(MASK_C) + dvec * Rm * 1.75; P3 = np.array(MASK_C) + dvec * Rm * 0.86
             Pm = np.array(MASK_C) + dvec * Rm * 1.30
             perp = np.array([-dvec[1], dvec[0]]) * rng.uniform(-20, 20)
-            P = np.array([[P0[0], P0[1], 66.0], [Pm[0] + perp[0] * 1.5, Pm[1] + perp[1] * 1.5, 114.0],
-                          [0.5 * (Pm + P3)[0] + perp[0] * 0.6, 0.5 * (Pm + P3)[1] + perp[1] * 0.6, 112.0], [P3[0], P3[1], 80.0]])
+            P = np.array([[P0[0], P0[1], 52.0], [Pm[0] + perp[0] * 1.5, Pm[1] + perp[1] * 1.5, 94.0],
+                          [0.5 * (Pm + P3)[0] + perp[0] * 0.6, 0.5 * (Pm + P3)[1] + perp[1] * 0.6, 92.0], [P3[0], P3[1], 64.0]])
             s_ = np.r_[0, np.cumsum(np.linalg.norm(np.diff(P, axis=0), axis=1))]
             pts = PchipInterpolator(s_, P, axis=0)(np.linspace(0, s_[-1], int(s_[-1] / 1.2) + 10)); t = np.linspace(0, 1, len(pts))
             r = 13.0 * (1 - t) ** 0.7 + 5.5 + 2.0 * np.sin(2 * np.pi * 1.5 * t + angd)
@@ -369,9 +387,16 @@ def run(vname, vox, outdir):
     PAD_HX, PAD_HY = 42.0, 33.0
     meta['strut'] = dict(shelf_p=ls['p'], tip=tip.tolist(), foot=foot.tolist(), drop_mm=float(drop), base_radius=23.0, core_dia_mm=2 * CORE_R, foot_pad_mm=[2 * PAD_HX, 2 * PAD_HY])
     maw_c = (MAW_C[0], MAW_C[1] + pr['maw_dy'])
+    arm3 = meta['arms'][int(np.argmax([s_['p'] for s_ in shelves]))]['root']
+    bp_ = np.array([[arm3[0], ls['ys'] - 38.0, 22.0], [arm3[0] - 14.0 * sg, ls['ys'] - 52.0, 110.0], [ls['xc'] + 6.0 * sg, ls['ys'] - 54.0, 200.0], tip + np.array([0, 0, 0])])
+    d_ = np.r_[0, np.cumsum(np.linalg.norm(np.diff(bp_, axis=0), axis=1))]
+    branch = PchipInterpolator(d_, bp_, axis=0)(np.linspace(0, d_[-1], int(d_[-1] / 1.2) + 10)); tb_ = np.linspace(0, 1, len(branch))
+    br_r = 19.0 * (1 + 0.12 * np.sin(2 * np.pi * 1.5 * tb_)) + 5.0 * sstep((tb_ - 0.8) / 0.2)
+    strut_t = RTube(strut, s_r, np.random.default_rng(pr['seed'] + 61), 3.2); branch_t = RTube(branch, br_r, np.random.default_rng(pr['seed'] + 62), 2.8)
+    meta['strut']['branch_from_arm_end'] = [float(arm3[0]), float(arm3[1])]
     teeth, tinfo = maw_teeth(rng, maw_c, tuple(a * pr['maw_scale'] for a in MAW_AB), MAW_DEG, pr['teeth'])
     meta['teeth'] = tinfo
-    limbs = [DLimb(c_[0], c_[1], np.random.default_rng(pr['seed'] + 40 + i_)) for i_, c_ in enumerate(curves)]; fingset = gp.FibreSet(fing); strutset = gp.FibreSet([(strut, s_r)]); teethset = gp.FibreSet(teeth)
+    limbs = [DLimb(c_[0], c_[1], np.random.default_rng(pr['seed'] + 40 + i_)) for i_, c_ in enumerate(curves)]; fingset = gp.FibreSet(fing); strutset = None; teethset = gp.FibreSet(teeth)
     sh_fib = [gp.FibreSet(shelf_fibres_full(np.random.default_rng(pr['seed'] + 200 + i), s)) for i, s in enumerate(shelves)]
     # 2D lines: web skirt + limb footprint (calm) + root bulbs
     LP = np.concatenate([l[0] for l in lines2d]); LR = np.concatenate([l[1] for l in lines2d]); ltree = cKDTree(LP)
@@ -398,7 +423,7 @@ def run(vname, vox, outdir):
     for c, ab, deg, pk in BELLIES:
         uu, vv = rot(Xw, Yw, c, deg); qq = np.sqrt((uu / ab[0]) ** 2 + (vv / ab[1]) ** 2)
         Hm = np.maximum(Hm, pk * sstep((1 - qq) / 0.9)); calm = np.maximum(calm, sstep((1 - qq) / 0.45))
-    Hm *= (0.92 + 0.08 * N['hsel'](X, Y, 0)) * 0.74
+    Hm *= (0.92 + 0.08 * N['hsel'](X, Y, 0)) * 0.32
     for (rc, rr_) in roots:                                                       # root bulbs: tentacle roots fuse into the mass
         uu, vv = X - rc[0], Y - rc[1]; qq = np.sqrt(uu ** 2 + vv ** 2) / (1.5 * rr_)
         Hm = np.maximum(Hm, 0.95 * rr_ * sstep((1 - qq) / 0.85)); calm = np.maximum(calm, sstep((1 - qq) / 0.5))
@@ -406,7 +431,7 @@ def run(vname, vox, outdir):
     calm_l = 1 - sstep((dT - 0.6 * rT) / (0.6 * rT)); calm = np.maximum(calm, calm_l)
     # maw 2D (irregular lip), floor
     ms = ell_sd(X, Y, maw_c, maw_ab, MAW_DEG)[0] + 10 * N['ovn'](X, Y, 0) + 4.0 * N['hf'](X, Y, 0) + 5 * N['hfine'](X, Y, 0)
-    Hc = 90.0 + 12 * N['hsel'](X, Y, 0) + 8.0 * sstep((maw_c[1] - Y) / 60.0)       # lower lip heavier / sagging
+    Hc = 74.0 + 10 * N['hsel'](X, Y, 0) + 7.0 * sstep((maw_c[1] - Y) / 60.0)       # lower lip heavier / sagging
     zr = Hc * np.sqrt(np.clip(1 - ((ms - 9.0) / 32.0) ** 2, 0, 1)); zr = np.where(ms < 41, zr, 0.0)
     zfloor = 9.0 + 10.0 * sstep((ms + 70.0) / 70.0) + 3 * N['hf'](X, Y, 0)
     calm = np.maximum(calm, np.where(ms > -8, sstep((58 - ms) / 40.0), 0.0))
@@ -582,16 +607,24 @@ def run(vname, vox, outdir):
         bump = np.clip(8 + 10 * N['wob'](sx, 0, sz), 0, 18)
         sdo = np.maximum.reduce([sx - xs1 - bump * 0.5, xs0 - bump * 0.5 - sx, sz - sh['p'] - bump * 0.5])
         cx_seat = sh['xc'] + (50.0 if sh['side'] == 'L' else -50.0)
-        j0 = int(np.searchsorted(ys, sh['ys'] - 330)); j1 = int(np.searchsorted(ys, sh['ys'] + 3))
-        shf = sh_fib[si]
+        j0 = int(np.searchsorted(ys, sh['ys'] - 330)); j1 = int(np.searchsorted(ys, sh['ys'] + 64))
+        shf = sh_fib[si]; grip = gp.FibreSet(grip_tendrils(np.random.default_rng(pr['seed'] + 300 + si), sh))
+        dedge = np.clip(np.minimum.reduce([xs1 - sx, sx - xs0, sh['p'] - sz]), 0, None)
+        Tpl = 4.5 + 6.5 * sstep(dedge / 35.0) + 1.5 * N['wob'](sx, 0, sz)                    # organic plate: thin rim, thicker toward the wall/centre
         for j in range(j0, j1):
             y = ys[j]; t = sh['ys'] - y
-            fy = PLATE_T / 2 - np.abs(y - (sh['ys'] - PLATE_T / 2))
+            if y > sh['ys'] + 3:
+                P3 = np.stack([sx.ravel(), np.full(sx.size, y), sz.ravel()], 1)
+                f = np.minimum(grip.field(P3).reshape(sx.shape), -sdo + 14)
+                F[ix0:ix1, j, :] = np.maximum(F[ix0:ix1, j, :], f.astype(np.float32)); continue
+            fy = np.minimum(sh['ys'] - y, y - (sh['ys'] - Tpl))
             f = np.minimum(fy, -sdo)
             if t >= 0:
                 if t < 150.0:
                     seat = np.minimum.reduce([80.0 - np.abs(sx - cx_seat), np.full(sx.shape, 150.0 - t), SEAT_DEPTH - sz, -sdo + 60])
                     f = np.maximum(f, seat)
+                    skirt = np.minimum.reduce([100.0 - np.abs(sx - cx_seat) + 14 * N['hfine'](sx, y, 5.0), 190.0 - t + 14 * N['hf'](sx, y, 5.0), 9.0 - sz + 3 * N['hf'](sx, y, 9.0), -sdo + 40])
+                    f = np.maximum(f, skirt)
                 P3 = np.stack([sx.ravel(), np.full(sx.size, y), sz.ravel()], 1)
                 f = np.maximum(f, np.minimum(shf.field(P3).reshape(sx.shape), -sdo + 10))
             F[ix0:ix1, j, :] = np.maximum(F[ix0:ix1, j, :], f.astype(np.float32))
@@ -599,13 +632,15 @@ def run(vname, vox, outdir):
                                seat_zone=dict(centre_x=cx_seat, width=160.0, height=150.0, depth=SEAT_DEPTH, y_range=[sh['ys'] - 150.0, sh['ys']])))
     meta['shelves'] = shelf_meta
     # ---------------- buttress limb + foot pad ----------------
-    sx0 = float(strut[:, 0].min()) - 45; sx1 = float(strut[:, 0].max()) + 45; sy0 = float(strut[:, 1].min()) - 45; sy1 = float(strut[:, 1].max()) + 45
+    sx0 = float(min(strut[:, 0].min(), branch[:, 0].min())) - 45; sx1 = float(max(strut[:, 0].max(), branch[:, 0].max())) + 45; sy0 = float(strut[:, 1].min()) - 45; sy1 = float(max(strut[:, 1].max(), branch[:, 1].max())) + 45
     i0, i1 = int(np.searchsorted(xs, sx0)), int(np.searchsorted(xs, sx1)); j0_, j1_ = int(np.searchsorted(ys, sy0)), int(np.searchsorted(ys, sy1))
     gx_, gy_ = np.meshgrid(xs[i0:i1], ys[j0_:j1_], indexing='ij'); pp = np.stack([gx_.ravel(), gy_.ravel()], 1)
     for k in range(nz):
         z = zs[k]
         if z > float(strut[:, 2].max()) + 30: break
-        lf = strutset.field(np.concatenate([pp, np.full((len(pp), 1), z)], 1)).reshape(gx_.shape)
+        P3_ = np.concatenate([pp, np.full((len(pp), 1), z)], 1)
+        lf1 = strut_t.field(P3_).reshape(gx_.shape); lf2 = branch_t.field(P3_).reshape(gx_.shape)
+        lf = np.where((lf1 > -6) & (lf2 > -6), lse(lf1, lf2, 11.0), np.maximum(lf1, lf2))
         lf = lf + 1.5 * N['rel'](gx_, gy_, z) * (lf > -5)
         qx_, qy_ = np.abs(gx_ - foot[0]) - (PAD_HX - 8.0), np.abs(gy_ - foot[1]) - (PAD_HY - 8.0)
         sdp = np.hypot(np.maximum(qx_, 0), np.maximum(qy_, 0)) + np.minimum(np.maximum(qx_, qy_), 0) - 8.0
@@ -637,7 +672,7 @@ def eye_fields(e, gx, gy):
     return u, v2, ap, foot, np.where(ap, ball, lid)
 
 
-def place_and_apply_eyes(rng, F, xs, ys, zs, vox, n_eyes, X, Y, mq, ms, shelves, arm_curves=(), c_body=(-60.0, 10.0), rmax=300.0):
+def place_and_apply_eyes(rng, F, xs, ys, zs, vox, n_eyes, X, Y, mq, ms, shelves, arm_curves=(), c_body=(-60.0, 10.0), rmax=340.0):
     """15-30 almond/slit eyes clustered irregularly on the BODY MASS (between mask and maw, around tentacle roots), on out-facing faces only."""
     solid = F > 0
     fe = np.argmin(solid, axis=2); fe = np.where(solid.all(axis=2), solid.shape[2], fe); fe = np.where(solid[:, :, 0], fe, 0)
@@ -651,7 +686,7 @@ def place_and_apply_eyes(rng, F, xs, ys, zs, vox, n_eyes, X, Y, mq, ms, shelves,
         ok &= ~((np.abs(X - sh['xc']) < SHELF_W / 2 + 20) & (Y > sh['ys'] - 340) & (Y < sh['ys'] + 310))
     for c_ in arm_curves:
         dd_, _ = cKDTree(c_[0][:, :2]).query(np.stack([X.ravel(), Y.ravel()], 1)); ok &= ~(dd_.reshape(X.shape) < c_[1].max() + 30.0)
-    cand = ok & (ztop >= 26) & (ztop <= 118); ci = np.argwhere(cand)
+    cand = ok & (ztop >= 22) & (ztop <= 118); ci = np.argwhere(cand)
     print('eye candidates', len(ci), flush=True)
     placed = []
     if len(ci) == 0: return placed, zsm
@@ -661,7 +696,7 @@ def place_and_apply_eyes(rng, F, xs, ys, zs, vox, n_eyes, X, Y, mq, ms, shelves,
         gi, gj = np.meshgrid(np.arange(i0, i1), np.arange(j0, j1), indexing='ij')
         dm = np.hypot((gi - i) * vox, (gj - j) * vox) <= 1.2 * a
         sub = ztop[i0:i1, j0:j1][dm]
-        if sub.min() < zmin or (sub.max() - sub.min()) > 0.5 * a + 8 or slope[i0:i1, j0:j1][dm].max() > 1.0 or not ok[i0:i1, j0:j1][dm].all(): return False
+        if sub.min() < zmin or (sub.max() - sub.min()) > 0.8 * a + 12 or slope[i0:i1, j0:j1][dm].max() > 1.0 or not ok[i0:i1, j0:j1][dm].all(): return False
         x, y = xs[i], ys[j]
         for e in placed:
             if np.hypot(e['x'] - x, e['y'] - y) < sp * (e['a'] + a) + 5: return False
@@ -669,25 +704,25 @@ def place_and_apply_eyes(rng, F, xs, ys, zs, vox, n_eyes, X, Y, mq, ms, shelves,
         o_up = 0.22 if mood < 0.25 else (0.45 if mood < 0.5 else float(rng.uniform(0.7, 1.0)))     # half-closed / drooping / open
         placed.append(dict(x=float(x), y=float(y), a=float(a), b=float(b), psi=float(psi), o_up=float(o_up), o_lo=float(rng.uniform(0.6, 1.0)),
                            skew=float(rng.uniform(-0.55, 0.55)), bag=float(rng.uniform(0.0, 0.45) if mood < 0.5 else rng.uniform(0.0, 0.2)),
-                           ci=float(rng.uniform(-0.3, 0.3)), Wl=float(0.9 * b), Hm=float(np.clip(0.8 * b + 2.5, 5.0, 11.0))))
+                           ci=float(rng.uniform(-0.3, 0.3)), Wl=float(0.9 * b), Hm=float(np.clip(1.0 * b + 3.0, 7.0, 14.0))))
         return True
     n_cl = max(3, n_eyes // 5); n_in = int(0.7 * n_eyes)
     for c in range(n_cl):
         psi0 = rng.uniform(0, 180)
         for _ in range(300):
             i, j = ci[rng.integers(len(ci))]
-            if try_place(i, j, rng.uniform(15.0, 22.5), psi0 + rng.normal(0, 15)): break
+            if try_place(i, j, rng.uniform(19.0, 22.5), psi0 + rng.normal(0, 15)): break
         else: continue
         cx, cy = placed[-1]['x'], placed[-1]['y']; want = int(n_in / n_cl) - 1; got = 0
         for _ in range(400):
             if got >= want: break
             px, py = cx + rng.normal(0, 48), cy + rng.normal(0, 48)
             i, j = int(round((px + HALF) / vox)), int(round((py + HALF) / vox))
-            if 0 <= i < ztop.shape[0] and 0 <= j < ztop.shape[1] and cand[i, j] and try_place(i, j, rng.uniform(9.0, 15.0), psi0 + rng.normal(0, 35)): got += 1
+            if 0 <= i < ztop.shape[0] and 0 <= j < ztop.shape[1] and cand[i, j] and try_place(i, j, rng.uniform(11.0, 16.0), psi0 + rng.normal(0, 35)): got += 1
     for _ in range(30000):
         if len(placed) >= n_eyes: break
         i, j = ci[rng.integers(len(ci))]
-        try_place(i, j, rng.uniform(9.0, 18.0), rng.uniform(0, 180), sp=0.9, zmin=20.0)
+        try_place(i, j, rng.uniform(10.0, 18.0), rng.uniform(0, 180), sp=0.8, zmin=18.0)
     for e in placed:
         ext = e['a'] + e['Wl'] * 1.8 + 6.0
         i0, i1 = int(np.searchsorted(xs, e['x'] - ext)), int(np.searchsorted(xs, e['x'] + ext)); j0, j1 = int(np.searchsorted(ys, e['y'] - ext)), int(np.searchsorted(ys, e['y'] + ext))
@@ -814,8 +849,9 @@ if __name__ == '__main__':
     eng['headroom'] = []
     for sh in shelves:
         inb = (v2[:, 0] > sh['xc'] - SHELF_W / 2 + 2.5) & (v2[:, 0] < sh['xc'] + SHELF_W / 2 - 2.5) & (v2[:, 2] < sh['p']) & (v2[:, 1] > sh['ys'] + 12.0) & (v2[:, 1] < sh['ys'] + 300.0)
+        band = int((inb & (v2[:, 1] <= sh['ys'] + 62.0)).sum()); inb = inb & (v2[:, 1] > sh['ys'] + 62.0)
         clear = (float(v2[inb, 1].min() - sh['ys']) if inb.any() else None)
-        eng['headroom'].append(dict(top_y=sh['ys'], intruding_verts_above_12mm_lip=int(inb.sum()), clear_height_mm=clear if clear is not None else '>= 300 (none)'))
+        eng['headroom'].append(dict(top_y=sh['ys'], tendril_band_verts_12_to_62mm=band, intruding_verts_above_62mm=int(inb.sum()), clear_height_mm=clear if clear is not None else '>= 300 (none)'))
     # seat embed
     eng['seat_embed_depth_mm'] = SEAT_DEPTH
     # relief distribution (max z per 4 mm cell, cells with relief > 5 mm, excl. shelf plates region x<-250|x>250 above y of plates not separated)
