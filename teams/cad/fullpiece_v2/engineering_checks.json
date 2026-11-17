@@ -21,8 +21,8 @@
    "whip_scale": 1.0
   },
   "engineering": {
-   "verts": 631157,
-   "tris": 1262686,
+   "verts": 630947,
+   "tris": 1262266,
    "bbox_min_mm": [
     -451.9,
     -455.9,
@@ -91,8 +91,8 @@
     },
     {
      "top_y": -109.5,
-     "intruding_verts_above_12mm_lip": 147,
-     "clear_height_mm": 297.59984719743636
+     "intruding_verts_above_12mm_lip": 0,
+     "clear_height_mm": ">= 300 (none)"
     }
    ],
    "seat_embed_depth_mm": 28.0,
@@ -133,8 +133,8 @@
     "length_mm_max": 55.5
    }
   },
-  "volume_cm3_solid": 22548.6,
-  "mass_g_PETG_solid_upper_bound": 28637.0,
+  "volume_cm3_solid": 22546.1,
+  "mass_g_PETG_solid_upper_bound": 28634.0,
   "shelves": [
    {
     "index": 0,
@@ -832,8 +832,8 @@
    "whip_scale": 1.0
   },
   "engineering": {
-   "verts": 609726,
-   "tris": 1219860,
+   "verts": 609510,
+   "tris": 1219428,
    "bbox_min_mm": [
     -451.9,
     -455.9,
@@ -902,8 +902,8 @@
     },
     {
      "top_y": -109.5,
-     "intruding_verts_above_12mm_lip": 151,
-     "clear_height_mm": 297.6107442084999
+     "intruding_verts_above_12mm_lip": 0,
+     "clear_height_mm": ">= 300 (none)"
     }
    ],
    "seat_embed_depth_mm": 28.0,
@@ -944,8 +944,8 @@
     "length_mm_max": 63.2
    }
   },
-  "volume_cm3_solid": 21849.2,
-  "mass_g_PETG_solid_upper_bound": 27748.0,
+  "volume_cm3_solid": 21846.6,
+  "mass_g_PETG_solid_upper_bound": 27745.0,
   "shelves": [
    {
     "index": 0,
@@ -1608,8 +1608,8 @@
    "whip_scale": 1.0
   },
   "engineering": {
-   "verts": 630597,
-   "tris": 1261558,
+   "verts": 633891,
+   "tris": 1268154,
    "bbox_min_mm": [
     -451.9,
     -455.9,
@@ -1678,15 +1678,15 @@
     },
     {
      "top_y": -109.5,
-     "intruding_verts_above_12mm_lip": 147,
-     "clear_height_mm": 297.59984719743636
+     "intruding_verts_above_12mm_lip": 0,
+     "clear_height_mm": ">= 300 (none)"
     }
    ],
    "seat_embed_depth_mm": 28.0,
    "relief_mm": {
-    "mean": 55.4,
+    "mean": 55.5,
     "p10": 18.9,
-    "p50": 48.6,
+    "p50": 49.1,
     "p90": 97.8,
     "std": 31.7,
     "max": 293.3,
@@ -1708,10 +1708,10 @@
     ]
    },
    "eyes": {
-    "count": 26,
-    "dia_mm_min": 18.5,
+    "count": 40,
+    "dia_mm_min": 18.0,
     "dia_mm_max": 34.4,
-    "iris_pit_dia_mm_min": 9.3
+    "iris_pit_dia_mm_min": 9.0
    },
    "teeth": {
     "count": 29,
@@ -1720,8 +1720,8 @@
     "length_mm_max": 55.5
    }
   },
-  "volume_cm3_solid": 22538.7,
-  "mass_g_PETG_solid_upper_bound": 28624.0,
+  "volume_cm3_solid": 22573.2,
+  "mass_g_PETG_solid_upper_bound": 28668.0,
   "shelves": [
    {
     "index": 0,
@@ -2123,6 +2123,160 @@
     "bag": 0.0,
     "gaze": 0.7,
     "phi": 0.1
+   },
+   {
+    "x": 137.0,
+    "y": -145.0,
+    "R": 9.8,
+    "zb": 46.0,
+    "lid_ang": 101.9,
+    "cover": 0.6,
+    "bag": 0.2,
+    "gaze": -0.5,
+    "phi": 0.2
+   },
+   {
+    "x": 75.0,
+    "y": -19.0,
+    "R": 9.9,
+    "zb": 48.0,
+    "lid_ang": 89.9,
+    "cover": 0.0,
+    "bag": 0.1,
+    "gaze": 0.0,
+    "phi": 0.2
+   },
+   {
+    "x": 69.0,
+    "y": 399.0,
+    "R": 9.3,
+    "zb": 32.0,
+    "lid_ang": 70.7,
+    "cover": 0.0,
+    "bag": 0.0,
+    "gaze": 0.1,
+    "phi": 0.3
+   },
+   {
+    "x": 61.0,
+    "y": -169.0,
+    "R": 11.1,
+    "zb": 62.0,
+    "lid_ang": 67.8,
+    "cover": 0.8,
+    "bag": 0.2,
+    "gaze": 0.2,
+    "phi": 0.3
+   },
+   {
+    "x": 129.0,
+    "y": -193.0,
+    "R": 9.6,
+    "zb": 66.0,
+    "lid_ang": 99.8,
+    "cover": 0.0,
+    "bag": 0.2,
+    "gaze": 0.6,
+    "phi": 0.3
+   },
+   {
+    "x": 377.0,
+    "y": -381.0,
+    "R": 9.3,
+    "zb": 32.0,
+    "lid_ang": 67.1,
+    "cover": 0.0,
+    "bag": 0.1,
+    "gaze": -0.8,
+    "phi": 0.2
+   },
+   {
+    "x": 99.0,
+    "y": -59.0,
+    "R": 9.2,
+    "zb": 42.0,
+    "lid_ang": 130.0,
+    "cover": 0.0,
+    "bag": 0.0,
+    "gaze": -0.2,
+    "phi": 0.3
+   },
+   {
+    "x": 199.0,
+    "y": -345.0,
+    "R": 11.6,
+    "zb": 38.0,
+    "lid_ang": 56.9,
+    "cover": 0.5,
+    "bag": 0.2,
+    "gaze": -0.3,
+    "phi": 0.3
+   },
+   {
+    "x": 175.0,
+    "y": -221.0,
+    "R": 9.1,
+    "zb": 28.0,
+    "lid_ang": 119.7,
+    "cover": 0.0,
+    "bag": 0.1,
+    "gaze": -0.8,
+    "phi": 0.1
+   },
+   {
+    "x": -47.0,
+    "y": -363.0,
+    "R": 9.6,
+    "zb": 44.0,
+    "lid_ang": 67.3,
+    "cover": 0.5,
+    "bag": 0.1,
+    "gaze": -0.5,
+    "phi": 0.3
+   },
+   {
+    "x": -43.0,
+    "y": -317.0,
+    "R": 9.1,
+    "zb": 26.0,
+    "lid_ang": 99.3,
+    "cover": 0.8,
+    "bag": 0.1,
+    "gaze": 0.5,
+    "phi": 0.1
+   },
+   {
+    "x": 75.0,
+    "y": -43.0,
+    "R": 9.0,
+    "zb": 46.0,
+    "lid_ang": 34.2,
+    "cover": 0.0,
+    "bag": 0.3,
+    "gaze": -0.8,
+    "phi": 0.2
+   },
+   {
+    "x": -81.0,
+    "y": -241.0,
+    "R": 9.1,
+    "zb": 52.0,
+    "lid_ang": 3.8,
+    "cover": 0.5,
+    "bag": 0.2,
+    "gaze": -0.7,
+    "phi": 0.2
+   },
+   {
+    "x": 91.0,
+    "y": -293.0,
+    "R": 10.8,
+    "zb": 46.0,
+    "lid_ang": 9.9,
+    "cover": 0.8,
+    "bag": 0.1,
+    "gaze": -0.2,
+    "phi": 0.1
    }
   ],
   "teeth": [
@@ -2419,8 +2573,8 @@
    "whip_scale": 1.0
   },
   "engineering": {
-   "verts": 628834,
-   "tris": 1258092,
+   "verts": 628914,
+   "tris": 1258252,
    "bbox_min_mm": [
     -451.9,
     -455.8,
@@ -2489,13 +2643,13 @@
     },
     {
      "top_y": -109.5,
-     "intruding_verts_above_12mm_lip": 120,
-     "clear_height_mm": 297.5775970308747
+     "intruding_verts_above_12mm_lip": 0,
+     "clear_height_mm": ">= 300 (none)"
     }
    ],
    "seat_embed_depth_mm": 28.0,
    "relief_mm": {
-    "mean": 55.9,
+    "mean": 56.0,
     "p10": 17.1,
     "p50": 49.2,
     "p90": 100.5,
@@ -2519,7 +2673,7 @@
     ]
    },
    "eyes": {
-    "count": 25,
+    "count": 26,
     "dia_mm_min": 18.8,
     "dia_mm_max": 32.3,
     "iris_pit_dia_mm_min": 9.4
@@ -2531,8 +2685,8 @@
     "length_mm_max": 108.9
    }
   },
-  "volume_cm3_solid": 22524.3,
-  "mass_g_PETG_solid_upper_bound": 28606.0,
+  "volume_cm3_solid": 22525.8,
+  "mass_g_PETG_solid_upper_bound": 28608.0,
   "shelves": [
    {
     "index": 0,
@@ -2923,6 +3077,17 @@
     "bag": 0.0,
     "gaze": -0.1,
     "phi": 0.4
+   },
+   {
+    "x": 3.0,
+    "y": -333.0,
+    "R": 9.7,
+    "zb": 50.0,
+    "lid_ang": 68.1,
+    "cover": 0.6,
+    "bag": 0.0,
+    "gaze": -0.7,
+    "phi": 0.1
    }
   ],
   "teeth": [
@@ -3135,8 +3300,8 @@
    "whip_scale": 1.0
   },
   "engineering": {
-   "verts": 633046,
-   "tris": 1266468,
+   "verts": 632836,
+   "tris": 1266048,
    "bbox_min_mm": [
     -451.9,
     -455.9,
@@ -3205,8 +3370,8 @@
     },
     {
      "top_y": -109.5,
-     "intruding_verts_above_12mm_lip": 147,
-     "clear_height_mm": 297.59984719743636
+     "intruding_verts_above_12mm_lip": 0,
+     "clear_height_mm": ">= 300 (none)"
     }
    ],
    "seat_embed_depth_mm": 28.0,
@@ -3247,8 +3412,8 @@
     "length_mm_max": 55.5
    }
   },
-  "volume_cm3_solid": 22485.9,
-  "mass_g_PETG_solid_upper_bound": 28557.0,
+  "volume_cm3_solid": 22483.5,
+  "mass_g_PETG_solid_upper_bound": 28554.0,
   "shelves": [
    {
     "index": 0,
@@ -3897,730 +4062,6 @@
     "angle": 112,
     "length": 204.0,
     "r_root": 23.400000000000002
-   }
-  ],
-  "arms": [
-   {
-    "shelf": 0,
-    "root": [
-     -202.0,
-     282.5
-    ]
-   },
-   {
-    "shelf": 1,
-    "root": [
-     202.0,
-     108.5
-    ]
-   },
-   {
-    "shelf": 2,
-    "root": [
-     -202.0,
-     -171.5
-    ]
-   }
-  ],
-  "fingers": 5
- },
- "v5_tentacles5": {
-  "params": {
-   "masq": "fingers",
-   "eyes": 26,
-   "maw_scale": 1.0,
-   "teeth": "mixed",
-   "weather": 0.55,
-   "shelves": "A",
-   "seed": 7,
-   "whips": [
-    0,
-    2,
-    4,
-    5,
-    7
-   ],
-   "whip_scale": 1.3
-  },
-  "engineering": {
-   "verts": 584795,
-   "tris": 1169882,
-   "bbox_min_mm": [
-    -451.9,
-    -455.6,
-    0.0
-   ],
-   "bbox_max_mm": [
-    455.2,
-    420.3,
-    300.0
-   ],
-   "bbox_size_mm": [
-    907.1,
-    875.9,
-    300.0
-   ],
-   "bbox_within_914x914x300": true,
-   "back_plane_z_range_mm": [
-    0.0,
-    3.0
-   ],
-   "shelf_flats": [
-    {
-     "top_y": 344.5,
-     "p_mm": 250.0,
-     "flat_area_cm2": 476.1,
-     "flat_spread_mm": 0.65,
-     "footprint_nominal_mm": [
-      190.0,
-      250.0
-     ],
-     "extent_z_mm": 259.7
-    },
-    {
-     "top_y": 170.5,
-     "p_mm": 200.0,
-     "flat_area_cm2": 371.3,
-     "flat_spread_mm": 0.552,
-     "footprint_nominal_mm": [
-      190.0,
-      200.0
-     ],
-     "extent_z_mm": 209.6
-    },
-    {
-     "top_y": -109.5,
-     "p_mm": 290.0,
-     "flat_area_cm2": 539.5,
-     "flat_spread_mm": 0.552,
-     "footprint_nominal_mm": [
-      190.0,
-      290.0
-     ],
-     "extent_z_mm": 295.4
-    }
-   ],
-   "headroom": [
-    {
-     "top_y": 344.5,
-     "intruding_verts_above_12mm_lip": 0,
-     "clear_height_mm": ">= 300 (none)"
-    },
-    {
-     "top_y": 170.5,
-     "intruding_verts_above_12mm_lip": 0,
-     "clear_height_mm": ">= 300 (none)"
-    },
-    {
-     "top_y": -109.5,
-     "intruding_verts_above_12mm_lip": 174,
-     "clear_height_mm": 297.7143818826998
-    }
-   ],
-   "seat_embed_depth_mm": 28.0,
-   "relief_mm": {
-    "mean": 58.7,
-    "p10": 18.8,
-    "p50": 55.7,
-    "p90": 98.4,
-    "std": 32.0,
-    "max": 293.3,
-    "covered_cells": 21093
-   },
-   "buttress": {
-    "min_core_diameter_mm": 38.5,
-    "median_diameter_mm": 43.4,
-    "drop_mm": 300.0,
-    "foot_pad_mm": [
-     84.0,
-     66.0
-    ],
-    "core_dia_mm": 22.0,
-    "foot": [
-     -385.0,
-     -409.5,
-     14.0
-    ]
-   },
-   "eyes": {
-    "count": 21,
-    "dia_mm_min": 18.7,
-    "dia_mm_max": 40.6,
-    "iris_pit_dia_mm_min": 9.4
-   },
-   "teeth": {
-    "count": 27,
-    "broken": 12,
-    "length_mm_min": 12.2,
-    "length_mm_max": 67.2
-   }
-  },
-  "volume_cm3_solid": 21734.0,
-  "mass_g_PETG_solid_upper_bound": 27602.0,
-  "shelves": [
-   {
-    "index": 0,
-    "side": "L",
-    "top_y": 344.5,
-    "p": 250.0,
-    "width": 190.0,
-    "x_range": [
-     -440.0,
-     -250.0
-    ],
-    "seat_zone": {
-     "centre_x": -295.0,
-     "width": 160.0,
-     "height": 150.0,
-     "depth": 28.0,
-     "y_range": [
-      194.5,
-      344.5
-     ]
-    }
-   },
-   {
-    "index": 1,
-    "side": "R",
-    "top_y": 170.5,
-    "p": 200.0,
-    "width": 190.0,
-    "x_range": [
-     250.0,
-     440.0
-    ],
-    "seat_zone": {
-     "centre_x": 295.0,
-     "width": 160.0,
-     "height": 150.0,
-     "depth": 28.0,
-     "y_range": [
-      20.5,
-      170.5
-     ]
-    }
-   },
-   {
-    "index": 2,
-    "side": "L",
-    "top_y": -109.5,
-    "p": 290.0,
-    "width": 190.0,
-    "x_range": [
-     -440.0,
-     -250.0
-    ],
-    "seat_zone": {
-     "centre_x": -295.0,
-     "width": 160.0,
-     "height": 150.0,
-     "depth": 28.0,
-     "y_range": [
-      -259.5,
-      -109.5
-     ]
-    }
-   }
-  ],
-  "strut": {
-   "shelf_p": 290.0,
-   "tip": [
-    -345.0,
-    -155.5,
-    266.0
-   ],
-   "foot": [
-    -385.0,
-    -409.5,
-    14.0
-   ],
-   "drop_mm": 300.0,
-   "base_radius": 23.0,
-   "core_dia_mm": 22.0,
-   "foot_pad_mm": [
-    84.0,
-    66.0
-   ]
-  },
-  "mask": {
-   "kind": "classic_smiley",
-   "masquerade": "fingers",
-   "weather": 0.55,
-   "centre": [
-    -105.0,
-    165.0
-   ],
-   "semi": [
-    92.0,
-    92.0
-   ],
-   "deg": 0.0
-  },
-  "maw": {
-   "present": true,
-   "centre": [
-    -95.0,
-    -78.0
-   ],
-   "semi": [
-    118.0,
-    82.0
-   ],
-   "deg": 6.0,
-   "floor_z_mm": [
-    9.0,
-    19.0
-   ]
-  },
-  "eyes": [
-   {
-    "x": 97.0,
-    "y": -305.0,
-    "R": 20.3,
-    "zb": 56.0,
-    "lid_ang": 83.6,
-    "cover": 0.5,
-    "bag": 0.3,
-    "gaze": -0.1,
-    "phi": 0.3
-   },
-   {
-    "x": 83.0,
-    "y": -267.0,
-    "R": 12.0,
-    "zb": 52.0,
-    "lid_ang": 62.4,
-    "cover": 0.3,
-    "bag": 0.1,
-    "gaze": 0.7,
-    "phi": 0.3
-   },
-   {
-    "x": 77.0,
-    "y": -195.0,
-    "R": 11.0,
-    "zb": 84.0,
-    "lid_ang": 60.7,
-    "cover": 0.5,
-    "bag": 0.2,
-    "gaze": -0.1,
-    "phi": 0.2
-   },
-   {
-    "x": 123.0,
-    "y": -343.0,
-    "R": 10.3,
-    "zb": 52.0,
-    "lid_ang": 122.6,
-    "cover": 0.0,
-    "bag": 0.2,
-    "gaze": 0.1,
-    "phi": 0.4
-   },
-   {
-    "x": -69.0,
-    "y": -271.0,
-    "R": 15.7,
-    "zb": 60.0,
-    "lid_ang": 46.9,
-    "cover": 0.3,
-    "bag": 0.1,
-    "gaze": 0.6,
-    "phi": 0.2
-   },
-   {
-    "x": -101.0,
-    "y": -241.0,
-    "R": 11.3,
-    "zb": 60.0,
-    "lid_ang": 96.3,
-    "cover": 0.6,
-    "bag": 0.1,
-    "gaze": -0.5,
-    "phi": 0.3
-   },
-   {
-    "x": -11.0,
-    "y": -345.0,
-    "R": 9.8,
-    "zb": 42.0,
-    "lid_ang": -9.7,
-    "cover": 0.5,
-    "bag": 0.3,
-    "gaze": 0.4,
-    "phi": 0.3
-   },
-   {
-    "x": -63.0,
-    "y": -311.0,
-    "R": 9.4,
-    "zb": 46.0,
-    "lid_ang": 26.7,
-    "cover": 0.3,
-    "bag": 0.2,
-    "gaze": -0.8,
-    "phi": 0.2
-   },
-   {
-    "x": 149.0,
-    "y": -369.0,
-    "R": 12.9,
-    "zb": 44.0,
-    "lid_ang": 78.0,
-    "cover": 0.6,
-    "bag": 0.1,
-    "gaze": 0.7,
-    "phi": 0.3
-   },
-   {
-    "x": 183.0,
-    "y": -401.0,
-    "R": 10.1,
-    "zb": 40.0,
-    "lid_ang": 85.8,
-    "cover": 0.6,
-    "bag": 0.2,
-    "gaze": -0.8,
-    "phi": 0.2
-   },
-   {
-    "x": 65.0,
-    "y": -229.0,
-    "R": 10.4,
-    "zb": 70.0,
-    "lid_ang": 95.4,
-    "cover": 0.8,
-    "bag": 0.1,
-    "gaze": -0.2,
-    "phi": 0.2
-   },
-   {
-    "x": 209.0,
-    "y": -411.0,
-    "R": 11.2,
-    "zb": 38.0,
-    "lid_ang": 80.4,
-    "cover": 0.0,
-    "bag": 0.3,
-    "gaze": 0.4,
-    "phi": 0.3
-   },
-   {
-    "x": 135.0,
-    "y": -129.0,
-    "R": 10.6,
-    "zb": 44.0,
-    "lid_ang": 70.4,
-    "cover": 0.3,
-    "bag": 0.3,
-    "gaze": 0.4,
-    "phi": 0.3
-   },
-   {
-    "x": 103.0,
-    "y": -65.0,
-    "R": 10.9,
-    "zb": 56.0,
-    "lid_ang": 92.7,
-    "cover": 0.3,
-    "bag": 0.2,
-    "gaze": -0.3,
-    "phi": 0.2
-   },
-   {
-    "x": -35.0,
-    "y": -331.0,
-    "R": 12.4,
-    "zb": 34.0,
-    "lid_ang": 76.9,
-    "cover": 0.8,
-    "bag": 0.1,
-    "gaze": 0.6,
-    "phi": 0.1
-   },
-   {
-    "x": 41.0,
-    "y": -397.0,
-    "R": 12.9,
-    "zb": 36.0,
-    "lid_ang": 59.4,
-    "cover": 0.0,
-    "bag": 0.2,
-    "gaze": -0.6,
-    "phi": 0.3
-   },
-   {
-    "x": 37.0,
-    "y": -193.0,
-    "R": 13.3,
-    "zb": 80.0,
-    "lid_ang": 88.2,
-    "cover": 0.8,
-    "bag": 0.2,
-    "gaze": -0.6,
-    "phi": 0.3
-   },
-   {
-    "x": 63.0,
-    "y": -165.0,
-    "R": 12.4,
-    "zb": 72.0,
-    "lid_ang": 65.8,
-    "cover": 0.0,
-    "bag": 0.2,
-    "gaze": -0.0,
-    "phi": 0.1
-   },
-   {
-    "x": 77.0,
-    "y": -43.0,
-    "R": 11.0,
-    "zb": 78.0,
-    "lid_ang": 117.7,
-    "cover": 0.8,
-    "bag": 0.2,
-    "gaze": 0.3,
-    "phi": 0.3
-   },
-   {
-    "x": 201.0,
-    "y": -177.0,
-    "R": 11.1,
-    "zb": 34.0,
-    "lid_ang": 3.2,
-    "cover": 0.0,
-    "bag": 0.1,
-    "gaze": 0.6,
-    "phi": 0.1
-   },
-   {
-    "x": -87.0,
-    "y": -299.0,
-    "R": 11.1,
-    "zb": 48.0,
-    "lid_ang": 59.0,
-    "cover": 0.3,
-    "bag": 0.0,
-    "gaze": -0.5,
-    "phi": 0.2
-   }
-  ],
-  "teeth": [
-   {
-    "ang": 12.18106994885359,
-    "row": "up",
-    "length": 27.433784913231307,
-    "r_base": 14.714380696782277,
-    "broken": true
-   },
-   {
-    "ang": 34.11159506177285,
-    "row": "up",
-    "length": 18.225661480520216,
-    "r_base": 11.436511746348007,
-    "broken": false
-   },
-   {
-    "ang": 50.129676172678636,
-    "row": "up",
-    "length": 56.05739630743443,
-    "r_base": 16.60276535733262,
-    "broken": true
-   },
-   {
-    "ang": 52.062932372786726,
-    "row": "up",
-    "length": 12.215575031581528,
-    "r_base": 10.930997618337699,
-    "broken": false
-   },
-   {
-    "ang": 74.60647643339938,
-    "row": "up",
-    "length": 44.76597565262808,
-    "r_base": 15.666314663974205,
-    "broken": true
-   },
-   {
-    "ang": 85.42620503286406,
-    "row": "up",
-    "length": 50.63692589352883,
-    "r_base": 16.393538997150525,
-    "broken": true
-   },
-   {
-    "ang": 91.2132498984139,
-    "row": "up",
-    "length": 19.829349324904406,
-    "r_base": 13.505682568444907,
-    "broken": false
-   },
-   {
-    "ang": 110.36378492973435,
-    "row": "up",
-    "length": 18.14045048484875,
-    "r_base": 10.569992340617592,
-    "broken": true
-   },
-   {
-    "ang": 124.20271347102306,
-    "row": "up",
-    "length": 14.635337172198755,
-    "r_base": 12.343238940504442,
-    "broken": false
-   },
-   {
-    "ang": 138.01660683916978,
-    "row": "up",
-    "length": 33.44365808820029,
-    "r_base": 15.027210980218992,
-    "broken": true
-   },
-   {
-    "ang": 149.47427631760837,
-    "row": "up",
-    "length": 22.28129920331395,
-    "r_base": 12.814260300038615,
-    "broken": false
-   },
-   {
-    "ang": 168.5542606172971,
-    "row": "up",
-    "length": 34.50375176385914,
-    "r_base": 15.370612305723016,
-    "broken": false
-   },
-   {
-    "ang": 228.26757305340013,
-    "row": "lo",
-    "length": 31.593459394386528,
-    "r_base": 14.159463732391625,
-    "broken": false
-   },
-   {
-    "ang": 234.68177477174825,
-    "row": "lo",
-    "length": 49.03979192038256,
-    "r_base": 15.645434757677597,
-    "broken": true
-   },
-   {
-    "ang": 249.37899231916617,
-    "row": "lo",
-    "length": 12.880646452263255,
-    "r_base": 11.326389922066912,
-    "broken": true
-   },
-   {
-    "ang": 275.75820243864905,
-    "row": "lo",
-    "length": 47.50268379843093,
-    "r_base": 13.798102385865267,
-    "broken": true
-   },
-   {
-    "ang": 283.85430353508076,
-    "row": "lo",
-    "length": 46.51443351412801,
-    "r_base": 15.841542174170028,
-    "broken": false
-   },
-   {
-    "ang": 293.9691173514373,
-    "row": "lo",
-    "length": 37.633284800052785,
-    "r_base": 13.9254251100216,
-    "broken": true
-   },
-   {
-    "ang": 311.3854749338635,
-    "row": "lo",
-    "length": 53.35450240613885,
-    "r_base": 14.652010740424702,
-    "broken": false
-   },
-   {
-    "ang": 331.48959510080755,
-    "row": "lo",
-    "length": 40.37715229497731,
-    "r_base": 15.028812402029946,
-    "broken": false
-   },
-   {
-    "ang": 338.04028854274395,
-    "row": "lo",
-    "length": 67.24685140719237,
-    "r_base": 19.289867874722365,
-    "broken": true
-   },
-   {
-    "ang": 186.79917082432343,
-    "row": "side",
-    "length": 36.345739380466824,
-    "r_base": 15.902737855905789,
-    "broken": false
-   },
-   {
-    "ang": 3.2044060691911476,
-    "row": "side",
-    "length": 17.846165036553096,
-    "r_base": 12.409217989911806,
-    "broken": false
-   },
-   {
-    "ang": 95.26231917051965,
-    "row": "up",
-    "length": 44.37840838214178,
-    "r_base": 16.067592154059586,
-    "broken": false
-   },
-   {
-    "ang": 280.95697365840056,
-    "row": "lo",
-    "length": 17.05499162306717,
-    "r_base": 9.85835369102503,
-    "broken": false
-   },
-   {
-    "ang": 95.26231917051965,
-    "row": "up",
-    "length": 38.61566853271673,
-    "r_base": 14.971570711136852,
-    "broken": true
-   },
-   {
-    "ang": 280.95697365840056,
-    "row": "lo",
-    "length": 30.093768236831817,
-    "r_base": 12.747250113229736,
-    "broken": false
-   }
-  ],
-  "whips": [
-   {
-    "angle": 212,
-    "length": 624.0,
-    "r_root": 51.480000000000004
-   },
-   {
-    "angle": 272,
-    "length": 600.0,
-    "r_root": 53.82
-   },
-   {
-    "angle": 334,
-    "length": 672.0,
-    "r_root": 51.480000000000004
-   },
-   {
-    "angle": 38,
-    "length": 396.0,
-    "r_root": 42.12
-   },
-   {
-    "angle": 112,
-    "length": 204.0,
-    "r_root": 30.420000000000005
    }
   ],
   "arms": [
