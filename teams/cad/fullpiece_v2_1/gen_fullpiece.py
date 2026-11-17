@@ -38,7 +38,7 @@ RIB_TAIL = 8.0
 WARP = (22.0, 260.0)
 OPEN_P = (0.15, 0.50)
 SKIN_T = 16.0
-SL_COUNT = 70
+SL_COUNT = 150
 SHELF_W, PLATE_T = 190.0, 10.0
 SEAT_DEPTH = 28.0
 SHELF_ARR = {
@@ -137,11 +137,11 @@ def tentacle(rng, start, ang, L, bend, r0, rtip, zoff, nsw, boxes=()):
             pts.append(pts[-1] + np.array([np.cos(th), np.sin(th)]) * L / 6)
         xy, t = bend_curve(np.array(pts))
         r = ((r0 - rtip) * (1 - t) ** 0.8 + rtip) * (1 + 0.20 * np.sin(2 * np.pi * nsw * t + ph) * (0.4 + 0.6 * (1 - t)))
-        bad = (np.abs(xy) + 0.5 * r[:, None] > 446.0).any()
+        bad = (np.abs(xy) + 0.2 * r[:, None] > 450.0).any()
         for (x0, x1, y0, y1) in boxes:
             bad |= ((xy[:, 0] > x0 - r) & (xy[:, 0] < x1 + r) & (xy[:, 1] > y0 - r) & (xy[:, 1] < y1 + r)).any()
         if not bad: break
-        L *= 0.94
+        L *= 0.97
     return np.column_stack([xy, zoff + 0.30 * r]), r, xy, t, L
 
 
@@ -166,7 +166,7 @@ def build_limbs(pr, rng, shelves):
              (334, 820, 0.7, 44, 0), (38, 700, 0.9, 36, 10), (74, 560, -0.7, 30, 4), (112, 520, -0.5, 26, 0)]
     for wi, (ang, L, bend, r0, zoff) in enumerate(specs):
         if wi not in pr['whips']: continue
-        r0 = r0 * 0.95 * pr['whip_scale']; L = L * pr['whip_len']
+        r0 = r0 * 1.12 * pr['whip_scale']; L = L * pr['whip_len']
         a = np.deg2rad(ang + rng.uniform(-6, 6)); d0 = np.array([np.cos(a), np.sin(a)])
         start = c0 + d0 * rng.uniform(95, 140) + (np.array([100.0, -60.0]) if 200 < ang < 330 else 0)
         pts3, r, xy, t, Lf = tentacle(rng, start, ang, L, bend, r0, 6.0, zoff, rng.uniform(2.6, 3.8), boxes)
@@ -268,15 +268,19 @@ def mask_top(Xg, Yg, N, W, masq, th0):
     # crack (hairline, 5 mm wide) running from the lower-left rim up toward (but not into) the left eye
     cd = np.abs(0.62 * (u + 0.70) - 0.78 * (v + 0.50)) / 1.0 + 0.03 * er2
     zf -= W * 7.0 * (1 - sstep(cd / 0.030)) * ((u < -0.30) & (v < -0.18) & (q < 1.0)) * sstep((0.9 - q) / 0.05)
+    gdep = np.zeros_like(q)
     for sx in (-1, 1):                                                              # counter-sunk vertical-oval eyes
         e = ((u - sx * 0.32) / 0.095) ** 2 + ((v - 0.20) / 0.19) ** 2
         zf -= 8.0 * sstep((1.9 - e) / 0.9) + 24.0 * sstep((1.0 - e) / 0.30)
+        gdep = gdep + 0.6 * (8.0 * sstep((1.9 - e) / 0.9) + 24.0 * sstep((1.0 - e) / 0.30))
     cy, rs = 0.14, 0.60                                                             # smile: true circular arc, V groove
     ang = np.arctan2(v - cy, u); a0, a1 = np.deg2rad(-152), np.deg2rad(-28)
     ac = np.clip(ang, a0, a1); d = np.hypot(u - rs * np.cos(ac), v - cy - rs * np.sin(ac))
     s = (ac - a0) / (a1 - a0)
-    w = 0.115 * (0.70 + 0.30 * np.sin(np.pi * s) ** 0.7)                           # half-width 0.115 R = 10.6 mm
-    zf -= 10.5 * (w / 0.115) * np.clip(1 - d / w, 0, 1)                             # true V, ~91 deg open (print rule), depth <= 3x width
+    w = 0.135 * (0.72 + 0.28 * np.sin(np.pi * s) ** 0.7)                           # half-width 0.135 R = 12.4 mm (mouth ~25 mm)
+    sdep = w * MASK_R * np.clip(1 - d / w, 0, 1)                                   # true V, 90 deg open (print rule), depth = half-width
+    zf -= sdep
+    gdep = gdep + sdep
     if masq == 'lift':                                                              # masquerade A: lower-right edge lifts off
         dth = np.abs(((th - th0 + np.pi) % (2 * np.pi)) - np.pi)
         lw = sstep(1 - dth / 0.85)
@@ -288,7 +292,39 @@ def mask_top(Xg, Yg, N, W, masq, th0):
     top_in = zf * (1 - wall) + crown * wall
     fall = sstep((q - 1.12) / 0.45)
     top = np.where(q < 1.12, top_in, crown * (1 - fall) + 68.0 * fall)
-    return top, q, lw, th
+    return top, q, lw, th, np.where(q < 1.0, gdep, 0.0)
+
+
+def wrap(a): return (a + np.pi) % (2 * np.pi) - np.pi
+
+
+def build_membranes(X, Y, whip_lines, c0, N, rng):
+    """c01-style webbing: thin scalloped skirts spanning between adjacent tentacle roots, with fenestrations and radial veins.
+    Returns (top height map, hole mask, count)."""
+    top = np.full(X.shape, -1.0); holes = np.zeros(X.shape, bool)
+    R = np.hypot(X - c0[0], Y - c0[1]); TH = np.arctan2(Y - c0[1], X - c0[0]); n_m = 0
+    wl = sorted(whip_lines, key=lambda w: w[0] % 360)
+    def prof(xy):
+        rr = np.maximum.accumulate(np.hypot(xy[:, 0] - c0[0], xy[:, 1] - c0[1])); return rr, np.unwrap(np.arctan2(xy[:, 1] - c0[1], xy[:, 0] - c0[0]))
+    for a in range(len(wl)):
+        b = (a + 1) % len(wl)
+        if ((wl[b][0] - wl[a][0]) % 360) > 80: continue
+        ra, tha = prof(wl[a][1]); rb, thb = prof(wl[b][1])
+        r_lo = max(ra[0], rb[0]); r_hi = min(ra[-1], rb[-1]); Lm = float(np.clip(0.42 * (r_hi - r_lo), 90.0, 230.0))
+        thi = np.interp(R, ra, tha); gp_ = wrap(np.interp(R, rb, thb) - thi)
+        ok = (gp_ > 0.04) & (gp_ < 1.6)
+        frac = np.where(ok, wrap(TH - thi) / np.where(ok, gp_, 1.0), -1.0)
+        r_e = r_lo + Lm * (1 - 0.55 * np.sin(np.pi * np.clip(frac, 0, 1)) ** 0.9) + 9.0 * N['hfine'](X, Y, 11.0 + a)
+        inside = ok & (frac > 0.0) & (frac < 1.0) & (R > r_lo - 20.0) & (R < r_e)
+        de = r_e - R
+        Ht = 9.0 + 19.0 * sstep(de / 80.0) + 3.5 * (0.5 + 0.5 * np.cos(2 * np.pi * frac * 3.0)) * sstep(de / 30.0)
+        top = np.where(inside, np.maximum(top, Ht), top); n_m += 1
+        for fh, rf in ((0.5, 0.42), (0.28 + 0.4 * rng.random(), 0.62)):
+            th_h = np.interp(r_lo + rf * Lm, ra, tha) + fh * wrap(np.interp(r_lo + rf * Lm, rb, thb) - np.interp(r_lo + rf * Lm, ra, tha))
+            ch = np.array([c0[0] + (r_lo + rf * Lm) * np.cos(th_h), c0[1] + (r_lo + rf * Lm) * np.sin(th_h)])
+            hu = (X - ch[0]) * np.cos(th_h) + (Y - ch[1]) * np.sin(th_h); hv = -(X - ch[0]) * np.sin(th_h) + (Y - ch[1]) * np.cos(th_h)
+            holes |= inside & ((hu / 20.0) ** 2 + (hv / (0.16 * (r_lo + rf * Lm) * gp_ * 0.5 + 6.0)) ** 2 < 1.0)
+    return top, holes, n_m
 
 
 def run(vname, vox, outdir):
@@ -379,7 +415,7 @@ def run(vname, vox, outdir):
     for c, ab, deg in BAYS: ov = np.minimum(ov, ell_sd(X, Y, c, ab, deg)[0])
     ov = ov + 12 * N['ovn'](X, Y, 0) + 5 * N['hfine'](X, Y, 0)
     # mask
-    top_xy, mq, lw_xy, th_xy = mask_top(X, Y, N, W, pr['masq'], np.deg2rad(-50.0))
+    top_xy, mq, lw_xy, th_xy, gdep_xy = mask_top(X, Y, N, W, pr['masq'], np.deg2rad(-50.0))
     meta['mask'] = dict(kind='classic_smiley', masquerade=pr['masq'], weather=W, centre=MASK_C, semi=(MASK_R, MASK_R), deg=0.0)
     meta['maw'] = dict(present=True, centre=maw_c, semi=maw_ab, deg=MAW_DEG, floor_z_mm=[9.0, 19.0])
     # ---------------- web layer machinery (unchanged vocabulary) ----------------
@@ -397,7 +433,7 @@ def run(vname, vox, outdir):
 
     def streamlines():
         P_all, W_all = [], []
-        cand = np.column_stack([rng.uniform(-420, 420, 600), rng.uniform(-420, 420, 600)])
+        cand = np.column_stack([rng.uniform(-420, 420, 1400), rng.uniform(-420, 420, 1400)])
         cand = cand[mass_sd(cand[:, 0], cand[:, 1]) < -10][:SL_COUNT]
         for p0 in cand:
             for sgn in (1, -1):
@@ -422,6 +458,12 @@ def run(vname, vox, outdir):
             if k.sum() > 20: P_all.append(Q[k]); W_all.append(Wd[k])
         return np.concatenate(P_all), np.concatenate(W_all)
     SLP, SLW = streamlines(); sl = gp.StreamSet(SLP, SLW)
+    # sinew on the muscle bellies: flow-aligned strand ridges raised on the smooth mounds (never smooth-bare), plus pitting
+    dS0, wS0 = sl.field(PTS); dS0 = dS0.reshape(X.shape); wS0 = np.where(wS0.reshape(X.shape) > 0, wS0.reshape(X.shape), 0.0)
+    sinew = np.where(wS0 > 0, np.clip(1 - dS0 / np.maximum(wS0 * 1.1, 0.1), 0, 1) ** 0.8 * (3.5 + 1.0 * wS0), 0.0)
+    Hm = np.where(Hm > 8.0, Hm + sinew * sstep((Hm - 8.0) / 18.0) - 3.0 * sstep(N['hf'](X, Y, 3.0) - 0.5) * sstep((Hm - 8.0) / 18.0), Hm)
+    mem_top, mem_holes, n_mem = build_membranes(X, Y, whip_lines, np.array([-60.0, 10.0]), N, np.random.default_rng(pr['seed'] + 77))
+    meta['membranes'] = n_mem
     print('streamline samples', len(SLP), round(time.time() - t0, 1), flush=True)
 
     def rib_sd(lat, w, ez, fl):
@@ -460,7 +502,7 @@ def run(vname, vox, outdir):
         rim = -rib_sd(np.abs(ov) + 0.5 * hf, rimw, np.maximum(z - (hr - 7.0), 0), fl)
         rim = np.minimum(rim, -M)
         f = np.maximum(front, rim)
-        return np.minimum(f, 40.0 * (0.5 - calm))                                 # web only OUTSIDE the calm muscle zones
+        return np.minimum(f, 40.0 * (0.85 - calm))                                 # web only OUTSIDE the calm muscle zones
 
     def base_f(z, k):
         """web (gated) + belly mounds + muscular limbs with root fillets."""
@@ -500,6 +542,7 @@ def run(vname, vox, outdir):
     outside = (np.abs(X) > CLIP_XY) | (np.abs(Y) > CLIP_XY)
     for k in range(zlim_web):
         z = zs[k]; f = base_f(z, k)
+        f = np.maximum(f, mem_top - z); f = np.where(mem_holes, -1.0, f)
         P3 = None
         if z < 36 and fib.n:
             P3 = np.concatenate([PTS, np.full((len(PTS), 1), z)], 1); f = np.maximum(f, fib.field(P3).reshape(X.shape))
@@ -527,7 +570,7 @@ def run(vname, vox, outdir):
         j0 = int(np.searchsorted(ys, sh['ys'])); j1 = int(np.searchsorted(ys, sh['ys'] + 304.0, side='right'))
         F[i0:i1, j0:j1, :] = -1.0
     # ---------------- eyes ----------------
-    eyes = place_and_apply_eyes(rng, F, xs, ys, zs, vox, pr['eyes'], X, Y, mq, ms, shelves, vox, curves[:len(shelves)])
+    eyes, zsm = place_and_apply_eyes(rng, F, xs, ys, zs, vox, pr['eyes'], X, Y, mq, ms, shelves, curves[:len(shelves)])
     meta['eyes'] = [{k_: (round(float(v_), 1) if not isinstance(v_, str) else v_) for k_, v_ in e.items()} for e in eyes]
     print('eyes', len(eyes), round(time.time() - t0, 1), flush=True)
     # ---------------- shelves ----------------
@@ -574,90 +617,86 @@ def run(vname, vox, outdir):
         F[i0:i1, j0_:j1_, k] = np.maximum(F[i0:i1, j0_:j1_, k], lf.astype(np.float32))
         print('field done', round(time.time() - t0, 1), flush=True)
     np.save(os.path.join(outdir, vname + '_flow.npy'), flow_th(X, Y).astype(np.float32))
-    aux = dict(calm=calm.astype(np.float32), maw_sd=ms.astype(np.float32), mq=mq.astype(np.float32))
+    aux = dict(calm=calm.astype(np.float32), maw_sd=ms.astype(np.float32), mq=mq.astype(np.float32), gdep=gdep_xy.astype(np.float32), ztop=zsm.astype(np.float32))
     return F, xs, ys, zs, meta, t0, aux, eyes, teethset, (strut, s_r), curves
 
 
-def place_and_apply_eyes(rng, F, xs, ys, zs, vox, n_eyes, X, Y, mq, ms, shelves, v_, arm_curves=()):
+def eye_fields(e, gx, gy):
+    """Almond eye: lens footprint (half-length a, half-width b), lids = raised rim around a slit aperture that holds a shallow eyeball dome."""
+    t = np.deg2rad(e['psi']); dx, dy = gx - e['x'], gy - e['y']
+    u = dx * np.cos(t) + dy * np.sin(t); v = -dx * np.sin(t) + dy * np.cos(t)
+    a, b = e['a'], e['b']; w = np.clip(1 - (u / a) ** 2, 0, None); v2 = v - e['skew'] * b * (u / a)
+    bu = b * e['o_up'] * w; bl = b * e['o_lo'] * w
+    dv = np.where(v2 >= 0, v2 - bu, -v2 - bl)
+    ap = (dv < 0) & (np.abs(u) < a) & (w > 0.03)
+    Wl = np.where(v2 >= 0, e['Wl'], e['Wl'] * (1 + e['bag'])) * np.sqrt(w) + 1e-3
+    foot = (np.abs(u) < a) & (dv < Wl)
+    lid = e['Hm'] * np.where(v2 >= 0, 1.0, 1.0 + 0.3 * e['bag']) * (1 - sstep(np.clip(dv, 0, None) / Wl)) * sstep(w * 4)
+    bap = np.where(v2 >= 0, bu, bl) + 1e-3
+    ball = e['Hm'] * (0.30 + 0.28 * (1 - np.clip(np.abs(v2) / bap, 0, 1) ** 2)) * sstep(w * 4)
+    return u, v2, ap, foot, np.where(ap, ball, lid)
+
+
+def place_and_apply_eyes(rng, F, xs, ys, zs, vox, n_eyes, X, Y, mq, ms, shelves, arm_curves=(), c_body=(-60.0, 10.0), rmax=240.0):
+    """15-30 almond/slit eyes clustered irregularly on the BODY MASS (between mask and maw, around tentacle roots), on out-facing faces only."""
     solid = F > 0
     fe = np.argmin(solid, axis=2); fe = np.where(solid.all(axis=2), solid.shape[2], fe); fe = np.where(solid[:, :, 0], fe, 0)
     ztop = fe * vox; del solid
-    slope = np.hypot(*np.gradient(ndi.gaussian_filter(ztop, 1.2), vox))      # eyes only on faces within ~45 deg of facing out
-    ok = (mq > 2.4) & (ms > 55.0) & (np.abs(X) < 430) & (np.abs(Y) < 430)
+    zsm = ndi.gaussian_filter(ztop, 1.2)
+    slope = np.hypot(*np.gradient(zsm, vox))
+    ok = (mq > 2.1) & (ms > 55.0) & (np.hypot(X - c_body[0], Y - c_body[1]) < rmax) & (np.abs(X) < 430) & (np.abs(Y) < 430)
     for sh in shelves:
-        cxs = sh['xc'] + (50.0 if sh['side'] == 'L' else -50.0)       # no eyes in seat block + 100 mm, or on the plate
+        cxs = sh['xc'] + (50.0 if sh['side'] == 'L' else -50.0)
         ok &= ~((np.abs(X - cxs) < 180.0) & (Y > sh['ys'] - 250) & (Y < sh['ys'] + 310))
         ok &= ~((np.abs(X - sh['xc']) < SHELF_W / 2 + 20) & (Y > sh['ys'] - 340) & (Y < sh['ys'] + 310))
-    for c_ in arm_curves:                                              # no eyes on shelf-arm roots (+30 mm)
+    for c_ in arm_curves:
         dd_, _ = cKDTree(c_[0][:, :2]).query(np.stack([X.ravel(), Y.ravel()], 1)); ok &= ~(dd_.reshape(X.shape) < c_[1].max() + 30.0)
-    cand = ok & (ztop >= 26) & (ztop <= 118)
-    ci = np.argwhere(cand)
+    cand = ok & (ztop >= 26) & (ztop <= 118); ci = np.argwhere(cand)
     print('eye candidates', len(ci), flush=True)
-    if len(ci) == 0: return []
     placed = []
-    def try_place(i, j, R, sp=1.15, smax=1.0, zmin=20.0):
-        pad = int(1.25 * R / vox) + 1
+    if len(ci) == 0: return placed, zsm
+    def try_place(i, j, a, psi, sp=1.0, zmin=22.0):
+        pad = int(1.3 * a / vox) + 1
         i0, i1, j0, j1 = max(i - pad, 0), min(i + pad + 1, ztop.shape[0]), max(j - pad, 0), min(j + pad + 1, ztop.shape[1])
         gi, gj = np.meshgrid(np.arange(i0, i1), np.arange(j0, j1), indexing='ij')
-        dm = np.hypot((gi - i) * vox, (gj - j) * vox) <= 1.25 * R
+        dm = np.hypot((gi - i) * vox, (gj - j) * vox) <= 1.2 * a
         sub = ztop[i0:i1, j0:j1][dm]
-        if sub.min() < zmin or (sub.max() - sub.min()) > 0.9 * R + 12 or slope[i0:i1, j0:j1][dm].max() > smax or not ok[i0:i1, j0:j1][dm].all(): return False
+        if sub.min() < zmin or (sub.max() - sub.min()) > 0.5 * a + 8 or slope[i0:i1, j0:j1][dm].max() > 1.0 or not ok[i0:i1, j0:j1][dm].all(): return False
         x, y = xs[i], ys[j]
         for e in placed:
-            if np.hypot(e['x'] - x, e['y'] - y) < sp * (e['R'] + R) + 2: return False
-        zb = float(np.median(sub))
-        placed.append(dict(x=float(x), y=float(y), R=float(R), zb=zb, lid_ang=float(rng.uniform(55, 125) if rng.random() < 0.7 else rng.uniform(-40, 220)),
-                           cover=float(rng.choice([0.0, 0.0, 0.28, 0.45, 0.62, 0.78])), bag=float(rng.uniform(0.0, 0.32)),
-                           gaze=float(rng.uniform(-0.8, 0.8)), phi=float(rng.uniform(0.12, 0.38))))
+            if np.hypot(e['x'] - x, e['y'] - y) < sp * (e['a'] + a) + 5: return False
+        b = 0.45 * a; mood = rng.random()
+        o_up = 0.22 if mood < 0.25 else (0.45 if mood < 0.5 else float(rng.uniform(0.7, 1.0)))     # half-closed / drooping / open
+        placed.append(dict(x=float(x), y=float(y), a=float(a), b=float(b), psi=float(psi), o_up=float(o_up), o_lo=float(rng.uniform(0.6, 1.0)),
+                           skew=float(rng.uniform(-0.55, 0.55)), bag=float(rng.uniform(0.0, 0.45) if mood < 0.5 else rng.uniform(0.0, 0.2)),
+                           ci=float(rng.uniform(-0.3, 0.3)), Wl=float(0.9 * b), Hm=float(np.clip(0.8 * b + 2.5, 5.0, 11.0))))
         return True
-    n_cl = max(2, n_eyes // 6); n_in_clusters = int(0.68 * n_eyes)
+    n_cl = max(3, n_eyes // 5); n_in = int(0.7 * n_eyes)
     for c in range(n_cl):
-        for _ in range(200):
-            i, j = ci[rng.integers(len(ci))]
-            if try_place(i, j, rng.uniform(15.0, 22.5)): break
-        else: continue
-        cx, cy = placed[-1]['x'], placed[-1]['y']; want = int(n_in_clusters / n_cl) - 1
-        got = 0
+        psi0 = rng.uniform(0, 180)
         for _ in range(300):
+            i, j = ci[rng.integers(len(ci))]
+            if try_place(i, j, rng.uniform(15.0, 22.5), psi0 + rng.normal(0, 15)): break
+        else: continue
+        cx, cy = placed[-1]['x'], placed[-1]['y']; want = int(n_in / n_cl) - 1; got = 0
+        for _ in range(400):
             if got >= want: break
-            px, py = cx + rng.normal(0, 46), cy + rng.normal(0, 46)
+            px, py = cx + rng.normal(0, 48), cy + rng.normal(0, 48)
             i, j = int(round((px + HALF) / vox)), int(round((py + HALF) / vox))
-            if 0 <= i < ztop.shape[0] and 0 <= j < ztop.shape[1] and cand[i, j] and try_place(i, j, rng.uniform(9.0, 16.0)): got += 1
-    for _ in range(20000):
+            if 0 <= i < ztop.shape[0] and 0 <= j < ztop.shape[1] and cand[i, j] and try_place(i, j, rng.uniform(9.0, 15.0), psi0 + rng.normal(0, 35)): got += 1
+    for _ in range(30000):
         if len(placed) >= n_eyes: break
         i, j = ci[rng.integers(len(ci))]
-        try_place(i, j, rng.uniform(10.0, 19.0))
-    for _ in range(40000):                                             # dense fill (heavy variants): smaller eyes, tighter packing, still on out-facing faces (slope <= 1.0)
-        if len(placed) >= n_eyes: break
-        i, j = ci[rng.integers(len(ci))]
-        try_place(i, j, rng.uniform(9.0, 13.0), sp=0.95, smax=1.0, zmin=18.0)
-    for e in placed: apply_eye(F, xs, ys, zs, vox, e)
-    return placed
-
-
-def apply_eye(F, xs, ys, zs, vox, e):
-    """Lidded hemispherical bulge with iris recess; upper lid covers `cover` of the ball, lower bag; centre slightly below surface."""
-    R = e['R']; Rb = 1.12 * R; zc = e['zb'] - 0.22 * R; ext = 1.5 * Rb + 4
-    i0, i1 = int(np.searchsorted(xs, e['x'] - ext)), int(np.searchsorted(xs, e['x'] + ext))
-    j0, j1 = int(np.searchsorted(ys, e['y'] - ext)), int(np.searchsorted(ys, e['y'] + ext))
-    k0 = max(0, int((e['zb'] - 0.6 * R) / vox)); k1 = min(len(zs), int((zc + Rb + 8) / vox) + 1)
-    gx, gy, gz = np.meshgrid(xs[i0:i1], ys[j0:j1], zs[k0:k1], indexing='ij')
-    px, py, pz = gx - e['x'], gy - e['y'], gz - zc
-    dist = np.sqrt(px ** 2 + py ** 2 + pz ** 2)
-    ball = Rb - dist
-    la = np.deg2rad(e['lid_ang']); ud = (np.cos(la), np.sin(la)); proj = px * ud[0] + py * ud[1]
-    ga = la + np.pi + e['gaze']; phi = e['phi']; dg = np.array([np.sin(phi) * np.cos(ga), np.sin(phi) * np.sin(ga), np.cos(phi)])
-    Ri = 0.5 * R; cp = np.array([e['x'], e['y'], zc]) + dg * (Rb + 0.35 * Ri)
-    pit = np.sqrt((gx - cp[0]) ** 2 + (gy - cp[1]) ** 2 + (gz - cp[2]) ** 2) - Ri
-    ball_ir = np.minimum(ball, pit)
-    t0_ = Rb * (1 - 2 * e['cover']); lid = np.minimum((Rb + 3.2) - dist, proj - t0_)
-    t1_ = Rb * (1 - 2 * e['bag']); low = np.minimum((Rb + 2.4) - dist, -proj - t1_)
-    rxy = np.sqrt(px ** 2 + py ** 2); gw = 0.2 * R; gd = 0.16 * R         # V socket: half-width 0.2R, depth 0.16R -> ~102 deg open
-    gdep = gd * np.clip(1 - np.abs(rxy - 1.35 * R) / gw, 0, 1)
-    sock = (gdep > 0) & (gz > e['zb'] - gdep)
-    sub = F[i0:i1, j0:j1, k0:k1]; sub[sock] = np.minimum(sub[sock], -1.0)
-    fe = np.maximum(ball_ir, np.maximum(lid, low))
-    F[i0:i1, j0:j1, k0:k1] = np.maximum(F[i0:i1, j0:j1, k0:k1], fe.astype(np.float32))
+        try_place(i, j, rng.uniform(9.0, 18.0), rng.uniform(0, 180), sp=0.9, zmin=20.0)
+    for e in placed:
+        ext = e['a'] + e['Wl'] * 1.8 + 6.0
+        i0, i1 = int(np.searchsorted(xs, e['x'] - ext)), int(np.searchsorted(xs, e['x'] + ext)); j0, j1 = int(np.searchsorted(ys, e['y'] - ext)), int(np.searchsorted(ys, e['y'] + ext))
+        gx, gy = np.meshgrid(xs[i0:i1], ys[j0:j1], indexing='ij'); u, v2, ap, foot, H = eye_fields(e, gx, gy)
+        zt = zsm[i0:i1, j0:j1]; top = np.where(foot, zt + H, -1.0)
+        k1 = min(len(zs), int((zt.max() + e['Hm'] + 6) / vox) + 1)
+        gz = zs[None, None, :k1]
+        F[i0:i1, j0:j1, :k1] = np.maximum(F[i0:i1, j0:j1, :k1], (top[:, :, None] - gz).astype(np.float32))
+    return placed, zsm
 
 
 def taubin(v, A, dg, free, iters, lam=0.5, mu=-0.53):
@@ -710,23 +749,32 @@ def grain_pass(v, f, flow_grid, aux, eyes, teethset, vox, shelves, seed, W):
     mqv = grid_sample(aux['mq'], v1[:, 0], v1[:, 1], vox)
     amp = amp * (1.0 - (1.0 - (0.18 + 0.25 * W) * 1.0) * (1 - sstep((mqv - 1.0) / 0.25)))   # mask: clean (weathering is in the field)
     if eyes:
-        et = cKDTree(np.array([[q['x'], q['y']] for q in eyes])); er = np.array([q['R'] for q in eyes])
-        d, ix = et.query(v1[:, :2]); amp = amp * (1 - 0.65 * (d < 1.3 * er[ix]))
+        et = cKDTree(np.array([[q['x'], q['y']] for q in eyes])); er = np.array([q['a'] for q in eyes])
+        d, ix = et.query(v1[:, :2]); amp = amp * (1 - 0.7 * (d < 1.2 * er[ix]))
     if teethset.tree is not None:
         d, _ = teethset.tree.query(v1, workers=4); amp = amp * (1 - 0.5 * (d < 20.0))
     return v1 + n1 * (amp * ridge)[:, None], dict(disp_mean=float((amp * ridge).mean()), disp_max=float((amp * ridge).max()))
 
 
 def tags(v, aux_grids, eyes, teethset, vox):
-    """Per-vertex aux for the renderer: calm, maw_sd, eye tag (1 sclera/lid, 2 iris pit region), teeth tag."""
+    """Per-vertex aux for the renderer: calm, maw_sd, eye tag (0.4 lid, 1 eyeball, 2 iris, 3 pupil), teeth tag, groove depth (mm)."""
     calm = grid_sample(aux_grids['calm'], v[:, 0], v[:, 1], vox); msd = grid_sample(aux_grids['maw_sd'], v[:, 0], v[:, 1], vox)
+    gdp = grid_sample(aux_grids['gdep'], v[:, 0], v[:, 1], vox); zt = grid_sample(aux_grids['ztop'], v[:, 0], v[:, 1], vox)
     eye = np.zeros(len(v)); teeth = np.zeros(len(v))
     if eyes:
-        et = cKDTree(np.array([[q['x'], q['y']] for q in eyes])); er = np.array([q['R'] for q in eyes]); ez = np.array([q['zb'] for q in eyes])
-        d, ix = et.query(v[:, :2]); eye = ((d < 1.12 * er[ix]) & (v[:, 2] > ez[ix] - 2)).astype(float)
+        vt = cKDTree(v[:, :2])
+        for e in eyes:
+            idx = np.array(vt.query_ball_point([e['x'], e['y']], e['a'] + e['Wl'] * 1.8 + 6.0), dtype=int)
+            if len(idx) == 0: continue
+            u, v2, ap, foot, H = eye_fields(e, v[idx, 0], v[idx, 1])
+            near = np.abs(v[idx, 2] - (zt[idx] + H)) < 4.0
+            ri = 0.85 * e['b'] * max(0.55, 0.5 * (e['o_up'] + e['o_lo']))
+            rr = np.hypot(u - e['ci'] * e['a'], v2)
+            val = np.where(foot & ~ap, 0.4, 0.0); val = np.where(ap, 1.0, val); val = np.where(ap & (rr < ri), 2.0, val); val = np.where(ap & (rr < 0.45 * ri), 3.0, val)
+            sel = near & foot; eye[idx[sel]] = np.maximum(eye[idx[sel]], val[sel])
     if teethset.tree is not None:
         d, idx = teethset.tree.query(v, workers=4); teeth = (d < teethset.r[idx] + 2.5).astype(float)
-    return np.stack([calm, msd, eye, teeth], 1).astype(np.float32)
+    return np.stack([calm, msd, eye, teeth, gdp], 1).astype(np.float32)
 
 
 if __name__ == '__main__':
@@ -788,8 +836,8 @@ if __name__ == '__main__':
         if sl_.any(): mind.append(float(np.linalg.norm(P_[sl_] - np.outer(ax[sl_], tan), axis=1).min()))
     eng['buttress'] = dict(min_core_diameter_mm=round(2 * min(mind), 1), median_diameter_mm=round(2 * float(np.median(mind)), 1),
                            drop_mm=meta['strut']['drop_mm'], foot_pad_mm=meta['strut']['foot_pad_mm'], core_dia_mm=meta['strut']['core_dia_mm'], foot=meta['strut']['foot'])
-    eng['eyes'] = dict(count=len(eyes), dia_mm_min=round(2 * min(e['R'] for e in eyes), 1) if eyes else None, dia_mm_max=round(2 * max(e['R'] for e in eyes), 1) if eyes else None,
-                       iris_pit_dia_mm_min=round(min(e['R'] for e in eyes), 1) if eyes else None)
+    eng['eyes'] = dict(count=len(eyes), length_mm_min=round(2 * min(e['a'] for e in eyes), 1) if eyes else None, length_mm_max=round(2 * max(e['a'] for e in eyes), 1) if eyes else None,
+                       slit_width_mm_min=round(2 * min(e['b'] * e['o_up'] for e in eyes), 1) if eyes else None, half_closed=int(sum(e['o_up'] < 0.5 for e in eyes)))
     eng['teeth'] = dict(count=len(meta['teeth']), broken=int(sum(t['broken'] for t in meta['teeth'])),
                         length_mm_min=round(min(t['length'] for t in meta['teeth']), 1), length_mm_max=round(max(t['length'] for t in meta['teeth']), 1))
     meta['engineering'] = eng
