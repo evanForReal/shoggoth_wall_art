@@ -74,6 +74,23 @@ Consequence for the look: 40 mm arm roots make the shelf limbs visibly thicker �
 
 **SL-24** · ~17:35 · Did not act on Structural's suggested mesh-spec rewording ("buttress required only for p > 250 mm or drywall-only"). Shelf arrangement A's p=290 shelf still gets the buttress; Evan approved the buttress tentacle, and making it optional is a design change he should see, not a spec edit. · `[judgment]`
 
+## 2026-11-17
+
+**SL-25** · 00:35 · v2 worker hit the 5h limit mid-render (16:50 UTC 11-16); work survived on disk. Committed a WIP snapshot (16cf3a8) before resuming it, and told it to re-encode the >1 MB renders instead of re-rendering. · `[judgment]`
+
+**SL-26** · 00:40 · Orchestrator's own read of v2 hero_front + hero_maw, written BEFORE reading CAD's self-assessment (so the two can be compared later): · `[judgment]`
+- WIN: the maw now unmistakably exists — ring of snaggled, uneven teeth, saliva strands, dark throat. Answers r05 h1 directly.
+- WIN: emoticon reads instantly as the classic smiley; tendrils gripping its rim = masquerade device, legible.
+- MISS: the "eyes" read as octopus suckers / pustules, not eyes — mostly on tentacles, no lids/irises visible at wall distance. This collides with r04's "less octopus-literal".
+- MISS: Beksiński surface largely lost — smooth, saturated orange-pink flesh. Overcorrected h2 ("restore organic form") by dropping the texture h1/h2 said was locally right. Overall risks a toy/cartoon-monster read (r02 chibi hard-no, v1 "comical" note).
+- MISS: smiley is clean and small, not yet monumental/eroded (SL-04 target). Shelves read as boxy brackets; buttress still reads as a turned table leg.
+Pending: whether v4_weathered / v2_eyes_heavy address these; decide board-as-is vs one more CAD pass after the full set is visible.
+
+**SL-27** · 00:50 · Found v4_weathered_front.png truncated (render cut off at the rate limit; PIL refuses it). Told the worker to re-render v4 front+tq and PIL-validate every PNG before reporting. · `[judgment]`
+
+**SL-28** · 00:50 · Viewed hero_rake + v2_eyes_heavy. Update to SL-26: the mask close-up is better than the front view suggested — weathered surface, cracked smile line, finger-like tendrils gripping the rim; that's close to the SL-04 target at close range. The eyes problem is confirmed and WORSE in v2_eyes_heavy (more suckers, more octopus). · `[judgment]`
+**Leaning (not yet acted on):** one more CAD pass (v2.1) BEFORE boarding: (1) eyes → lidded almond/slit eyes with iris + pupil recess, so they read as eyes not suckers, clustered on the body mass as well as tentacle roots; (2) restore Gate-2 grain on flesh (v1 had it; v2 dropped it); (3) palette back toward ochre/bone/rust from saturated orange-pink; (4) shelves and buttress less bracket-like. Why: a board where a core Evan directive (eyes) visibly isn't met spends a round on a known defect; r05 already cost 10 dislikes. Against: another 5h-limit window of delay. Decide after the worker's self-assessment arrives.
+
 ---
 *Edit log*
 
