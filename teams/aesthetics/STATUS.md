@@ -5,6 +5,7 @@
 
 ## Exec Summary (newest first)
 
+- 2026-11-17: Round-06 board assembled (12 cards, review/rounds/round-06/): fullpiece-v2.1 hero (5 views) + 3 one-axis variants (masquerade, tentacle count, maw size) + sheet vs c01. Notes disclose r05 headroom correction, known gaps, and ask Evan: keep 3x3 ft or widen for c01 sprawl. v2 (intermediate) not boarded (session log SL-30).
 - 2026-11-16: R05 verdicts in (issue #5: 1 love / 2 like / 10 dislike) + Evan re-center: smiley emoticon + horrific toothed maw central. Fullpiece-v2 building for round-06.
 - 2026-11-16: Round-05 board assembled and deployed: 13 in-house renders (hero + 4 one-axis variants + sheet vs c01).
 - 2026-11-15: Hygiene pass (RP-1 item 4): takeaways, rejected list, r04 prompts + hotlink inventory committed.
@@ -62,3 +63,4 @@
 | 2026-11-16 | orchestrator | R05 backprop: verdicts + re-center into Current State, takeaways, rejected list | docs-reviewer (flagged: re-center items incl. "muscular tentacles (not pale whips)" are chat-sourced, not in issue #5; superseded r05 charter paragraph retained below new state) |
 | 2026-11-16 | orchestrator | Trimmed to cap (audit cycle 2): superseded r05 charter dropped, r01-r04 takeaways folded to one line each (detail in DECISIONS), r05 exec line, locked line updated for r05 (serene mask removed), headroom condition on shelves A | FLAG OPEN: Current State says "v1 S3 had ~160 mm" clear; teams/cad/fullpiece/engineering_checks.json (hero) measures S2 and S3 both 12.0 mm (S1 clear), and SL-29 corrects ~160 mm as the unsourced v1 README figure. Fix wording to S2/S3 ~12 mm and cite SL-29. Verified OK: body 46 lines (30 non-blank) <= 60; all 14 Rejected items and all r01-r04 locks present at ca9747f survive (ids/examples dropped only); re-center and r05 locks retained. Non-blocking: r04 "creature-covered-in-plants dead" and "no comical" no longer stated verbatim (in DECISIONS r04 row; "cartoon/sticker" covers comical) |
 | 2026-11-17 | orchestrator | Resolves FLAG OPEN above: headroom wording corrected ~160 mm -> ~12 mm (S2/S3), cites SL-29 and v2 shelf moves | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Round-06 assembled (exec line); manifest + images | [PROVISIONAL] |

@@ -1,0 +1,105 @@
+{
+  "round": "round-06",
+  "title": "Shoggoth wall art — round 06: smiley + maw re-center (in-house renders)",
+  "created": "2026-11-17",
+  "issue_repo": "evanForReal/shoggoth_wall_art",
+  "notes": "12 cards: your r05 re-center built for real (classic smiley + gaping toothed maw, almond eyes on the body, masquerade fingers, muscular sinew-wrapped tentacles, Beksiński palette). Hero + 3 one-axis variants: (a) masquerade = lifted edge vs fingers, (b) 5 vs 8 tentacles, (c) big maw. QUESTION FOR YOUR ISSUE NOTES: c01's sprawl was drawn about sofa-wide; inside 3x3 ft the long tentacles get clipped by the frame and the shelf clear zones (they reach 310-430 mm of the 520-820 mm asked). Keep 3x3 ft, or allow ~4 ft wide for c01-grade sprawl (more print segments)? CORRECTION to r05: the r05 hero you liked had only ~12 mm clear above 2 of its 3 shelves (unusable for plants) and the board didn't say so. Fixed here: 300 mm clear above every shelf, by moving the top shelf up 94 mm and the bottom one down 20 mm. KNOWN GAPS (not fixed, listed so you can weigh them): still compact vs c01; shelf grip tendrils read as pegs; shelf mounting blocks show as dark rectangles; buttress still reads as a table leg; mass over target (~26 kg solid proxy, est. ~13 kg printed vs 14 kg cap); variants b/c have fewer eyes (11/8) than hero (~20); nothing print-validated yet. CAD's own review of these renders is not yet peer-signed.",
+  "cards": [
+    {
+      "id": "h1",
+      "image": "images/hero_front.png",
+      "axis": "hero",
+      "title": "HERO — front, wall distance",
+      "rationale": "Classic smiley high, gaping toothed maw below, almond eyes clustered on the body between them, sinew-wrapped tentacles, shelves arrangement A at the corrected heights. Judge overall read: horror or cartoon?",
+      "source": "generated in-house (fullpiece_v2_1, hero)"
+    },
+    {
+      "id": "h2",
+      "image": "images/hero_tq.png",
+      "axis": "hero",
+      "title": "HERO — three-quarter",
+      "rationale": "Depth and shelf protrusion. Root-grip tendrils on the shelf rims, buttress under the lower-left shelf continuing that shelf's arm.",
+      "source": "generated in-house (fullpiece_v2_1, hero)"
+    },
+    {
+      "id": "h3",
+      "image": "images/hero_rake.png",
+      "axis": "hero",
+      "title": "HERO — raking close-up on the smiley",
+      "rationale": "The emoticon as carved, weathered bone, gripped at the rim by fingers (the masquerade). Is this the serious smiley you meant?",
+      "source": "generated in-house (fullpiece_v2_1, hero)"
+    },
+    {
+      "id": "h4",
+      "image": "images/hero_side.png",
+      "axis": "hero",
+      "title": "HERO — side profile",
+      "rationale": "You loved r05's side profile. Relief is similar (mean ~52-59 mm vs ~49); the top shelf now sits 94 mm higher for plant clearance.",
+      "source": "generated in-house (fullpiece_v2_1, hero)"
+    },
+    {
+      "id": "h5",
+      "image": "images/hero_maw.png",
+      "axis": "hero",
+      "title": "HERO — maw close-up",
+      "rationale": "Gaping maw, asymmetric broken teeth, dark lips, saliva strands. Your r05 note said the mouth didn't exist; does it now?",
+      "source": "generated in-house (fullpiece_v2_1, hero)"
+    },
+    {
+      "id": "va1",
+      "image": "images/v1_liftedge_front.png",
+      "axis": "masquerade",
+      "title": "VARIANT A — lifted-edge masquerade, front",
+      "rationale": "No gripping fingers: the face's lower-right edge lifts off the body with a dark slot behind it, as if the mask is peeling. Subtler than the hero's fingers.",
+      "source": "generated in-house (fullpiece_v2_1, v1_liftedge)"
+    },
+    {
+      "id": "va2",
+      "image": "images/v1_liftedge_tq.png",
+      "axis": "masquerade",
+      "title": "VARIANT A — lifted edge, three-quarter",
+      "rationale": "The lifted edge reads best at an angle.",
+      "source": "generated in-house (fullpiece_v2_1, v1_liftedge)"
+    },
+    {
+      "id": "vb1",
+      "image": "images/v2_tentacles5_front.png",
+      "axis": "tentacle-count",
+      "title": "VARIANT B — 5 heavy tentacles (vs 8), front",
+      "rationale": "Fewer, thicker limbs with membrane skirts between them. Note: this variant has 11 eyes vs the hero's ~20.",
+      "source": "generated in-house (fullpiece_v2_1, v2_tentacles5)"
+    },
+    {
+      "id": "vb2",
+      "image": "images/v2_tentacles5_tq.png",
+      "axis": "tentacle-count",
+      "title": "VARIANT B — 5 tentacles, three-quarter",
+      "rationale": "Heavier musculature at an angle.",
+      "source": "generated in-house (fullpiece_v2_1, v2_tentacles5)"
+    },
+    {
+      "id": "vc1",
+      "image": "images/v3_maw_big_front.png",
+      "axis": "maw-size",
+      "title": "VARIANT C — big maw (1.45x), front",
+      "rationale": "Maw dominates the body, 17 fang-style teeth. Note: 8 eyes (the maw takes their space).",
+      "source": "generated in-house (fullpiece_v2_1, v3_maw_big)"
+    },
+    {
+      "id": "vc2",
+      "image": "images/v3_maw_big_tq.png",
+      "axis": "maw-size",
+      "title": "VARIANT C — big maw, three-quarter",
+      "rationale": "Depth of the larger throat.",
+      "source": "generated in-house (fullpiece_v2_1, v3_maw_big)"
+    },
+    {
+      "id": "s1",
+      "image": "images/variants_sheet.png",
+      "axis": "comparison",
+      "title": "SHEET — c01 vs r05-era v2 vs this round",
+      "rationale": "c01 (the target you loved), an unboarded intermediate (v2, top middle), this round's hero and variants. The remaining gap is c01's open sprawl — see the board notes' size question and answer it in your issue notes.",
+      "source": "generated in-house (variants_sheet)"
+    }
+  ]
+}

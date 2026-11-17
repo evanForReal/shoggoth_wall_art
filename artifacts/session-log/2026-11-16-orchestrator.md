@@ -106,6 +106,13 @@ Risk: this pulls back toward v1's texture, which r05 h2 said went "all in" on te
 
 **SL-33** · 00:55 · Container restart killed the v2.1 CAD worker early (generator edited, 0 renders). Its transcript survived, so I committed its last generator edit (1a058b5) and resumed the same agent rather than spawning fresh; it keeps the full v2/v2.1 context and briefs. Told it to render one hero_front first and PIL-validate, so a second interruption leaves something viewable. · `[judgment]`
 
+**SL-34** · 01:55 · My read of v2.1 (sheet + hero_front, before weighing CAD's grades): eyes now read as small almond eyes (sucker read gone) — fixes SL-26's main miss; palette right (ochre/umber/bone); maw strong; emoticon clean and instantly classic. Still compact and blocky; shelves read as box brackets with peg-like grip tendrils; buttress still a table leg; nowhere near c01's open sprawl. Agrees with CAD's self-grades. · `[judgment]`
+
+**SL-35** · 01:55 · DECISION: board v2.1 as round-06 now; no v2.2. · `[judgment]`
+Why: the largest remaining gap (sprawl) is bounded by a LOCKED parameter, not CAD effort — CAD's whips realised 310-433 mm of the 520-820 asked because the 914 mm envelope clip and the three shelf keep-outs cut them. c01 is drawn at roughly sofa-width. Only Evan can trade the 3x3 ft envelope against c01-grade sprawl, so a blind v2.2 would spend a rate-limit window on a question he must answer. Remaining gaps (mass 26.4 kg solid, peg-like grips, seat blocks visible, 2 variants under 15 eyes, no print validation) are disclosed in the manifest notes per RP-2 item 1.
+Alternative rejected: v2.2 for mass/eye counts/seat blocks first — cosmetic relative to the envelope question, and Evan has not seen anything since r05.
+Board framing: the envelope question goes in the manifest notes and the sheet card's rationale, asking for an answer in the issue notes (board format has no free-form question card).
+
 ---
 *Edit log*
 
@@ -115,3 +122,4 @@ Risk: this pulls back toward v1's texture, which r05 h2 said went "all in" on te
 | 2026-11-17 | orchestrator | Appended SL-15..30 (live) | docs-reviewer (verified: SL-29 against fullpiece/engineering_checks.json hero headroom S2 and S3 = 12.0 mm, v2 hero shelf tops 344.5/170.5/-109.5 vs v1 250.5/170.5/-89.5 = S1 +94 mm, S3 -20 mm, all >= 300 mm clear; hashes 16cf3a8, 4c7f658, 4dd6f70, ca9747f, 0671872 exist; SL-18 re-ran tools/verify_tallies.py 5/5 PASS rc 0; SL-17 teams/cad/.gitignore exists; SL-19 4 of 7 matches f1f688c and rp2-blind-pockets.md s7; append-only since 0671872. Judgment not assessed. Cosmetic, signed through: SL-15 "81 to 45 content lines" is 83 to 46 lines incl blanks (62 to 30 non-blank); SL-19 conflicts with DECISIONS "5 of 7", flagged on the DECISIONS row) |
 | 2026-11-17 | orchestrator | Appended SL-31..32 (sign-off pass, flag resolutions) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-33 (restart recovery) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Appended SL-34..35 (v2.1 read, board decision) | [PROVISIONAL] |
