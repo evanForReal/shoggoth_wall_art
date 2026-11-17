@@ -1,6 +1,6 @@
 # Gate 1C: hierarchy, global flow, depth layering, crevice shading, sliver closure
 
-**Status:** [PROVISIONAL] CAD Lead, 2026-11-16. Builds on `../gate1b/`. Same patch scope, camera and lighting as Gates 1 and 1B.
+**Status:** CAD Lead, 2026-11-16. Builds on `../gate1b/`. Same patch scope, camera and lighting as Gates 1 and 1B.
 
 ## 1. What changed vs Gate 1B
 

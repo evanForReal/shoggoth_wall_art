@@ -1,6 +1,6 @@
 # Full-piece composition sculpt (round-05 in-house renders)
 
-**Status:** [PROVISIONAL] CAD Lead, 2026-11-16. For Evan's eyes, not the printer: 2.0 mm voxel, Gate-2 vocabulary scaled ~4-5x, grain via a coarse flow-aligned displacement (1.1-3.0 mm, outward only), 1C crevice shader, dark-wall context lighting (warm key, two downlight washes). Full min-wall / void validation waits for the print-res pass after Evan picks a composition.
+**Status:** CAD Lead, 2026-11-16. For Evan's eyes, not the printer: 2.0 mm voxel, Gate-2 vocabulary scaled ~4-5x, grain via a coarse flow-aligned displacement (1.1-3.0 mm, outward only), 1C crevice shader, dark-wall context lighting (warm key, two downlight washes). Full min-wall / void validation waits for the print-res pass after Evan picks a composition.
 
 ## 1. Variants (one param set each, `VARIANTS` in `gen_fullpiece.py`; each differs from the hero by one axis)
 

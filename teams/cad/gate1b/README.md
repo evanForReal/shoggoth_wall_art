@@ -1,6 +1,6 @@
 # Gate 1B: fibre vocabulary, denser web, min-wall measured and clamped
 
-**Status:** [PROVISIONAL] CAD Lead, 2026-11-16. Builds on `../gate1/` (reviewer verdict: "cooked dough, not calcified fibre"; sparser than c02). Same patch scope, same camera and lighting as Gate 1 for comparability.
+**Status:** CAD Lead, 2026-11-16. Builds on `../gate1/` (reviewer verdict: "cooked dough, not calcified fibre"; sparser than c02). Same patch scope, same camera and lighting as Gate 1 for comparability.
 
 ## 1. What changed vs Gate 1
 

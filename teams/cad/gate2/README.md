@@ -1,6 +1,6 @@
 # Gate 2: hybrid pipeline (SDF skeleton + bpy-hosted flow-aligned fibre-grain pass)
 
-**Status:** [PROVISIONAL] CAD Lead, 2026-11-16. Method per DECISIONS 2026-11-16 (Evan: hybrid approved). Builds on `../gate1c/`. Same patch scope, camera, lighting and 1C shader.
+**Status:** CAD Lead, 2026-11-16. Method per DECISIONS 2026-11-16 (Evan: hybrid approved). Builds on `../gate1c/`. Same patch scope, camera, lighting and 1C shader.
 
 ## 1. Pipeline
 
@@ -48,7 +48,7 @@ Voxelisation (surface samples -> exterior flood fill) is biased by about +-0.5 v
 | Interior-only: 2.0 mm opening retention | 96.5% | 97.0% |
 | Interior-only: ridge P5 / P50 | 1.16 / 3.75 mm | 0.75 / 3.75 mm |
 
-Reading: no net thinning. The sculpt is outward-only and the pass added material, so the thin-component count falls and opening retention stays within +-0.5 points; the pessimistic variant's absolute counts (85 components) are largely the voxelisation bias (the same method on the field-truth clamped occupancy gives 0). Conclusion: the min-wall clamp did not need re-running. The opening-retention dip in the optimistic variant (99.84 -> 99.49%) is the fine grain itself (ridge crests thinner than 2 mm by design). **If Fabrication wants the grain crests held to 2.0 mm, they must be treated as surface texture below the min-wall rule (blind relief), same reasoning as the void proposal.**
+Reading (corrected 2026-11-16, RP-2): NOT 'no net thinning'. Worsened post-sculpt: incl void area <6 mm 0.222 -> 0.330, incl thickness P5 1.75 -> 0.75 mm, interior ridge P5 1.16 -> 0.75 mm, interior ridge thin fraction 0.075 -> 0.136; held: topology, bbox, 2 mm-opening retention. Original reading follows (partly superseded): The sculpt is outward-only and the pass added material, so the thin-component count falls and opening retention stays within +-0.5 points; the pessimistic variant's absolute counts (85 components) are largely the voxelisation bias (the same method on the field-truth clamped occupancy gives 0). Conclusion: the min-wall clamp did not need re-running. The opening-retention dip in the optimistic variant (99.84 -> 99.49%) is the fine grain itself (ridge crests thinner than 2 mm by design). **If Fabrication wants the grain crests held to 2.0 mm, they must be treated as surface texture below the min-wall rule (blind relief), same reasoning as the void proposal.**
 
 6 mm void rule on the sculpted mesh (z-projection): interior voids >= 6 mm: 7 (inclusive) / 13 (interior-only), pre-sculpt 9 / 13. Void-area share under 6 mm: 33.0% / 7.8% post, 22.2% / 10.8% pre. The plug step ran before sculpting; outward displacement narrows some gaps, so a fraction of previously-passing voids drift under 6 mm in the optimistic variant. Not re-plugged (would need a mesh-domain plug); the rule's range is 8-33% depending on voxelisation bias. The CAD proposal to relax the rule for blind relief is logged in STATUS Liaison (unsigned).
 

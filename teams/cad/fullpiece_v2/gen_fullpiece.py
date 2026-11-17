@@ -42,7 +42,7 @@ SL_COUNT = 70
 SHELF_W, PLATE_T = 190.0, 10.0
 SEAT_DEPTH = 28.0
 SHELF_ARR = {
-    'A': [dict(side='L', ys=250.5, xc=-345.0, p=250.0), dict(side='R', ys=170.5, xc=345.0, p=200.0), dict(side='L', ys=-89.5, xc=-345.0, p=290.0)],
+    'A': [dict(side='L', ys=344.5, xc=-345.0, p=250.0), dict(side='R', ys=170.5, xc=345.0, p=200.0), dict(side='L', ys=-109.5, xc=-345.0, p=290.0)],
 }
 VARIANTS = {   # each differs from hero by ONE axis
     'hero':            dict(masq='fingers', eyes=26, maw_scale=1.0, teeth='mixed', weather=0.55, shelves='A', seed=7, whips=list(range(8)), whip_scale=1.0),
@@ -102,7 +102,7 @@ def tentacle(rng, start, ang, L, bend, r0, rtip, zoff, nsw, bendfrac=1.0):
     xy, t = bend_curve(P)
     ph = rng.uniform(0, 6.28)
     r = ((r0 - rtip) * (1 - t) ** 0.8 + rtip) * (1 + 0.20 * np.sin(2 * np.pi * nsw * t + ph) * (0.4 + 0.6 * (1 - t)))
-    return np.column_stack([xy, zoff + 0.45 * r]), r, xy, t
+    return np.column_stack([xy, zoff + 0.30 * r]), r, xy, t
 
 
 def build_limbs(pr, rng, shelves):
@@ -118,14 +118,14 @@ def build_limbs(pr, rng, shelves):
         bulge = 60.0 * (1 if k % 2 == 0 else -1)
         P = np.array([A, A + 0.35 * d + nrm * bulge, A + 0.72 * d + nrm * bulge * 0.35, R])
         xy, t = bend_curve(P)
-        r = (46.0 - 18.0 * t) * (1 + 0.16 * np.sin(2 * np.pi * 1.5 * t + 0.6 * k))
-        curves.append((np.column_stack([xy, 0.45 * r]), r)); lines2d.append((xy, r * 1.1 + 16.0 * (1 - t) ** 2))
+        r = (42.0 - 16.0 * t) * (1 + 0.16 * np.sin(2 * np.pi * 1.5 * t + 0.6 * k))
+        curves.append((np.column_stack([xy, 0.30 * r]), r)); lines2d.append((xy, r * 1.1 + 16.0 * (1 - t) ** 2))
         meta['arms'].append(dict(shelf=k, root=[float(R[0]), float(R[1])]))
     specs = [(212, 520, 0.9, 44, 0), (246, 380, -0.8, 40, 14), (272, 500, 0.7, 46, 6), (306, 420, -0.9, 40, 20),
              (334, 560, 0.7, 44, 0), (38, 330, 0.9, 36, 10), (74, 220, -0.7, 30, 4), (112, 170, 0.8, 26, 0)]
     for wi, (ang, L, bend, r0, zoff) in enumerate(specs):
         if wi not in pr['whips']: continue
-        r0 = r0 * pr['whip_scale']; L = L * 1.2
+        r0 = r0 * 0.9 * pr['whip_scale']; L = L * 1.2
         a = np.deg2rad(ang + rng.uniform(-6, 6)); d0 = np.array([np.cos(a), np.sin(a)])
         start = c0 + d0 * rng.uniform(95, 140) + (np.array([100.0, -60.0]) if 200 < ang < 330 else 0)
         pts3, r, xy, t = tentacle(rng, start, ang, L, bend, r0, 7.5, zoff, rng.uniform(2.6, 3.8))
@@ -283,12 +283,14 @@ def run(vname, vox, outdir):
         meta['fingers'] = len(fing)
     # buttress: muscular limb from under the longest shelf to the wall foot pad
     ls = max(shelves, key=lambda s: s['p']); drop = min(300.0, ls['ys'] + 429.0); sg = 1.0 if ls['side'] == 'L' else -1.0
-    tip = np.array([ls['xc'], ls['ys'] - 12.0, ls['p'] - 18.0]); foot = np.array([ls['xc'] - sg * 40.0, ls['ys'] - drop, 14.0])
-    mid = 0.5 * (tip + foot) + np.array([35.0 * sg, 0, 20.0]); nS = int(np.linalg.norm(tip - foot) / 1.2) + 20
-    strut = gp.bez(foot, foot + (mid - foot) * 0.8, tip + (mid - tip) * 0.8, tip, nS); tS = np.linspace(0, 1, nS)
-    s_r = 20.5 * (1 + 0.17 * np.sin(2 * np.pi * 2.5 * tS + 0.8)) + 9.0 * (1 - sstep(tS / 0.12)) + 11.0 * sstep((tS - 0.84) / 0.16)
-    FOOT_R = 36.0
-    meta['strut'] = dict(shelf_p=ls['p'], tip=tip.tolist(), foot=foot.tolist(), drop_mm=float(drop), base_radius=20.5, foot_pad_dia_mm=2 * FOOT_R)
+    tip = np.array([ls['xc'], ls['ys'] - 46.0, ls['p'] - 24.0]); foot = np.array([ls['xc'] - sg * 40.0, ls['ys'] - drop, 14.0])
+    nS = int(np.linalg.norm(tip - foot) / 1.2) + 20; tS = np.linspace(0, 1, nS)
+    off = np.stack([5.0 * np.sin(2 * np.pi * 1.5 * tS + 0.7) * np.sin(np.pi * tS) ** 0.5, 2.0 * np.sin(2 * np.pi * 1.0 * tS), 3.0 * np.sin(2 * np.pi * 1.2 * tS)], 1)
+    strut = foot + (tip - foot) * tS[:, None] + off                   # limb centreline: straight core axis +- 5 mm sinuous
+    s_r = 23.0 * (1 + 0.15 * np.sin(2 * np.pi * 2.5 * tS + 0.8)) + 9.0 * (1 - sstep(tS / 0.12)) + 11.0 * sstep((tS - 0.84) / 0.16)
+    CORE_R = 11.0                                                      # embedded straight solid core, 22 mm (structural spec)
+    PAD_HX, PAD_HY = 42.0, 33.0
+    meta['strut'] = dict(shelf_p=ls['p'], tip=tip.tolist(), foot=foot.tolist(), drop_mm=float(drop), base_radius=23.0, core_dia_mm=2 * CORE_R, foot_pad_mm=[2 * PAD_HX, 2 * PAD_HY])
     teeth, tinfo = maw_teeth(rng, MAW_C, tuple(a * pr['maw_scale'] for a in MAW_AB), MAW_DEG, pr['teeth'])
     meta['teeth'] = tinfo
     limbs = [DLimb(c_[0], c_[1]) for c_ in curves]; fingset = gp.FibreSet(fing); strutset = gp.FibreSet([(strut, s_r)]); teethset = gp.FibreSet(teeth)
@@ -318,7 +320,7 @@ def run(vname, vox, outdir):
     for c, ab, deg, pk in BELLIES:
         uu, vv = rot(Xw, Yw, c, deg); qq = np.sqrt((uu / ab[0]) ** 2 + (vv / ab[1]) ** 2)
         Hm = np.maximum(Hm, pk * sstep((1 - qq) / 0.9)); calm = np.maximum(calm, sstep((1 - qq) / 0.45))
-    Hm *= 0.92 + 0.08 * N['hsel'](X, Y, 0)
+    Hm *= (0.92 + 0.08 * N['hsel'](X, Y, 0)) * 0.74
     for (rc, rr_) in roots:                                                       # root bulbs: tentacle roots fuse into the mass
         uu, vv = X - rc[0], Y - rc[1]; qq = np.sqrt(uu ** 2 + vv ** 2) / (1.5 * rr_)
         Hm = np.maximum(Hm, 0.95 * rr_ * sstep((1 - qq) / 0.85)); calm = np.maximum(calm, sstep((1 - qq) / 0.5))
@@ -326,7 +328,7 @@ def run(vname, vox, outdir):
     calm_l = 1 - sstep((dT - 0.6 * rT) / (0.6 * rT)); calm = np.maximum(calm, calm_l)
     # maw 2D (irregular lip), floor
     ms = ell_sd(X, Y, MAW_C, maw_ab, MAW_DEG)[0] + 10 * N['ovn'](X, Y, 0) + 4.0 * N['hf'](X, Y, 0) + 5 * N['hfine'](X, Y, 0)
-    Hc = 98.0 + 14 * N['hsel'](X, Y, 0) + 9.0 * sstep((MAW_C[1] - Y) / 60.0)       # lower lip heavier / sagging
+    Hc = 90.0 + 12 * N['hsel'](X, Y, 0) + 8.0 * sstep((MAW_C[1] - Y) / 60.0)       # lower lip heavier / sagging
     zr = Hc * np.sqrt(np.clip(1 - ((ms - 9.0) / 32.0) ** 2, 0, 1)); zr = np.where(ms < 41, zr, 0.0)
     zfloor = 9.0 + 10.0 * sstep((ms + 70.0) / 70.0) + 3 * N['hf'](X, Y, 0)
     calm = np.maximum(calm, np.where(ms > -8, sstep((58 - ms) / 40.0), 0.0))
@@ -479,11 +481,11 @@ def run(vname, vox, outdir):
         if k % 15 == 0: print(' layer', k, round(z, 1), round(time.time() - t0, 1), flush=True)
     # ---------------- headroom: 300 mm keep-out above each shelf footprint ----------------
     for sh in shelves:
-        i0 = int(np.searchsorted(xs, sh['xc'] - SHELF_W / 2)); i1 = int(np.searchsorted(xs, sh['xc'] + SHELF_W / 2, side='right'))
-        j0 = int(np.searchsorted(ys, sh['ys'])); j1 = int(np.searchsorted(ys, sh['ys'] + 300.0, side='right'))
+        i0 = int(np.searchsorted(xs, sh['xc'] - SHELF_W / 2 - 4.0)); i1 = int(np.searchsorted(xs, sh['xc'] + SHELF_W / 2 + 4.0, side='right'))
+        j0 = int(np.searchsorted(ys, sh['ys'])); j1 = int(np.searchsorted(ys, sh['ys'] + 304.0, side='right'))
         F[i0:i1, j0:j1, :] = -1.0
     # ---------------- eyes ----------------
-    eyes = place_and_apply_eyes(rng, F, xs, ys, zs, vox, pr['eyes'], X, Y, mq, ms, shelves, vox)
+    eyes = place_and_apply_eyes(rng, F, xs, ys, zs, vox, pr['eyes'], X, Y, mq, ms, shelves, vox, curves[:len(shelves)])
     meta['eyes'] = [{k_: (round(float(v_), 1) if not isinstance(v_, str) else v_) for k_, v_ in e.items()} for e in eyes]
     print('eyes', len(eyes), round(time.time() - t0, 1), flush=True)
     # ---------------- shelves ----------------
@@ -520,39 +522,47 @@ def run(vname, vox, outdir):
         if z > float(strut[:, 2].max()) + 30: break
         lf = strutset.field(np.concatenate([pp, np.full((len(pp), 1), z)], 1)).reshape(gx_.shape)
         lf = lf + 1.5 * N['rel'](gx_, gy_, z) * (lf > -5)
-        padf = np.minimum(FOOT_R - np.hypot(gx_ - foot[0], gy_ - foot[1]), 12.0 - z)
+        qx_, qy_ = np.abs(gx_ - foot[0]) - (PAD_HX - 8.0), np.abs(gy_ - foot[1]) - (PAD_HY - 8.0)
+        sdp = np.hypot(np.maximum(qx_, 0), np.maximum(qy_, 0)) + np.minimum(np.maximum(qx_, qy_), 0) - 8.0
+        padf = np.minimum(-sdp, 12.0 - z)
         lf = lse(lf, padf, 6.0) if z < 30 else lf
+        ab_ = tip - foot; tt_ = np.clip(((gx_ - foot[0]) * ab_[0] + (gy_ - foot[1]) * ab_[1] + (z - foot[2]) * ab_[2]) / (ab_ @ ab_), 0, 1)
+        dcore = np.sqrt((gx_ - foot[0] - tt_ * ab_[0]) ** 2 + (gy_ - foot[1] - tt_ * ab_[1]) ** 2 + (z - foot[2] - tt_ * ab_[2]) ** 2)
+        lf = np.maximum(lf, CORE_R - dcore)
         F[i0:i1, j0_:j1_, k] = np.maximum(F[i0:i1, j0_:j1_, k], lf.astype(np.float32))
-    meta['strut']['foot_pad_mm'] = 2 * FOOT_R
-    print('field done', round(time.time() - t0, 1), flush=True)
+        print('field done', round(time.time() - t0, 1), flush=True)
     np.save(os.path.join(outdir, vname + '_flow.npy'), flow_th(X, Y).astype(np.float32))
     aux = dict(calm=calm.astype(np.float32), maw_sd=ms.astype(np.float32), mq=mq.astype(np.float32))
     return F, xs, ys, zs, meta, t0, aux, eyes, teethset, (strut, s_r), curves
 
 
-def place_and_apply_eyes(rng, F, xs, ys, zs, vox, n_eyes, X, Y, mq, ms, shelves, v_):
+def place_and_apply_eyes(rng, F, xs, ys, zs, vox, n_eyes, X, Y, mq, ms, shelves, v_, arm_curves=()):
     solid = F > 0
     fe = np.argmin(solid, axis=2); fe = np.where(solid.all(axis=2), solid.shape[2], fe); fe = np.where(solid[:, :, 0], fe, 0)
     ztop = fe * vox; del solid
     slope = np.hypot(*np.gradient(ndi.gaussian_filter(ztop, 1.2), vox))      # eyes only on faces within ~45 deg of facing out
     ok = (mq > 2.4) & (ms > 55.0) & (np.abs(X) < 430) & (np.abs(Y) < 430)
     for sh in shelves:
-        ok &= ~((np.abs(X - sh['xc']) < SHELF_W / 2 + 70) & (Y > sh['ys'] - 340) & (Y < sh['ys'] + 310))
-    cand = ok & (ztop >= 30) & (ztop <= 118)
+        cxs = sh['xc'] + (50.0 if sh['side'] == 'L' else -50.0)       # no eyes in seat block + 100 mm, or on the plate
+        ok &= ~((np.abs(X - cxs) < 180.0) & (Y > sh['ys'] - 250) & (Y < sh['ys'] + 310))
+        ok &= ~((np.abs(X - sh['xc']) < SHELF_W / 2 + 20) & (Y > sh['ys'] - 340) & (Y < sh['ys'] + 310))
+    for c_ in arm_curves:                                              # no eyes on shelf-arm roots (+30 mm)
+        dd_, _ = cKDTree(c_[0][:, :2]).query(np.stack([X.ravel(), Y.ravel()], 1)); ok &= ~(dd_.reshape(X.shape) < c_[1].max() + 30.0)
+    cand = ok & (ztop >= 26) & (ztop <= 118)
     ci = np.argwhere(cand)
     print('eye candidates', len(ci), flush=True)
     if len(ci) == 0: return []
     placed = []
-    def try_place(i, j, R):
+    def try_place(i, j, R, sp=1.15, smax=1.0, zmin=20.0):
         pad = int(1.25 * R / vox) + 1
         i0, i1, j0, j1 = max(i - pad, 0), min(i + pad + 1, ztop.shape[0]), max(j - pad, 0), min(j + pad + 1, ztop.shape[1])
         gi, gj = np.meshgrid(np.arange(i0, i1), np.arange(j0, j1), indexing='ij')
         dm = np.hypot((gi - i) * vox, (gj - j) * vox) <= 1.25 * R
         sub = ztop[i0:i1, j0:j1][dm]
-        if sub.min() < 22 or (sub.max() - sub.min()) > 0.9 * R + 12 or slope[i0:i1, j0:j1][dm].max() > 0.85 or not ok[i0:i1, j0:j1][dm].all(): return False
+        if sub.min() < zmin or (sub.max() - sub.min()) > 0.9 * R + 12 or slope[i0:i1, j0:j1][dm].max() > smax or not ok[i0:i1, j0:j1][dm].all(): return False
         x, y = xs[i], ys[j]
         for e in placed:
-            if np.hypot(e['x'] - x, e['y'] - y) < 1.15 * (e['R'] + R) + 2: return False
+            if np.hypot(e['x'] - x, e['y'] - y) < sp * (e['R'] + R) + 2: return False
         zb = float(np.median(sub))
         placed.append(dict(x=float(x), y=float(y), R=float(R), zb=zb, lid_ang=float(rng.uniform(55, 125) if rng.random() < 0.7 else rng.uniform(-40, 220)),
                            cover=float(rng.choice([0.0, 0.0, 0.28, 0.45, 0.62, 0.78])), bag=float(rng.uniform(0.0, 0.32)),
@@ -571,10 +581,14 @@ def place_and_apply_eyes(rng, F, xs, ys, zs, vox, n_eyes, X, Y, mq, ms, shelves,
             px, py = cx + rng.normal(0, 46), cy + rng.normal(0, 46)
             i, j = int(round((px + HALF) / vox)), int(round((py + HALF) / vox))
             if 0 <= i < ztop.shape[0] and 0 <= j < ztop.shape[1] and cand[i, j] and try_place(i, j, rng.uniform(9.0, 16.0)): got += 1
-    for _ in range(3000):
+    for _ in range(20000):
         if len(placed) >= n_eyes: break
         i, j = ci[rng.integers(len(ci))]
         try_place(i, j, rng.uniform(10.0, 19.0))
+    for _ in range(40000):                                             # dense fill (heavy variants): smaller eyes, tighter packing, still on out-facing faces (slope <= 1.0)
+        if len(placed) >= n_eyes: break
+        i, j = ci[rng.integers(len(ci))]
+        try_place(i, j, rng.uniform(9.0, 13.0), sp=0.95, smax=1.0, zmin=18.0)
     for e in placed: apply_eye(F, xs, ys, zs, vox, e)
     return placed
 
@@ -709,9 +723,9 @@ if __name__ == '__main__':
     # headroom: vertices above the plate (beyond the 10 mm rim-lip allowance) inside the footprint x z-range
     eng['headroom'] = []
     for sh in shelves:
-        inb = (v2[:, 0] > sh['xc'] - SHELF_W / 2 + 2.5) & (v2[:, 0] < sh['xc'] + SHELF_W / 2 - 2.5) & (v2[:, 2] < sh['p']) & (v2[:, 1] > sh['ys'] + 10.0) & (v2[:, 1] < sh['ys'] + 300.0)
+        inb = (v2[:, 0] > sh['xc'] - SHELF_W / 2 + 2.5) & (v2[:, 0] < sh['xc'] + SHELF_W / 2 - 2.5) & (v2[:, 2] < sh['p']) & (v2[:, 1] > sh['ys'] + 12.0) & (v2[:, 1] < sh['ys'] + 300.0)
         clear = (float(v2[inb, 1].min() - sh['ys']) if inb.any() else None)
-        eng['headroom'].append(dict(top_y=sh['ys'], intruding_verts_above_10mm_lip=int(inb.sum()), clear_height_mm=clear if clear is not None else '>= 300 (none)'))
+        eng['headroom'].append(dict(top_y=sh['ys'], intruding_verts_above_12mm_lip=int(inb.sum()), clear_height_mm=clear if clear is not None else '>= 300 (none)'))
     # seat embed
     eng['seat_embed_depth_mm'] = SEAT_DEPTH
     # relief distribution (max z per 4 mm cell, cells with relief > 5 mm, excl. shelf plates region x<-250|x>250 above y of plates not separated)
@@ -731,7 +745,7 @@ if __name__ == '__main__':
         sl_ = np.abs(ax) < 3.0
         if sl_.any(): mind.append(float(np.linalg.norm(P_[sl_] - np.outer(ax[sl_], tan), axis=1).min()))
     eng['buttress'] = dict(min_core_diameter_mm=round(2 * min(mind), 1), median_diameter_mm=round(2 * float(np.median(mind)), 1),
-                           drop_mm=meta['strut']['drop_mm'], foot_pad_dia_mm=meta['strut']['foot_pad_dia_mm'], foot=meta['strut']['foot'])
+                           drop_mm=meta['strut']['drop_mm'], foot_pad_mm=meta['strut']['foot_pad_mm'], core_dia_mm=meta['strut']['core_dia_mm'], foot=meta['strut']['foot'])
     eng['eyes'] = dict(count=len(eyes), dia_mm_min=round(2 * min(e['R'] for e in eyes), 1) if eyes else None, dia_mm_max=round(2 * max(e['R'] for e in eyes), 1) if eyes else None,
                        iris_pit_dia_mm_min=round(min(e['R'] for e in eyes), 1) if eyes else None)
     eng['teeth'] = dict(count=len(meta['teeth']), broken=int(sum(t['broken'] for t in meta['teeth'])),

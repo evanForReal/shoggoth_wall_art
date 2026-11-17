@@ -73,8 +73,8 @@ mk = meta['mask']; dx, dy = x - mk['centre'][0], y - mk['centre'][1]
 mq = np.sqrt((dx / mk['semi'][0]) ** 2 + (dy / mk['semi'][1]) ** 2)
 mw = (1 - sstep((mq - 1.0) / 0.06)) * (z > 20)
 stain = np.clip(0.55 * sstep(n3(x * 0.6, y * 0.25, z * 0.2) * 0.8 + 0.1) * (0.4 + 0.6 * sstep((-dy / mk['semi'][1] + 0.3) / 1.0)) * (0.5 + meta['mask']['weather']), 0, 0.7)
-bone = np.array([0.86, 0.80, 0.66]) * (0.55 + 0.45 * (1 - sstep(cav / 3.0)))[:, None] * (1 - stain)[:, None] + np.array([0.45, 0.30, 0.14]) * stain[:, None]
-bone = bone * (1 - 0.65 * sstep(depth / 28.0))[:, None]
+bone = np.array([0.92, 0.86, 0.72]) * (0.55 + 0.45 * (1 - sstep(cav / 3.0)))[:, None] * (1 - stain)[:, None] + np.array([0.45, 0.30, 0.14]) * stain[:, None]
+bone = bone * (1 - 0.28 * sstep(depth / 50.0))[:, None]
 col = col * (1 - mw[:, None]) + bone * mw[:, None]
 col = np.clip(col, 0, 1) ** 2.2
 print('colours done', flush=True)

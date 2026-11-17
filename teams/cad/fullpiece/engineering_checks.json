@@ -64,7 +64,34 @@
      ],
      "extent_z_mm": 297.1
     }
-   ]
+   ],
+   "headroom": [
+    {
+     "top_y": 250.5,
+     "intruding_verts_above_10mm_lip": 0,
+     "clear_height_mm": ">= 300 (none)"
+    },
+    {
+     "top_y": 170.5,
+     "intruding_verts_above_10mm_lip": 978,
+     "clear_height_mm": 10.0
+    },
+    {
+     "top_y": -89.5,
+     "intruding_verts_above_10mm_lip": 60780,
+     "clear_height_mm": 10.0
+    }
+   ],
+   "relief_mm": {
+    "mean": 48.8,
+    "p10": 17.7,
+    "p50": 42.5,
+    "p90": 90.1,
+    "std": 29.1,
+    "max": 293.4,
+    "covered_cells": 21175
+   },
+   "_remeasured_note": "headroom/relief back-filled 2026-11-16 (RP-2) from the retained mesh by fullpiece_v2/measure.py; headroom counts verts inside the footprint x range (-2.5 mm), z < p, 10 mm above the flat to 300 mm above"
   },
   "volume_cm3_solid": 17452.1,
   "mass_g_PETG_solid_upper_bound": 22164.0,
@@ -239,7 +266,34 @@
      ],
      "extent_z_mm": 297.1
     }
-   ]
+   ],
+   "headroom": [
+    {
+     "top_y": 250.5,
+     "intruding_verts_above_10mm_lip": 0,
+     "clear_height_mm": ">= 300 (none)"
+    },
+    {
+     "top_y": 170.5,
+     "intruding_verts_above_10mm_lip": 978,
+     "clear_height_mm": 10.0
+    },
+    {
+     "top_y": -89.5,
+     "intruding_verts_above_10mm_lip": 60780,
+     "clear_height_mm": 10.0
+    }
+   ],
+   "relief_mm": {
+    "mean": 49.1,
+    "p10": 17.7,
+    "p50": 42.7,
+    "p90": 90.2,
+    "std": 29.2,
+    "max": 293.4,
+    "covered_cells": 21032
+   },
+   "_remeasured_note": "headroom/relief back-filled 2026-11-16 (RP-2) from the retained mesh by fullpiece_v2/measure.py; headroom counts verts inside the footprint x range (-2.5 mm), z < p, 10 mm above the flat to 300 mm above"
   },
   "volume_cm3_solid": 17477.0,
   "mass_g_PETG_solid_upper_bound": 22196.0,
@@ -414,7 +468,34 @@
      ],
      "extent_z_mm": 297.1
     }
-   ]
+   ],
+   "headroom": [
+    {
+     "top_y": 250.5,
+     "intruding_verts_above_10mm_lip": 0,
+     "clear_height_mm": ">= 300 (none)"
+    },
+    {
+     "top_y": 170.5,
+     "intruding_verts_above_10mm_lip": 964,
+     "clear_height_mm": 10.0
+    },
+    {
+     "top_y": -89.5,
+     "intruding_verts_above_10mm_lip": 58506,
+     "clear_height_mm": 10.0
+    }
+   ],
+   "relief_mm": {
+    "mean": 51.1,
+    "p10": 18.1,
+    "p50": 44.6,
+    "p90": 93.3,
+    "std": 30.5,
+    "max": 293.4,
+    "covered_cells": 21345
+   },
+   "_remeasured_note": "headroom/relief back-filled 2026-11-16 (RP-2) from the retained mesh by fullpiece_v2/measure.py; headroom counts verts inside the footprint x range (-2.5 mm), z < p, 10 mm above the flat to 300 mm above"
   },
   "volume_cm3_solid": 18348.2,
   "mass_g_PETG_solid_upper_bound": 23302.0,
@@ -589,7 +670,34 @@
      ],
      "extent_z_mm": 295.3
     }
-   ]
+   ],
+   "headroom": [
+    {
+     "top_y": 250.5,
+     "intruding_verts_above_10mm_lip": 0,
+     "clear_height_mm": ">= 300 (none)"
+    },
+    {
+     "top_y": 170.5,
+     "intruding_verts_above_10mm_lip": 782,
+     "clear_height_mm": 10.0
+    },
+    {
+     "top_y": -89.5,
+     "intruding_verts_above_10mm_lip": 69610,
+     "clear_height_mm": 10.0
+    }
+   ],
+   "relief_mm": {
+    "mean": 48.5,
+    "p10": 18.3,
+    "p50": 39.9,
+    "p90": 90.6,
+    "std": 29.2,
+    "max": 295.3,
+    "covered_cells": 21490
+   },
+   "_remeasured_note": "headroom/relief back-filled 2026-11-16 (RP-2) from the retained mesh by fullpiece_v2/measure.py; headroom counts verts inside the footprint x range (-2.5 mm), z < p, 10 mm above the flat to 300 mm above"
   },
   "volume_cm3_solid": 17691.4,
   "mass_g_PETG_solid_upper_bound": 22468.0,
@@ -764,7 +872,34 @@
      ],
      "extent_z_mm": 289.7
     }
-   ]
+   ],
+   "headroom": [
+    {
+     "top_y": 120.5,
+     "intruding_verts_above_10mm_lip": 2991,
+     "clear_height_mm": 10.1
+    },
+    {
+     "top_y": 290.5,
+     "intruding_verts_above_10mm_lip": 0,
+     "clear_height_mm": ">= 300 (none)"
+    },
+    {
+     "top_y": -129.5,
+     "intruding_verts_above_10mm_lip": 33203,
+     "clear_height_mm": 45.8
+    }
+   ],
+   "relief_mm": {
+    "mean": 46.1,
+    "p10": 17.2,
+    "p50": 37.6,
+    "p90": 88.6,
+    "std": 28.8,
+    "max": 277.5,
+    "covered_cells": 23318
+   },
+   "_remeasured_note": "headroom/relief back-filled 2026-11-16 (RP-2) from the retained mesh by fullpiece_v2/measure.py; headroom counts verts inside the footprint x range (-2.5 mm), z < p, 10 mm above the flat to 300 mm above"
   },
   "volume_cm3_solid": 17581.8,
   "mass_g_PETG_solid_upper_bound": 22329.0,
