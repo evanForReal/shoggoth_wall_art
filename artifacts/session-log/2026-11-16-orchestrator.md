@@ -197,6 +197,8 @@ Waiting on: Evan's round-07 issue.
 Why: Evan's top note on the leading study asks for gothic/Beksiński character, which a smooth silhouette can't show; and "squid like" is a material/form read, not an outline. Same CAD agent (it built the figure engine; keeping it beats re-onboarding). Gate: G1 studies IoU >= 0.60 (s.4.1); G2/G4 use verdict_excl_iou.
 Alternative rejected: pure silhouette round 2 — would leave "squid like" and "gothic" unaddressed for another round.
 
+**SL-59** · 12:35 · Evan: issue #8 is a dupe of #7, remove it. Closed #8 on GitHub (state_reason duplicate, duplicate_of 7, comment with footer); removed the #8 reference from review/verdicts/round-07.json. DECISIONS r07 row left as written (append-only; its "#8 identical resubmission" note is accurate). · `[Evan]`
+
 ---
 *Edit log*
 
@@ -219,3 +221,4 @@ Alternative rejected: pure silhouette round 2 — would leave "squid like" and "
 | 2026-11-17 | orchestrator | Appended SL-52..53 (owner fixes, mask size) | docs-reviewer (verified, factual claims only: 2840b57 exists (CAD numbers, RP-3 vote, liaison counter-signature) and 277ab7c exists (DESIGN_PRINCIPLES reconciliation, feature-references, gate README + sensitivity_sweep.py, SL-52..53); DESIGN s.4.1 sets IoU 0.60 start, ratchet 0.70 then 0.85; DESIGN s.5 mask 150 x 190 mm; feature-references D >= 230 mm at 0.065 D = 15 mm; CAD README s.4 item 1 'D = 200 mm' (D 230 = 4.97% fails #3, D 200 = 3.76%); 0.065 x 200 = 13 mm, 2 mm under 15 mm. Not assessed: the 'I concur' and mask-size decision (judgment)) |
 | 2026-11-17 | orchestrator | Appended SL-54 (sign-off state, carried items) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-55..58 (r07 backprop, interpretations, r08 plan) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Appended SL-59 (issue #8 closed as duplicate) | [PROVISIONAL] |

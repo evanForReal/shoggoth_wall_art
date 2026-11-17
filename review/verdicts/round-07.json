@@ -1,12 +1,7 @@
 {
   "source": {
     "issue": 7,
-    "url": "https://github.com/evanForReal/shoggoth_wall_art/issues/7",
-    "duplicate": {
-      "issue": 8,
-      "url": "https://github.com/evanForReal/shoggoth_wall_art/issues/8",
-      "note": "identical verdict JSON, resubmitted 2026-11-17T12:32Z"
-    }
+    "url": "https://github.com/evanForReal/shoggoth_wall_art/issues/7"
   },
   "round": "round-07",
   "reviewed": "2026-11-17",
