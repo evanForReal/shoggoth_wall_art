@@ -232,6 +232,8 @@ Fix: added S5 (A exactly, minus crown, shelf arms → weight-ladder tentacles, c
 
 **SL-71** · 20:49 · My read of S6: mouth now reads vicious at full view (pale fangs against a dark slot); the 66 mm slit eye lands; body still smooth between ribs (cartoon edge, disclosed); clouded eye reads as a white bead. Round-09 staged: S6, S5, S1, S2 + A reference (front + tq diptychs). Notes lead with the vote + standing sketch ask (Evan: ask every round, never wait); Canva credit status disclosed. Teeth tilted below the wall plane are print overhangs — flagged for the build stage, not the board. · `[judgment]`
 
+**SL-72** · 23:52 · Round-09 deployed on Evan's tap: staging → review/rounds/round-09, main fast-forwarded to 6f4bc6c (ancestor check passed), ping sent (vote, sketch ask without waiting, Canva credit status). Canva attempt log moved out of the round folder to teams/aesthetics/analysis/round-09-cards/. · `[Evan]`
+
 ---
 *Edit log*
 
@@ -264,3 +266,4 @@ Fix: added S5 (A exactly, minus crown, shelf arms → weight-ladder tentacles, c
 | 2026-11-17 | orchestrator | Appended SL-69 (Canva quota, 3D round-09) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-70 (r09 read, S5/S6 added) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-71 (S6 read, round-09 staged) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Appended SL-72 (round-09 deploy) | [PROVISIONAL] |

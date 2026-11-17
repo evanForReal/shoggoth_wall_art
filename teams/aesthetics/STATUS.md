@@ -5,7 +5,7 @@
 
 ## Exec Summary (newest first)
 
-- 2026-11-17: Round-09 staged (review/staging/round-09/): S6/S5 (r08 A minus crown + weight-ladder tentacles, fangs, eyes), S1 fan, S2 reach, A reference. Canva approved (~10 images) but account has no credits.
+- 2026-11-17: Round-09 DEPLOYED (main 6f4bc6c, Evan pinged; awaiting verdicts). Staged as (review/staging/round-09/, now review/rounds/round-09/): S6/S5 (r08 A minus crown + weight-ladder tentacles, fangs, eyes), S1 fan, S2 reach, A reference. Canva approved (~10 images) but account has no credits.
 - 2026-11-17: R08 verdicts in (issue #9: 0/2/2). A "extreme improvement" but no crown (comical), distinct tentacles, better flow to shelves; B too crowded; c01 demoted ("try one of the other preferred concepts"). Recenter: tentacled, horrific, octopus-like, vicious mouth, disturbing asymmetric unhealthy eyes. ROUND-09 BLOCKED on Evan's sketches.
 - 2026-11-17: Round-08 DEPLOYED (main 8195932, Evan pinged; awaiting verdicts). Staged as (review/staging/round-08/, now review/rounds/round-08/): 3 character passes on the G1a pose (A/B horn-spire crown + ribbed trunk + jagged maw, C root-curl crown) + c01. Notes ask crown choice and 3D-vs-concept-art (Canva credits).
 - 2026-11-17: R07 verdicts in (issue #7/#8: 0/5/2) — composition-first works. G1a "definitely has potential" (fix squid-like, make gothic/Beksiński, no base that could sit flat); no two-legged look; vertical maw locked; G2a, G4a, c01 liked. Round-08 = composition round 2 with first character pass.
@@ -83,3 +83,4 @@
 | 2026-11-17 | orchestrator | Round-08 deployed (exec line) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | R08 backprop: exec line, r08 takeaway | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Round-09 staged (exec line) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Round-09 deployed (exec line) | [PROVISIONAL] |
