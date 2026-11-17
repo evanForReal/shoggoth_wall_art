@@ -637,14 +637,14 @@ def eye_fields(e, gx, gy):
     return u, v2, ap, foot, np.where(ap, ball, lid)
 
 
-def place_and_apply_eyes(rng, F, xs, ys, zs, vox, n_eyes, X, Y, mq, ms, shelves, arm_curves=(), c_body=(-60.0, 10.0), rmax=240.0):
+def place_and_apply_eyes(rng, F, xs, ys, zs, vox, n_eyes, X, Y, mq, ms, shelves, arm_curves=(), c_body=(-60.0, 10.0), rmax=300.0):
     """15-30 almond/slit eyes clustered irregularly on the BODY MASS (between mask and maw, around tentacle roots), on out-facing faces only."""
     solid = F > 0
     fe = np.argmin(solid, axis=2); fe = np.where(solid.all(axis=2), solid.shape[2], fe); fe = np.where(solid[:, :, 0], fe, 0)
     ztop = fe * vox; del solid
     zsm = ndi.gaussian_filter(ztop, 1.2)
     slope = np.hypot(*np.gradient(zsm, vox))
-    ok = (mq > 2.1) & (ms > 55.0) & (np.hypot(X - c_body[0], Y - c_body[1]) < rmax) & (np.abs(X) < 430) & (np.abs(Y) < 430)
+    ok = (mq > 1.95) & (ms > 52.0) & (np.hypot(X - c_body[0], Y - c_body[1]) < rmax) & (np.abs(X) < 430) & (np.abs(Y) < 430)
     for sh in shelves:
         cxs = sh['xc'] + (50.0 if sh['side'] == 'L' else -50.0)
         ok &= ~((np.abs(X - cxs) < 180.0) & (Y > sh['ys'] - 250) & (Y < sh['ys'] + 310))
