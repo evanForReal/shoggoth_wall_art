@@ -149,6 +149,11 @@ Shelf rule: 3 flat tops >= 150 mm, >= 300 mm headroom, non-collinear; arrangemen
 - Item 8 stop rule accepted: two composition rounds without a rising like-rate → escalate to Evan for a sketch / pick-from-spread session.
 Lead votes requested from the CAD lead (in flight); majority needs 1 more vote.
 
+**SL-45** · 02:30 · Composition gate landed (4111ef4); re-ran it on the r06 hero myself (exit 1 = FAIL, as reported). Gate is silhouette-only. · `[judgment]`
+
+**SL-46** · 02:30 · First r07 study G1a passes 6/7 gate metrics but, to my eye, reads as a cute mascot octopus (small head on a pinched neck, hollow donut torso, equal rubbery limbs from one hub, curly tips) — collides with r02 no-chibi and r04 less-octopus. The gate cannot see "cute": a passing gate is necessary, not sufficient; Orchestrator visual read stays in the loop. Sent CAD c01-structure corrections (no neck; head embedded in a tall bulky trunk; limbs rooted at staggered heights with varied weights; maw as recess inside the trunk; fewer curls; asymmetry). G1a kept for comparison. · `[judgment]`
+Open question for later: value-blocked smooth renders may themselves read "plush" to Evan regardless of form; consider flat silhouette + single-value mask cards, or a light grain pass, when assembling the board.
+
 ---
 *Edit log*
 
@@ -164,3 +169,4 @@ Lead votes requested from the CAD lead (in flight); majority needs 1 more vote.
 | 2026-11-17 | orchestrator | Appended SL-38..40 (r06 backprop, method change, audit 3) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-41..42 (principles adopted, fresh CAD for r07) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-43..44 (audit-3 findings owned, RP-3 vote) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Appended SL-45..46 (gate, G1a read) | [PROVISIONAL] |
