@@ -199,6 +199,11 @@ Alternative rejected: pure silhouette round 2 — would leave "squid like" and "
 
 **SL-59** · 12:35 · Evan: issue #8 is a dupe of #7, remove it. Closed #8 on GitHub (state_reason duplicate, duplicate_of 7, comment with footer); removed the #8 reference from review/verdicts/round-07.json. DECISIONS r07 row left as written (append-only; its "#8 identical resubmission" note is accurate). · `[Evan]`
 
+**SL-60** · 13:31 · My read of round-08 (contact sheet, before weighing CAD's self-assessment): WINS — smiley now reads as the iconic emoticon; vertical maw; G1a_ii's hanging cascade answers "no base that sits flat". MISSES — the new ogive (pointed) hood makes the trunk read as a squid mantle / bullet, AMPLIFYING Evan's "a bit squid like"; limbs lost the wide reach of r07 G1a (the silhouette Evan liked) — now a narrow trunk with shelf boards on stalks; Voronoi-like lace webs read decorative, not organic; maw grew back toward a donut; shelves still slabs with pegs. CAD's own self-assessment agrees ("hooded bullet figure", "not Beksiński"). · `[judgment]`
+
+**SL-61** · 13:31 · DECISION: round-08 NOT boarded; one more internal pass (r08b). Brief: start from r07 G1a's skeleton (the liked silhouette) as a hard input — keep limb paths, reach and shelf positions; change ONLY (1) lower body → G1a_ii-style hanging cascade, (2) head top → no pointed hood: mask embedded in the trunk's upper face with root/strand mass rising and spreading above it (c01), (3) limbs dressed as strand bundles following the r07 paths, (4) webs organic: irregular stretched holes following strand flow, not cellular lattice, (5) maw ~1.0-1.2x mask area, flesh-rich around it, (6) shelf undersides gripped by root fingers. Gate + silhouette IoU vs r07 G1a mask >= 0.75 (stay close to what Evan liked). Fresh CAD agent: the r07/r08 agent is at ~520k tokens context and introduced the hood; anchoring and cost both argue fresh. G2a/G4a parked (liked, no notes) until G1 is resolved. · `[judgment]`
+Alternative rejected: board r08 now and let Evan steer — I can already name the main defect (hood = squid), and a known-defect board burns a stop-rule round.
+
 ---
 *Edit log*
 
@@ -222,3 +227,4 @@ Alternative rejected: pure silhouette round 2 — would leave "squid like" and "
 | 2026-11-17 | orchestrator | Appended SL-54 (sign-off state, carried items) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-55..58 (r07 backprop, interpretations, r08 plan) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-59 (issue #8 closed as duplicate) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Appended SL-60..61 (r08 read, r08b pass) | [PROVISIONAL] |
