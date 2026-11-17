@@ -34,6 +34,8 @@ Back plane: vertices with z < 3 mm span 0.0-3.0 mm because strand cross-sections
 
 Cleat hard-points: three seat zones reserved and filled solid (160 mm wide x 150 mm tall under each plate, on the body side, z 0-16 mm); coordinates in `engineering_checks.json` (`shelves[].seat_zone`). Shear-fastener boss on the foot pad is not modelled.
 
+> RP-2 note (2026-11-16): the headroom intrusion counts and relief figures quoted in this section (e.g. S2 884, S3 62,315; mean 50 / P10-P90 19/44/92 / max 132) had no JSON source and are superseded. Re-measured from the retained meshes, they are in `engineering_checks.json` (`engineering.headroom`, `engineering.relief_mm`; method `../fullpiece_v2/measure.py`). Use those.
+
 ## 4. Constraints NOT honored (or only partly)
 
 1. **v3 bbox 918 x 919 mm** exceeds 914 x 914. Whip centrelines were clipped at +-425 mm but skirts and tube radius push past. Needs a hard clip in the print-res pass; hero, v1, v2, v4 are inside.
