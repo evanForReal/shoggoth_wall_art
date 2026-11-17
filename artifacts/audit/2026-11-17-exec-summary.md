@@ -26,7 +26,7 @@ G / Y / R. Evidence per cell in the sections below. Cycle 2 for comparison: 11 Y
 | Fabrication | G | Y | n/a | G | Y |
 | Orchestration / process | Y | Y | G | Y | Y |
 
-Cycle 3: 1 R, 12 Y. Movement vs cycle 2: CAD R4 Y to G, CAD R5 Y to G, Aesthetics R2 Y to G, Fabrication R1 held G, CAD R1 Y to R, CAD R3 G to Y, Process R1 G to Y.
+Cycle 3: 1 R, 13 Y (matrix: Aesthetics 2, Structural 3, CAD 2, Fabrication 2, Orchestration 4). Movement vs cycle 2: CAD R4 Y to G, CAD R5 Y to G, Aesthetics R2 Y to G, Fabrication R1 held G, CAD R1 Y to R, CAD R3 G to Y, Process R1 G to Y.
 
 ### Aesthetics
 
