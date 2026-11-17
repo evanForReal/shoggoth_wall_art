@@ -130,6 +130,11 @@ Risk: a silhouette board may read as regress after six rounds. Mitigation: board
 
 **SL-40** · ~03:00 · Audit cycle 3 started now (charter: one per round). Scoped to R1 drift r05-r06 and whether the CAD pipeline can reach the vision at all. · `[judgment]`
 
+**SL-41** · ~03:25 · DESIGN_PRINCIPLES.md landed and committed (0a33441); added to CLAUDE.md map. Its key finding I'm adopting: r06 failed on POLARITY + SIMILARITY (mask and maw both pale-rimmed circles stacked = two dials), not size; "clockwork" = plank shelves + gear-like finger crown + even spacing + E/F furniture silhouette + no body mass. Also: our render wall (~30% lum) is brighter than c01's (~12%) — every render so far was lit against us. · `[judgment]`
+
+**SL-42** · ~03:25 · Round-07 composition build given to a FRESH CAD agent, not the v1-v2.1 agent. Why: that agent's ~430k-token context is saturated with the feature-union approach the principles doc identifies as the failure; anchoring risk outweighs its context. Method instruction: body as a FIGURE (gesture spline → swept/skinned body → limbs as continuous tapered sweeps rooted in it), no surface detail, value-blocked renders, 8 studies = gestures G1-G4 x 2, doc checklist #1-13 scripted per study; fail >= 3 → fix before report. Started before the audit verdict on method: silhouettes are cheap, and the audit can still redirect the detail stage. · `[judgment]`
+Shelf rule: 3 flat tops >= 150 mm, >= 300 mm headroom, non-collinear; arrangement A (r05 "placement" praise) is NOT enforced — composition wins, deviations disclosed on the board. `[judgment]` — Evan's praise was for a shelf layout he didn't know was unusable (SL-29).
+
 ---
 *Edit log*
 
@@ -143,3 +148,4 @@ Risk: a silhouette board may read as regress after six rounds. Mitigation: board
 | 2026-11-17 | orchestrator | Appended SL-36 (round-06 sign-off corrections) | docs-reviewer (verified, factual claims only: manifest edits listed in SL-36 match git diff 9390773 c98627b (two gaps added plus overhangs and 25 target, saliva to throat strands, 'our read', sheet title); edit-log rows exist in each CAD file; round-06 absent from review-app/ so manifest was undeployed. Cosmetic, signed through: 'no numbers changed' is loose, whip % (under 60 to 45-65) and render count (15 to 11) were corrected, no measured value changed. Judgment (editing review/rounds/round-06 pre-deploy vs CLAUDE.md DO-NOT-EDIT) not assessed; no body [PROVISIONAL] tag belongs to this row) |
 | 2026-11-17 | orchestrator | Appended SL-37 (round-06 deploy) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-38..40 (r06 backprop, method change, audit 3) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Appended SL-41..42 (principles adopted, fresh CAD for r07) | [PROVISIONAL] |
