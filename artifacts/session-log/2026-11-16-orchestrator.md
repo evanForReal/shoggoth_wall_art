@@ -209,6 +209,10 @@ Alternative rejected: board r08 now and let Evan steer — I can already name th
 **SL-63** · 14:32 · Tried Canva generate-image for 2D Beksiński concepts of G1a (audit's A+C→B route). Blocked by the session's permission classifier (spends credits). Did not work around it; asked Evan. Evan chose "One more 3D pass first" over concept generation, boarding r08b as-is, or sketching. · `[Evan]`
 r08c brief (same agent as r08b, which holds the build context): crown = few thick tapering root tines arching up/out (gothic spires), no curls/ringlets; webs = thin membranes with curved catenary edges strung between strands, flow-aligned holes, no rectangular panels; maw rim jagged, asymmetric, bone/rib-edged — no rolled symmetric lips; trunk narrower/taller (gate torso band) with vertical strand ribbing, no smooth egg; mask rim swallowed by flesh/roots, not a sticker. IoU vs r07 G1a relaxed 0.75 → 0.70 to allow the narrower trunk. Two densities. · `[judgment]`
 
+**SL-64** · 15:00 · My read of r08c: most gothic body yet (narrow ribbed trunk, jagged off-centre maw, gate torso band met), cascade good; the horn tines make the head read "devil emoji"; still not Beksiński (smooth flesh, nothing eroded). · `[judgment]`
+
+**SL-65** · 15:00 · Round-08 board staged per Evan's "one more 3D pass first" (pass done → board). 4 cards: A = r08c medium, B = r08c dense, C = r08b medium (other crown/maw treatment), c01 ref. Front + three-quarter diptychs (no notan — this round is about character, not outline). Notes lead (< 200 chars) with the two questions: crown treatment, and continue 3D vs approve Canva credits for concept art (the method decision belongs to Evan, SL-63). G2a/G4a parked, disclosed. Unsigned CAD write-ups named per the unsigned-source rule. Stop-rule clock: this is composition round 2 of 2 — if the like rate does not hold, escalate per RP-3 item 8. · `[judgment]`
+
 ---
 *Edit log*
 
@@ -234,3 +238,4 @@ r08c brief (same agent as r08b, which holds the build context): crown = few thic
 | 2026-11-17 | orchestrator | Appended SL-59 (issue #8 closed as duplicate) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-60..61 (r08 read, r08b pass) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-62..63 (r08b read, Canva blocked, Evan: one more 3D pass) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Appended SL-64..65 (r08c read, round-08 staged) | [PROVISIONAL] |

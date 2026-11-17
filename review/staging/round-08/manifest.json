@@ -1,0 +1,41 @@
+{
+  "round": "round-08",
+  "title": "Shoggoth wall art — round 08: character on your G1a pose",
+  "created": "2026-11-17",
+  "issue_repo": "evanForReal/shoggoth_wall_art",
+  "notes": "Your G1a pose, now with character. Vote A/B/C. In notes: crown = horn spires (A/B) or root curls (C)? And keep going in 3D, or approve Canva credits for Beksiński concept art first? ··· What changed from r07 G1a: no base that could stand — the lower body hangs as a root cascade; no two legs; vertical maw; iconic carved smiley; limbs as root/sinew bundles with webbing; shelves gripped by root fingers, 300 mm clear above each. Our honest read: A/B are the most gothic bodies yet (narrow ribbed trunk, jagged off-centre maw) but the horn crown leans 'devil emoji'; C's curly crown leans 'hair'. None is Beksiński yet — the flesh is smooth and nothing looks eroded; procedural 3D struggles there, which is why we ask about concept art. No hands, teeth detail or eyes yet. Diagonal (G2a) and ribbon (G4a), which you liked, are parked until this pose is settled. Not yet peer-signed: the CAD write-ups for these passes (composition_r08b, composition_r08c).",
+  "cards": [
+    {
+      "id": "a",
+      "image": "images/A.jpg",
+      "axis": "character",
+      "title": "A — horn-spire crown, ribbed trunk, jagged maw",
+      "rationale": "Narrower, taller ribbed trunk; a jagged asymmetric maw with rib edges; thick tapering spires behind the smiley; webs sag between strands; hanging root cascade, no stance.",
+      "source": "generated in-house (composition_r08c, G1a_b)"
+    },
+    {
+      "id": "b",
+      "image": "images/B.jpg",
+      "axis": "character",
+      "title": "B — same as A, denser roots and webs",
+      "rationale": "A's body with more spires, more strands and more webbing — the density question.",
+      "source": "generated in-house (composition_r08c, G1a_c)"
+    },
+    {
+      "id": "c",
+      "image": "images/C.jpg",
+      "axis": "character",
+      "title": "C — root-curl crown, rounder trunk (earlier pass)",
+      "rationale": "The earlier character pass: curling root crown, wider smooth trunk, a softer lipped maw, torn-web panels. Shown so you can pick between the two crown/maw treatments.",
+      "source": "generated in-house (composition_r08b, G1a_b)"
+    },
+    {
+      "id": "ref",
+      "image": "images/c01_ref.jpg",
+      "axis": "reference",
+      "title": "c01 — the north star",
+      "rationale": "The lace-root Beksiński character we are still short of. Like = keep aiming here.",
+      "source": "round-04 c01"
+    }
+  ]
+}
