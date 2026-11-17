@@ -104,6 +104,8 @@ Risk: this pulls back toward v1's texture, which r05 h2 said went "all in" on te
 - (b) Aesthetics headroom wording ~160 → ~12 mm, citing SL-29.
 - (c) Fabrication heightfield numbers: the scratch script and both heightfield arrays survived. Wrote teams/fabrication/analysis/heightfield/heightfield_check.py (build + stats modes) and committed its JSON output; it reproduces every value in the rp2-blind-pockets s.3 table exactly. Corrected "85-90%" → "84-86%". The .npy inputs are NOT committed (1.4 MB each, regenerable from the gitignored preview STLs via `build`).
 
+**SL-33** · 00:55 · Container restart killed the v2.1 CAD worker early (generator edited, 0 renders). Its transcript survived, so I committed its last generator edit (1a058b5) and resumed the same agent rather than spawning fresh; it keeps the full v2/v2.1 context and briefs. Told it to render one hero_front first and PIL-validate, so a second interruption leaves something viewable. · `[judgment]`
+
 ---
 *Edit log*
 
@@ -112,3 +114,4 @@ Risk: this pulls back toward v1's texture, which r05 h2 said went "all in" on te
 | 2026-11-16 | orchestrator | Created; backfill SL-01..06; live SL-07..14 | docs-reviewer (verified: SL-08 against gate2/validation_sculpt.json: incl void area <6 mm 0.222 to 0.3295 (0.330), interior ridge P5 1.16 to 0.75, interior ridge thin fraction 0.0752 to 0.1359; `git show 3e58215` in-place row edit confirmed; "no net min-wall thinning" present in CAD STATUS at 0671872; SL-02 seat 16 mm and 22 kg match engineering_checks.json and structural analysis; SL-11/SL-12 match AGENTS.md and DECISIONS header; SL-13 review/verdicts exists; append-only: no removed lines since 0671872. Judgment not assessed. Cosmetic, signed through: stamped times SL-07..16 (16:45-16:55) postdate the git author date of 0671872 (16:24); times are approximate, clocks disagree) |
 | 2026-11-17 | orchestrator | Appended SL-15..30 (live) | docs-reviewer (verified: SL-29 against fullpiece/engineering_checks.json hero headroom S2 and S3 = 12.0 mm, v2 hero shelf tops 344.5/170.5/-109.5 vs v1 250.5/170.5/-89.5 = S1 +94 mm, S3 -20 mm, all >= 300 mm clear; hashes 16cf3a8, 4c7f658, 4dd6f70, ca9747f, 0671872 exist; SL-18 re-ran tools/verify_tallies.py 5/5 PASS rc 0; SL-17 teams/cad/.gitignore exists; SL-19 4 of 7 matches f1f688c and rp2-blind-pockets.md s7; append-only since 0671872. Judgment not assessed. Cosmetic, signed through: SL-15 "81 to 45 content lines" is 83 to 46 lines incl blanks (62 to 30 non-blank); SL-19 conflicts with DECISIONS "5 of 7", flagged on the DECISIONS row) |
 | 2026-11-17 | orchestrator | Appended SL-31..32 (sign-off pass, flag resolutions) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Appended SL-33 (restart recovery) | [PROVISIONAL] |
