@@ -91,9 +91,16 @@ Pending: whether v4_weathered / v2_eyes_heavy address these; decide board-as-is 
 **SL-28** · 00:50 · Viewed hero_rake + v2_eyes_heavy. Update to SL-26: the mask close-up is better than the front view suggested — weathered surface, cracked smile line, finger-like tendrils gripping the rim; that's close to the SL-04 target at close range. The eyes problem is confirmed and WORSE in v2_eyes_heavy (more suckers, more octopus). · `[judgment]`
 **Leaning (not yet acted on):** one more CAD pass (v2.1) BEFORE boarding: (1) eyes → lidded almond/slit eyes with iris + pupil recess, so they read as eyes not suckers, clustered on the body mass as well as tentacle roots; (2) restore Gate-2 grain on flesh (v1 had it; v2 dropped it); (3) palette back toward ochre/bone/rust from saturated orange-pink; (4) shelves and buttress less bracket-like. Why: a board where a core Evan directive (eyes) visibly isn't met spends a round on a known defect; r05 already cost 10 dislikes. Against: another 5h-limit window of delay. Decide after the worker's self-assessment arrives.
 
+**SL-29** · 01:10 · Correction to SL-02: v1's shelf headroom failure was worse than I had stated — re-measured from retained meshes, S2 and S3 clear only ~12 mm (not ~160 mm, which was the v1 README's unsourced figure). So Evan praised a shelf layout where two of three shelves were essentially unusable for plants. v2 restores >= 300 mm on all shelves at the cost of moving S1 up 94 mm and S3 down 20 mm; the board must say so. · `[error]` (corrects SL-02)
+
+**SL-30** · 01:10 · DECISION: v2 NOT boarded; v2.1 pass first. CAD's self-grades (tentacles C+, cohesion C+, eyes "some read as warts") agree with SL-26/28. Deciding evidence: the variants_sheet — next to c01, v2 is a compact stacked-ring cartoon in saturated orange with sucker rows, and the 5 variants are indistinguishable at board size. · `[judgment]`
+v2.1 brief (priority order): eyes read as eyes (almond lids, shader iris, clustered on body, no sucker rows) → restore Gate-2/c01 texture + inter-tentacle webbing → c01 sprawl filling ~80% of envelope → desaturated Beksiński palette, darker maw lips → root-grip shelves + textured buttress blending into arm → deeper smile within fab V rule → solid proxy <= 25 kg. Variants cut to 3 that differ visibly (masquerade, tentacle count, maw size); eyes_heavy and weathered dropped as indistinguishable.
+Risk: this pulls back toward v1's texture, which r05 h2 said went "all in" on texture at the expense of form. Mitigation: texture on a sprawl with a clear mask/maw/eyes hierarchy, calmer muscle bellies. Evan never saw v2; v2 stays committed (4c7f658) and can be boarded on request.
+
 ---
 *Edit log*
 
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
 | 2026-11-16 | orchestrator | Created; backfill SL-01..06; live SL-07..14 | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Appended SL-15..30 (live) | [PROVISIONAL] |
