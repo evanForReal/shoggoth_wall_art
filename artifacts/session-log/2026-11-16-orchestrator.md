@@ -234,6 +234,11 @@ Fix: added S5 (A exactly, minus crown, shelf arms → weight-ladder tentacles, c
 
 **SL-72** · 23:52 · Round-09 deployed on Evan's tap: staging → review/rounds/round-09, main fast-forwarded to 6f4bc6c (ancestor check passed), ping sent (vote, sketch ask without waiting, Canva credit status). Canva attempt log moved out of the round folder to teams/aesthetics/analysis/round-09-cards/. · `[Evan]`
 
+**SL-73** · 23:53 · Round-09 backprop (issue #10, 0/1/4, no notes). STOP RULE FIRES (RP-3 item 8): like rate fell two rounds running (r07 5/7 → r08 2/4 → r09 1/5, and the one like is the old A). The rule says escalate to Evan for a sketch or pick-from-spread session. Evan said never wait on sketches (2026-11-17 process row) → pick-from-spread, built now, plus a direct chat flag. · `[judgment]`
+Diagnosis (inference): my readings of Evan's r08 notes, applied all at once to A (S5/S6) or as rebuilds (S1/S2), were wrong in ways his bare dislikes can't localize. A spread where each card changes ONE thing from A localizes it.
+
+**SL-74** · 23:53 · Round-10 = pick-from-spread around A: A0 = A with ONLY the crown removed (the one note Evan stated outright) as control; ~11 one-axis variants of A0 across tentacles / eyes / mouth / density + ~3 outliers (high-temperature rule from the 2026-11-14 methodology row: ~1/3 outliers). Fresh CAD agent: the r08b/c/r09 agent is at ~490k tokens context. `[judgment]`
+
 ---
 *Edit log*
 
@@ -267,3 +272,4 @@ Fix: added S5 (A exactly, minus crown, shelf arms → weight-ladder tentacles, c
 | 2026-11-17 | orchestrator | Appended SL-70 (r09 read, S5/S6 added) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-71 (S6 read, round-09 staged) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-72 (round-09 deploy) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | Appended SL-73..74 (r09 backprop, stop rule, spread plan) | [PROVISIONAL] |

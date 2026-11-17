@@ -1,0 +1,30 @@
+{
+  "source": {
+    "issue": 10,
+    "url": "https://github.com/evanForReal/shoggoth_wall_art/issues/10"
+  },
+  "round": "round-09",
+  "reviewed": "2026-11-17",
+  "verdicts": [
+    {
+      "id": "s6",
+      "verdict": "dislike"
+    },
+    {
+      "id": "s5",
+      "verdict": "dislike"
+    },
+    {
+      "id": "s1",
+      "verdict": "dislike"
+    },
+    {
+      "id": "s2",
+      "verdict": "dislike"
+    },
+    {
+      "id": "a",
+      "verdict": "like"
+    }
+  ]
+}

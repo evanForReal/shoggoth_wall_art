@@ -5,6 +5,7 @@
 
 ## Exec Summary (newest first)
 
+- 2026-11-17: R09 verdicts in (issue #10: 0/1/4, no notes): all new studies disliked, round-08 A liked again. Stop rule fired → round-10 = pick-from-spread of one-axis edits around A (crown removed).
 - 2026-11-17: Round-09 DEPLOYED (main 6f4bc6c, Evan pinged; awaiting verdicts). Staged as (review/staging/round-09/, now review/rounds/round-09/): S6/S5 (r08 A minus crown + weight-ladder tentacles, fangs, eyes), S1 fan, S2 reach, A reference. Canva approved (~10 images) but account has no credits.
 - 2026-11-17: R08 verdicts in (issue #9: 0/2/2). A "extreme improvement" but no crown (comical), distinct tentacles, better flow to shelves; B too crowded; c01 demoted ("try one of the other preferred concepts"). Recenter: tentacled, horrific, octopus-like, vicious mouth, disturbing asymmetric unhealthy eyes. ROUND-09 BLOCKED on Evan's sketches.
 - 2026-11-17: Round-08 DEPLOYED (main 8195932, Evan pinged; awaiting verdicts). Staged as (review/staging/round-08/, now review/rounds/round-08/): 3 character passes on the G1a pose (A/B horn-spire crown + ribbed trunk + jagged maw, C root-curl crown) + c01. Notes ask crown choice and 3D-vs-concept-art (Canva credits).
@@ -43,6 +44,7 @@
 - **r02:** chibi hard no; Gaudí organic architecture strong.
 - **r03:** Beksiński sweep loved; surface core locked; refined dark rooms; bas-relief + multi-anchor spread.
 - **r04:** c01/c02 concepts loved; horrific asymmetry, less octopus, not a centerpiece; Bayon mask loved; carved never applied; root-over-rock shelves.
+- **r09:** 0/1/4, no notes; only A (r08) liked. Stop rule fired.
 - **r08:** 0/2/2. A extreme improvement; no crown; distinct tentacles; flow to platforms; B too crowded (let eyes linger); C "justin bieber"; c01 demoted; octopus-like now WANTED (supersedes r04); Evan sketching before r09.
 - **r07:** 0/5/2. G1a potential; not squid-like; gothic + Beksiński; no flat/standing base; no two-legged look; vertical maw; G2a/G4a/c01 liked.
 - **r06:** side profile loved (2nd time); everything else disliked: cluttered clockwork composition, body lost, blob; hands/smiley/bone/mouth/teeth/eyes directives (DECISIONS r06 row).
@@ -84,3 +86,4 @@
 | 2026-11-17 | orchestrator | R08 backprop: exec line, r08 takeaway | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Round-09 staged (exec line) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Round-09 deployed (exec line) | [PROVISIONAL] |
+| 2026-11-17 | orchestrator | R09 backprop: exec line, r09 takeaway | [PROVISIONAL] |
