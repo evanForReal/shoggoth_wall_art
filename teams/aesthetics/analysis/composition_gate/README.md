@@ -41,22 +41,22 @@ Diagnostics (not gating, in `--` output): `empty_hull_ratio`, `wedge_areas_frac`
 
 ## 3. c01 values and pass bands
 
-Tolerances are all [GENERAL]: chosen from trace sensitivity and the s.4 numbers, not fitted to any hero/study. Sensitivity sweep on c01's own mask (edge +-4/8 px, rotate +-4 deg, mirror):
+Tolerances are all [GENERAL]: chosen from trace sensitivity and the s.4 numbers, not fitted to any hero/study. Sensitivity sweep on c01's own mask (edge erode/dilate 4/8 px disk, rotate +-4 deg, mirror), produced by `sensitivity_sweep.py` (run `python3 -I teams/aesthetics/analysis/composition_gate/sensitivity_sweep.py` from repo root; output `sensitivity_sweep.{md,json}`). Source px on the 904x1200 frame; rotation about the mask bbox centre; render and mask transformed together.
 
 | perturbation | fill | wedges | torso w | reach | limbs | head/flesh | IoU |
 |---|---|---|---|---|---|---|---|
 | base | 0.464 | 7 | 0.479 | 0.532 | 6 | 1.74 | 1.00 |
-| erode 8 px | 0.412 | 7 | 0.463 | 0.423 | 6 | 1.67 | 0.89 |
-| erode 4 px | 0.437 | 7 | 0.469 | 0.450 | 6 | 1.70 | 0.94 |
-| dilate 4 px | 0.488 | 7 | 0.486 | 0.540 | 6 | 1.78 | 0.95 |
-| dilate 8 px | 0.511 | 7 | 0.619 | 0.372 | 6 | 1.80 | 0.91 |
-| rot -4 deg | 0.443 | 7 | 0.465 | 0.533 | 6 | 1.76 | 0.74 |
-| rot +4 deg | 0.434 | 7 | 0.463 | 0.531 | 6 | 1.76 | 0.75 |
+| erode 8 px | 0.409 | 7 | 0.463 | 0.422 | 6 | 1.67 | 0.88 |
+| erode 4 px | 0.437 | 7 | 0.469 | 0.447 | 6 | 1.70 | 0.94 |
+| dilate 4 px | 0.490 | 7 | 0.488 | 0.536 | 6 | 1.78 | 0.95 |
+| dilate 8 px | 0.516 | 7 | 0.621 | 0.372 | 6 | 1.80 | 0.90 |
+| rot -4 deg | 0.444 | 7 | 0.463 | 0.539 | 6 | 1.76 | 0.74 |
+| rot +4 deg | 0.433 | 7 | 0.461 | 0.534 | 6 | 1.76 | 0.75 |
 | mirror L-R | 0.464 | 7 | 0.479 | 0.533 | 6 | 1.74 | 0.52 |
 
 | Metric | c01 | Band (pass) | Rule |
 |---|---|---|---|
-| fill_ratio | 0.464 | 0.371 - 0.557 | x0.80..x1.20; trace sweep spans 0.89x-1.10x |
+| fill_ratio | 0.464 | 0.371 - 0.557 | x0.80..x1.20; trace sweep spans 0.88x-1.11x |
 | wedge_count | 7 | 5 - 9 | +-2; s.4 #10 wants >= 3 at 4% |
 | torso_width_frac | 0.479 | 0.359 - 0.598 | x0.75..x1.25 |
 | limb_reach_ratio | 0.532 | 0.372 - 0.692 | x0.70..x1.30; sweep spans 0.70x-1.02x (most trace-sensitive metric) |
@@ -64,8 +64,8 @@ Tolerances are all [GENERAL]: chosen from trace sensitivity and the s.4 numbers,
 | head_vs_flesh | 1.74 (head luma 0.62, ring 0.35; wall 0.12, head/wall 5.0) | 1.22 - 3.48 | x0.70..x2.0 |
 | iou_vs_c01 | 1.00 | 0.70 - 1.00 | c01 rotated 4 deg = 0.74; mirrored = 0.52. Below a ~5 deg rotation of c01 = a different figure. No upper bound |
 
-Note c01 fill is 0.46, above the 35-40% eyeballed in DESIGN s.2.1 / 30-45% in s.4 #10: this trace fills lace perforations. Use the trace value; s.4 #10's number should be recalibrated to it (not edited here).
-c01 has 6 skeleton limbs, not the 7 + fringe counted by eye in s.2.1: the 4th lower limb is the right curl and root tendrils are pruned.
+Note c01 fill is 0.46, above the 35-40% eyeballed earlier: this trace fills lace perforations. DESIGN_PRINCIPLES s.1.6/#10 now use the gate band (0.371-0.557); the by-eye numbers are retired.
+c01 has 6 skeleton limbs (DESIGN_PRINCIPLES s.2.1 now states this: 3 shelf arms + 2 lower tentacles + 1 curl; the by-eye 4 lower tentacles resolve to 2 lower + 1 curl in the skeleton; root tendrils are pruned).
 
 ## 4. Self-test
 
@@ -83,19 +83,26 @@ Reading: r06 = spiky clutter (11 skeleton limbs: fingers, posts, spines; limbs s
 
 ## 5. Round-07 studies (`teams/cad/composition_r07/renders/`)
 
-Scored with `score_r07.py` (reads `study_<id>_front.png` + `study_<id>_mask.png`; writes `r07_scores.json`, `r07_scores.md`). At the time of writing only G1a existed (the other 7 studies in `build/` had no renders yet).
+Scored with `score_r07.py` (reads `study_<id>_front.png` + `study_<id>_mask.png`; writes `r07_scores.json`, `r07_scores.md`). Table below is `r07_scores.md`, re-run 2026-11-17 (identical output). Bands: s.3.
 
-| id | pass | fill | wedges | torso | reach | limbs | head/flesh | IoU | failed |
-|---|---|---|---|---|---|---|---|---|---|
-| G1a | 6/7 (PASS excl. IoU) | 0.392 | 8 | 0.463 | 0.592 | 6 | 1.48 | 0.594 | iou_vs_c01 |
+| id | pass | excl-IoU | fill_ratio | wedge_count | torso_width_frac | limb_reach_ratio | limb_count | head_vs_flesh | iou_vs_c01 | failed |
+|---|---|---|---|---|---|---|---|---|---|---|
+| G1a | 6/7 | PASS | 0.433 | 6 | 0.449 | 0.668 | 6 | 2.64 | 0.598 | iou_vs_c01 |
+| G1b | 6/7 | PASS | 0.409 | 7 | 0.465 | 0.616 | 6 | 1.94 | 0.447 | iou_vs_c01 |
+| G2a | 5/7 | FAIL | 0.44 | 7 | 0.619 | 0.444 | 6 | 2.35 | 0.495 | torso_width_frac, iou_vs_c01 |
+| G2b | 6/7 | PASS | 0.42 | 7 | 0.584 | 0.518 | 6 | 2.35 | 0.466 | iou_vs_c01 |
+| G3a | 6/7 | PASS | 0.416 | 6 | 0.469 | 0.495 | 7 | 2.33 | 0.532 | iou_vs_c01 |
+| G3b | 6/7 | PASS | 0.416 | 6 | 0.467 | 0.524 | 8 | 2.34 | 0.518 | iou_vs_c01 |
+| G4a | 4/7 | FAIL | 0.472 | 6 | 0.678 | 0.4 | 5 | 2.05 | 0.444 | torso_width_frac, limb_count, iou_vs_c01 |
+| G4b | 4/7 | FAIL | 0.449 | 6 | 0.66 | 0.403 | 5 | 2.22 | 0.455 | torso_width_frac, limb_count, iou_vs_c01 |
 
-Re-run `score_r07.py` when the other studies land.
+Reading: all 8 fail IoU (0.44-0.60; c01-chiral, s.6). G2a, G4a, G4b also fail torso width (0.62-0.68 > 0.598: body not separated from limbs); G4a/G4b have 5 limbs (< 6). Fill, wedges, head/flesh pass in all 8 (weak discriminators, s.6). G1a is the closest study to c01 (IoU 0.598). Re-run `score_r07.py` when studies change.
 
 ## 6. Limitations
 
 - **Single reference, hand-traced.** Bands are c01 +- tolerance, not a population. One trace, +-1% edge error. Reach is the most sensitive (0.70x under 8 px erosion).
 - **Weak discriminators.** fill, wedge count and head/flesh pass both failed heroes. They are necessary-not-sufficient. The discriminating ones are torso width, reach, limb count, IoU.
-- **IoU is chiral and gesture-specific.** c01 mirrored scores 0.52. A study that deliberately explores another gesture (DESIGN s.5 options) will fail IoU legitimately. For those, read `verdict_excl_iou`. IoU is the right check for a study claiming to be the c01 figure; the RP-3 item 1 build gate (>= 0.85 vs the Evan-approved mask) is a separate, stricter use of the same function.
+- **IoU is chiral and gesture-specific.** c01 mirrored scores 0.52. A study that deliberately explores another gesture (DESIGN s.5 options) will fail IoU legitimately. For those, read `verdict_excl_iou`. IoU is the right check for a study claiming to be the c01 figure; the RP-3 item 1 build gate is a separate use of the same function; start value 0.60, ratchet to 0.85 (DESIGN_PRINCIPLES s.4.1 Build-gate).
 - **Silhouette only.** No gesture-line, tentacle taper, straight-run, furniture-geometry or shelf-triangle checks (DESIGN s.4 #7, #9, #11, #12). No check that the mask is the single brightest region (#4 beyond head/flesh). Limb count cannot tell a limb from a shelf post or finger; bands cap it at 8.
 - **Head = brightest blurred blob in the mask.** Wrong if a spec highlight, tooth ring or pale limb outshines the mask; check `head_centre_xy` in diagnostics (c01: 0.53, 0.12).
 - **Wall luminance.** Head contrast vs wall is diagnostic only because renders use 25-26% walls versus c01 12%. Render at <= 15% (s.0).
@@ -105,7 +112,7 @@ Re-run `score_r07.py` when the other studies land.
 
 ## Files
 
-`trace_c01.py` (c01 trace), `build_ref.py` (values, bands, overlay), `make_hero_masks.py`, `score_r07.py`, `c01_mask.png`, `c01_mask_envelope.png`, `c01_centreline.png`, `c01_overlay.png`, `c01_metrics.json`, `c01_trace_meta.json`, `hero_r05_mask.png`, `hero_r06_mask.png`, `r07_scores.{json,md}`.
+`trace_c01.py` (c01 trace), `build_ref.py` (values, bands, overlay), `make_hero_masks.py`, `score_r07.py`, `sensitivity_sweep.py` (+ `sensitivity_sweep.{md,json}`), `c01_mask.png`, `c01_mask_envelope.png`, `c01_centreline.png`, `c01_overlay.png`, `c01_metrics.json`, `c01_trace_meta.json`, `hero_r05_mask.png`, `hero_r06_mask.png`, `r07_scores.{json,md}`.
 
 ---
 *Edit log*
@@ -113,3 +120,4 @@ Re-run `score_r07.py` when the other studies land.
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
 | 2026-11-17 | aesthetics-analyst | Initial creation: c01 trace, gate metrics/bands, tool, self-test | FLAG OPEN: (1) s.5 is stale: it says only G1a existed and lists G1a fill 0.392 / wedges 8 / torso 0.463 / reach 0.592 / head 1.48 / IoU 0.594, but `python3 -I score_r07.py` now scores all 8 studies and G1a is 0.433 / 6 / 0.449 / 0.668 / 2.64 / 0.598 (r07_scores.md, identical to the re-run); replace s.5 with the 8-row table or point to r07_scores.md. (2) The s.3 sensitivity sweep and s.2 opening-radius numbers have no committed script or JSON (build_ref.py writes only base values; c01_metrics.json has no sweep). Re-computed here: opening radius 6/8/10/12% = 0.867/0.846/0.619/0.479 reproduces; rot -4 deg (fill 0.443, torso 0.465, reach 0.533, IoU 0.74) and mirror IoU 0.52 reproduce; erode/dilate 8 px do not reproduce with a plain 17 px min/max filter (fill 0.401/0.536, IoU 0.845/0.865 vs table 0.412/0.511, 0.89/0.91; perturbation not recorded); head/flesh for rot/mirror differs (1.68/1.62 vs 1.76/1.74). Commit the sweep script or mark the table "unsourced". Verified OK: the c01 command exits PASS 7/7 and values equal c01_metrics.json and the bands table; self-test r06 hero FAIL 4/7 (reach 0.303, limbs 11, IoU 0.584; fill 0.472, wedges 5, torso 0.547, head 1.45) and r05 hero FAIL 4/7 (torso 0.758, reach 0.152, IoU 0.609) reproduce exactly; s.6 limitations consistent with r07 results. Body [PROVISIONAL] status line stays |
+| 2026-11-17 | aesthetics-lead | Resolves FLAG OPEN above: s.5 replaced with the 8-study table from r07_scores.md (re-run, identical); s.3 sweep now produced by committed-ready `sensitivity_sweep.py` and table regenerated from it (all 8 rows reproduce; erode/dilate 8 px = disk radius 8 px: fill 0.409/0.516, IoU 0.88/0.90; the earlier hand table's 0.412/0.511 is superseded); stale c01 notes and IoU-gate sentence updated | [PROVISIONAL] |

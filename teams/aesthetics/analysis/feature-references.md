@@ -44,7 +44,7 @@
 |---|---|
 | Disc | Circle D. Allowed squash: height <= 1.10 D (c01 oval echo), features scale with the ellipse. Face field gently domed: crown height 0.04 D above rim. Surface noise on the field <= 0.3 mm RMS; no creases, no seams. |
 | Eyes (2) | Vertical ellipses. Left: width 0.090 D, height 0.210 D (aspect 2.33:1). Right: x1.06 (width 0.095 D, height 0.223 D). Centers at x = -0.165 D / +0.165 D (spacing 0.33 D), y = +0.160 D. Eye top at +0.265 D, bottom at +0.055 D. Right eye rotated 2 deg CW; left 0. |
-| Smile centerline | Circular arc, radius r = 0.335 D, sweep 120 deg (half-angle 60 deg), center on the y axis at y = +0.0675 D so the endpoints sit at y = -0.080 D. Endpoint x = +-0.29 D. Lowest point y = -0.2475 D. Sagitta 0.1675 D. Chord (end to end centerline) 0.58 D. |
+| Smile centerline | Circular arc, radius r = 0.335 D, sweep 120 deg (half-angle 60 deg), center on the y axis at y = +0.0875 D so the endpoints sit at y = 0.0875 - 0.335 cos 60 deg = -0.080 D (bottom 0.0875 - 0.335 = -0.2475 D). Endpoint x = +-0.29 D. Lowest point y = -0.2475 D. Sagitta 0.1675 D. Chord (end to end centerline) 0.58 D. |
 | Smile asymmetry (Ball) | Right endpoint raised 0.02 D (y = -0.060 D), left stays -0.080 D. Fit the arc through the three points (L end, bottom, R end) rather than keeping the symmetric circle. |
 | Stroke | Constant 0.065 D on the left half, 0.072 D on the right half (blend over the bottom 20%). No taper. |
 | End caps | Round (radius = half stroke). Add optional Ball cheek creases: one short arc per end, length 0.05 D, radius 0.05 D, curling upward-outward, same stroke width x0.5, same depth x0.7. |
@@ -166,7 +166,7 @@ Each finger from index to little adds +4 deg MCP and +8-10 deg PIP (finger casca
 
 | Source | What to take | Grade |
 |---|---|---|
-| c01 (loved) | Tall vertical oval maw below the mask, ~1 : 1.15-1.3 w:h, hooked fangs converging inward from both sides, dark throat. The mouth is the dominant lower-body feature. | in-repo |
+| c01 (loved) | Near-round maw below the mask, w:h ~1 : 1.0-1.1 (eyeballed on a 2x crop, +-5%; DESIGN_PRINCIPLES s.2.1; an earlier 1 : 1.15-1.3 reading is not supported), hooked fangs converging inward from both sides, dark throat. The mouth is the dominant lower-body feature. | in-repo |
 | H.R. Giger, Alien/xenomorph (1979), Necronom series | Long jaw, rows of needle teeth that recede in depth, tongue/inner jaw. Mouths are anatomically structured: lips, gum shelf, palate. https://en.wikipedia.org/wiki/H._R._Giger , https://en.wikipedia.org/wiki/Xenomorph | [U]; details [M] |
 | The Thing (1982), chest-mouth (Dr. Copper scene) | A mouth in a torso: vertical split, wet flesh, irregular teeth, lips that tear. Matches the "mouth set in body" brief. https://en.wikipedia.org/wiki/The_Thing_(1982_film) | [U]; scene [M] |
 | Junji Ito | Mouths wider than anatomical, each tooth individually inked and different, gums drawn, no strand clutter. https://en.wikipedia.org/wiki/Junji_Ito | [U]; specifics [M] |
@@ -184,8 +184,8 @@ Each finger from index to little adds +4 deg MCP and +8-10 deg PIP (finger casca
 
 *Opening shape and size (relative to the mask D and W_p).*
 - Orientation: **vertical** (matches c01, which Evan loved). Lens/almond with a heavier upper third (widest point 40% from the top), pointed commissures at top and bottom, not an ellipse.
-- Width : height = **1 : 1.5** (allowed 1 : 1.35 to 1 : 1.7). Current 1.1 : 1 is wrong in both aspect and orientation.
-- Size: width = **1.0-1.15 D** (230-265 mm at D = 230), height 1.5 x width (345-400 mm). Piece-width share ~26-29% (current 21%). Top of the opening sits 0.15-0.25 D below the mask bottom; the mouth is on the body axis, the mask above it. Check the fab area: depth of cavity <= 3 x mouth width (C4) is satisfied (<= 700 mm); use depth 55-75 mm.
+- Width : height = **1 : 1.5** (allowed 1 : 1.35 to 1 : 1.7). Current 1.1 : 1 is wrong in both aspect and orientation. The 1 : 1.5 vertical almond is a build choice [DERIVED] (Evan r06 h5: a round hole reads as lamprey/porthole), taller than c01's near-round opening.
+- Size: width = **1.0-1.15 D** (230-265 mm at D = 230), height 1.5 x width (345-400 mm). Piece-width share ~25-29% (230-265 mm of 914; current 21%). Top of the opening sits 0.15-0.25 D below the mask bottom; the mouth is on the body axis, the mask above it. Check the fab area: depth of cavity <= 3 x mouth width (C4) is satisfied (<= 700 mm); use depth 55-75 mm.
 - Outline superellipse: |x/a|^2.4 + |y/b|^2.4 = 1 on the heavier upper half, then pinch to commissure points over the last 12% of height each end. Add 4-6% asymmetry (left side 3-5% longer than right; commissure offset 0.03 W).
 
 *Lips and gums.*
@@ -230,13 +230,13 @@ Each finger from index to little adds +4 deg MCP and +8-10 deg PIP (finger casca
 | Prosthetic SFX eyes (The Thing, An American Werewolf in London, Pan's Labyrinth Pale Man palm eyes) | Resin/acrylic eyes with glossy clear cornea, tinted yellowed sclera, painted vein network, slightly overscaled globe. | [M] |
 | Beksinski, Giger | Sparse eyes: one or two, set deep in a socket under a heavy brow. | [M] |
 
-**BUILD SPEC** (all in units of **G** = globe diameter; G >= 20 mm so the pupil clears the 2 mm pocket rule)
+**BUILD SPEC** (all in units of **G** = globe diameter; every globe G >= 20 mm; a pupil recess needs diameter >= 3.5 mm, see Pupil)
 
 *Globe and protrusion.*
 - Globe is a sphere radius r = G/2. Protrusion p above the surrounding flesh = **0.8 r to 1.0 r** (1.0 r = hemisphere, the printable maximum: no region beyond hemisphere, as that overhangs > 45 deg; C2). Current is ~0.1 r.
 - Cornea: a secondary dome on the front of the globe, radius 0.55 r, height 0.10-0.14 G (real cornea sits ~0.12 G proud of the sclera). This is the highlight carrier.
 - Sclera exposure: lids retracted, **visible sclera ring all around the iris** (the Ito look): iris diameter = 0.36-0.45 G, so the visible sclera band around it >= 0.2 G on the narrowest side. Iris offset from center by 0.05-0.15 G (gaze), different in each eye.
-- Pupil: choose per cluster: (a) pinpoint, 0.12-0.18 x iris diameter (creepy stare); (b) horizontal slit, width 0.65 x iris, height 0.18 x iris (cephalopod/goat). Pupil as a recess: diameter >= 3.5 mm (C3: >= 2.0 mm), depth 2-3 mm, flat floor >= 2.6 mm remaining; iris as a 0.8-1.0 mm shallow ring recess (step between iris and sclera, so a painted ring has an edge to follow).
+- Pupil: choose per cluster: (a) pinpoint, 0.12-0.18 x iris diameter (creepy stare); (b) horizontal slit, width 0.65 x iris, height 0.18 x iris (cephalopod/goat). Pupil as a recess: minor dimension >= 3.5 mm (C3: >= 2.0 mm), depth 2-3 mm, flat floor >= 2.6 mm remaining. That is reachable only for G >= ~45 mm (0.18 x iris 0.45 G = 3.5 mm at G 43); at G 20 the pinpoint is ~1 mm. Rule: on globes G < 45 mm the pupil is painted, no recess (the iris-ring step below still gives the edge); iris as a 0.8-1.0 mm shallow ring recess (step between iris and sclera, so a painted ring has an edge to follow).
 - Cornea finish: clear gloss varnish on the globe alone; sclera tinted off-white/yellow (#E8DFC0 +-), not pure white. Veins and redness at the lid corners **by paint** (veins < 1.0 mm do not print).
 
 *Lids and socket (where "plastered" gets fixed).*
@@ -250,7 +250,7 @@ Each finger from index to little adds +4 deg MCP and +8-10 deg PIP (finger casca
 - Fab: eyes on outward-facing surfaces only (mouth normal within 45 deg of print-up). Lid chamfer <= 45 deg: lid overhang over the globe is the one risk; implement the upper lid as a ramp from the globe up at <= 45 deg (not a hood), so shadow comes from the groove below and the globe's own curvature. Heavy-hooded lids are acceptable only as <= 45 deg ramps.
 
 *Clustering (organic, not stickers).*
-- Cluster size 3-7 globes; size distribution log-normal: 1 dominant at G_max, 2 at 0.65, 2 at 0.4, 1-2 at 0.25. G_max = 38-55 mm (**not smaller than 20 mm for any**). Smallest-to-largest >= 1:3.
+- Cluster size 3-7 globes; size tiers: 1 dominant at G_max, 2 at 0.65, 2 at 0.4, 1-2 at 0.3, each tier clamped to >= 20 mm. G_max = 55-70 mm (0.3 x G_max = 16.5-21 mm, so the smallest tier sits at the 20 mm floor; **no globe under 20 mm**). Smallest-to-largest 1 : 2.75 to 1 : 3.5.
 - Spacing: neighboring globes at 0.15-0.5 G apart; two merge collars (shared flesh) rather than a gap. Positions follow a ridge line or a spiral, not a grid; no straight rows of more than 2.
 - Orientation: lid axes tangential to the local flesh flow +-15 deg, individual tilt jitter +-30 deg; gaze directions not parallel (at most two within 20 deg).
 - Total eye count: **<= 12 on the whole piece**, 3-4 clusters, one of which is in the region right above the maw (framing). Fewer, larger eyes beats many small ones (current ~15 tiny).
@@ -266,7 +266,7 @@ Each finger from index to little adds +4 deg MCP and +8-10 deg PIP (finger casca
 
 | Source | What to take | Grade |
 |---|---|---|
-| c01 (loved) | Five long limbs: two shelf arms (S-curved up-and-out), three lower tentacles with large S-curves, thin curling tips; strong negative space between limbs; texture is rope/root fiber aligned with the limb axis. Limbs are 8-10x longer than wide. | in-repo |
+| c01 (loved) | Six limbs per the gate trace (DESIGN s.2.1): three shelf arms (UL, UR, ML; S-curved up-and-out) plus lower tentacles with large S-curves and thin curling tips (2 lower + 1 right curl in the skeleton); strong negative space between limbs; texture is rope/root fiber aligned with the limb axis. Limbs are ~3-5x longer than root width (330-450 px over 90-110 px). | in-repo |
 | Tree-root architecture, Ta Prohm strangler figs | Root-like limbs: taper, branch, fiber ridges along the length; reads as tentacle without being an octopus. https://en.wikipedia.org/wiki/Ta_Prohm | [U] |
 | Hokusai, The Dream of the Fisherman's Wife (1814) | Classic legible tentacle: smooth taper, sucker rows only on the inner face, strong S-curves. https://en.wikipedia.org/wiki/The_Dream_of_the_Fisherman%27s_Wife | [U] |
 | Kraken illustration (Denys de Montfort, 1801) | Tentacle read at scale: long, tapering, coiling over a ship. https://en.wikipedia.org/wiki/Kraken , https://en.wikipedia.org/wiki/Pierre_Denys_de_Montfort | [U] |
@@ -277,11 +277,11 @@ Each finger from index to little adds +4 deg MCP and +8-10 deg PIP (finger casca
 
 **BUILD SPEC**
 
-*Count and layout (c01 pattern).* 5 limbs minimum clearly readable: 2 shelf arms (upper-left and upper-right, each holding a pot, as in c01), 3 lower tentacles fanning down/out. **At least 3 lower limbs, each independently traceable root to tip.** Angular separation of axes at the roots >= 25 deg (>= 35 deg preferred). Their free tips reach: lengths 0.35-0.55 x W_p (320-500 mm).
+*Count and layout (c01 pattern).* 6 limbs minimum clearly readable (gate band 6-8; c01 gate trace = 6): 3 shelf arms (the 3 locked shelves: upper-left, upper-right, mid-left, each holding a pot, as in c01) + at least 3 free limbs (lower tentacles fanning down/out, one curl). **At least 3 free limbs, each independently traceable root to tip.** Angular separation of axes at the roots >= 25 deg (>= 35 deg preferred). Free limbs: lengths 0.35-0.65 x W_p (320-594 mm; DESIGN #7 caps at 0.65 W).
 
 *Taper (root to tip), width w(s) with s in [0,1] from root to tip, w0 = root width 0.10-0.14 x W_p (90-130 mm).*
 - **w(s) = w0 x (1 - s)^0.75 for s <= 0.88; then linear to w_tip = 0.04 w0 at s = 1**. Width at s = 0.5 ~ 0.6 w0; at s = 0.8 ~ 0.29 w0. Floor: w >= 6 mm everywhere except the last 5% (min 3 mm tip; fab 2.0 mm rule for ridges).
-- Length : root width = **6 : 1 to 10 : 1** (current ~1.5 : 1).
+- Length : root width = **3.8 : 1 to 6.5 : 1** (current ~1.5 : 1). 320-594 mm on 90-130 mm roots spans 2.5-6.6; the usable range is 3.8-6.5 (CAD README s.4.3: reachable inside 0.65 W). c01 itself is 330-450 px over 90-110 px roots = 3-5:1; the earlier 6-10:1 was unreachable.
 - Taper is monotonic: no bulges, no re-widening, except the root flare (below).
 - Root flare: the first 12% of length flares to 1.25 w0 and merges into the body with a fillet of radius 0.5 w0; the body edge continues into the tentacle edge (tangent continuity, no step).
 
@@ -322,3 +322,4 @@ Each finger from index to little adds +4 deg MCP and +8-10 deg PIP (finger casca
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
 | 2026-11-17 | aesthetics-analyst | Initial creation (Evan r06 feature directives) | FLAG OPEN: numeric defects a builder would copy. (1) s.1.1 smile arc: centre y +0.0675 D with r 0.335 D puts endpoints at -0.100 D and bottom at -0.2675 D; the stated endpoints -0.080 D and bottom -0.2475 D need centre y +0.0875 D. (2) s.4 c01 row "five long limbs: two shelf arms, three lower tentacles" contradicts c01 (3 shelf arms with plants, visible in c01_ref and the gate overlay; gate trace 6 limbs, DESIGN s.2.1 says 7), and the s.4 layout "2 shelf arms + 3 lower" conflicts with the locked 3 shelves and DESIGN #6/#12. (3) s.4 "length : root width 6:1 to 10:1" is unreachable with the stated 320-500 mm lengths and 90-130 mm roots (2.5-5.5:1); CAD README s.4.3 already reports 3.8-6.5. (4) s.3 "G >= 20 mm for any globe" vs cluster sizes 0.25-0.4 x G_max (38-55 mm gives 9.5-22 mm); pinpoint pupil 0.12-0.18 x iris (iris 0.36-0.45 G) is about 1 mm at G 20 vs the >= 3.5 mm recess rule. (5) s.2 "piece-width share ~26-29%" computes 25-29% (230-265 over 914). Fix: owner corrects or marks the lines [DERIVED] with the conflict named. Verified OK: grades [V]/[U]/[M] defined in s.0 and applied per source row; [V] rows checked against Wikipedia (Harvey Ball: right eye slightly larger, mouth not a perfect arc, ~10 min; Viperfish: teeth would pierce the brain if misaligned; Anglerfish: wide mouth, inwardly inclined teeth; Goblin shark: nail-like teeth, parabolic mouth); design values declared as analyst choices (s.0 [DERIVED] rule, BUILD SPEC blocks), anatomy marked [M] +-10%; no images stored; rest of smile arithmetic (chord 0.58 D, sagitta 0.1675 D, D >= 230, eye 21 x 48 mm), skeleton P:M:D ratios, taper law at s 0.5/0.8, tooth base L/4 = 17.5 mm all check. Body [PROVISIONAL] status line stays |
+| 2026-11-17 | aesthetics-lead | Resolves FLAG OPEN above: (1) smile arc centre +0.0675 -> +0.0875 D (r 0.335 D, 60 deg half-angle: endpoints -0.080 D, bottom -0.2475 D verified); (2) s.4 c01 row and layout: 3 shelf arms + >= 3 free limbs, 6 total per gate; (3) length:root 6-10:1 -> 3.8-6.5:1, lengths to 0.65 W, c01 3-5:1; (4) globe tiers clamped >= 20 mm (G_max 55-70), recessed pupil only for G >= 45 mm else painted; (5) maw width share 25-29%; also c01 maw aspect restated near-round (1:1.0-1.1) with the 1:1.5 as a stated build choice | [PROVISIONAL] |
