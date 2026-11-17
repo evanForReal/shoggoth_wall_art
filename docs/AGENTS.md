@@ -56,7 +56,11 @@ Both the editing agent and the confirming agent append to the edit log in the sa
 - A review board may ship cards that depend on unsigned sources only if the manifest notes name the unsigned source.
 - Engineering numbers in READMEs/STATUS must trace to a committed JSON or script output; unsourced numbers are cut or marked "unsourced".
 
+**Cross-team edits (RP-3, 2026-11-17):** the Orchestrator may correct WORDING (no new numbers) in another team's file, logged as `orchestrator on behalf of <team>`; the owning lead confirms at its next spawn. New analysis, scripts, numbers and votes are written by the owning team, never on its behalf.
+
 ## Review-Round Lifecycle
+
+**Staging (RP-3, 2026-11-17):** boards are assembled and corrected in `review/staging/round-NN/`; at deploy the folder moves to `review/rounds/round-NN/` and is never edited again (CLAUDE.md DO NOT EDIT applies from that moment).
 
 1. **Trawl** — Workers generate assets per axes defined by Aesthetics Lead.
 2. **Manifest** — Infra assembles `review/rounds/round-NN/` manifest with metadata.
@@ -89,3 +93,4 @@ Departures from policy. Append only.
 | 2026-11-15 | docs-worker | Added Deviation log section | docs-reviewer |
 | 2026-11-15 | orchestrator | CAD charter amended: owns step-2 geometry | docs-reviewer |
 | 2026-11-16 | orchestrator | Sign-off substance rules (RP-2 item 5); deviation-log entries: orchestrator model, orchestrator-as-aesthetics-lead | docs-reviewer (verified: rules bullets 1-4 match RP-2 item 5 in teams/audit/STATUS.md and SL-11; both deviation entries vs git trailers (Fable 5 through ca9747f, Opus 5.5 from 0671872), SL-07, SL-09 and the aesthetics STATUS liaison line; no body [PROVISIONAL] tag belongs to this row. Non-blocking, signed through: bullet 5 (engineering numbers trace to committed JSON or script) is beyond item 5 text, it generalises RP-2 item 2; Orchestrator to confirm intended) |
+| 2026-11-17 | orchestrator | Cross-team edit rule + review staging convention (RP-3 items 5/6) | [PROVISIONAL] |
