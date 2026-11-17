@@ -3,7 +3,7 @@
   "title": "Shoggoth wall art — round 07: body & pose (composition only)",
   "created": "2026-11-17",
   "issue_repo": "evanForReal/shoggoth_wall_art",
-  "notes": "PICK THE BODY + POSE to build. Silhouettes only: surface, hands, teeth, eyes come after. G3a vs G3b = vertical vs horizontal maw. ··· Why this round: r05/r06 had no defined organism (your notes). These are built as one creature — head set into a trunk, limbs rooted along it, shelves at limb ends, 300 mm clear above each shelf. Left of each card: 3-value silhouette (mask white, maw black, body dark). Right: the 3D massing, smooth on purpose. ALSO, in your issue notes: (1) keep or release r05's shelf placement and radial layout? (we already keep: side-profile depth, smiley + maw, 300 mm plant clearance); (2) the 3x3 ft size question from r06 is withdrawn — size wasn't the real limit, our authoring method was.",
+  "notes": "PICK THE BODY + POSE to build. Silhouettes only: surface, hands, teeth, eyes come after. G3a vs G3b = vertical vs horizontal maw. ··· Why this round: r05/r06 had no defined organism (your notes). These are built as one creature — head set into a trunk, limbs rooted along it, shelves at limb ends, 300 mm clear above each shelf. Left of each card: 3-value silhouette (mask white, maw black, body dark). Right: the 3D massing, smooth on purpose. ALSO, in your issue notes: (1) keep or release r05's shelf placement and radial layout? (we already keep: side-profile depth, smiley + maw, 300 mm plant clearance); (2) the 3x3 ft size question from r06 is withdrawn — size wasn't the real limit, our authoring method was. Not yet peer-signed: the CAD composition write-up and the composition-gate write-up these cards draw on (numbers re-checked, wording fixes pending).",
   "cards": [
     {
       "id": "g1a",
@@ -26,7 +26,7 @@
       "image": "images/G2a.jpg",
       "axis": "pose",
       "title": "G2a — diagonal emergence, head upper right",
-      "rationale": "The creature climbs the wall on a diagonal; a whip rises over the head. Big empty wall wedges. (r05's diagonal had no body — this one does.)",
+      "rationale": "The creature climbs the wall on a diagonal; a whip rises over the head. Big empty wall wedges. (r05's diagonal had no body — this one does.) Gate: 5/7 — also slightly over the torso-width band.",
       "source": "generated in-house (composition_r07, G2a)"
     },
     {
@@ -34,7 +34,7 @@
       "image": "images/G3a.jpg",
       "axis": "pose + maw",
       "title": "G3a — low crouch, horns, VERTICAL maw",
-      "rationale": "Hunched, wide trunk, two horn-limbs over the head, eight limbs. Maw vertical like c01.",
+      "rationale": "Hunched, wide trunk, two horn-limbs flanking the head, eight limbs. Maw vertical like c01.",
       "source": "generated in-house (composition_r07, G3a)"
     },
     {
