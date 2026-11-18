@@ -5,7 +5,7 @@
 
 ## Exec Summary (newest first)
 
-- 2026-11-18: Round-11 staged (review/staging/round-11/): H held-mask hero (eye patch behind, veiny arm eyes) + V1 lamprey, V2 fangs+lamprey, V3 mask further out, V4 patch only. Structural PASS on the mask arm (stud-row condition).
+- 2026-11-18: Round-11 DEPLOYED (main e49cce9, Evan pinged; awaiting verdicts). Staged as (review/staging/round-11/, now review/rounds/round-11/): H held-mask hero (eye patch behind, veiny arm eyes) + V1 lamprey, V2 fangs+lamprey, V3 mask further out, V4 patch only. Structural PASS on the mask arm (stud-row condition).
 - 2026-11-18: R10 verdicts in (issue #11: 7/2/5, best round). Locked: A0, distinct tentacles, long whip, fangs + lamprey, denser, held/slipping mask. Round-11 = held-mask hero (mask hovering out on a tentacle, eye patch behind) + one-axis variants; Structural reviews the mask arm before boarding.
 - 2026-11-18: Round-10 DEPLOYED (main 8111a57, Evan pinged; awaiting verdicts). Staged as (review/staging/round-10/, now review/rounds/round-10/): pick-from-spread, A0 (A minus crown) + 12 one-axis variants (tentacles, eyes, mouth, density, outliers) + original A.
 - 2026-11-17: R09 verdicts in (issue #10: 0/1/4, no notes): all new studies disliked, round-08 A liked again. Stop rule fired → round-10 = pick-from-spread of one-axis edits around A (crown removed).
@@ -95,3 +95,4 @@
 | 2026-11-18 | orchestrator | Round-10 deployed (exec line) | [PROVISIONAL] |
 | 2026-11-18 | orchestrator | R10 backprop: exec line, r10 takeaway | [PROVISIONAL] |
 | 2026-11-18 | orchestrator | Round-11 staged (exec line) | [PROVISIONAL] |
+| 2026-11-18 | orchestrator | Round-11 deployed (exec line) | [PROVISIONAL] |
