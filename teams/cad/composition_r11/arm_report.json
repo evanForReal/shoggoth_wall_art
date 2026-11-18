@@ -1,0 +1,1134 @@
+{
+ "H": {
+  "max_z_mm": 254.0,
+  "mask_front_z_max": 233.0,
+  "mask_back_z_at_centre": 199.0,
+  "flesh_patch_peak_z_before_eyes": 114.0,
+  "gap_mask_back_to_flesh_mm": 85.0,
+  "gap_mask_back_to_highest_rest_solid_under_mask_mm": 55.0,
+  "flesh_z_under_mask_centre_incl_eyes": 108.0,
+  "mask_roll_deg": 14.999999999999998,
+  "mask_pitch_deg": 0.0,
+  "rod_axis": {
+   "A": [
+    15.6,
+    136.8,
+    17.8
+   ],
+   "exit": [
+    0.0,
+    168.0,
+    92.0
+   ],
+   "tip_pad_face": [
+    -17.1,
+    202.1,
+    173.2
+   ],
+   "B0_mask_back": [
+    -22.7,
+    213.2,
+    199.6
+   ],
+   "dir": [
+    -0.1908,
+    0.3804,
+    0.905
+   ],
+   "tilt_from_wall_normal_deg": 25.18325753386204,
+   "rod_length_mm": 215.74545160518113,
+   "rod_embed_in_root_mm": 82.0,
+   "rod_into_mask_from_pad_face_mm": 44.0,
+   "free_span_exit_to_pad_face_mm": 89.74545160518113,
+   "arm_centreline_exit_to_tip_mm": 95.74545160518113,
+   "arm_centreline_A_to_tip_mm": 177.74545160518113
+  },
+  "P7_core_min_diameter_mm_over_rod_span_A_to_pad_face": 36.0,
+  "P7_core_min_diameter_free_span_mm": 50.75431016179808,
+  "P1_radial_cover_over_rod_min_mm_A_to_pad_face": 12.8,
+  "P1_radial_cover_free_span_min_mm": 20.17715508089904,
+  "root_dia_at_exit_mm": 69.45110980570924,
+  "arm_dia_root_mid_tip_mm": [
+   69.45110980570924,
+   57.99840249323251,
+   48.799258904713376
+  ],
+  "root_block_dia_mm": 60.0,
+  "P8_rod_axis_vs_centreline_max_offset_mm": 3.4653007808478082,
+  "P8_sheath_centreline_lateral_offset_samples_mm": [
+   0.0,
+   0.0,
+   0.0,
+   -1.4,
+   -3.4,
+   -0.8,
+   0.0
+  ],
+  "P3_root_block_solid_fraction_60dia_x_82deep": 1.0,
+  "P3_block_dia_mm": 60.0,
+  "P3_block_depth_along_axis_mm": 82.0,
+  "P3_back_plate_100x100x6_solid_fraction_in_trunk": 1.0,
+  "P3_A_z_mm": 17.79398263388191,
+  "P3_block_min_z_mm": 5.028536449010568,
+  "P4_pad_solid_fraction_on_r33.5_ring": 1.0,
+  "P4_pad_solid_fraction_on_r39_ring": 0.50773369199731,
+  "P4_pad_dia_mm": 70.0,
+  "P4_pad_depth_along_axis_mm": 38.0,
+  "P4_fillet_smin_k": 28.0,
+  "P4_fillet_radius_est_mm": 16.8,
+  "mask_CoM": [
+   -30.4,
+   241.7,
+   211.8
+  ],
+  "P5_CoM_offset_from_rod_axis_mm": 21.714434856205305,
+  "P5_horizontal_lever_exit_axis_to_CoM_mm": 123.64260184456572,
+  "P5_lever_incl_vertical_offset_3D_mm": 143.91741122483356,
+  "P5_tilt_roll_deg": 14.999999999999998,
+  "P5_lever_from_trunk_wall_plane_z0_horizontal_mm": null,
+  "P6_mask_mass_calc": {
+   "V_disc_cm3": 839.0,
+   "area_disc_cm2": 791.5,
+   "shell_2mm_cm3": 158.3,
+   "interior_cm3": 680.7,
+   "infill15_cm3": 102.1,
+   "V_pad_fingers_solid_cm3": 163.7,
+   "V_total_cm3": 1002.7,
+   "PETG_g_cm3": 1.27,
+   "mass_g": 539.0,
+   "mass_with_5pct_finish_g": 566.0
+  },
+  "P6_mask_mass_kg": 0.566,
+  "P9": {
+   "arm_integral_with_trunk": true,
+   "root_seam": null,
+   "mask_end_seam_land_mm2": 1785,
+   "spigot_socket_depth_mm": 30.0,
+   "spigot_dia_mm": 40.0,
+   "d_flat_mm_from_axis": 16.0,
+   "tip_dia_at_pad_face_mm": 48.799258904713376
+  },
+  "P10_arm_axis_angle_from_XY_plane_deg": 64.81674246613797,
+  "P11": {
+   "n_fingers": 6,
+   "fingers": [
+    {
+     "ang": 205.0,
+     "length": 152.54217919638972,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 231.0,
+     "length": 142.15087160651197,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 257.0,
+     "length": 135.59019377077718,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 283.0,
+     "length": 135.33020207262777,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 309.0,
+     "length": 142.516370465326,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 335.0,
+     "length": 152.54217919638907,
+     "r0": 9.0,
+     "r1": 3.6
+    }
+   ],
+   "d_flat_key": true
+  },
+  "P12_mask_part_min_dist_to_rest_of_piece_mm": 38.2099463490856,
+  "P12_arm_free_span_min_dist_to_rest_mm_beyond_45mm_of_exit": 6.324555320336759,
+  "P12_arm_free_span_min_z_mm": 84.0,
+  "P12_wall_plane_clear_mm": 84.0,
+  "connected_components": 24,
+  "components_over_0.1cm3": 8,
+  "largest_components_cm3": [
+   2.2,
+   4.7,
+   26193.7
+  ],
+  "component_volumes_cm3_smallest": [
+   0.01,
+   0.01,
+   0.01,
+   0.01,
+   0.01,
+   0.02
+  ],
+  "veins": {
+   "n": 27,
+   "r0": 3.2,
+   "r1": 2.2,
+   "raised_mm_min": 0.0,
+   "raised_mm_median": 2.0,
+   "raised_mm_p10": 2.0
+  },
+  "eyes": {
+   "patch": [
+    50,
+    42,
+    36,
+    32,
+    30,
+    26,
+    24,
+    22,
+    20,
+    18,
+    16,
+    15
+   ],
+   "e2": [
+    34,
+    18,
+    24,
+    30,
+    16,
+    20,
+    26,
+    18
+   ],
+   "arms": {
+    "S2_UR": [
+     13.8,
+     13.6,
+     11.2,
+     15.3,
+     12.9,
+     12.9,
+     10.4
+    ],
+    "S3_LL": [
+     21.1,
+     24.0,
+     24.3,
+     23.0,
+     22.1,
+     15.9
+    ]
+   }
+  },
+  "nearest_shelf_root": {
+   "S1_UL": 107.0,
+   "S2_UR": 129.0,
+   "S3_LL": 277.0
+  }
+ },
+ "V1": {
+  "max_z_mm": 254.0,
+  "mask_front_z_max": 233.0,
+  "mask_back_z_at_centre": 199.0,
+  "flesh_patch_peak_z_before_eyes": 114.0,
+  "gap_mask_back_to_flesh_mm": 85.0,
+  "gap_mask_back_to_highest_rest_solid_under_mask_mm": 55.0,
+  "flesh_z_under_mask_centre_incl_eyes": 108.0,
+  "mask_roll_deg": 14.999999999999998,
+  "mask_pitch_deg": 0.0,
+  "rod_axis": {
+   "A": [
+    15.6,
+    136.8,
+    17.8
+   ],
+   "exit": [
+    0.0,
+    168.0,
+    92.0
+   ],
+   "tip_pad_face": [
+    -17.1,
+    202.1,
+    173.2
+   ],
+   "B0_mask_back": [
+    -22.7,
+    213.2,
+    199.6
+   ],
+   "dir": [
+    -0.1908,
+    0.3804,
+    0.905
+   ],
+   "tilt_from_wall_normal_deg": 25.18325753386204,
+   "rod_length_mm": 215.74545160518113,
+   "rod_embed_in_root_mm": 82.0,
+   "rod_into_mask_from_pad_face_mm": 44.0,
+   "free_span_exit_to_pad_face_mm": 89.74545160518113,
+   "arm_centreline_exit_to_tip_mm": 95.74545160518113,
+   "arm_centreline_A_to_tip_mm": 177.74545160518113
+  },
+  "P7_core_min_diameter_mm_over_rod_span_A_to_pad_face": 36.0,
+  "P7_core_min_diameter_free_span_mm": 50.75431016179808,
+  "P1_radial_cover_over_rod_min_mm_A_to_pad_face": 12.8,
+  "P1_radial_cover_free_span_min_mm": 20.17715508089904,
+  "root_dia_at_exit_mm": 69.45110980570924,
+  "arm_dia_root_mid_tip_mm": [
+   69.45110980570924,
+   57.99840249323251,
+   48.799258904713376
+  ],
+  "root_block_dia_mm": 60.0,
+  "P8_rod_axis_vs_centreline_max_offset_mm": 3.4653007808478082,
+  "P8_sheath_centreline_lateral_offset_samples_mm": [
+   0.0,
+   0.0,
+   0.0,
+   -1.4,
+   -3.4,
+   -0.8,
+   0.0
+  ],
+  "P3_root_block_solid_fraction_60dia_x_82deep": 1.0,
+  "P3_block_dia_mm": 60.0,
+  "P3_block_depth_along_axis_mm": 82.0,
+  "P3_back_plate_100x100x6_solid_fraction_in_trunk": 1.0,
+  "P3_A_z_mm": 17.79398263388191,
+  "P3_block_min_z_mm": 5.028536449010568,
+  "P4_pad_solid_fraction_on_r33.5_ring": 1.0,
+  "P4_pad_solid_fraction_on_r39_ring": 0.50773369199731,
+  "P4_pad_dia_mm": 70.0,
+  "P4_pad_depth_along_axis_mm": 38.0,
+  "P4_fillet_smin_k": 28.0,
+  "P4_fillet_radius_est_mm": 16.8,
+  "mask_CoM": [
+   -30.4,
+   241.7,
+   211.8
+  ],
+  "P5_CoM_offset_from_rod_axis_mm": 21.714434856205305,
+  "P5_horizontal_lever_exit_axis_to_CoM_mm": 123.64260184456572,
+  "P5_lever_incl_vertical_offset_3D_mm": 143.91741122483356,
+  "P5_tilt_roll_deg": 14.999999999999998,
+  "P5_lever_from_trunk_wall_plane_z0_horizontal_mm": null,
+  "P6_mask_mass_calc": {
+   "V_disc_cm3": 839.0,
+   "area_disc_cm2": 791.5,
+   "shell_2mm_cm3": 158.3,
+   "interior_cm3": 680.7,
+   "infill15_cm3": 102.1,
+   "V_pad_fingers_solid_cm3": 163.7,
+   "V_total_cm3": 1002.7,
+   "PETG_g_cm3": 1.27,
+   "mass_g": 539.0,
+   "mass_with_5pct_finish_g": 566.0
+  },
+  "P6_mask_mass_kg": 0.566,
+  "P9": {
+   "arm_integral_with_trunk": true,
+   "root_seam": null,
+   "mask_end_seam_land_mm2": 1785,
+   "spigot_socket_depth_mm": 30.0,
+   "spigot_dia_mm": 40.0,
+   "d_flat_mm_from_axis": 16.0,
+   "tip_dia_at_pad_face_mm": 48.799258904713376
+  },
+  "P10_arm_axis_angle_from_XY_plane_deg": 64.81674246613797,
+  "P11": {
+   "n_fingers": 6,
+   "fingers": [
+    {
+     "ang": 205.0,
+     "length": 152.54217919638972,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 231.0,
+     "length": 142.15087160651197,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 257.0,
+     "length": 135.59019377077718,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 283.0,
+     "length": 135.33020207262777,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 309.0,
+     "length": 142.516370465326,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 335.0,
+     "length": 152.54217919638907,
+     "r0": 9.0,
+     "r1": 3.6
+    }
+   ],
+   "d_flat_key": true
+  },
+  "P12_mask_part_min_dist_to_rest_of_piece_mm": 38.2099463490856,
+  "P12_arm_free_span_min_dist_to_rest_mm_beyond_45mm_of_exit": 6.324555320336759,
+  "P12_arm_free_span_min_z_mm": 84.0,
+  "P12_wall_plane_clear_mm": 84.0,
+  "connected_components": 124,
+  "components_over_0.1cm3": 78,
+  "largest_components_cm3": [
+   2.2,
+   4.7,
+   26191.0
+  ],
+  "component_volumes_cm3_smallest": [
+   0.01,
+   0.01,
+   0.01,
+   0.01,
+   0.01,
+   0.01
+  ],
+  "veins": {
+   "n": 27,
+   "r0": 3.2,
+   "r1": 2.2,
+   "raised_mm_min": 0.0,
+   "raised_mm_median": 2.0,
+   "raised_mm_p10": 2.0
+  },
+  "eyes": {
+   "patch": [
+    50,
+    42,
+    36,
+    32,
+    30,
+    26,
+    24,
+    22,
+    20,
+    18,
+    16,
+    15
+   ],
+   "e2": [
+    34,
+    18,
+    24,
+    30,
+    16,
+    20,
+    26,
+    18
+   ],
+   "arms": {
+    "S2_UR": [
+     13.8,
+     13.6,
+     11.2,
+     15.3,
+     12.9,
+     12.9,
+     10.4
+    ],
+    "S3_LL": [
+     21.1,
+     24.0,
+     24.3,
+     23.0,
+     22.1,
+     15.9
+    ]
+   }
+  },
+  "nearest_shelf_root": {
+   "S1_UL": 107.0,
+   "S2_UR": 129.0,
+   "S3_LL": 277.0
+  }
+ },
+ "V2": {
+  "max_z_mm": 254.0,
+  "mask_front_z_max": 233.0,
+  "mask_back_z_at_centre": 199.0,
+  "flesh_patch_peak_z_before_eyes": 114.0,
+  "gap_mask_back_to_flesh_mm": 85.0,
+  "gap_mask_back_to_highest_rest_solid_under_mask_mm": 55.0,
+  "flesh_z_under_mask_centre_incl_eyes": 108.0,
+  "mask_roll_deg": 14.999999999999998,
+  "mask_pitch_deg": 0.0,
+  "rod_axis": {
+   "A": [
+    15.6,
+    136.8,
+    17.8
+   ],
+   "exit": [
+    0.0,
+    168.0,
+    92.0
+   ],
+   "tip_pad_face": [
+    -17.1,
+    202.1,
+    173.2
+   ],
+   "B0_mask_back": [
+    -22.7,
+    213.2,
+    199.6
+   ],
+   "dir": [
+    -0.1908,
+    0.3804,
+    0.905
+   ],
+   "tilt_from_wall_normal_deg": 25.18325753386204,
+   "rod_length_mm": 215.74545160518113,
+   "rod_embed_in_root_mm": 82.0,
+   "rod_into_mask_from_pad_face_mm": 44.0,
+   "free_span_exit_to_pad_face_mm": 89.74545160518113,
+   "arm_centreline_exit_to_tip_mm": 95.74545160518113,
+   "arm_centreline_A_to_tip_mm": 177.74545160518113
+  },
+  "P7_core_min_diameter_mm_over_rod_span_A_to_pad_face": 36.0,
+  "P7_core_min_diameter_free_span_mm": 50.75431016179808,
+  "P1_radial_cover_over_rod_min_mm_A_to_pad_face": 12.8,
+  "P1_radial_cover_free_span_min_mm": 20.17715508089904,
+  "root_dia_at_exit_mm": 69.45110980570924,
+  "arm_dia_root_mid_tip_mm": [
+   69.45110980570924,
+   57.99840249323251,
+   48.799258904713376
+  ],
+  "root_block_dia_mm": 60.0,
+  "P8_rod_axis_vs_centreline_max_offset_mm": 3.4653007808478082,
+  "P8_sheath_centreline_lateral_offset_samples_mm": [
+   0.0,
+   0.0,
+   0.0,
+   -1.4,
+   -3.4,
+   -0.8,
+   0.0
+  ],
+  "P3_root_block_solid_fraction_60dia_x_82deep": 1.0,
+  "P3_block_dia_mm": 60.0,
+  "P3_block_depth_along_axis_mm": 82.0,
+  "P3_back_plate_100x100x6_solid_fraction_in_trunk": 1.0,
+  "P3_A_z_mm": 17.79398263388191,
+  "P3_block_min_z_mm": 5.028536449010568,
+  "P4_pad_solid_fraction_on_r33.5_ring": 1.0,
+  "P4_pad_solid_fraction_on_r39_ring": 0.50773369199731,
+  "P4_pad_dia_mm": 70.0,
+  "P4_pad_depth_along_axis_mm": 38.0,
+  "P4_fillet_smin_k": 28.0,
+  "P4_fillet_radius_est_mm": 16.8,
+  "mask_CoM": [
+   -30.4,
+   241.7,
+   211.8
+  ],
+  "P5_CoM_offset_from_rod_axis_mm": 21.714434856205305,
+  "P5_horizontal_lever_exit_axis_to_CoM_mm": 123.64260184456572,
+  "P5_lever_incl_vertical_offset_3D_mm": 143.91741122483356,
+  "P5_tilt_roll_deg": 14.999999999999998,
+  "P5_lever_from_trunk_wall_plane_z0_horizontal_mm": null,
+  "P6_mask_mass_calc": {
+   "V_disc_cm3": 839.0,
+   "area_disc_cm2": 791.5,
+   "shell_2mm_cm3": 158.3,
+   "interior_cm3": 680.7,
+   "infill15_cm3": 102.1,
+   "V_pad_fingers_solid_cm3": 163.7,
+   "V_total_cm3": 1002.7,
+   "PETG_g_cm3": 1.27,
+   "mass_g": 539.0,
+   "mass_with_5pct_finish_g": 566.0
+  },
+  "P6_mask_mass_kg": 0.566,
+  "P9": {
+   "arm_integral_with_trunk": true,
+   "root_seam": null,
+   "mask_end_seam_land_mm2": 1785,
+   "spigot_socket_depth_mm": 30.0,
+   "spigot_dia_mm": 40.0,
+   "d_flat_mm_from_axis": 16.0,
+   "tip_dia_at_pad_face_mm": 48.799258904713376
+  },
+  "P10_arm_axis_angle_from_XY_plane_deg": 64.81674246613797,
+  "P11": {
+   "n_fingers": 6,
+   "fingers": [
+    {
+     "ang": 205.0,
+     "length": 152.54217919638972,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 231.0,
+     "length": 142.15087160651197,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 257.0,
+     "length": 135.59019377077718,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 283.0,
+     "length": 135.33020207262777,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 309.0,
+     "length": 142.516370465326,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 335.0,
+     "length": 152.54217919638907,
+     "r0": 9.0,
+     "r1": 3.6
+    }
+   ],
+   "d_flat_key": true
+  },
+  "P12_mask_part_min_dist_to_rest_of_piece_mm": 38.2099463490856,
+  "P12_arm_free_span_min_dist_to_rest_mm_beyond_45mm_of_exit": 6.324555320336759,
+  "P12_arm_free_span_min_z_mm": 84.0,
+  "P12_wall_plane_clear_mm": 84.0,
+  "connected_components": 103,
+  "components_over_0.1cm3": 65,
+  "largest_components_cm3": [
+   2.2,
+   4.7,
+   26196.2
+  ],
+  "component_volumes_cm3_smallest": [
+   0.01,
+   0.01,
+   0.01,
+   0.01,
+   0.01,
+   0.01
+  ],
+  "veins": {
+   "n": 27,
+   "r0": 3.2,
+   "r1": 2.2,
+   "raised_mm_min": 0.0,
+   "raised_mm_median": 2.0,
+   "raised_mm_p10": 2.0
+  },
+  "eyes": {
+   "patch": [
+    50,
+    42,
+    36,
+    32,
+    30,
+    26,
+    24,
+    22,
+    20,
+    18,
+    16,
+    15
+   ],
+   "e2": [
+    34,
+    18,
+    24,
+    30,
+    16,
+    20,
+    26,
+    18
+   ],
+   "arms": {
+    "S2_UR": [
+     13.8,
+     13.6,
+     11.2,
+     15.3,
+     12.9,
+     12.9,
+     10.4
+    ],
+    "S3_LL": [
+     21.1,
+     24.0,
+     24.3,
+     23.0,
+     22.1,
+     15.9
+    ]
+   }
+  },
+  "nearest_shelf_root": {
+   "S1_UL": 107.0,
+   "S2_UR": 129.0,
+   "S3_LL": 277.0
+  }
+ },
+ "V3": {
+  "max_z_mm": 296.0,
+  "mask_front_z_max": 298.0,
+  "mask_back_z_at_centre": 264.0,
+  "flesh_patch_peak_z_before_eyes": 114.0,
+  "gap_mask_back_to_flesh_mm": 150.0,
+  "gap_mask_back_to_highest_rest_solid_under_mask_mm": 120.0,
+  "flesh_z_under_mask_centre_incl_eyes": 108.0,
+  "mask_roll_deg": 25.0,
+  "mask_pitch_deg": 0.0,
+  "rod_axis": {
+   "A": [
+    7.7,
+    146.4,
+    13.3
+   ],
+   "exit": [
+    0.0,
+    168.0,
+    92.0
+   ],
+   "tip_pad_face": [
+    -14.0,
+    207.6,
+    236.1
+   ],
+   "B0_mask_back": [
+    -16.8,
+    215.4,
+    264.6
+   ],
+   "dir": [
+    -0.0934,
+    0.2635,
+    0.9601
+   ],
+   "tilt_from_wall_normal_deg": 16.234567767521852,
+   "rod_length_mm": 276.1040422889829,
+   "rod_embed_in_root_mm": 82.0,
+   "rod_into_mask_from_pad_face_mm": 44.0,
+   "free_span_exit_to_pad_face_mm": 150.1040422889829,
+   "arm_centreline_exit_to_tip_mm": 156.1040422889829,
+   "arm_centreline_A_to_tip_mm": 238.1040422889829
+  },
+  "P7_core_min_diameter_mm_over_rod_span_A_to_pad_face": 28.0,
+  "P7_core_min_diameter_free_span_mm": 48.82622246293481,
+  "P1_radial_cover_over_rod_min_mm_A_to_pad_face": 8.8,
+  "P1_radial_cover_free_span_min_mm": 19.213111231467405,
+  "root_dia_at_exit_mm": 69.45254642595376,
+  "arm_dia_root_mid_tip_mm": [
+   69.45254642595376,
+   58.63481197723532,
+   49.469594981625455
+  ],
+  "root_block_dia_mm": 60.0,
+  "P8_rod_axis_vs_centreline_max_offset_mm": 3.4984655343084365,
+  "P8_sheath_centreline_lateral_offset_samples_mm": [
+   0.0,
+   0.0,
+   0.4,
+   -2.0,
+   -3.3,
+   -0.5,
+   0.0
+  ],
+  "P3_root_block_solid_fraction_60dia_x_82deep": 1.0,
+  "P3_block_dia_mm": 60.0,
+  "P3_block_depth_along_axis_mm": 82.0,
+  "P3_back_plate_100x100x6_solid_fraction_in_trunk": 1.0,
+  "P3_A_z_mm": 13.269734450974909,
+  "P3_block_min_z_mm": 4.882621823405021,
+  "P4_pad_solid_fraction_on_r33.5_ring": 1.0,
+  "P4_pad_solid_fraction_on_r39_ring": 0.46562287270251873,
+  "P4_pad_dia_mm": 70.0,
+  "P4_pad_depth_along_axis_mm": 38.0,
+  "P4_fillet_smin_k": 28.0,
+  "P4_fillet_radius_est_mm": 16.8,
+  "mask_CoM": [
+   -29.3,
+   242.1,
+   276.8
+  ],
+  "P5_CoM_offset_from_rod_axis_mm": 24.926893074996407,
+  "P5_horizontal_lever_exit_axis_to_CoM_mm": 187.08193591863252,
+  "P5_lever_incl_vertical_offset_3D_mm": 201.20512921695027,
+  "P5_tilt_roll_deg": 25.0,
+  "P5_lever_from_trunk_wall_plane_z0_horizontal_mm": null,
+  "P6_mask_mass_calc": {
+   "V_disc_cm3": 836.7,
+   "area_disc_cm2": 786.1,
+   "shell_2mm_cm3": 157.2,
+   "interior_cm3": 679.5,
+   "infill15_cm3": 101.9,
+   "V_pad_fingers_solid_cm3": 165.6,
+   "V_total_cm3": 1002.3,
+   "PETG_g_cm3": 1.27,
+   "mass_g": 539.0,
+   "mass_with_5pct_finish_g": 566.0
+  },
+  "P6_mask_mass_kg": 0.566,
+  "P9": {
+   "arm_integral_with_trunk": true,
+   "root_seam": null,
+   "mask_end_seam_land_mm2": 1837,
+   "spigot_socket_depth_mm": 30.0,
+   "spigot_dia_mm": 40.0,
+   "d_flat_mm_from_axis": 16.0,
+   "tip_dia_at_pad_face_mm": 49.469594981625455
+  },
+  "P10_arm_axis_angle_from_XY_plane_deg": 73.76543223247815,
+  "P11": {
+   "n_fingers": 6,
+   "fingers": [
+    {
+     "ang": 205.0,
+     "length": 152.5421791963901,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 231.0,
+     "length": 142.1508716065116,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 257.0,
+     "length": 135.590193770777,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 283.0,
+     "length": 135.33020207262751,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 309.0,
+     "length": 142.5163704653262,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 335.0,
+     "length": 152.54217919638972,
+     "r0": 9.0,
+     "r1": 3.6
+    }
+   ],
+   "d_flat_key": true
+  },
+  "P12_mask_part_min_dist_to_rest_of_piece_mm": 93.8296328459192,
+  "P12_arm_free_span_min_dist_to_rest_mm_beyond_45mm_of_exit": 9.16515138991168,
+  "P12_arm_free_span_min_z_mm": 88.0,
+  "P12_wall_plane_clear_mm": 88.0,
+  "connected_components": 24,
+  "components_over_0.1cm3": 8,
+  "largest_components_cm3": [
+   2.2,
+   4.7,
+   26350.0
+  ],
+  "component_volumes_cm3_smallest": [
+   0.01,
+   0.01,
+   0.01,
+   0.01,
+   0.01,
+   0.02
+  ],
+  "veins": {
+   "n": 27,
+   "r0": 3.2,
+   "r1": 2.2,
+   "raised_mm_min": 0.0,
+   "raised_mm_median": 2.0,
+   "raised_mm_p10": 2.0
+  },
+  "eyes": {
+   "patch": [
+    50,
+    42,
+    36,
+    32,
+    30,
+    26,
+    24,
+    22,
+    20,
+    18,
+    16,
+    15
+   ],
+   "e2": [
+    34,
+    18,
+    24,
+    30,
+    16,
+    20,
+    26,
+    18
+   ],
+   "arms": {
+    "S2_UR": [
+     13.8,
+     13.6,
+     11.2,
+     15.3,
+     12.9,
+     12.9,
+     10.4
+    ],
+    "S3_LL": [
+     21.1,
+     24.0,
+     24.3,
+     23.0,
+     22.1,
+     15.9
+    ]
+   }
+  },
+  "nearest_shelf_root": {
+   "S1_UL": 107.0,
+   "S2_UR": 129.0,
+   "S3_LL": 277.0
+  }
+ },
+ "V4": {
+  "max_z_mm": 254.0,
+  "mask_front_z_max": 233.0,
+  "mask_back_z_at_centre": 199.0,
+  "flesh_patch_peak_z_before_eyes": 114.0,
+  "gap_mask_back_to_flesh_mm": 85.0,
+  "gap_mask_back_to_highest_rest_solid_under_mask_mm": 55.0,
+  "flesh_z_under_mask_centre_incl_eyes": 108.0,
+  "mask_roll_deg": 14.999999999999998,
+  "mask_pitch_deg": 0.0,
+  "rod_axis": {
+   "A": [
+    15.6,
+    136.8,
+    17.8
+   ],
+   "exit": [
+    0.0,
+    168.0,
+    92.0
+   ],
+   "tip_pad_face": [
+    -17.1,
+    202.1,
+    173.2
+   ],
+   "B0_mask_back": [
+    -22.7,
+    213.2,
+    199.6
+   ],
+   "dir": [
+    -0.1908,
+    0.3804,
+    0.905
+   ],
+   "tilt_from_wall_normal_deg": 25.18325753386204,
+   "rod_length_mm": 215.74545160518113,
+   "rod_embed_in_root_mm": 82.0,
+   "rod_into_mask_from_pad_face_mm": 44.0,
+   "free_span_exit_to_pad_face_mm": 89.74545160518113,
+   "arm_centreline_exit_to_tip_mm": 95.74545160518113,
+   "arm_centreline_A_to_tip_mm": 177.74545160518113
+  },
+  "P7_core_min_diameter_mm_over_rod_span_A_to_pad_face": 36.0,
+  "P7_core_min_diameter_free_span_mm": 50.75431016179808,
+  "P1_radial_cover_over_rod_min_mm_A_to_pad_face": 12.8,
+  "P1_radial_cover_free_span_min_mm": 20.17715508089904,
+  "root_dia_at_exit_mm": 69.45110980570924,
+  "arm_dia_root_mid_tip_mm": [
+   69.45110980570924,
+   57.99840249323251,
+   48.799258904713376
+  ],
+  "root_block_dia_mm": 60.0,
+  "P8_rod_axis_vs_centreline_max_offset_mm": 3.4653007808478082,
+  "P8_sheath_centreline_lateral_offset_samples_mm": [
+   0.0,
+   0.0,
+   0.0,
+   -1.4,
+   -3.4,
+   -0.8,
+   0.0
+  ],
+  "P3_root_block_solid_fraction_60dia_x_82deep": 1.0,
+  "P3_block_dia_mm": 60.0,
+  "P3_block_depth_along_axis_mm": 82.0,
+  "P3_back_plate_100x100x6_solid_fraction_in_trunk": 1.0,
+  "P3_A_z_mm": 17.79398263388191,
+  "P3_block_min_z_mm": 5.028536449010568,
+  "P4_pad_solid_fraction_on_r33.5_ring": 1.0,
+  "P4_pad_solid_fraction_on_r39_ring": 0.50773369199731,
+  "P4_pad_dia_mm": 70.0,
+  "P4_pad_depth_along_axis_mm": 38.0,
+  "P4_fillet_smin_k": 28.0,
+  "P4_fillet_radius_est_mm": 16.8,
+  "mask_CoM": [
+   -30.4,
+   241.7,
+   211.8
+  ],
+  "P5_CoM_offset_from_rod_axis_mm": 21.714434856205305,
+  "P5_horizontal_lever_exit_axis_to_CoM_mm": 123.64260184456572,
+  "P5_lever_incl_vertical_offset_3D_mm": 143.91741122483356,
+  "P5_tilt_roll_deg": 14.999999999999998,
+  "P5_lever_from_trunk_wall_plane_z0_horizontal_mm": null,
+  "P6_mask_mass_calc": {
+   "V_disc_cm3": 839.0,
+   "area_disc_cm2": 791.5,
+   "shell_2mm_cm3": 158.3,
+   "interior_cm3": 680.7,
+   "infill15_cm3": 102.1,
+   "V_pad_fingers_solid_cm3": 163.7,
+   "V_total_cm3": 1002.7,
+   "PETG_g_cm3": 1.27,
+   "mass_g": 539.0,
+   "mass_with_5pct_finish_g": 566.0
+  },
+  "P6_mask_mass_kg": 0.566,
+  "P9": {
+   "arm_integral_with_trunk": true,
+   "root_seam": null,
+   "mask_end_seam_land_mm2": 1785,
+   "spigot_socket_depth_mm": 30.0,
+   "spigot_dia_mm": 40.0,
+   "d_flat_mm_from_axis": 16.0,
+   "tip_dia_at_pad_face_mm": 48.799258904713376
+  },
+  "P10_arm_axis_angle_from_XY_plane_deg": 64.81674246613797,
+  "P11": {
+   "n_fingers": 6,
+   "fingers": [
+    {
+     "ang": 205.0,
+     "length": 152.54217919638972,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 231.0,
+     "length": 142.15087160651197,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 257.0,
+     "length": 135.59019377077718,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 283.0,
+     "length": 135.33020207262777,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 309.0,
+     "length": 142.516370465326,
+     "r0": 9.0,
+     "r1": 3.6
+    },
+    {
+     "ang": 335.0,
+     "length": 152.54217919638907,
+     "r0": 9.0,
+     "r1": 3.6
+    }
+   ],
+   "d_flat_key": true
+  },
+  "P12_mask_part_min_dist_to_rest_of_piece_mm": 38.2099463490856,
+  "P12_arm_free_span_min_dist_to_rest_mm_beyond_45mm_of_exit": 6.324555320336759,
+  "P12_arm_free_span_min_z_mm": 84.0,
+  "P12_wall_plane_clear_mm": 84.0,
+  "connected_components": 21,
+  "components_over_0.1cm3": 7,
+  "largest_components_cm3": [
+   2.2,
+   4.7,
+   26139.4
+  ],
+  "component_volumes_cm3_smallest": [
+   0.01,
+   0.01,
+   0.01,
+   0.01,
+   0.01,
+   0.02
+  ],
+  "veins": {
+   "n": 23,
+   "r0": 3.2,
+   "r1": 2.2,
+   "raised_mm_min": 2.0,
+   "raised_mm_median": 2.0,
+   "raised_mm_p10": 2.0
+  },
+  "eyes": {
+   "patch": [
+    50,
+    42,
+    36,
+    32,
+    30,
+    26,
+    24,
+    22,
+    20,
+    18,
+    16,
+    15
+   ],
+   "e2": [
+    34,
+    18,
+    24,
+    30,
+    16,
+    20,
+    26,
+    18
+   ],
+   "arms": {}
+  },
+  "nearest_shelf_root": {
+   "S1_UL": 107.0,
+   "S2_UR": 129.0,
+   "S3_LL": 277.0
+  }
+ }
+}

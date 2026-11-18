@@ -1,0 +1,390 @@
+{
+ "note": "headroom = measure_extra.py (volume test over the largest free flat rectangle on each plate top, clear height capped 300 mm; the envelope itself ends 172-307 mm above the tops, so the cap is read as \"nothing solid above the plate plane over the patch\"); gate verdict_excl_iou is for information only",
+ "studies": {
+  "H": {
+   "checklist_score": "7/13",
+   "checklist_failed": [
+    4,
+    5,
+    7,
+    8,
+    10,
+    11
+   ],
+   "gate_n_pass": 6,
+   "gate_failed": [
+    "iou_vs_c01"
+   ],
+   "gate_verdict": "FAIL",
+   "verdict_excl_iou": "PASS",
+   "gate_values": {
+    "fill_ratio": 0.4395,
+    "wedge_count": 6,
+    "torso_width_frac": 0.4512,
+    "limb_reach_ratio": 0.5657,
+    "limb_count": 6,
+    "head_vs_flesh": 1.5116,
+    "iou_vs_c01": 0.5567
+   },
+   "wall_lum": 13.2,
+   "flesh_lum": 28.0,
+   "mask_lum": 87.8,
+   "maw_lum": 14.6,
+   "shelves": {
+    "S1_UL": {
+     "top_y": 285,
+     "cx": -335,
+     "flat_top_x_mm": 158,
+     "flat_top_z_mm": 182,
+     "clear_above_flat_mm": 300,
+     "clear_above_footprint_mm": 300,
+     "room_to_envelope_mm": 172,
+     "ok": true
+    },
+    "S2_UR": {
+     "top_y": 150,
+     "cx": 335,
+     "flat_top_x_mm": 194,
+     "flat_top_z_mm": 182,
+     "clear_above_flat_mm": 300,
+     "clear_above_footprint_mm": 300,
+     "room_to_envelope_mm": 307,
+     "ok": true
+    },
+    "S3_LL": {
+     "top_y": -190,
+     "cx": -335,
+     "flat_top_x_mm": 188,
+     "flat_top_z_mm": 158,
+     "clear_above_flat_mm": 300,
+     "clear_above_footprint_mm": 2,
+     "room_to_envelope_mm": 647,
+     "ok": true
+    }
+   },
+   "diff_vs_H": {
+    "voxels": 0
+   }
+  },
+  "V1": {
+   "checklist_score": "7/13",
+   "checklist_failed": [
+    4,
+    5,
+    7,
+    8,
+    10,
+    11
+   ],
+   "gate_n_pass": 6,
+   "gate_failed": [
+    "iou_vs_c01"
+   ],
+   "gate_verdict": "FAIL",
+   "verdict_excl_iou": "PASS",
+   "gate_values": {
+    "fill_ratio": 0.4395,
+    "wedge_count": 6,
+    "torso_width_frac": 0.4512,
+    "limb_reach_ratio": 0.5657,
+    "limb_count": 6,
+    "head_vs_flesh": 1.5119,
+    "iou_vs_c01": 0.5567
+   },
+   "wall_lum": 13.2,
+   "flesh_lum": 27.9,
+   "mask_lum": 87.8,
+   "maw_lum": 21.1,
+   "shelves": {
+    "S1_UL": {
+     "top_y": 285,
+     "cx": -335,
+     "flat_top_x_mm": 158,
+     "flat_top_z_mm": 182,
+     "clear_above_flat_mm": 300,
+     "clear_above_footprint_mm": 300,
+     "room_to_envelope_mm": 172,
+     "ok": true
+    },
+    "S2_UR": {
+     "top_y": 150,
+     "cx": 335,
+     "flat_top_x_mm": 194,
+     "flat_top_z_mm": 182,
+     "clear_above_flat_mm": 300,
+     "clear_above_footprint_mm": 300,
+     "room_to_envelope_mm": 307,
+     "ok": true
+    },
+    "S3_LL": {
+     "top_y": -190,
+     "cx": -335,
+     "flat_top_x_mm": 188,
+     "flat_top_z_mm": 158,
+     "clear_above_flat_mm": 300,
+     "clear_above_footprint_mm": 2,
+     "room_to_envelope_mm": 647,
+     "ok": true
+    }
+   },
+   "diff_vs_H": {
+    "voxels": 11726,
+    "volume_cm3": 93.8,
+    "bbox_mm": [
+     [
+      -66,
+      98
+     ],
+     [
+      -174,
+      154
+     ],
+     [
+      12,
+      116
+     ]
+    ]
+   }
+  },
+  "V2": {
+   "checklist_score": "7/13",
+   "checklist_failed": [
+    4,
+    5,
+    7,
+    8,
+    10,
+    11
+   ],
+   "gate_n_pass": 6,
+   "gate_failed": [
+    "iou_vs_c01"
+   ],
+   "gate_verdict": "FAIL",
+   "verdict_excl_iou": "PASS",
+   "gate_values": {
+    "fill_ratio": 0.4395,
+    "wedge_count": 6,
+    "torso_width_frac": 0.4512,
+    "limb_reach_ratio": 0.5657,
+    "limb_count": 6,
+    "head_vs_flesh": 1.5112,
+    "iou_vs_c01": 0.5567
+   },
+   "wall_lum": 13.2,
+   "flesh_lum": 27.9,
+   "mask_lum": 87.8,
+   "maw_lum": 21.0,
+   "shelves": {
+    "S1_UL": {
+     "top_y": 285,
+     "cx": -335,
+     "flat_top_x_mm": 158,
+     "flat_top_z_mm": 182,
+     "clear_above_flat_mm": 300,
+     "clear_above_footprint_mm": 300,
+     "room_to_envelope_mm": 172,
+     "ok": true
+    },
+    "S2_UR": {
+     "top_y": 150,
+     "cx": 335,
+     "flat_top_x_mm": 194,
+     "flat_top_z_mm": 182,
+     "clear_above_flat_mm": 300,
+     "clear_above_footprint_mm": 300,
+     "room_to_envelope_mm": 307,
+     "ok": true
+    },
+    "S3_LL": {
+     "top_y": -190,
+     "cx": -335,
+     "flat_top_x_mm": 188,
+     "flat_top_z_mm": 158,
+     "clear_above_flat_mm": 300,
+     "clear_above_footprint_mm": 2,
+     "room_to_envelope_mm": 647,
+     "ok": true
+    }
+   },
+   "diff_vs_H": {
+    "voxels": 11234,
+    "volume_cm3": 89.9,
+    "bbox_mm": [
+     [
+      -68,
+      98
+     ],
+     [
+      -174,
+      154
+     ],
+     [
+      12,
+      116
+     ]
+    ]
+   }
+  },
+  "V3": {
+   "checklist_score": "7/13",
+   "checklist_failed": [
+    4,
+    5,
+    7,
+    8,
+    10,
+    11
+   ],
+   "gate_n_pass": 6,
+   "gate_failed": [
+    "iou_vs_c01"
+   ],
+   "gate_verdict": "FAIL",
+   "verdict_excl_iou": "PASS",
+   "gate_values": {
+    "fill_ratio": 0.4395,
+    "wedge_count": 6,
+    "torso_width_frac": 0.4512,
+    "limb_reach_ratio": 0.5657,
+    "limb_count": 6,
+    "head_vs_flesh": 1.487,
+    "iou_vs_c01": 0.5567
+   },
+   "wall_lum": 13.2,
+   "flesh_lum": 27.7,
+   "mask_lum": 86.7,
+   "maw_lum": 14.1,
+   "shelves": {
+    "S1_UL": {
+     "top_y": 285,
+     "cx": -335,
+     "flat_top_x_mm": 158,
+     "flat_top_z_mm": 182,
+     "clear_above_flat_mm": 300,
+     "clear_above_footprint_mm": 300,
+     "room_to_envelope_mm": 172,
+     "ok": true
+    },
+    "S2_UR": {
+     "top_y": 150,
+     "cx": 335,
+     "flat_top_x_mm": 194,
+     "flat_top_z_mm": 182,
+     "clear_above_flat_mm": 300,
+     "clear_above_footprint_mm": 300,
+     "room_to_envelope_mm": 307,
+     "ok": true
+    },
+    "S3_LL": {
+     "top_y": -190,
+     "cx": -335,
+     "flat_top_x_mm": 188,
+     "flat_top_z_mm": 158,
+     "clear_above_flat_mm": 300,
+     "clear_above_footprint_mm": 2,
+     "room_to_envelope_mm": 647,
+     "ok": true
+    }
+   },
+   "diff_vs_H": {
+    "voxels": 262261,
+    "volume_cm3": 2098.1,
+    "bbox_mm": [
+     [
+      -132,
+      84
+     ],
+     [
+      90,
+      348
+     ],
+     [
+      12,
+      296
+     ]
+    ]
+   }
+  },
+  "V4": {
+   "checklist_score": "7/13",
+   "checklist_failed": [
+    4,
+    5,
+    7,
+    8,
+    10,
+    11
+   ],
+   "gate_n_pass": 6,
+   "gate_failed": [
+    "iou_vs_c01"
+   ],
+   "gate_verdict": "FAIL",
+   "verdict_excl_iou": "PASS",
+   "gate_values": {
+    "fill_ratio": 0.4385,
+    "wedge_count": 6,
+    "torso_width_frac": 0.4219,
+    "limb_reach_ratio": 0.6266,
+    "limb_count": 6,
+    "head_vs_flesh": 1.5166,
+    "iou_vs_c01": 0.555
+   },
+   "wall_lum": 13.2,
+   "flesh_lum": 28.4,
+   "mask_lum": 87.8,
+   "maw_lum": 14.6,
+   "shelves": {
+    "S1_UL": {
+     "top_y": 285,
+     "cx": -335,
+     "flat_top_x_mm": 158,
+     "flat_top_z_mm": 182,
+     "clear_above_flat_mm": 300,
+     "clear_above_footprint_mm": 300,
+     "room_to_envelope_mm": 172,
+     "ok": true
+    },
+    "S2_UR": {
+     "top_y": 150,
+     "cx": 335,
+     "flat_top_x_mm": 194,
+     "flat_top_z_mm": 182,
+     "clear_above_flat_mm": 300,
+     "clear_above_footprint_mm": 300,
+     "room_to_envelope_mm": 307,
+     "ok": true
+    },
+    "S3_LL": {
+     "top_y": -190,
+     "cx": -335,
+     "flat_top_x_mm": 188,
+     "flat_top_z_mm": 158,
+     "clear_above_flat_mm": 300,
+     "clear_above_footprint_mm": 62,
+     "room_to_envelope_mm": 647,
+     "ok": true
+    }
+   },
+   "diff_vs_H": {
+    "voxels": 12817,
+    "volume_cm3": 102.5,
+    "bbox_mm": [
+     [
+      -200,
+      188
+     ],
+     [
+      -222,
+      352
+     ],
+     [
+      12,
+      132
+     ]
+    ]
+   }
+  }
+ }
+}

@@ -4,13 +4,15 @@ Same camera + lights for every study. Shader: vertex-colour palette by part kind
 import sys, os, json, argparse
 import numpy as np
 import bpy, mathutils
-ap = argparse.ArgumentParser(); ap.add_argument('id'); ap.add_argument('--views', default='front'); ap.add_argument('--samples', type=int, default=28); ap.add_argument('--mask', action='store_true')
+ap = argparse.ArgumentParser(); ap.add_argument('id'); ap.add_argument('--views', default='front'); ap.add_argument('--samples', type=int, default=28); ap.add_argument('--mask', action='store_true'); ap.add_argument('--clipx', type=float, default=None)
 a = ap.parse_args()
 HERE = os.path.dirname(os.path.abspath(__file__)); B = os.path.join(HERE, 'build'); OUT = os.path.join(HERE, 'renders'); os.makedirs(OUT, exist_ok=True)
 d = np.load(f'{B}/{a.id}.npz'); v = d['v'].astype(np.float64); f = d['f'].astype(np.int64); mk = d['mk']; dm = d['dm']; fv = d['fv']; kind = d['kind']
 nv = len(v); z = v[:, 2]
+if a.clipx is not None:      # side-profile legibility only: drop faces with any vertex left of clipx (mm)
+    f = f[(v[f][:, :, 0] >= a.clipx).all(axis=1)]
 def sstep(t): t = np.clip(t, 0, 1); return t * t * (3 - 2 * t)
-PAL = {0: (0.26, 0.20, 0.15), 1: (0.26, 0.20, 0.15), 2: (0.34, 0.27, 0.19), 3: (0.38, 0.32, 0.23), 4: (0.42, 0.36, 0.27), 5: (0.31, 0.24, 0.17), 6: (0.86, 0.83, 0.72), 7: (0.66, 0.60, 0.44), 8: (0.64, 0.60, 0.46)}
+PAL = {0: (0.26, 0.20, 0.15), 1: (0.26, 0.20, 0.15), 2: (0.34, 0.27, 0.19), 3: (0.38, 0.32, 0.23), 4: (0.42, 0.36, 0.27), 5: (0.31, 0.24, 0.17), 6: (0.42, 0.40, 0.34), 7: (0.66, 0.60, 0.44), 8: (0.64, 0.60, 0.46), 9: (0.20, 0.05, 0.05), 10: (0.40, 0.31, 0.21)}
 PALD = {k_: (lambda c_: tuple(np.array(c_) * 0.62 + 0.38 * (0.3 * c_[0] + 0.59 * c_[1] + 0.11 * c_[2])) if k_ != 6 else c_)(v_) for k_, v_ in PAL.items()}   # desaturated ochre/umber (r08b)
 col = np.array([PALD.get(int(k), PALD[1]) for k in kind])
 col = col * (0.80 + 0.30 * sstep(z / 200.0))[:, None]
@@ -22,7 +24,10 @@ _ef = f'{B}/{a.id}_eyes.json'
 if os.path.exists(_ef):
     for e_ in _j.load(open(_ef)):
         G_ = e_['G']; r_ = G_ / 2; sel_ = (kind == 7) & (np.hypot(v[:, 0] - e_['x'], v[:, 1] - e_['y']) < 1.25 * r_)
-        col[sel_] = (0.74, 0.74, 0.69) if e_['clouded'] else (0.66, 0.60, 0.44)
+        col[sel_] = (0.74, 0.74, 0.69) if e_['clouded'] else ((0.72, 0.52, 0.42) if e_.get('veiny') else (0.66, 0.60, 0.44))
+        if e_.get('veiny'):      # bloodshot: dark red radial streaks round the globe, denser away from the pupil
+            ang_ = np.arctan2(v[:, 1] - e_['y'], v[:, 0] - e_['x']); rr_ = np.hypot(v[:, 0] - e_['x'], v[:, 1] - e_['y']) / (0.62 * G_ + 1e-6); ph_ = (e_['x'] * 0.37 + e_['y'] * 0.11)
+            st_ = (np.abs(np.sin(7 * ang_ + ph_ + 2.2 * rr_ ** 2)) > 0.86) | (np.abs(np.sin(13 * ang_ + 1.3 * ph_)) > 0.93); col[sel_ & st_ & (rr_ > 0.35)] = (0.34, 0.04, 0.04)
         if not e_['clouded']:
             ix_, iy_ = e_['x'] + e_['gaze'][0] * r_ * 0.7, e_['y'] + e_['gaze'][1] * r_ * 0.7; di_ = np.hypot(v[:, 0] - ix_, v[:, 1] - iy_)
             col[sel_ & (di_ < 0.21 * G_)] = (0.24, 0.15, 0.07)
@@ -69,7 +74,9 @@ sc.render.engine = 'CYCLES'; sc.cycles.device = 'CPU'; sc.cycles.samples = a.sam
 sc.render.resolution_x, sc.render.resolution_y = 1200, 900; sc.render.image_settings.file_format = 'PNG'; sc.render.image_settings.color_depth = '8'
 sc.view_settings.view_transform = 'Standard'
 cam = bpy.data.objects.new('cam', bpy.data.cameras.new('cam')); sc.collection.objects.link(cam); sc.camera = cam
-VIEWS = {'front': dict(loc=(0, 0, 2.0), tgt=(0, 0, 0), ortho=1.41), 'tq': dict(loc=(0.85, 0.35, 1.7), tgt=(0, 0, 0.05), lens=42)}
+VIEWS = {'front': dict(loc=(0, 0, 2.0), tgt=(0, 0, 0), ortho=1.41), 'tq': dict(loc=(0.85, 0.35, 1.7), tgt=(0, 0, 0.05), lens=42),
+         'side': dict(loc=(1.45, 0.38, 0.55), tgt=(0, 0.24, 0.13), lens=60), 'sideL': dict(loc=(-1.45, 0.38, 0.55), tgt=(0, 0.24, 0.13), lens=60),
+         'prof': dict(loc=(3.0, 0.26, 0.14), tgt=(0, 0.26, 0.14), ortho=0.62), 'close': dict(loc=(0.55, 0.30, 1.05), tgt=(0, 0.25, 0.12), lens=70)}
 WARM = (1.0, 0.88, 0.72)
 def setup_lights():
     for o_ in [o_ for o_ in sc.objects if o_.type == 'LIGHT']: bpy.data.objects.remove(o_)

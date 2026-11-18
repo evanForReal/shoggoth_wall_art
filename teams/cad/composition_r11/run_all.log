@@ -1,0 +1,93 @@
+H tris 1006860 sil px 90653
+V1 tris 1021130 sil px 90653
+V2 tris 1021092 sil px 90653
+V3 tris 1016514 sil px 90653
+V4 tris 1002012 sil px 90433
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:46: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat = bpy.data.materials.new('flesh'); mat.use_nodes = True; nt = mat.node_tree; nt.nodes.clear(); N = nt.nodes; Lk = nt.links.new
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:62: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  wm = bpy.data.materials.new('wall'); wm.use_nodes = True; wb = wm.node_tree.nodes['Principled BSDF']
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:64: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  w_ = bpy.data.worlds.new('w'); sc.world = w_; w_.use_nodes = True; w_.node_tree.nodes['Background'].inputs[0].default_value = (0.0008, 0.0008, 0.0008, 1)
+00:57.279  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_H_front.png'
+rendered front
+01:40.571  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_H_tq.png'
+rendered tq
+02:13.790  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_H_side.png'
+rendered side
+02:47.192  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_H_sideL.png'
+rendered sideL
+03:46.048  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_H_close.png'
+rendered close
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:95: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  em = bpy.data.materials.new('em'); em.use_nodes = True; n2_ = em.node_tree; n2_.nodes.clear(); o2 = n2_.nodes.new('ShaderNodeOutputMaterial'); e2 = n2_.nodes.new('ShaderNodeEmission')
+03:51.829  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_H_mask_raw.png'
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:46: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat = bpy.data.materials.new('flesh'); mat.use_nodes = True; nt = mat.node_tree; nt.nodes.clear(); N = nt.nodes; Lk = nt.links.new
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:62: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  wm = bpy.data.materials.new('wall'); wm.use_nodes = True; wb = wm.node_tree.nodes['Principled BSDF']
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:64: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  w_ = bpy.data.worlds.new('w'); sc.world = w_; w_.use_nodes = True; w_.node_tree.nodes['Background'].inputs[0].default_value = (0.0008, 0.0008, 0.0008, 1)
+00:20.075  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_H_prof.png'
+rendered prof
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:46: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat = bpy.data.materials.new('flesh'); mat.use_nodes = True; nt = mat.node_tree; nt.nodes.clear(); N = nt.nodes; Lk = nt.links.new
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:62: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  wm = bpy.data.materials.new('wall'); wm.use_nodes = True; wb = wm.node_tree.nodes['Principled BSDF']
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:64: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  w_ = bpy.data.worlds.new('w'); sc.world = w_; w_.use_nodes = True; w_.node_tree.nodes['Background'].inputs[0].default_value = (0.0008, 0.0008, 0.0008, 1)
+00:44.003  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_V1_front.png'
+rendered front
+01:21.762  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_V1_tq.png'
+rendered tq
+01:56.694  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_V1_side.png'
+rendered side
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:95: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  em = bpy.data.materials.new('em'); em.use_nodes = True; n2_ = em.node_tree; n2_.nodes.clear(); o2 = n2_.nodes.new('ShaderNodeOutputMaterial'); e2 = n2_.nodes.new('ShaderNodeEmission')
+02:04.397  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_V1_mask_raw.png'
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:46: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat = bpy.data.materials.new('flesh'); mat.use_nodes = True; nt = mat.node_tree; nt.nodes.clear(); N = nt.nodes; Lk = nt.links.new
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:62: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  wm = bpy.data.materials.new('wall'); wm.use_nodes = True; wb = wm.node_tree.nodes['Principled BSDF']
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:64: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  w_ = bpy.data.worlds.new('w'); sc.world = w_; w_.use_nodes = True; w_.node_tree.nodes['Background'].inputs[0].default_value = (0.0008, 0.0008, 0.0008, 1)
+00:44.105  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_V2_front.png'
+rendered front
+01:22.208  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_V2_tq.png'
+rendered tq
+01:56.382  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_V2_side.png'
+rendered side
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:95: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  em = bpy.data.materials.new('em'); em.use_nodes = True; n2_ = em.node_tree; n2_.nodes.clear(); o2 = n2_.nodes.new('ShaderNodeOutputMaterial'); e2 = n2_.nodes.new('ShaderNodeEmission')
+02:02.335  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_V2_mask_raw.png'
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:46: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat = bpy.data.materials.new('flesh'); mat.use_nodes = True; nt = mat.node_tree; nt.nodes.clear(); N = nt.nodes; Lk = nt.links.new
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:62: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  wm = bpy.data.materials.new('wall'); wm.use_nodes = True; wb = wm.node_tree.nodes['Principled BSDF']
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:64: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  w_ = bpy.data.worlds.new('w'); sc.world = w_; w_.use_nodes = True; w_.node_tree.nodes['Background'].inputs[0].default_value = (0.0008, 0.0008, 0.0008, 1)
+00:43.344  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_V3_front.png'
+rendered front
+01:21.192  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_V3_tq.png'
+rendered tq
+01:55.327  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_V3_side.png'
+rendered side
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:95: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  em = bpy.data.materials.new('em'); em.use_nodes = True; n2_ = em.node_tree; n2_.nodes.clear(); o2 = n2_.nodes.new('ShaderNodeOutputMaterial'); e2 = n2_.nodes.new('ShaderNodeEmission')
+02:01.520  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_V3_mask_raw.png'
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:46: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat = bpy.data.materials.new('flesh'); mat.use_nodes = True; nt = mat.node_tree; nt.nodes.clear(); N = nt.nodes; Lk = nt.links.new
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:62: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  wm = bpy.data.materials.new('wall'); wm.use_nodes = True; wb = wm.node_tree.nodes['Principled BSDF']
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:64: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  w_ = bpy.data.worlds.new('w'); sc.world = w_; w_.use_nodes = True; w_.node_tree.nodes['Background'].inputs[0].default_value = (0.0008, 0.0008, 0.0008, 1)
+00:41.410  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_V4_front.png'
+rendered front
+01:17.475  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_V4_tq.png'
+rendered tq
+01:52.028  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_V4_side.png'
+rendered side
+/home/user/shoggoth_wall_art/teams/cad/composition_r11/render_comp.py:95: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  em = bpy.data.materials.new('em'); em.use_nodes = True; n2_ = em.node_tree; n2_.nodes.clear(); o2 = n2_.nodes.new('ShaderNodeOutputMaterial'); e2 = n2_.nodes.new('ShaderNodeEmission')
+01:58.107  render           | Saved: '/home/user/shoggoth_wall_art/teams/cad/composition_r11/renders/study_V4_mask_raw.png'
+ALLDONE

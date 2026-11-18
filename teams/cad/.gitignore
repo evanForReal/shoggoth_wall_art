@@ -1,5 +1,6 @@
 # Regenerable geometry outputs; never commit (see each package run_all.sh)
 *.stl
+!composition_r11/mask_arm_for_review.stl
 *.ply
 *.obj
 *.npy

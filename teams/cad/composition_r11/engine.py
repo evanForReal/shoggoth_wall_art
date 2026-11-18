@@ -78,10 +78,10 @@ class Field:
     def surface_z(s, x, y):
         i = np.clip(((np.asarray(x) - X0) / RES).astype(int), 0, NX - 1); j = np.clip(((np.asarray(y) - X0) / RES).astype(int), 0, NY - 1)
         col = s.F[i, j, :] < 0; top = NZ - 1 - np.argmax(col[..., ::-1], axis=-1); return np.where(col.any(-1), ZS[top], 0.0)
-    def add_rib(s, name, xy, r0=8.0, r1=5.0, lift=3.0, k=8.0):
+    def add_rib(s, name, xy, r0=8.0, r1=5.0, lift=3.0, k=8.0, kind=4, sig=14):
         """strand riding the current surface along an xy polyline."""
-        c, t, L = curve([(x, y, 0.0) for x, y in xy], 2.0); zz = s.surface_z(c[:, 0], c[:, 1]); zz = ndi.gaussian_filter1d(zz, 14, mode='nearest'); c[:, 2] = zz + lift - 0.5 * r0
-        r = r0 + (r1 - r0) * t; s.sweep(name, c, r, k, store=False, kind=4)
+        c, t, L = curve([(x, y, 0.0) for x, y in xy], 2.0); zz = s.surface_z(c[:, 0], c[:, 1]); zz = ndi.gaussian_filter1d(zz, sig, mode='nearest'); c[:, 2] = zz + lift - 0.5 * r0
+        r = r0 + (r1 - r0) * t; s.sweep(name, c, r, k, store=False, kind=kind)
     def add_rib2(s, name, xy, n=2, amp=7.0, r0=6.5, r1=4.6, lift=3.0, k=4.0, freq=2.2, seed=0):
         """braided surface-riding strand set: n strands weaving across an xy path (twist/split/rejoin), riding the current surface."""
         rng = np.random.default_rng(seed); c, t, L = curve([(x, y, 0.0) for x, y in xy], 2.0); zz = s.surface_z(c[:, 0], c[:, 1]); zz = ndi.gaussian_filter1d(zz, 14, mode='nearest')

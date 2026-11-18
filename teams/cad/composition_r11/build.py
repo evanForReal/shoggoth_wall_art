@@ -6,6 +6,8 @@ from scipy import ndimage as ndi
 from skimage import measure
 from PIL import Image, ImageDraw
 from engine import *
+import heldmask as hm
+import trimesh
 
 HERE = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(HERE, 'build')
 TH, RR = 34.0, 16.0
@@ -61,17 +63,17 @@ def add_eye(f, e, rng):
     """lidded eye in a flesh socket: collar mound, globe (kind 7), lid (ring / hood / turret), pupil recess when G >= 45."""
     x, y, G = e['x'], e['y'], e['G']; r = G / 2; zb = float(f.surface_z(np.array([x]), np.array([y]))[0]) if e.get('z') is None else e['z']
     if zb < 10: zb = 40.0
-    zc = zb + 0.12 * r; lo = (x - 2.2 * r, y - 2.2 * r, 0); hi = (x + 2.2 * r, y + 2.2 * r, zc + 2.5 * r)
+    zc = zb + (0.12 + e.get('pop', 0.0)) * r; lo = (x - 2.2 * r, y - 2.2 * r, 0); hi = (x + 2.2 * r, y + 2.2 * r, zc + 2.5 * r)
     f.add_fn(lo, hi, ellipsoid((x, y), 1.55 * r, 1.45 * r, (zb - 0.1 * r, 0.80 * r)), k=0.5 * r, kind=1)                # socket mound
     lid = e.get('lid', 'ring'); tilt = np.radians(e.get('tilt', 0.0)); ct, st = np.cos(tilt), np.sin(tilt)
     if lid == 'ring':
         def ringf(X, Y, Z):
-            dx, dy, dz = X - x, Y - y, Z - zc; q = np.sqrt(dx ** 2 + dy ** 2); return np.sqrt((q - 1.08 * r) ** 2 + (dz - 0.05 * r) ** 2) - 0.24 * r
+            dx, dy, dz = X - x, Y - y, Z - zc; q = np.sqrt(dx ** 2 + dy ** 2); return np.sqrt((q - 1.08 * r) ** 2 + (dz - 0.05 * r) ** 2) - 0.24 * r * e.get('swell', 1.0)
         f.add_fn(lo, hi, ringf, k=0.2 * r, kind=1)
     elif lid == 'hood':
         def hoodf(X, Y, Z):
             dx, dy, dz = X - x, Y - y, Z - zc; u = ct * dx + st * dy; v_ = -st * dx + ct * dy; d = np.sqrt(dx ** 2 + dy ** 2 + dz ** 2)
-            shell = np.abs(d - 1.10 * r) - 0.13 * r; cut = -(v_ - 0.05 * r); return np.maximum(shell, cut)
+            shell = np.abs(d - 1.10 * r) - 0.13 * r * e.get('swell', 1.0); cut = -(v_ - 0.05 * r); return np.maximum(shell, cut)
         f.add_fn(lo, hi, hoodf, k=0.15 * r, kind=1)
     elif lid == 'turret':
         f.add_fn(lo, hi, ellipsoid((x, y), 1.25 * r, 1.25 * r, (zb + 0.25 * r, 1.0 * r)), k=0.35 * r, kind=1)
@@ -111,6 +113,11 @@ def build(S):
     f.add_fn((mcx - mww / 2 - 120, mcy - mhh / 2 - 120, 0), (mcx + mww / 2 + 120, mcy + mhh / 2 + 120, 160), sw, k=40, kind=1)
     for B_ in S.get('bulges', []):         # flesh swellings (eye hosts / mask cradle)
         f.add_fn((B_['c'][0] - B_['a'] - 40, B_['c'][1] - B_['b'] - 40, 0), (B_['c'][0] + B_['a'] + 40, B_['c'][1] + B_['b'] + 40, 200), ellipsoid(B_['c'], B_['a'], B_['b'], (B_.get('z', 40), B_.get('h', 46))), k=34, kind=1)
+    P_ = S['patch']; pc = P_['c']; prng = np.random.default_rng(S.get('seed', 0) + 555)      # r11: swollen diseased flesh patch where the mask used to sit (kind 10) + irregular lumps
+    f.add_fn((pc[0] - P_['a'] - 40, pc[1] - P_['b'] - 40, 0), (pc[0] + P_['a'] + 40, pc[1] + P_['b'] + 40, 220), ellipsoid(pc, P_['a'], P_['b'], (P_['z'], P_['h'])), k=34, kind=10)
+    for q_ in range(7):
+        a_ = prng.uniform(0, 6.28); r_ = prng.uniform(25, 85); lx, ly = pc[0] + r_ * np.cos(a_), pc[1] + r_ * np.sin(a_); la = prng.uniform(16, 32)
+        f.add_fn((lx - la - 30, ly - la - 30, 0), (lx + la + 30, ly + la + 30, 220), ellipsoid((lx, ly), la, la * prng.uniform(0.8, 1.2), (P_['z'] + 24, 26)), k=14, kind=10)
     f.web_stats = []
     for T_ in S.get('tears', []): f.carve_tears(T_['poly'], T_['anchors'], holes=T_['holes'], hlen=T_['hlen'], asp=T_['asp'], rim=T_['rim'], seed=T_['seed'], minlig=T_['minlig'])
     # ---- strands: arms (shelf limbs), hanging cascade, crown
@@ -143,21 +150,6 @@ def build(S):
                 cl = [pp(0.55 * rho, ytop - TH - 34), pp(0.88 * rho, ytop - TH - 16), pp(rho + 5, ytop - TH * 0.7), pp(rho + 6, ytop - TH * (1 - hgt) - 4)]
                 if hgt > 0.8: cl += [pp(rho - 3, ytop - 6.5), pp(rho - 16, ytop - 7.0)]
                 cc, tt, _ = curve(cl, 1.5); f.sweep(f"{nm}.fing{j}", cc, 7.6 - 3.2 * tt, 4.0, store=False, kind=2)
-    # ---- T3: single row of suckers on the arms' inner face (raised ring + pit), placed on the actual surface
-    srng = np.random.default_rng(S.get('seed', 0) + 303)
-    for it in S['items']:
-        if not it.get('suckers'): continue
-        c, R = f.parts[it['name']]['c'], f.parts[it['name']]['r']; tg = np.gradient(c[:, :2], axis=0); tg /= np.linalg.norm(tg, axis=1)[:, None] + 1e-9; nr = np.stack([-tg[:, 1], tg[:, 0]], 1)
-        cr = np.cross(np.r_[tg[len(tg) // 2], 0], np.r_[tg[min(len(tg) // 2 + 60, len(tg) - 1)], 0])[2]; side = 1 if cr > 0 else -1
-        for tq in np.linspace(0.12, 0.80, it['suckers']):
-            ii = int(tq * (len(c) - 1)); Ri = R[ii]
-            if Ri < 14: continue
-            xc_, yc_ = c[ii, :2] + nr[ii] * side * 0.45 * Ri
-            if it.get('shelf') and abs(xc_ - it['shelf']['cx']) < it['shelf']['a'] + 14 and it['shelf']['top'] - 80 < yc_ < it['shelf']['top'] + 10: continue      # not on the plate underside
-            srad = float(np.clip(0.30 * Ri * srng.uniform(0.85, 1.15), 7.0, 16.0))
-            zs_ = float(f.surface_z(np.array([xc_]), np.array([yc_]))[0])
-            f.add_fn((xc_ - 2 * srad, yc_ - 2 * srad, max(zs_ - 2 * srad, 0)), (xc_ + 2 * srad, yc_ + 2 * srad, zs_ + 2 * srad), ellipsoid((xc_, yc_), srad, srad, (zs_ - 0.1 * srad, 0.8 * srad)), k=3.0, kind=2)
-            f.carve((xc_ - srad, yc_ - srad, zs_ - 0.2 * srad), (xc_ + srad, yc_ + srad, zs_ + srad), sphere_fn((xc_, yc_, zs_ + 0.78 * srad), 0.55 * srad))
     # ---- webs
     for i, W in enumerate(S['webs']):
         f.add_web2(W['poly'], W['anchors'], holes=W['holes'], hlen=W['hlen'], asp=W['asp'], th=W['th'], rim=W['rim'], seed=W['seed'], sag=0.2, minlig=11.0)
@@ -186,26 +178,6 @@ def build(S):
         r_ = np.interp(th, ths, rim, period=2 * np.pi); tg_ = np.array([-np.sin(th), np.cos(th)]) * rng_.choice([-1, 1]); L_ = rng_.uniform(34, 72)
         p0 = np.array([mcx + (r_ + 6) * np.cos(th), mcy + (r_ + 6) * np.sin(th)]); p1 = p0 + (np.array([np.cos(th), np.sin(th)]) * 0.55 + tg_ * 0.8) * L_ * 0.5; p2 = p0 + (np.array([np.cos(th), np.sin(th)]) * 0.7 + tg_ * 0.7) * L_
         f.add_rib(f'maw_stub{q}', [tuple(p0), tuple(p1), tuple(p2)], r0=6.0, r1=3.2, lift=2.0, k=4.0)
-    # ---- mask: seated disc + bezel, carved smiley
-    mk = S['mask']; D = mk['D']; mrx = mry = D / 2; mcz = mk['z']; dzm = mk.get('dz', 26)
-    def mfn(X, Y, Z):
-        q = np.sqrt(((X - mk['c'][0]) / mrx) ** 2 + ((Y - mk['c'][1]) / mry) ** 2); h = 9.0 + (dzm - 9.0) * np.sqrt(np.clip(1 - q * q, 0, 1))
-        return np.maximum((q - 1) * mrx, np.abs(Z - mcz) - h) * 0.9
-    f.add_fn((mk['c'][0] - mrx - 20, mk['c'][1] - mry - 20, 0), (mk['c'][0] + mrx + 20, mk['c'][1] + mry + 20, 240), mfn, k=6, kind=6)
-    # ---- flesh/root collar overlapping the mask rim (lower arc + sides); the crown tines swallow the top edge
-    rngc = np.random.default_rng(S.get('seed', 0) + 77); angs = np.radians(np.linspace(-12, 192, 60)[::-1] * -1 + 0) if False else np.radians(np.linspace(192, 348, 60))
-    rr = 97.0 + 3.0 * np.sin(5 * angs + 1.0) + 2.0 * np.sin(11 * angs); cc = np.stack([mk['c'][0] + rr * np.cos(angs), mk['c'][1] + rr * np.sin(angs), np.full(len(angs), mcz + 12.0) + 3 * np.sin(7 * angs)], 1)
-    rc = 11.5 + 2.5 * np.sin(3 * angs + 0.5) + 1.5 * np.sin(9 * angs); tt = np.linspace(0, 1, len(angs)); rc = rc * (0.55 + 0.45 * np.sin(np.pi * tt) ** 0.6)
-    f.sweep('collar', cc, np.maximum(rc, 4.5), 8.0, store=False, kind=2)
-    # ---- r10: NO crown. Flesh closes quietly over the mask's upper rim (r09 S5 method: heavier ring over the upper arc), joined to A's lower collar
-    angs = np.radians(np.linspace(-14, 194, 60)); rr = 97.0 + 3.0 * np.sin(5 * angs + 1.0) + 2.0 * np.sin(11 * angs); cc = np.stack([mk['c'][0] + rr * np.cos(angs), mk['c'][1] + rr * np.sin(angs), np.full(len(angs), mcz + 12.0) + 3 * np.sin(7 * angs)], 1)
-    up = np.clip(np.sin(angs), 0, 1); rc = 10.5 + 2.0 * np.sin(3 * angs + 0.5) + 6.5 * up ** 0.8; tt = np.linspace(0, 1, len(angs)); rc = rc * (0.62 + 0.38 * np.sin(np.pi * tt) ** 0.5)
-    f.sweep('rimtop', cc, np.maximum(rc, 4.5), 8.0, store=False, kind=1)
-    fsd = mask_features(mk); fl = mcz + dzm - 11.0
-    if mk.get('tilt'):        # O3: smiley features rotated about the mask centre (the disc is rotation-invariant)
-        _f0 = fsd; _ct, _st = np.cos(mk['tilt']), np.sin(mk['tilt']); _cx, _cy = mk['c']
-        fsd = lambda X, Y: _f0(_cx + _ct * (X - _cx) + _st * (Y - _cy), _cy - _st * (X - _cx) + _ct * (Y - _cy))
-    f.carve((mk['c'][0] - mrx, mk['c'][1] - mry, fl - 2), (mk['c'][0] + mrx, mk['c'][1] + mry, 300), lambda X, Y, Z: np.maximum(fsd(X, Y), fl - Z))
     # ---- maw: dark almond recess
     ad = maw_sd(mw, S.get('seed', 0)); ZR, SL, FLOOR = 110.0, 0.35, 12.0
     f.carve((mcx - mww / 2 - 20, mcy - mhh / 2 - 20, 0), (mcx + mww / 2 + 20, mcy + mhh / 2 + 20, 260), lambda X, Y, Z: np.maximum(ad(X, Y) + SL * np.clip(ZR - Z, 0, None), FLOOR - Z))
@@ -219,19 +191,21 @@ def build(S):
             else: hi_ = m_
         rim2.append(lo_)
     rim2 = np.array(rim2); rimr = lambda th: np.interp(th, ths2, rim2, period=2 * np.pi); trng = np.random.default_rng(S.get('seed', 1) + 900)
-    tc = S.get('teeth_cfg'); lp = S.get('lamprey')
+    tc = S.get('teeth_cfg'); lp = S.get('lamprey'); fang_lines = []
     if tc:      # M1: r09 S5/S6 fang set (34 front + 18 back, 5 long fangs 40-46 mm, ~15% broken), angled inward and down into the throat
         ntot = 0; nf, nb = tc['front'], tc['back']; fang_set = set(tc['fangs'])
         for row, n_ in ((0, nf), (1, nb)):
             angs_t = np.linspace(-180, 180, n_, endpoint=False) + trng.uniform(-3.5, 3.5, n_)
             for k_, a_deg in enumerate(angs_t):
-                th = np.radians(a_deg); rr0 = rimr(th) - (6 if row == 0 else 30); bx, by = mcx + rr0 * np.cos(th), mcy + rr0 * np.sin(th); is_f = row == 0 and k_ in fang_set
+                if tc.get('fangs_only') and not (row == 0 and k_ in fang_set): continue
+                th = np.radians(a_deg); rr0 = rimr(th) - (11 if tc.get('fangs_only') else (6 if row == 0 else 30)); bx, by = mcx + rr0 * np.cos(th), mcy + rr0 * np.sin(th); is_f = row == 0 and k_ in fang_set
                 if is_f: bw = trng.uniform(13, 15.5); Lt = min(3 * bw, trng.uniform(40, 46))
                 else:
                     bw = trng.uniform(9, 14) * (0.8 if row else 1.0); Lt = min(bw * trng.uniform(2.0, 3.0), 3 * bw)
                     if abs(np.cos(th)) < 0.3: Lt *= 0.6
                 dirv = -np.array([np.cos(th), np.sin(th)]) * 0.9 + np.array([-np.sin(th), np.cos(th)]) * trng.uniform(-0.3, 0.3); dirv /= np.linalg.norm(dirv)
-                z0 = (70.0 if row == 0 else 54.0) + trng.uniform(-3, 3)
+                z0 = (66.0 if tc.get('fangs_only') else (70.0 if row == 0 else 54.0)) + trng.uniform(-3, 3)
+                if is_f: fang_lines.append((np.array([bx, by]), np.array([bx, by]) + dirv * Lt))
                 add_tooth(f, (bx, by, z0), dirv, Lt, bw, bool((not is_f) and trng.random() < 0.15), 0.5 * Lt + (6 if row else 0), trng.uniform(-6, 6), trng); ntot += 1
         meta['teeth'] = ntot
     if lp:      # M2: lamprey rings: concentric rows lining the whole rim, small hooked teeth rooted on the sloped wall (row z from the wall slope), pointing inward, tips hooked to the throat
@@ -243,20 +217,86 @@ def build(S):
             for th in thk:
                 r_ = rimr(th) - ins; p0 = (mcx + r_ * np.cos(th), mcy + r_ * np.sin(th), z0); inw = -np.array([np.cos(th), np.sin(th)]) + np.array([-np.sin(th), np.cos(th)]) * trng.uniform(-0.25, 0.25); inw /= np.linalg.norm(inw)
                 bw = trng.uniform(6.0, 8.0) * (1.0 - 0.07 * row); Lt = min(trng.uniform(10.0, 14.5) * (1.0 - 0.06 * row), 3 * bw)
+                if any(np.linalg.norm(np.array(p0[:2]) - (a0 + np.clip(np.dot(np.array(p0[:2]) - a0, b0 - a0) / np.dot(b0 - a0, b0 - a0), 0, 1) * (b0 - a0))) < 11.0 for a0, b0 in fang_lines): continue
                 add_hook_tooth(f, p0, inw, Lt, bw, trng, bool(trng.random() < 0.06)); ntot += 1
         meta['teeth'] = ntot
     for e in S.get('eyes', []):
-        add_eye(f, e, trng); meta['eyes'].append(dict(x=e['x'], y=e['y'], G=e['G'], lid=e.get('lid', 'ring'), pupil=e.get('pupil', 'none'), clouded=bool(e.get('clouded')), gaze=e.get('gaze', (0, 0))))
+        add_eye(f, e, trng); meta['eyes'].append(dict(x=e['x'], y=e['y'], G=e['G'], lid=e.get('lid', 'ring'), pupil=e.get('pupil', 'none'), clouded=bool(e.get('clouded')), gaze=e.get('gaze', (0, 0)), veiny=False, grp='e2'))
+    # ================= r11 =================
+    G = hm.geometry(f, S); vrng = np.random.default_rng(S.get('seed', 0) + 4242); veins = []; allg = []
+    # ---- eye patch (6-12 eyes 15-50 mm) on the swollen flesh behind the mask
+    pe = S['patch']['eyes']
+    for e in pe:
+        add_eye(f, e, trng); meta['eyes'].append(dict(x=e['x'], y=e['y'], G=e['G'], lid=e['lid'], pupil=e['pupil'], clouded=bool(e['clouded']), gaze=e['gaze'], veiny=True, grp='patch')); allg.append((e['x'], e['y'], e['G'], 'patch'))
+    # ---- arm eyes (replace suckers): single row, inner face, 10-30 mm
+    arm_eyes = []
+    for it in S['items']:
+        if not it.get('eyerow'): continue
+        c, R = f.parts[it['name']]['c'], f.parts[it['name']]['r']; tg = np.gradient(c[:, :2], axis=0); tg /= np.linalg.norm(tg, axis=1)[:, None] + 1e-9; nr = np.stack([-tg[:, 1], tg[:, 0]], 1)
+        cr = np.cross(np.r_[tg[len(tg) // 2], 0], np.r_[tg[min(len(tg) // 2 + 60, len(tg) - 1)], 0])[2]; side = 1 if cr > 0 else -1; ii_ = int(0.14 * (len(c) - 1)); iend = int(0.82 * (len(c) - 1)); placed = []
+        while ii_ < iend and len(placed) < it['eyerow']:
+            Ri = R[ii_]; Gd = float(np.clip(0.52 * Ri * vrng.uniform(0.8, 1.2), 10.0, 30.0)); xe, ye = c[ii_, :2] + nr[ii_] * side * 0.40 * Ri
+            skip = it.get('shelf') and abs(xe - it['shelf']['cx']) < it['shelf']['a'] + 14 and it['shelf']['top'] - 80 < ye < it['shelf']['top'] + 10
+            if Ri >= 14 and not skip:
+                e = dict(x=float(xe), y=float(ye), G=round(Gd, 1), lid=['ring', 'hood', 'turret'][len(placed) % 3], pupil=['slit', 'round', 'none'][len(placed) % 3], clouded=bool(len(placed) % 4 == 3), tilt=float(vrng.uniform(-30, 30)),
+                         gaze=(float(vrng.uniform(-.3, .3)), float(vrng.uniform(-.3, .3))), swell=float(vrng.uniform(1.2, 1.6)), pop=float(vrng.uniform(0.25, 0.45)), veiny=True)
+                add_eye(f, e, trng); placed.append(e); meta['eyes'].append(dict(x=e['x'], y=e['y'], G=e['G'], lid=e['lid'], pupil=e['pupil'], clouded=e['clouded'], gaze=e['gaze'], veiny=True, grp='arm:' + it['name'])); allg.append((e['x'], e['y'], e['G'], 'arm'))
+                ii_ += int(max(Gd * 1.05, 10) / 1.5)
+            else: ii_ += int(10 / 1.5)
+        arm_eyes.append(dict(arm=it['name'], n=len(placed), sizes=[e['G'] for e in placed], paths=(c, R)))
+        for a_, b_ in zip(placed[:-1], placed[1:]): veins.append([(a_['x'], a_['y']), ((a_['x'] + b_['x']) / 2 + vrng.uniform(-3, 3), (a_['y'] + b_['y']) / 2 + vrng.uniform(-3, 3)), (b_['x'], b_['y'])])
+    # ---- veins: shallow raised ridges (kind 9 = dark in render) radiating from each patch eye and linking neighbours
+    pcen = np.array(S['patch']['c'])
+    for (ex, ey, Gd, grp) in [g for g in allg if g[3] == 'patch']:
+        for q in range(int(vrng.integers(3, 5))):
+            ang = vrng.uniform(0, 6.283); p = np.array([ex, ey]) + (0.62 * Gd + 6) * np.array([np.cos(ang), np.sin(ang)]); pts = [tuple(p)]
+            for st_ in range(int(vrng.integers(5, 9))):
+                ang += vrng.normal(0, 0.28); p = p + 7.0 * np.array([np.cos(ang), np.sin(ang)])
+                if np.linalg.norm(p - pcen) > 108 or any(np.hypot(p[0] - gx, p[1] - gy) < 0.62 * gG + 4 for gx, gy, gG, _ in allg if (gx, gy) != (ex, ey)): break
+                pts.append(tuple(p))
+            if len(pts) >= 4: veins.append(pts)
+    pg = [g for g in allg if g[3] == 'patch']
+    for i1 in range(len(pg)):
+        for i2 in range(i1 + 1, len(pg)):
+            a_, b_ = pg[i1], pg[i2]; dd = np.hypot(a_[0] - b_[0], a_[1] - b_[1])
+            if dd < 0.5 * (a_[2] + b_[2]) * 1.35 + 14:
+                u_ = np.array([b_[0] - a_[0], b_[1] - a_[1]]) / dd; nn = np.array([-u_[1], u_[0]]) * vrng.uniform(-5, 5)
+                p0 = np.array(a_[:2]) + u_ * (0.62 * a_[2] + 3); p1 = np.array(b_[:2]) - u_ * (0.62 * b_[2] + 3)
+                if np.linalg.norm(p1 - p0) > 6: veins.append([tuple(p0), tuple((p0 + p1) / 2 + nn), tuple(p1)])
+    nv = 0; vh = []
+    for k_, pts in enumerate(veins):
+        if len(pts) == 3: pts = [pts[0], tuple(0.5 * (np.array(pts[0]) + pts[1])), pts[1], tuple(0.5 * (np.array(pts[1]) + pts[2])), pts[2]]
+        if len(pts) < 4: continue
+        cv_ = curve([(x_, y_, 0.0) for x_, y_ in pts], 2.0)[0]; z0_ = f.surface_z(cv_[:, 0], cv_[:, 1])
+        f.add_rib(f'vein{k_}', pts, r0=3.2, r1=2.2, lift=1.8, k=2.5, kind=9, sig=3); nv += 1; vh.append(float(np.median(f.surface_z(cv_[:, 0], cv_[:, 1]) - z0_)))
+    meta['veins'] = dict(n=nv, r0=3.2, r1=2.2, raised_mm_min=float(np.min(vh)), raised_mm_median=float(np.median(vh)), raised_mm_p10=float(np.percentile(vh, 10)))
+    # ---- the held mask: rod-cored holding tentacle, root tendrils, pad, fingers, separate mask part
+    mkc = dict(c=tuple(G['mc']), D=S['held']['D']); fsd0 = mask_features(mkc); _ct, _st = G['ct'], G['st']; _cx, _cy = G['mc']
+    fsd = lambda X, Y: fsd0(_cx + _ct * (X - _cx) + _st * (Y - _cy), _cy - _st * (X - _cx) + _ct * (Y - _cy)); fl = G['zm'] + G['dz'] - 11.0
+    mfn = hm.mask_sdf_fn(G); D = S['held']['D']; mk = dict(c=tuple(G['mc']), D=D)
+    for j_, ang in enumerate((205, 250, 295, 340, 20, 160)):      # root tendrils: grip the trunk round the arm exit (visual), ride the surface
+        th = np.radians(ang); p0 = np.array(G['Rx'][:2]) + 26 * np.array([np.cos(th), np.sin(th)]); L_ = vrng.uniform(60, 95); pts = [tuple(p0 + L_ * u * np.array([np.cos(th + 0.5 * np.sin(3 * u + j_)), np.sin(th + 0.5 * np.sin(3 * u + j_))])) for u in np.linspace(0, 1, 6)]
+        f.add_rib(f'rtend{j_}', pts, r0=11.0, r1=4.5, lift=3.0, k=10.0, kind=2)
+    Frest = f.F.copy(); Krest = f.K.copy() if False else None
+    hm.add_arm(f, G, 'main'); fing = hm.add_mask(f, G, fsd, fl, 'main')
+    hm.carve_bore(f, G, G['s_rod'])
+    arm_c, arm_R, arm_sw = hm.sheath(G); f.parts['M_arm'] = dict(c=arm_c, r=arm_R)
+    meta['limbs'].append(dict(name='M_arm', shelf=False, length=float(G['s_T'] - G['s_exit']), r0=float(arm_R.max()), c=arm_c[::8].tolist(), r=arm_R[::8].tolist(), t=np.linspace(0, 1, len(arm_c))[::8].tolist()))
+    # isolated parts for export / review: arm part (arm + root block + column + plate + spigot) and mask part (disc + pad + fingers + socket + bore)
+    fa = Field(); hm.add_arm(fa, G, 'arm'); hm.carve_bore(fa, G, G['s_T'] + hm.SPIG_L); Fa = fa.finish(); del fa
+    fm = Field(); hm.add_mask(fm, G, fsd, fl, 'mask'); Fm = fm.finish(); del fm
     F = f.finish(); sil = (F < 0).any(axis=2)
     v, fc, _, _ = measure.marching_cubes(F, 0.0, spacing=(RES,) * 3); v = v + np.array([XS[0], YS[0], ZS[0]])
     x, y, z = v[:, 0], v[:, 1], v[:, 2]
     ii = np.clip(((v - np.array([XS[0], YS[0], ZS[0]])) / RES).round().astype(int), 0, [NX - 1, NY - 1, NZ - 1])
     kind = f.K[ii[:, 0], ii[:, 1], ii[:, 2]]
     mk_v = mfn(x, y, z); dm = ad(x, y) + SL * np.clip(ZR - z, 0, None); fv = np.maximum(fsd(x, y), fl + 1.5 - z)
-    meta.update(mask=dict(c=mk['c'], D=D, aspect=1.0), maw=dict(c=mw['c'], w=mw['w'], h=mw['h'], orient='v'), spine=dict(pts=[list(p) for p in sp.tolist()], zs=zsb), gesture=S['gesture'], web_stats=f.web_stats)
+    meta.update(mask=dict(c=list(mk['c']), D=D, aspect=1.0), held_geo={k_: (v_.tolist() if hasattr(v_, 'tolist') else v_) for k_, v_ in G.items() if k_ != 'H'}, held_in=S['held'], fingers=fing, arm_eyes=[{k_: v_ for k_, v_ in a_.items() if k_ != 'paths'} for a_ in arm_eyes], maw=dict(c=mw['c'], w=mw['w'], h=mw['h'], orient='v'), spine=dict(pts=[list(p) for p in sp.tolist()], zs=zsb), gesture=S['gesture'], web_stats=f.web_stats)
     os.makedirs(OUT, exist_ok=True); sid = S['id']
     np.savez_compressed(f'{OUT}/{sid}.npz', v=v.astype(np.float32), f=fc.astype(np.int32), mk=mk_v.astype(np.float32), dm=dm.astype(np.float32), fv=fv.astype(np.float32), kind=kind)
-    np.save(f'{OUT}/{sid}_sil.npy', sil); np.save(f'{OUT}/{sid}_solid.npy', F < 0)
+    np.save(f'{OUT}/{sid}_sil.npy', sil); np.save(f'{OUT}/{sid}_solid.npy', F < 0); np.save(f'{OUT}/{sid}_rest.npy', np.maximum(Frest, -ZS[None, None, :] + 1e-3) < 0); np.save(f'{OUT}/{sid}_armpart.npy', Fa < 0); np.save(f'{OUT}/{sid}_maskpart.npy', Fm < 0)
+    for nm_, F_ in (('armpart', Fa), ('maskpart', Fm)):
+        v_, f_, _, _ = measure.marching_cubes(F_, 0.0, spacing=(RES,) * 3); v_ = v_ + np.array([XS[0], YS[0], ZS[0]]); M_ = trimesh.Trimesh(v_, f_); bodies = [b_ for b_ in M_.split(only_watertight=False) if abs(b_.volume) > 1000.0]; M_ = trimesh.util.concatenate(bodies); M_.export(f'{OUT}/{sid}_{nm_}.stl'); meta.setdefault('stl', {})[nm_] = dict(bodies=len(bodies), watertight=bool(all(b_.is_watertight for b_ in bodies)), volume_cm3=round(sum(b_.volume for b_ in bodies) / 1e3, 1))
     ins = F < 0; top = NZ - 1 - np.argmax(ins[:, :, ::-1], axis=2); np.save(f'{OUT}/{sid}_zmax.npy', np.where(ins.any(2), ZS[top], 0).astype(np.float32))
     def stamp(cc, rr):
         im = Image.new('L', (NX, NY), 0); d = ImageDraw.Draw(im)
