@@ -245,6 +245,11 @@ Diagnosis (inference): my readings of Evan's r08 notes, applied all at once to A
 
 **SL-76** · 02:02 · Round-10 deployed on Evan's tap: staging → review/rounds/round-10, main fast-forwarded to 8111a57 (ancestor check passed), ping sent. · `[Evan]`
 
+**SL-77** · 14:13 · Round-10 backprop (issue #11): 7/2/5 — best round. The one-axis spread worked: every axis now has a verdict. Stop-rule state reset (like rate jumped). · `[Evan]`
+Round-11 plan (`[judgment]`): HERO = A0 + T1 + T2 + D2 + M1 fangs + Evan's O3 directive (mask held by a tentacle, hovering "a few inches" — read as 60-100 mm — out from the flesh; a patch of unhealthy eyes behind it visible from the side) + T3 note (bulging, seething, veiny eyes where suckers were) + E2 cluster. "Cancerous" is a wanted read (E1 note) — eyes swell from diseased flesh, but no single lump.
+Mouth: M1 and M2 both loved → hero uses M1 (explicit "continue with this"); a variant carries M2 and one combines them. Keep the one-axis method for the variants so this round's verdicts also localize.
+Structural: Evan requires the mask-holding tentacle to pass "the review process" → Structural lead sizes it in parallel and then reviews CAD's built arm BEFORE the board ships; board notes state the result.
+
 ---
 *Edit log*
 
@@ -281,3 +286,4 @@ Diagnosis (inference): my readings of Evan's r08 notes, applied all at once to A
 | 2026-11-17 | orchestrator | Appended SL-73..74 (r09 backprop, stop rule, spread plan) | [PROVISIONAL] |
 | 2026-11-18 | orchestrator | Appended SL-75 (round-10 staged) | [PROVISIONAL] |
 | 2026-11-18 | orchestrator | Appended SL-76 (round-10 deploy) | [PROVISIONAL] |
+| 2026-11-18 | orchestrator | Appended SL-77 (r10 backprop, r11 plan) | [PROVISIONAL] |
