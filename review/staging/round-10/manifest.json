@@ -1,0 +1,121 @@
+{
+  "round": "round-10",
+  "title": "Shoggoth wall art — round 10: one change at a time",
+  "created": "2026-11-18",
+  "issue_repo": "evanForReal/shoggoth_wall_art",
+  "notes": "Swipe each: every card is A0 (your liked A, crown removed) with ONE change. Your likes tell us which changes to keep. Notes optional; sketches welcome, never waited on. ··· Why: round 09's studies applied several of our readings of your notes at once and all were disliked, while A was liked again — so we stopped guessing. Groups: T = tentacles, E = eyes, M = mouth, D = density, O = outliers (different pose or idea). Known build quirks: E1's eye adds a small lump; O1/O2 are rougher builds; O3's tilt is subtle. All keep: no crown, vertical maw, no stance, 3 shelves with 300 mm clear above. Canva concept art still needs credits on the Canva account. Not yet peer-signed: the CAD write-up for these studies (composition_r10).",
+  "cards": [
+    {
+      "id": "a0",
+      "image": "images/A0.jpg",
+      "axis": "control",
+      "title": "A0 — CONTROL: round-08 A, crown removed",
+      "rationale": "Your twice-liked A with only the crown removed (the one change you asked for outright). Every other card changes exactly one thing from this. Like = this is the base to build on.",
+      "source": "generated in-house (composition_r10, A0)"
+    },
+    {
+      "id": "t1",
+      "image": "images/T1.jpg",
+      "axis": "tentacles",
+      "title": "T1 — three distinct tentacles",
+      "rationale": "A0, with the three shelf arms replaced by tentacles of clearly different weight (heavy / medium / thin). Nothing else changed.",
+      "source": "generated in-house (composition_r10, T1)"
+    },
+    {
+      "id": "t2",
+      "image": "images/T2.jpg",
+      "axis": "tentacles",
+      "title": "T2 — one long curling whip",
+      "rationale": "A0 plus one long whip that leaves the right shelf, runs down the edge and curls — flow beyond the shelf.",
+      "source": "generated in-house (composition_r10, T2)"
+    },
+    {
+      "id": "t3",
+      "image": "images/T3.jpg",
+      "axis": "tentacles",
+      "title": "T3 — suckers on the arms",
+      "rationale": "A0 with a single row of octopus suckers on its existing arms. Nothing else changed.",
+      "source": "generated in-house (composition_r10, T3)"
+    },
+    {
+      "id": "e1",
+      "image": "images/E1.jpg",
+      "axis": "eyes",
+      "title": "E1 — one big hooded eye",
+      "rationale": "A0 plus one large hooded slit-pupil eye beside the mask (its swelling adds a small lump at the upper left).",
+      "source": "generated in-house (composition_r10, E1)"
+    },
+    {
+      "id": "e2",
+      "image": "images/E2.jpg",
+      "axis": "eyes",
+      "title": "E2 — cluster of small unhealthy eyes",
+      "rationale": "A0 plus 6-9 small mismatched eyes clustered off-axis on the trunk, some clouded.",
+      "source": "generated in-house (composition_r10, E2)"
+    },
+    {
+      "id": "m1",
+      "image": "images/M1.jpg",
+      "axis": "mouth",
+      "title": "M1 — long fangs",
+      "rationale": "A0 with long fangs angled into the maw, a few broken. Silhouette unchanged.",
+      "source": "generated in-house (composition_r10, M1)"
+    },
+    {
+      "id": "m2",
+      "image": "images/M2.jpg",
+      "axis": "mouth",
+      "title": "M2 — lamprey rings",
+      "rationale": "A0 with concentric rows of small hooked teeth lining the whole maw rim.",
+      "source": "generated in-house (composition_r10, M2)"
+    },
+    {
+      "id": "d1",
+      "image": "images/D1.jpg",
+      "axis": "density",
+      "title": "D1 — sparser",
+      "rationale": "A0 with about half the webs and hanging strands removed — more bare wall.",
+      "source": "generated in-house (composition_r10, D1)"
+    },
+    {
+      "id": "d2",
+      "image": "images/D2.jpg",
+      "axis": "density",
+      "title": "D2 — denser",
+      "rationale": "A0 with more webbing and strands (mildly — brackets your round-08 'too crowded' note).",
+      "source": "generated in-house (composition_r10, D2)"
+    },
+    {
+      "id": "o1",
+      "image": "images/O1.jpg",
+      "axis": "outlier",
+      "title": "O1 — diagonal pose",
+      "rationale": "A0's character (ribbed trunk, webs, hanging cascade, maw) on the round-07 diagonal pose you liked. Rougher build than the rest.",
+      "source": "generated in-house (composition_r10, O1)"
+    },
+    {
+      "id": "o2",
+      "image": "images/O2.jpg",
+      "axis": "outlier",
+      "title": "O2 — your ribbon pose",
+      "rationale": "A0's character on the sinuous ribbon from your original sketch (liked in round 07). Rougher build.",
+      "source": "generated in-house (composition_r10, O2)"
+    },
+    {
+      "id": "o3",
+      "image": "images/O3.jpg",
+      "axis": "outlier",
+      "title": "O3 — slipping mask",
+      "rationale": "A0 with the mask tilted ~15° and displaced off the trunk axis, as if slipping off — a masquerade read. Subtle at small size.",
+      "source": "generated in-house (composition_r10, O3)"
+    },
+    {
+      "id": "a",
+      "image": "images/A.jpg",
+      "axis": "reference",
+      "title": "A — round-08 original, with crown",
+      "rationale": "The study you liked in rounds 08 and 09, crown included, for comparison.",
+      "source": "generated in-house (composition_r08c, G1a_b)"
+    }
+  ]
+}

@@ -5,6 +5,7 @@
 
 ## Exec Summary (newest first)
 
+- 2026-11-18: Round-10 staged (review/staging/round-10/): pick-from-spread, A0 (A minus crown) + 12 one-axis variants (tentacles, eyes, mouth, density, outliers) + original A.
 - 2026-11-17: R09 verdicts in (issue #10: 0/1/4, no notes): all new studies disliked, round-08 A liked again. Stop rule fired → round-10 = pick-from-spread of one-axis edits around A (crown removed).
 - 2026-11-17: Round-09 DEPLOYED (main 6f4bc6c, Evan pinged; awaiting verdicts). Staged as (review/staging/round-09/, now review/rounds/round-09/): S6/S5 (r08 A minus crown + weight-ladder tentacles, fangs, eyes), S1 fan, S2 reach, A reference. Canva approved (~10 images) but account has no credits.
 - 2026-11-17: R08 verdicts in (issue #9: 0/2/2). A "extreme improvement" but no crown (comical), distinct tentacles, better flow to shelves; B too crowded; c01 demoted ("try one of the other preferred concepts"). Recenter: tentacled, horrific, octopus-like, vicious mouth, disturbing asymmetric unhealthy eyes. ROUND-09 BLOCKED on Evan's sketches.
@@ -87,3 +88,4 @@
 | 2026-11-17 | orchestrator | Round-09 staged (exec line) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Round-09 deployed (exec line) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | R09 backprop: exec line, r09 takeaway | [PROVISIONAL] |
+| 2026-11-18 | orchestrator | Round-10 staged (exec line) | [PROVISIONAL] |

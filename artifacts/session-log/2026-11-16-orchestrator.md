@@ -239,6 +239,10 @@ Diagnosis (inference): my readings of Evan's r08 notes, applied all at once to A
 
 **SL-74** · 23:53 · Round-10 = pick-from-spread around A: A0 = A with ONLY the crown removed (the one note Evan stated outright) as control; ~11 one-axis variants of A0 across tentacles / eyes / mouth / density + ~3 outliers (high-temperature rule from the 2026-11-14 methodology row: ~1/3 outliers). Fresh CAD agent: the r08b/c/r09 agent is at ~490k tokens context. `[judgment]`
 
+## 2026-11-18
+
+**SL-75** · 00:38 · Round-10 spread built (63f4a82) and staged: 14 cards = A0 control + 12 one-axis variants + original A; front + three-quarter diptychs labelled with the single change vs A0. My read: differences are legible for T2, M1, M2, O1, O2; subtle at board size for E1, E2, D1, D2, O3 (labels + tq view carry them). Committed build/ holds ~1.2 MB of metadata/previews per round (meshes excluded) — accepted. · `[judgment]`
+
 ---
 *Edit log*
 
@@ -273,3 +277,4 @@ Diagnosis (inference): my readings of Evan's r08 notes, applied all at once to A
 | 2026-11-17 | orchestrator | Appended SL-71 (S6 read, round-09 staged) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-72 (round-09 deploy) | [PROVISIONAL] |
 | 2026-11-17 | orchestrator | Appended SL-73..74 (r09 backprop, stop rule, spread plan) | [PROVISIONAL] |
+| 2026-11-18 | orchestrator | Appended SL-75 (round-10 staged) | [PROVISIONAL] |
