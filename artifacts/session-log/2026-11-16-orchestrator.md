@@ -250,6 +250,10 @@ Round-11 plan (`[judgment]`): HERO = A0 + T1 + T2 + D2 + M1 fangs + Evan's O3 di
 Mouth: M1 and M2 both loved → hero uses M1 (explicit "continue with this"); a variant carries M2 and one combines them. Keep the one-axis method for the variants so this round's verdicts also localize.
 Structural: Evan requires the mask-holding tentacle to pass "the review process" → Structural lead sizes it in parallel and then reviews CAD's built arm BEFORE the board ships; board notes state the result.
 
+**SL-78** · 14:54 · Structural phase 1 caught a real failure in CAD's placeholder mask arm (22 mm printed core droops 6.7 mm at 10 yr vs 3 mm limit) → spec: 10 mm steel rod, separate bonded keyed mask, solid root block, lever <= 250 mm. Forwarded to CAD mid-build; CAD built to it (H lever 124 mm, mask ~0.57 kg). Structural phase 2 (independent review of the built arm) running before deploy. · `[judgment]`
+
+**SL-79** · 14:54 · My read of r11: the side and three-quarter views deliver Evan's O3 prompt (mask floating on a tentacle, bloodshot seething eye patch visible behind it). Front view: held mask reads; patch peeks at the edge. Mask rendered darker than r10 (CAD lowered albedo to stop blow-out) — disclose. Cards = front + SIDE diptychs (the side carries the idea), plus an H three-quarter/close-up card. Floating detached teeth fragments in V1/V2 (inherited from r10 M2) noted for fab, not the board. · `[judgment]`
+
 ---
 *Edit log*
 
@@ -287,3 +291,4 @@ Structural: Evan requires the mask-holding tentacle to pass "the review process"
 | 2026-11-18 | orchestrator | Appended SL-75 (round-10 staged) | [PROVISIONAL] |
 | 2026-11-18 | orchestrator | Appended SL-76 (round-10 deploy) | [PROVISIONAL] |
 | 2026-11-18 | orchestrator | Appended SL-77 (r10 backprop, r11 plan) | [PROVISIONAL] |
+| 2026-11-18 | orchestrator | Appended SL-78..79 (mask-arm spec, r11 read) | [PROVISIONAL] |
