@@ -1,0 +1,57 @@
+{
+  "round": "round-11",
+  "title": "Shoggoth wall art — round 11: the held mask",
+  "created": "2026-11-18",
+  "issue_repo": "evanForReal/shoggoth_wall_art",
+  "notes": "Your O3 idea built: the creature holds its mask out on a tentacle, eye patch behind (see the side views). Vote H + variants. Sketches welcome, never waited on. ··· H combines everything you loved in round 10 (A0, three distinct tentacles, long whip, denser, fangs) plus veiny eyes on the arms instead of suckers. Each V card changes ONE thing vs H. STRUCTURAL REVIEW (as you asked): PASS for H and V3 — a 10 mm steel rod inside the tentacle, mask as a separate bonded part; 40 N bump uses 38% (H) / 46% (V3) of the rod's capacity; 10-year sag under 0.5 mm vs a 3 mm limit. Condition: the arm needs its own wall-screw row into a stud — depends on your stud locations (still unknown). The mask renders a bit darker than round 10 (lighting fix). Canva concept art still needs credits on the account. Not yet peer-signed: the CAD and Structural write-ups for this round.",
+  "cards": [
+    {
+      "id": "h",
+      "image": "images/H.jpg",
+      "axis": "hero",
+      "title": "H — mask held out on a tentacle, eye patch behind it",
+      "rationale": "Your O3 idea built: the smiley floats ~85 mm out from the body, gripped at the rim by a tentacle; behind it a seething patch of 12 bulging, bloodshot eyes in diseased flesh (side view, right). Plus everything you loved in round 10: A0 base, three distinct tentacles, the long whip, denser, long fangs; veiny eyes on the shelf tentacles instead of suckers.",
+      "source": "generated in-house (composition_r11, H)"
+    },
+    {
+      "id": "hd",
+      "image": "images/H_detail.jpg",
+      "axis": "hero",
+      "title": "H — three-quarter + close-up",
+      "rationale": "The held mask and the eye patch from an angle and up close.",
+      "source": "generated in-house (composition_r11, H)"
+    },
+    {
+      "id": "v1",
+      "image": "images/V1.jpg",
+      "axis": "mouth",
+      "title": "V1 — lamprey rings instead of fangs",
+      "rationale": "H with the mouth swapped to concentric rings of hooked teeth. Nothing else changed.",
+      "source": "generated in-house (composition_r11, V1)"
+    },
+    {
+      "id": "v2",
+      "image": "images/V2.jpg",
+      "axis": "mouth",
+      "title": "V2 — fangs + lamprey rings",
+      "rationale": "H with lamprey rings plus a few long fangs combined. Nothing else changed.",
+      "source": "generated in-house (composition_r11, V2)"
+    },
+    {
+      "id": "v3",
+      "image": "images/V3.jpg",
+      "axis": "mask",
+      "title": "V3 — mask held further out, tilted more",
+      "rationale": "H with the mask 150 mm out and tilted 25° — more of the eye patch shows. Nothing else changed.",
+      "source": "generated in-house (composition_r11, V3)"
+    },
+    {
+      "id": "v4",
+      "image": "images/V4.jpg",
+      "axis": "eyes",
+      "title": "V4 — eye patch only, plain arms",
+      "rationale": "H without the eyes on the shelf tentacles (arms plain). Nothing else changed.",
+      "source": "generated in-house (composition_r11, V4)"
+    }
+  ]
+}
