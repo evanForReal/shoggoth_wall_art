@@ -1,0 +1,137 @@
+{
+  "round": "round-12",
+  "title": "Shoggoth wall art — round 12: the ball, the coherence review, varied concepts",
+  "created": "2026-11-19",
+  "issue_repo": "evanForReal/shoggoth_wall_art",
+  "notes": "Your two asks built: the smiley as a held BALL (vote B1-B4 for shape), and a coherence review of H (one creature at 2-4 m, 'assembled' up close; K1-K4 refine it). Sketches welcome, never waited on. ··· BALL: B1 is our pick (squashed sphere 180 mm wide, 108 deep): the only shape that reads round from the front; carved emoticon; tentacles cup it from behind; it floats ~65 mm off the eye patch so the patch shows from the side. B3 full sphere is smaller (depth cap 300 mm), B4 flatter. All hold the structural limits (ball 0.52-0.77 kg vs 0.8 cap, printed hollow in two halves). COHERENCE: two reviewers worked independently and agreed: not scattered objects. It holds as one connected shape, the detail sits in the maw, and the mask is the only bright mass. Weak spots up close: shelves look like plates on stalks, too many bright values, competing eye groups. The six rim rings read as stitches; the ball grip replaces them. K1-K4 are mocks (crude image edits), not geometry. C CARDS: 8 varied concepts on H's essentials (who holds the ball, its pose and grip, mouth type, which tentacle is massive, whip, cascade, lean). Each card lists its differences. These were planned before I read your round-11 verdict (my miss: I read it late), then refitted with the B1 ball. Structural: all 8 pass the arm limits; mounting still needs your stud locations. NOT YET: the FLUX concept art (daily free quota ran out; it resumes today and goes to round 13). Not yet peer-signed: CAD r12/r12s write-ups, Structural s.10, coherence reports.",
+  "cards": [
+    {
+      "id": "b1",
+      "image": "images/B1_ball_S2.jpg",
+      "axis": "ball",
+      "title": "B1 — H holding a squashed-sphere smiley (our pick)",
+      "rationale": "Your round-11 idea: the smiley as a ball the creature holds up to deceive. 180 mm wide, 108 mm deep, the emoticon carved into the curve, tentacles cupping it from behind. Front (left) and side (right): the ball floats off the eye patch. Everything else is H as you loved it.",
+      "source": "generated in-house (composition_r12s, S2)"
+    },
+    {
+      "id": "b2",
+      "image": "images/B2_ball_S2_detail.jpg",
+      "axis": "ball",
+      "title": "B1 detail — three-quarter + raking close-up",
+      "rationale": "How the ball reads at an angle, and the carved face up close (weathered bone; the rough eye edges come from the 2 mm draft resolution, not a design choice).",
+      "source": "generated in-house (composition_r12s, S2)"
+    },
+    {
+      "id": "b3",
+      "image": "images/B3_ball_S1.jpg",
+      "axis": "ball",
+      "title": "B3 — full sphere instead",
+      "rationale": "A true sphere has to be smaller (120 mm) to stay inside the 300 mm depth limit, so the face is about half the size of round 11's disc and competes with the eye patch.",
+      "source": "generated in-house (composition_r12s, S1)"
+    },
+    {
+      "id": "b4",
+      "image": "images/B4_ball_S3.jpg",
+      "axis": "ball",
+      "title": "B4 — flatter ball (200 mm wide, 90 deep)",
+      "rationale": "The same face size as round 11's disc, but from the front it shades almost like the flat disc. Side views show the volume.",
+      "source": "generated in-house (composition_r12s, S3)"
+    },
+    {
+      "id": "k1",
+      "image": "images/K1_paint.jpg",
+      "axis": "coherence",
+      "title": "K1 — paint it as one creature?",
+      "rationale": "One dark umber glaze over flesh, shelves and lace, with only the mask and teeth bone-pale (right), vs lighter shelves (left). Both reviewers flagged the bright shelves as competing with the mask. Love/like = right. Mock: an image edit of round-11 H.",
+      "source": "coherence review B (teams/aesthetics/analysis/coherence-r11)"
+    },
+    {
+      "id": "k2",
+      "image": "images/K2_eyes.jpg",
+      "axis": "coherence",
+      "title": "K2 — shrink the side eye groups?",
+      "rationale": "Shrink the red-boxed eye groups (shoulder, arms) so the patch behind the mask is the main eye mass. None removed. Like = shrink, dislike = keep as is. The boxes are labels, not geometry.",
+      "source": "coherence review B"
+    },
+    {
+      "id": "k3",
+      "image": "images/K3_plants.jpg",
+      "axis": "coherence",
+      "title": "K3 — what kind of plants?",
+      "rationale": "Real plants will change the read. Upright bushy plants (left) fill the open space on the left and tip the balance. Trailing vines (right) keep the creature visible. Like = trailing, dislike = upright. Mock plants at an assumed size.",
+      "source": "coherence review A"
+    },
+    {
+      "id": "k4",
+      "image": "images/K4_shelves.jpg",
+      "axis": "coherence",
+      "title": "K4 — grow the shelves out of the limbs?",
+      "rationale": "Up close and from the side, the shelves look like plates on stalks. Change: lobed edges, a thin tapered rim, the limb's ridges flowing under the plate. Shelf size and position unchanged. Like = grow them, dislike = keep them clean.",
+      "source": "coherence review B (crop of round-11 H)"
+    },
+    {
+      "id": "c1",
+      "image": "images/C1.jpg",
+      "axis": "concept",
+      "title": "C1 — varied concept (front + three-quarter)",
+      "rationale": "Held from below, ball face-on, cupping tendrils; fangs plus lamprey rings; long whip rising on the left past the top shelf; short dense root cascade; upright. Closest to H.",
+      "source": "generated in-house (composition_r12 concept C1, refitted with ball S2 in composition_r12s)"
+    },
+    {
+      "id": "c2",
+      "image": "images/C2.jpg",
+      "axis": "concept",
+      "title": "C2 — varied concept (front + three-quarter)",
+      "rationale": "Held from the head's left flank, ball turned 33° away, a tentacle wrapped round its equator; fangs; the right shelf is the massive one and sits highest; whip down the right edge; long cascade; body leans right; eyes trail down the right flank.",
+      "source": "generated in-house (composition_r12 concept C2, refitted with ball S2 in composition_r12s)"
+    },
+    {
+      "id": "c3",
+      "image": "images/C3.jpg",
+      "axis": "concept",
+      "title": "C3 — varied concept (front + three-quarter)",
+      "rationale": "Held from the right, ball tilted 32°, a thin tentacle threaded through a hole bored in it; lamprey mouth; massive mid-left shelf; whip curls under the right shelf; cascade swept right; leans left; eyes on the holding arm.",
+      "source": "generated in-house (composition_r12 concept C3, refitted with ball S2 in composition_r12s)"
+    },
+    {
+      "id": "c4",
+      "image": "images/C4.jpg",
+      "axis": "concept",
+      "title": "C4 — varied concept (front + three-quarter)",
+      "rationale": "Arm arches over the head and lowers the ball onto the maw's top edge, eye patch half revealed above it; bigger maw (1.3x) with fangs; whip runs down the right edge and along the bottom; long cascade. Most dramatic; weakest silhouette.",
+      "source": "generated in-house (composition_r12 concept C4, refitted with ball S2 in composition_r12s)"
+    },
+    {
+      "id": "c6",
+      "image": "images/C6.jpg",
+      "axis": "concept",
+      "title": "C6 — varied concept (front + three-quarter)",
+      "rationale": "Held from below, ball turned 33° away, threaded on a tentacle; lamprey mouth; massive mid-left shelf; eyes trail down the left flank; cascade swept left; leans right.",
+      "source": "generated in-house (composition_r12 concept C6, refitted with ball S2 in composition_r12s)"
+    },
+    {
+      "id": "c8",
+      "image": "images/C8.jpg",
+      "axis": "concept",
+      "title": "C8 — varied concept (front + three-quarter)",
+      "rationale": "Arm arches over the head, ball face-on, wrapped at its equator; fangs; massive mid-left shelf; whip to the frame edge; short cascade; leans right; eyes on the holding arm.",
+      "source": "generated in-house (composition_r12 concept C8, refitted with ball S2 in composition_r12s)"
+    },
+    {
+      "id": "c9",
+      "image": "images/C9.jpg",
+      "axis": "concept",
+      "title": "C9 — varied concept (front + three-quarter)",
+      "rationale": "Held from below, ball tilted 33° on cupping tendrils; fangs plus rings; massive lower-left shelf; cascade swept right; leans left; eyes on the holding arm. Strongest side view.",
+      "source": "generated in-house (composition_r12 concept C9, refitted with ball S2 in composition_r12s)"
+    },
+    {
+      "id": "c10",
+      "image": "images/C10.jpg",
+      "axis": "concept",
+      "title": "C10 — varied concept (front + three-quarter)",
+      "rationale": "Held from the right, ball lowered half off the eye patch, threaded on a tentacle; lamprey mouth; the right shelf is the massive one, set at 300; whip under it; long cascade; leans right.",
+      "source": "generated in-house (composition_r12 concept C10, refitted with ball S2 in composition_r12s)"
+    }
+  ]
+}
