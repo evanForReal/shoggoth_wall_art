@@ -235,6 +235,81 @@ Open conditions: (i) a stud must lie under the plate; Evan's stud map is still o
 
 No bench test. First print: 1 kg dummy-mask hang test for 7 days and a 40 N edge push test (spec Section 7). E, creep, epoxy shear properties [GENERAL]. Anchor layout not designed. Final CAD mesh not reviewed.
 
+## 10. Round-12 spot-check (CAD `composition_r12`, C1 C2 C3 C4 C6 C8 C9 C10)
+
+**Status:** structural-lead, 2026-11-19 [PROVISIONAL]. Sources: `teams/cad/composition_r12/` README s.3-5, `arm_report.json`, `checks.json`, `build/<id>_{meta.json,maskpart.npy,armpart.npy,solid.npy}` (2 mm voxels, +-2 mm). Independent recompute: `analysis/mask_arm_r12_check.py` -> `analysis/mask_arm_r12_check.json` (reads CAD's gitignored `build/`). Method = s.9.2 (design mask 0.8 kg = 7.85 N; 40 N bump at the farthest mask voxel from the rod exit; torsion 40 N x max(125 mm, farthest mask voxel from rod axis); 10 mm steel EI 9.82e7 N.mm^2; no sheath credit). C5 and C7 not reviewed (dropped by Orchestrator); nothing in them changes the method. No FEA, no bench test.
+
+**Verdict (board-note line):** Structural: all 8 carry the r11 10 mm steel rod arm and pass the v1 numbers (rod D/C 0.31-0.45 vs 0.7, edge droop <= 0.55 mm vs 3 mm, wall screw D/C <= 0.28). C1 C3 C4 C8 PASS. C2 C6 C9 C10 CONDITIONAL: the rod meets the mask back at 32-50 deg off the mask normal (v1 did not cover this), which truncates the solid pad; fix is a slicer modifier, no geometry change. C2 and C6 also have print-envelope flags (arm part z 266 / 250 mm).
+
+### 10.1 CAD numbers re-checked (all trace to `arm_report.json`; my recompute in the JSON above)
+
+| Check | Result |
+|---|---|
+| Lever to mask CoM <= 250 | C1 123.0, C2 165.6, C3 146.8, C4 121.6, C6 163.0, C8 101.6, C9 153.0, C10 137.3 (CAD = mine to 0.1 mm); max 165.6 (C2) |
+| CoM off rod axis <= 50 | CAD 21.3 / 38.1 / 32.6 / 29.6 / 31.7 / 30.2 / 9.5 / 32.1; max 38.1 (C2) |
+| Mask tilt <= 35 | CAD (vector sum of yaw, pitch, roll) C2 33.0, C6 33.0, C3 32.6, C9 32.6, C10 16.1, C4 16.1, C1 8.0, C8 8.0. Normal tilt from wall plane (roll is in-plane, no tilt): C2 33, C6 33, C3 24, C9 24, C4 14, C10 14, C1 0, C8 0. All <= 35; C2 and C6 are above the 25 deg "as designed" figure and 2 deg under the cap |
+| Mask mass <= 0.8 kg | CAD 0.507-0.596 (not re-derived; the loads below use 0.8) |
+| Core >= 22 / cover >= 5 | core 28 (C2 C6 C10), 32 (C9), 36 (C1 C3), 51 (C4 C8); cover 8.8 / 8.8 / 8.8 / 10.8 / 12.8 / 12.8 / 20.2 / 20.4. Minimum is at the wall-side rod end A (A z 14.6-18), measured to z = 0. If the printed back face is z = 2, subtract 2 mm: >= 6.8 (C2 C6 C10), still >= 5 |
+| Free-span clearance >= 6 (r11 def) | C1 12.2, C2 10.2, C3 22.0, C4 21.4, C6 13.1, C8 24.2, C9 13.4, C10 12.2; along-axis def >= 18.1. Wall clearance (arm min z) 80-112 |
+| Pad >= 70 x 30, root block, plate | pad dia 70 x 38 on axis, ring 1.00 (all); block 1.00 (all); plate 100 x 100, z 2-6, my recompute 0.983-1.000 (C4 0.983, C3 0.987, C10 0.989, C2 0.990, C8 0.995; 2 mm voxel edge) |
+| Rod | 10 mm, bore 10.4, embed 82 root / 44 past the pad face (same as r11); rod length 213 / 265 / 222 / 216 / 259 / 183 / 237 / 223 mm (C1..C10 order above) |
+
+### 10.2 Hand calc (s.9.2 method)
+
+Worked case C6 (highest M). Exit Rx (81, 172, 92); mask CoM (52.5, 242.8, 252.4): horizontal lever 163.0 mm. Arm free span 4.93 N at 68.2 mm (voxel volume beyond the exit, 100% solid). M_sus = 7.85 x 163.0 + 4.93 x 68.2 = 1,616 N.mm. Farthest mask voxel from the exit 269.7 mm: M_bump = 40 x 269.7 = 10,788 N.mm. M = 12.40 N.m. sigma = 32M/(pi d^3) = 126 MPa. Torsion T = 40 x 134.5 = 5.38 N.m, tau = 16T/(pi d^3) = 27 MPa. Von Mises 135 MPa, D/C 0.45 on Fy 300 (limit 0.7). Droop: W_perp = (7.85 + 4.93) x 0.970 = 12.4 N, L = 174.8 + 20 = 194.8 mm, tip = W L^3/(3EI) = 0.31 mm, rotation 12.4 x 194.8^2/(2 x 9.82e7) = 0.0024 rad x 100 mm = 0.24: edge 0.55 mm. Wall: M_w = 7.85 x 252.4 + arm + 40 x 298 = 14.7 N.m, upper row (s = 75 mm) 196 N, 98 N per screw, D/C 0.28 vs 350 N.
+
+| id | M total N.m | T N.m | VM MPa | rod D/C (<= 0.7) | edge droop mm (<= 3) | per upper screw N | D/C (350 N) |
+|---|---|---|---|---|---|---|---|
+| C1 | 10.36 | 5.00 | 114 | 0.38 | 0.29 | 76 | 0.22 |
+| C2 | 11.12 | 5.37 | 123 | 0.41 | 0.49 | 99 | 0.28 |
+| C3 | 10.56 | 5.57 | 118 | 0.39 | 0.33 | 96 | 0.27 |
+| C4 | 9.52 | 5.49 | 108 | 0.36 | 0.28 | 87 | 0.25 |
+| C6 | 12.40 | 5.38 | 135 | 0.45 | 0.55 | 98 | 0.28 |
+| C8 | 7.84 | 5.57 | 94 | 0.31 | 0.13 | 76 | 0.22 |
+| C9 | 12.25 | 5.00 | 132 | 0.44 | 0.47 | 95 | 0.27 |
+| C10 | 10.71 | 5.54 | 120 | 0.40 | 0.32 | 88 | 0.25 |
+
+C1 reproduces H (r11: 0.38, same lever). Wall anchors: each arm needs its own stud-screw row under its plate (S10 / s.9.5); plate centres A (x, y): C1 (42, 137), C2 (3, 209), C3 (8, 217), C4 (37, 266), C6 (101, 152), C8 (68, 279), C9 (-27, 124), C10 (112, 68). S10 stays CONDITIONAL on Evan's stud map and CAD's anchor layout (still open); C4 and C8 plates reach y 316-329, C10 reaches y 18-118.
+
+### 10.3 New grips and poses: load paths and failure modes
+
+- **N1. Rod-to-mask-normal obliquity (NEW, v1 did not cover; drives the CONDITIONALs).** CAD's root search allows the rod to meet the mask back at up to 60 deg from the mask normal (`NDMIN` 0.5). Measured: C4 11.5, C8 7.8, C1 27.0, C3 26.0, C2 32.3, C10 37.3, C6 49.1, C9 50.4 deg. The pad is a 70 mm cylinder along the rod cut by the disc back plane, so its axial depth on the near side is 38 - r tan(theta): at the spigot radius r = 20 mm C1 27.8, C3 28.3, C2 25.4, C10 22.7, C6 14.9, C9 13.8 (C4 33.9, C8 35.3); at the pad edge r = 35 mm C2 15.9, C10 11.3, C6 -2.3, C9 -4.4. So P4 ">= 30 deep" holds on the axis only. The 30 mm spigot socket and the 44 mm rod bore then run out of the solid pad into the 2 mm shell plus 15% infill of the disc. Load is small (couple 4.4-5.6 N.m on a 30 mm spigot: ~200 N, 0.4-0.7 MPa on a solid wall), but a 15% infill wall carries roughly a tenth of that capacity, so it is not credited. Fix (no CAD geometry change): the 100% infill modifier (F5) is a cylinder r >= 35 about the rod from the pad face to the rod end (44 mm), not the pad shape cut at the disc plane. Extra solid mass <= 0.17 kg (bound: full 35 mm cylinder x 40 mm less 15% infill), so C9 0.58 -> <= 0.75 kg, C6 0.51 -> <= 0.68 kg, still <= 0.8. Add P13 for the next review: rod-to-mask-normal <= 35 deg, or the full-cylinder modifier named in the print notes. Also CAD to confirm on the final mesh that the rod tip (6 mm past the disc back plane) stays inside the front skin (disc is >= 30 mm thick at the boss; looks fine).
+- **N2. Eye-hole thread (C3 C6 C10): cosmetic, not a load path.** The tentacle (r 8 -> 4.5 mm, 226 mm) starts inside the pad, runs 8-16 mm behind the mask back, passes the 19 x 43 mm eye hole (about 3 mm clearance at 2 mm voxels, unproven at print resolution) and lies 10-18 mm above the face with its tip free. It is one printed part with the mask; it does not touch the hole by design. Rod + pad carry all load. Its own risk: a 10 N sideways pull at mid-length gives <= 6 MPa at the root and tip necks (16 and 9 mm dia, 22 MPa transient allowable), so it survives a nudge; it is the first part to break and does not affect retention. Hole-to-pad: nearest pad voxel (r <= 36 mm about the rod) to the hole edge: C3 30.5 mm, C10 29.9 mm, **C6 16.3 mm**. At C6 the pad fillet (r ~17 mm est., s.9 F6) can reach the hole rim; CAD checks on the final mesh that >= 3 mm of wall remains between the hole and the fillet foot, else move the boss or the hole. The hole also removes shell that the slicer must close with perimeters: test-print the mask (CAD already says so).
+- **N3. Coil (C2 C8): visual.** 526 mm of tentacle (r 10 -> 5 mm) wraps the rim and is merged to the rim and the pad: a redundant bridge, not credited. It extends the farthest point from the rod axis to 134-139 mm (vs 125 mm used in s.9): torsion 5.4-5.6 N.m vs 5.0, D-flat key 5.6 N.m / 18 mm = 310 N on 24 x 30 mm = 0.4 MPa. No change. Coil mass is in CAD's mask mass at 100% solid.
+- **N4. Turned / tilted pose (C2 C6 yaw 33 deg; C3 C9 pitch 24, roll 22).** Yaw does not change the gravity lever (horizontal lever from the exit is what s.8 caps, and it is <= 166 mm); CoM off axis <= 38.1 mm gives a static torque 7.85 x 38.1 = 0.30 N.m vs 5.4 N.m bump torsion. The only side effect is N1 (obliquity) and mask max z 298 (C2 C3 C6), 294 (C9): the wall moment is the largest of the set (14-15 N.m, 95-99 N per screw, D/C 0.27-0.28). Fine.
+- **N5. Over-the-head arm (C4 C8): no longer lever, no new moment.** The rod is straight (P8 offset <= 3.5 mm) and the arch is the sheath: lever 121.6 / 101.6 mm, rod A-to-tip 178 / 145 mm, the shortest arms of the set. C4 rod descends 18 deg (d_y -0.31): the mask weight has a 2.4 N component along the rod towards the tip (epoxy pull-off 1,257 mm^2, 0.002 MPa) and the perpendicular fraction is 0.95. The new thing is only the root position: A y 266 / 279, so plates reach y 316 / 329 and the stud row sits at the top of the piece (stud map still open). The composition-gate failures on C4 and C8 are not structural.
+- **N6. Print note for Fabrication (not structural).** Pad, thread, coil and fingers all stand 6-38 mm behind the mask back, so the mask cannot print back-down on the bed as s.4 item 1 assumed; the print orientation and supports are a Fabrication decision. CAD flags that the C2, C3, C6 mask STLs are not watertight (F1 still open).
+
+### 10.4 Print-envelope flags (arm part, from `armpart.npy`; bed 256 mm)
+
+| id | arm part x y z (upright) mm | along rod x cross-section | steel rod mm | flag |
+|---|---|---|---|---|
+| C2 | 100 x 102 x **266** | 274 x 100 x 100 | 265 | **z 266 > 256: cannot print upright integral.** Lying along the rod 274 > 256 (fits only on the bed diagonal) |
+| C6 | 130 x 128 x 250 | **283** x 97 x 103 | 259 | z 250: 6 mm margin, no brim or raft. Lying along the rod 283 > 256 (diagonal only) |
+| C9 | 104 x 158 x 224 | **266** x 92 x 105 | 237 | z OK; lying along the rod 266 > 256 |
+| C4 | 100 x 132 x 224 | 252 x 96 x 103 | 216 | OK (4 mm margin lying) |
+| C1 | 114 x 146 x 204 | 246 x 92 x 106 | 213 | OK |
+| C3 | 100 x 100 x 226 | 229 | 222 | OK |
+| C10 | 100 x 148 x 214 | 243 | 223 | OK |
+| C8 | 100 x 100 x 198 | 207 | 183 | OK |
+
+Mask parts: local extent <= 219 x 215 mm (C8 213 x 219), thickness <= 104 mm: fit the bed. If an arm is split at the wall (F2): the rod crosses the seam, land >= 1,500 mm^2, no seam within 40 mm of the root face (S4). The steel rod is cut from stock, so rod length is not a print limit (265 mm needs a 305 mm bar).
+
+### 10.5 Per-concept verdict
+
+| id | Verdict | Basis / condition |
+|---|---|---|
+| C1 | **PASS** | D/C 0.38 (= H). Obliquity 27 deg: socket breaks out of the pad by 2 mm; covered by the modifier rule (N1). Conditions as r11 (Fy >= 300 MPa on BOM, 100% infill zones, epoxy fills the bore annulus, stud under the plate) |
+| C2 | **CONDITIONAL** | D/C 0.41, droop 0.49. (1) Arm part z 266 > 256 (print/split decision, Fabrication). (2) Obliquity 32 deg: pad 25 mm deep at r 20, 16 mm at r 35: full-cylinder 100% modifier. (3) Tilt 33 deg: above 25 design, under the 35 cap, no margin for more |
+| C3 | **PASS** | D/C 0.39. Thread cosmetic, hole 30.5 mm from the pad. Obliquity 26 deg (2 mm socket breakout, modifier rule). CAD's mask STL not watertight (repair) |
+| C4 | **PASS** | D/C 0.36, shortest-lever arm of the over-the-head pair; obliquity 11.5 deg, pad 34 / 31 mm. Plate 98.3% (voxel edge). Gate failure is Aesthetics/CAD, not structural |
+| C6 | **CONDITIONAL** | D/C 0.45 (highest). (1) Obliquity 49 deg: pad depth -2 mm at the edge, 15 mm at r 20: full-cylinder 100% modifier is mandatory (mass <= 0.68 kg). (2) Eye hole 16.3 mm from the pad: >= 3 mm wall check on final mesh. (3) Arm part z 250 (6 mm margin) and 283 mm along the rod: Fabrication. (4) Tilt 33 deg |
+| C8 | **PASS** | D/C 0.31, lowest moment (lever 101.6). Coil is visual. Plate 99.5%. Gate failure not structural |
+| C9 | **CONDITIONAL** | D/C 0.44. Obliquity 50 deg: same as C6 (pad -4 mm at the edge, 14 mm at r 20), modifier mandatory (mass <= 0.75 kg). Arm 266 mm along the rod (diagonal-only if printed lying); z 224 OK |
+| C10 | **CONDITIONAL** | D/C 0.40. Obliquity 37 deg (pad 23 mm at r 20, 11 mm at r 35): modifier mandatory. Thread cosmetic, hole 29.9 mm from the pad. Arm plate at y 68-118 low on the right: stud map |
+
+Open for all: S10 stud map / anchor layout; no bench test (1 kg dummy 7-day hang and 40 N edge push on the first print); BOM rod Fy >= 300 MPa; slicer 100% infill modifiers for block, column, plate, pad cylinder, spigot (F5); final-CAD mesh review (pad fillet radius, D-flat, bore clearance, STL repair).
+
 ---
 *Edit log*
 
@@ -242,3 +317,4 @@ No bench test. First print: 1 kg dummy-mask hang test for 7 days and a 40 N edge
 |------|-------|--------|---------------|
 | 2026-11-18 | structural-lead | Initial creation, Phase 1 spec (mask arm v1) [PROVISIONAL] | |
 | 2026-11-18 | structural-lead | Added section 9, Phase 2 review of the round-11 build (H, V3): P1-P12 PASS, S10 decision, findings F1-F6 [PROVISIONAL] | |
+| 2026-11-19 | structural-lead | Added section 10 (round-12 spot-check: C1 C2 C3 C4 C6 C8 C9 C10; obliquity finding N1; print-envelope flags) and `mask_arm_r12_check.py` / `.json` [PROVISIONAL] | [PROVISIONAL] |
