@@ -277,6 +277,8 @@ Board will carry ~10 concepts; Structural spot-checks lever/mass per concept num
 
 **SL-86** · 04:01 · Evan chose HF free inference credits (PRO later). Token saved for router.huggingface.co via the secure form. Result: hf-inference and together → 410 "model deprecated" for FLUX.1-schnell; fal-ai → 402 "Purchase pre-paid credits ... or subscribe to PRO". Free monthly inference credits are not usable on this account for FLUX. Remaining free path: ZeroGPU daily refill. Router credential left in place (harmless; useful once PRO includes credits). · `[Evan]` / `[judgment]`
 
+**SL-87** · 04:03 · Evan: use the free daily allowance. Quota still exhausted at 04:03 UTC. Batch reordered seed-major (one image per concept first) and mask wording tightened toward the flat emoticon (C1 came out a theatre smiley). One-shot resume reminder set for 16:10 UTC (trig_01VcCod5NeHQg4QKriHEHTYw); it re-arms itself once if the quota is still out — no recurring trigger (Evan's earlier "stop these checks" was about the recurring Canva probe; this is a single resume of work he asked for). `[judgment]`
+
 ---
 *Edit log*
 
@@ -321,3 +323,4 @@ Board will carry ~10 concepts; Structural spot-checks lever/mass per concept num
 | 2026-11-19 | orchestrator | Appended SL-83 (concept set design) | [PROVISIONAL] |
 | 2026-11-19 | orchestrator | Appended SL-84..85 (token handling, FLUX working, quota) | [PROVISIONAL] |
 | 2026-11-19 | orchestrator | Appended SL-86 (inference credits unavailable) | [PROVISIONAL] |
+| 2026-11-19 | orchestrator | Appended SL-87 (daily-quota plan, resume reminder) | [PROVISIONAL] |
