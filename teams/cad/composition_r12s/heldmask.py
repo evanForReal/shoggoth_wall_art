@@ -94,19 +94,22 @@ def geometry(f, S):
     from scipy import ndimage as ndi
     dt = ndi.distance_transform_edt(f.F >= 0).astype(np.float32) * 2.0      # true distance (mm) from every air voxel to the nearest solid
     best = None; px, py = H['root_pref']; rr = H.get('root_r', 60)
-    for dx in np.arange(-rr, rr + 1, 8.0):
-        for dy in np.arange(-rr, rr + 1, 8.0):
-            if dx * dx + dy * dy > rr * rr: continue
-            c = candidate(f, S, H, Gm, px + dx, py + dy, dt)
-            if c is None: continue
-            sc = np.hypot(dx, dy) + 0.25 * np.linalg.norm(c['B0'] - c['Rx']) + 40 * (1 - c['nd'])
-            if best is None or sc < best[0]: best = (sc, c)
+    bos = [tuple(H['boss'])] + ([tuple(np.array([np.cos(t), np.sin(t)]) * q * Gm['R']) for q in (0.35, 0.5, 0.62) for t in np.radians(np.arange(0, 360, 30))] if H.get('boss_search') else [])
+    for bo in bos:
+        Hb = dict(H, boss=bo); dbo = np.hypot(bo[0] - H['boss'][0], bo[1] - H['boss'][1])
+        for dx in np.arange(-rr, rr + 1, 8.0):
+            for dy in np.arange(-rr, rr + 1, 8.0):
+                if dx * dx + dy * dy > rr * rr: continue
+                c = candidate(f, S, Hb, Gm, px + dx, py + dy, dt)
+                if c is None: continue
+                sc = np.hypot(dx, dy) + 0.25 * np.linalg.norm(c['B0'] - c['Rx']) + 40 * (1 - c['nd']) + 0.4 * dbo
+                if best is None or sc < best[0]: best = (sc, c, Hb)
     if best is None: raise RuntimeError('no feasible root near %s for %s: %s' % (H['root_pref'], S['id'], REASONS))
-    c = best[1]; G = dict(Gm); G.update(c); d = c['d']; A = c['A']; B0 = c['B0']
+    c = best[1]; H = best[2]; Gm['H'] = H; G = dict(Gm); G.update(c); d = c['d']; A = c['A']; B0 = c['B0']
     zq = float(np.hypot(*H['boss']) / G['R']); G['z_bb'] = float(B0[2])
     # pad plane: perpendicular offset 4 mm inside the disc back (local w = -h_b + 4)
     wb = -float(hback(G, zq)) + H.get('pad_inset', 4.0); nA = float(G['en'] @ (A - G['c3'])); s_plane = (wb - nA) / float(G['en'] @ d); s_T = s_plane - PAD_LEN; T = A + s_T * d
-    G.update(s_plane=float(s_plane), s_T=float(s_T), T=T, s_exit=EMBED, s_rod=float(s_T + MASK_BORE), wb=wb, zm=float(zm), z_back=float(zm + zmin0), surf_pk=float(surf_pk), mc=np.array(H['c'], float), roll=np.radians(H.get('roll', 0)), yaw=np.radians(H.get('yaw', 0)), pitch=np.radians(H.get('pitch', 0)))
+    G.update(boss_used=[float(H['boss'][0]), float(H['boss'][1])], s_plane=float(s_plane), s_T=float(s_T), T=T, s_exit=EMBED, s_rod=float(s_T + MASK_BORE), wb=wb, zm=float(zm), z_back=float(zm + zmin0), surf_pk=float(surf_pk), mc=np.array(H['c'], float), roll=np.radians(H.get('roll', 0)), yaw=np.radians(H.get('yaw', 0)), pitch=np.radians(H.get('pitch', 0)))
     return G
 
 def axc(G, X, Y, Z):

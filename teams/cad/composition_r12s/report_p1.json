@@ -1,0 +1,230 @@
+{
+ "S1": {
+  "id": "S1",
+  "grip": "F",
+  "ball_D_mm": 120.0,
+  "ball_depth_mm": 120.0,
+  "depth_over_D": 1.0,
+  "ball_front_z_mm": 294.0,
+  "ball_back_lowest_z_mm": 174.0,
+  "relief_max_z_mm": 292.0,
+  "gap_ball_back_to_flesh_peak_mm": 60.0,
+  "ball_min_dist_to_rest_of_piece_mm": 17.1,
+  "mass_kg": 0.524,
+  "mass_basis": "hollow shell wall 2.0 mm, infill 10%, pad cylinder inside ball + boss + grip tendrils 100% solid, PLA 1.24 g/cm3, +5% finish",
+  "V_total_STL_cm3": 1047.6,
+  "lever_mm": 121.2,
+  "com_offset_mm": 6.3,
+  "tilt_deg": 15.0,
+  "core_dia_min_mm": 50.8,
+  "cover_min_mm": 20.2,
+  "free_span_clear_mm_r11def": 18.0,
+  "free_span_clear_mm_along_axis": 18.5,
+  "pad_dia_mm": 70.0,
+  "pad_depth_mm": 52.0,
+  "rod_to_seat_normal_deg": 6.6,
+  "rod_to_mask_axis_deg": 26.1,
+  "arm_part_z_mm": [
+   2.0,
+   192.0
+  ],
+  "thread_bore_to_pad_wall_mm": null,
+  "root_exit": [
+   -24.0,
+   192.0,
+   106.0
+  ],
+  "boss_used": null,
+  "shelves": {
+   "S1_UL": [
+    158,
+    182,
+    300
+   ],
+   "S2_UR": [
+    194,
+    182,
+    300
+   ],
+   "S3_LL": [
+    188,
+    158,
+    300
+   ]
+  },
+  "shelves_ok": true,
+  "rest_diff_vs_r11_H_cm3": 81.6,
+  "limits": {
+   "relief": true,
+   "mass": true,
+   "lever": true,
+   "com": true,
+   "tilt": true,
+   "core": true,
+   "cover": true,
+   "clear": true,
+   "seat": true,
+   "pad": true,
+   "shelves": true
+  },
+  "sources": {
+   "arm": "measure_arm.py -> arm_report_p1.json",
+   "shelves_relief": "measure_extra.py -> measure_extra_p1.json",
+   "geometry": "build/S1_meta.json",
+   "mask_mesh": "build/S1_maskpart.stl (trimesh volume)"
+  },
+  "pass_all": true
+ },
+ "S2": {
+  "id": "S2",
+  "grip": "F",
+  "ball_D_mm": 180.0,
+  "ball_depth_mm": 108.0,
+  "depth_over_D": 0.6,
+  "ball_front_z_mm": 288.0,
+  "ball_back_lowest_z_mm": 180.0,
+  "relief_max_z_mm": 286.0,
+  "gap_ball_back_to_flesh_peak_mm": 66.0,
+  "ball_min_dist_to_rest_of_piece_mm": 26.8,
+  "mass_kg": 0.744,
+  "mass_basis": "hollow shell wall 2.0 mm, infill 10%, pad cylinder inside ball + boss + grip tendrils 100% solid, PLA 1.24 g/cm3, +5% finish",
+  "V_total_STL_cm3": 1975.9,
+  "lever_mm": 124.4,
+  "com_offset_mm": 15.1,
+  "tilt_deg": 15.0,
+  "core_dia_min_mm": 50.8,
+  "cover_min_mm": 20.2,
+  "free_span_clear_mm_r11def": 24.2,
+  "free_span_clear_mm_along_axis": 26.9,
+  "pad_dia_mm": 70.0,
+  "pad_depth_mm": 52.0,
+  "rod_to_seat_normal_deg": 6.2,
+  "rod_to_mask_axis_deg": 17.7,
+  "arm_part_z_mm": [
+   2.0,
+   194.0
+  ],
+  "thread_bore_to_pad_wall_mm": null,
+  "root_exit": [
+   -24.0,
+   192.0,
+   106.0
+  ],
+  "boss_used": null,
+  "shelves": {
+   "S1_UL": [
+    158,
+    182,
+    300
+   ],
+   "S2_UR": [
+    194,
+    182,
+    300
+   ],
+   "S3_LL": [
+    188,
+    158,
+    300
+   ]
+  },
+  "shelves_ok": true,
+  "rest_diff_vs_r11_H_cm3": 81.6,
+  "limits": {
+   "relief": true,
+   "mass": true,
+   "lever": true,
+   "com": true,
+   "tilt": true,
+   "core": true,
+   "cover": true,
+   "clear": true,
+   "seat": true,
+   "pad": true,
+   "shelves": true
+  },
+  "sources": {
+   "arm": "measure_arm.py -> arm_report_p1.json",
+   "shelves_relief": "measure_extra.py -> measure_extra_p1.json",
+   "geometry": "build/S2_meta.json",
+   "mask_mesh": "build/S2_maskpart.stl (trimesh volume)"
+  },
+  "pass_all": true
+ },
+ "S3": {
+  "id": "S3",
+  "grip": "F",
+  "ball_D_mm": 200.0,
+  "ball_depth_mm": 90.0,
+  "depth_over_D": 0.45,
+  "ball_front_z_mm": 284.0,
+  "ball_back_lowest_z_mm": 194.0,
+  "relief_max_z_mm": 282.0,
+  "gap_ball_back_to_flesh_peak_mm": 80.0,
+  "ball_min_dist_to_rest_of_piece_mm": 39.7,
+  "mass_kg": 0.774,
+  "mass_basis": "hollow shell wall 2.0 mm, infill 10%, pad cylinder inside ball + boss + grip tendrils 100% solid, PLA 1.24 g/cm3, +5% finish",
+  "V_total_STL_cm3": 2026.9,
+  "lever_mm": 129.9,
+  "com_offset_mm": 23.7,
+  "tilt_deg": 15.0,
+  "core_dia_min_mm": 50.6,
+  "cover_min_mm": 20.1,
+  "free_span_clear_mm_r11def": 27.9,
+  "free_span_clear_mm_along_axis": 29.8,
+  "pad_dia_mm": 70.0,
+  "pad_depth_mm": 52.0,
+  "rod_to_seat_normal_deg": 4.9,
+  "rod_to_mask_axis_deg": 13.2,
+  "arm_part_z_mm": [
+   2.0,
+   206.0
+  ],
+  "thread_bore_to_pad_wall_mm": null,
+  "root_exit": [
+   -24.0,
+   192.0,
+   106.0
+  ],
+  "boss_used": null,
+  "shelves": {
+   "S1_UL": [
+    158,
+    182,
+    300
+   ],
+   "S2_UR": [
+    194,
+    182,
+    300
+   ],
+   "S3_LL": [
+    188,
+    158,
+    300
+   ]
+  },
+  "shelves_ok": true,
+  "rest_diff_vs_r11_H_cm3": 81.6,
+  "limits": {
+   "relief": true,
+   "mass": true,
+   "lever": true,
+   "com": true,
+   "tilt": true,
+   "core": true,
+   "cover": true,
+   "clear": true,
+   "seat": true,
+   "pad": true,
+   "shelves": true
+  },
+  "sources": {
+   "arm": "measure_arm.py -> arm_report_p1.json",
+   "shelves_relief": "measure_extra.py -> measure_extra_p1.json",
+   "geometry": "build/S3_meta.json",
+   "mask_mesh": "build/S3_maskpart.stl (trimesh volume)"
+  },
+  "pass_all": true
+ }
+}

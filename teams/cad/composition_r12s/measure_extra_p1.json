@@ -1,0 +1,107 @@
+{
+ "S1": {
+  "shelves": {
+   "S1_UL": {
+    "top_y": 285,
+    "cx": -335,
+    "flat_top_x_mm": 158,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 172,
+    "ok": true
+   },
+   "S2_UR": {
+    "top_y": 150,
+    "cx": 335,
+    "flat_top_x_mm": 194,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 307,
+    "ok": true
+   },
+   "S3_LL": {
+    "top_y": -190,
+    "cx": -335,
+    "flat_top_x_mm": 188,
+    "flat_top_z_mm": 158,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 2,
+    "room_to_envelope_mm": 647,
+    "ok": true
+   }
+  },
+  "max_z_mm": 292.0
+ },
+ "S2": {
+  "shelves": {
+   "S1_UL": {
+    "top_y": 285,
+    "cx": -335,
+    "flat_top_x_mm": 158,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 172,
+    "ok": true
+   },
+   "S2_UR": {
+    "top_y": 150,
+    "cx": 335,
+    "flat_top_x_mm": 194,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 307,
+    "ok": true
+   },
+   "S3_LL": {
+    "top_y": -190,
+    "cx": -335,
+    "flat_top_x_mm": 188,
+    "flat_top_z_mm": 158,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 2,
+    "room_to_envelope_mm": 647,
+    "ok": true
+   }
+  },
+  "max_z_mm": 286.0
+ },
+ "S3": {
+  "shelves": {
+   "S1_UL": {
+    "top_y": 285,
+    "cx": -335,
+    "flat_top_x_mm": 158,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 172,
+    "ok": true
+   },
+   "S2_UR": {
+    "top_y": 150,
+    "cx": 335,
+    "flat_top_x_mm": 194,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 307,
+    "ok": true
+   },
+   "S3_LL": {
+    "top_y": -190,
+    "cx": -335,
+    "flat_top_x_mm": 188,
+    "flat_top_z_mm": 158,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 2,
+    "room_to_envelope_mm": 647,
+    "ok": true
+   }
+  },
+  "max_z_mm": 282.0
+ }
+}

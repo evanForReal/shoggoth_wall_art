@@ -5,8 +5,8 @@ import os, sys, json, numpy as np
 from PIL import Image
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 from engine import XS, YS, ZS, RES
-import studies
-STUD = list(studies.TABLE)
+STUD = sys.argv[1:] or ['S1','S2','S3']
+OUTJ = os.environ.get('OUTJSON','measure_extra.json')
 def largest_rect(m):
     best = (0, 0, 0, 0, 0); h = np.zeros(m.shape[1], int)
     for i in range(m.shape[0]):
@@ -35,4 +35,4 @@ for sid in STUD:
         sh[p['limb']] = dict(top_y=top, cx=p['cx'], flat_top_x_mm=round(hh * RES), flat_top_z_mm=round(ww * RES), clear_above_flat_mm=round(clear), clear_above_footprint_mm=round(first), room_to_envelope_mm=round(457 - top), ok=bool(hh * RES >= 150 and ww * RES >= 150 and clear >= 299))
     d['shelves'] = sh
     d['max_z_mm'] = float(ZS[np.argwhere(np.asarray(vol).any((0, 1)))[-1, 0]]); out[sid] = d
-json.dump(out, open(f'{HERE}/measure_extra.json', 'w'), indent=1); print(json.dumps({k: (v['max_z_mm'], {n: (q['flat_top_x_mm'], q['flat_top_z_mm'], q['clear_above_flat_mm']) for n, q in v['shelves'].items()}) for k, v in out.items()}, indent=1)[:3000])
+json.dump(out, open(f'{HERE}/{OUTJ}', 'w'), indent=1); print(json.dumps({k: (v['max_z_mm'], {n: (q['flat_top_x_mm'], q['flat_top_z_mm'], q['clear_above_flat_mm']) for n, q in v['shelves'].items()}) for k, v in out.items()}, indent=1)[:3000])

@@ -15,7 +15,7 @@ def crop(P, pad, G=None):
     lo = vox(np.min(P, 0) - pad); hi = vox(np.max(P, 0) + pad) + 1; return tuple(slice(a, b) for a, b in zip(lo, hi))
 out = {}
 for sid in IDS:
-    meta = json.load(open(f'{B}/{sid}_meta.json')); g = meta['held_geo']; G = {k: (np.array(v) if isinstance(v, list) else v) for k, v in g.items()}; G['H'] = meta['held_in']
+    meta = json.load(open(f'{B}/{sid}_meta.json')); g = meta['held_geo']; G = {k: (np.array(v) if isinstance(v, list) else v) for k, v in g.items()}; G['H'] = dict(meta['held_in'], boss=tuple(g['boss_used'])) if 'boss_used' in g else meta['held_in']
     solid = np.load(f'{B}/{sid}_solid.npy'); rest = np.load(f'{B}/{sid}_rest.npy'); armp = np.load(f'{B}/{sid}_armpart.npy'); maskp = np.load(f'{B}/{sid}_maskpart.npy'); r = {}
     A, d, Rx, T = G['A'], G['d'], G['Rx'], G['T']; sT, sx, sr = G['s_T'], G['s_exit'], G['s_rod']
     # ---- placement / envelope
