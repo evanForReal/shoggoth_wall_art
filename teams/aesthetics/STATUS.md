@@ -5,6 +5,7 @@
 
 ## Exec Summary (newest first)
 
+- 2026-11-19: R12 verdicts in (issue #13: 0/6/10). Ball B1 liked (sphere and flatter dead); adopt K1 umber glaze and K4 shelves grown from limbs; keep side eye groups (K2 dead); air out the composition with longer arms so plants of either type fit (K3). Only C1 (closest to H) liked: keep H layout. Round-13 = H refined with all of this.
 - 2026-11-19: Round-12 DEPLOYED (main 626d4b0, Evan pinged; awaiting verdicts). B1-B4 ball smiley on H (S2 squashed sphere = pick), K1-K4 coherence questions (reviews A+B, RECONCILED.md), 8 varied concepts refitted with the ball. FLUX concepts deferred to round 13.
 - 2026-11-19: R11 verdicts in (issue #12: 2/0/4). H locked as base model; all four one-axis variants dead. Next: draft a volumetric smiley (sphere / oblate spheroid held up to deceive) on H, and a visual-coherence review of H (cohesive piece vs scattered dense objects), iterated with Evan.
 - 2026-11-18: Round-11 DEPLOYED (main e49cce9, Evan pinged; awaiting verdicts). Staged as (review/staging/round-11/, now review/rounds/round-11/): H held-mask hero (eye patch behind, veiny arm eyes) + V1 lamprey, V2 fangs+lamprey, V3 mask further out, V4 patch only. Structural PASS on the mask arm (stud-row condition).
@@ -49,6 +50,7 @@
 - **r02:** chibi hard no; Gaudí organic architecture strong.
 - **r03:** Beksiński sweep loved; surface core locked; refined dark rooms; bas-relief + multi-anchor spread.
 - **r04:** c01/c02 concepts loved; horrific asymmetry, less octopus, not a centerpiece; Bayon mask loved; carved never applied; root-over-rock shelves.
+- **r12:** 0/6/10. Ball B1 liked; umber glaze + grown shelves adopted; side eye groups stay; air out with longer arms (plants: mix of trailing and upright); far variations from H dead.
 - **r11:** 2/0/4. H loved (base model). V1-V4 dead (lamprey-only, fangs+lamprey, mask further out, plain arms). Smiley to become volumetric (sphere / oblate spheroid), held up to deceive. Coherence review requested.
 - **r10:** 7/2/5. A0, T1, T2, M1, M2, D2, O3 loved; eyes instead of suckers; cancerous yes, lumpy no; sparser and alternate poses dead. Mask held out on a tentacle.
 - **r09:** 0/1/4, no notes; only A (r08) liked. Stop rule fired.
@@ -101,3 +103,4 @@
 | 2026-11-18 | orchestrator | Round-11 deployed (exec line) | [PROVISIONAL] |
 | 2026-11-19 | orchestrator | R11 backprop: exec line, r11 takeaway | docs-reviewer (verified: 2026-11-19 exec line and r11 takeaway vs review/verdicts/round-11.json and issue #12: 2/0/4, H loved (base model), V1-V4 dislike, no notes; V1-V4 descriptions match round-11 manifest; volumetric-smiley and coherence-review directives paraphrase Evan's quotes without added claims; `git show 770ed23 -- teams/aesthetics/STATUS.md` adds only those two lines and this row; no body [PROVISIONAL] tag belongs to the row. Cosmetic, signed through: r11 takeaway sits above r10, consistent with newest-first from r10 up) |
 | 2026-11-19 | orchestrator | Round-12 deploy exec line | [PROVISIONAL] |
+| 2026-11-19 | orchestrator | R12 backprop: exec line, r12 takeaway | [PROVISIONAL] |

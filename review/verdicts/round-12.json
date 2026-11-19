@@ -1,0 +1,75 @@
+{
+  "source": {
+    "issue": 13,
+    "url": "https://github.com/evanForReal/shoggoth_wall_art/issues/13"
+  },
+  "round": "round-12",
+  "reviewed": "2026-11-19",
+  "verdicts": [
+    {
+      "id": "b1",
+      "verdict": "like"
+    },
+    {
+      "id": "b2",
+      "verdict": "like"
+    },
+    {
+      "id": "b3",
+      "verdict": "dislike"
+    },
+    {
+      "id": "b4",
+      "verdict": "dislike"
+    },
+    {
+      "id": "k1",
+      "verdict": "like"
+    },
+    {
+      "id": "k2",
+      "verdict": "dislike"
+    },
+    {
+      "id": "k3",
+      "verdict": "like",
+      "notes": "probably a mix of both. air out (expand arm length) the composition so it is less cramped and can accommodate either"
+    },
+    {
+      "id": "k4",
+      "verdict": "like"
+    },
+    {
+      "id": "c1",
+      "verdict": "like"
+    },
+    {
+      "id": "c2",
+      "verdict": "dislike"
+    },
+    {
+      "id": "c3",
+      "verdict": "dislike"
+    },
+    {
+      "id": "c4",
+      "verdict": "dislike"
+    },
+    {
+      "id": "c6",
+      "verdict": "dislike"
+    },
+    {
+      "id": "c8",
+      "verdict": "dislike"
+    },
+    {
+      "id": "c9",
+      "verdict": "dislike"
+    },
+    {
+      "id": "c10",
+      "verdict": "dislike"
+    }
+  ]
+}
