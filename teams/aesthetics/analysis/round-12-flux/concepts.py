@@ -4,7 +4,7 @@ import subprocess, sys, json, os
 BASE = ("Museum photograph of a single horror bas-relief wall sculpture in the style of Zdzislaw Beksinski, attached directly to a dark charcoal wall, no backboard. "
  "A headless, faceless tentacled shoggoth: a tall narrow ribbed trunk of decayed ochre, umber and bone-colored flesh with fibrous root-like texture and thin perforated lace webbing between limbs. "
  "The top of the trunk is a stump covered by a seething cluster of bulging bloodshot veiny eyeballs of mismatched sizes, diseased and swollen. "
- "A mask carved from pale ivory bone, a perfectly round classic smiley face: two small black vertical oval eyes and one thin curved smile line, nothing else, no teeth, no nose. "
+ "A flat round disc of pale ivory bone carved with the classic smiley emoticon: two small solid black vertical ovals for eyes and one thin black upward-curved arc for the mouth. It is a flat graphic disc, not a theatre mask, not a skull: no teeth, no nose, no cheeks, no eye holes. "
  "{MASK} "
  "{MOUTH} "
  "Three tentacles of very different thickness, one massive, one medium, one thin, each curl underneath a small flat wooden plant shelf and hold it up; each shelf has a potted plant. "
@@ -46,14 +46,15 @@ C = {
 SEEDS = [101, 202]
 if __name__ == "__main__":
     out = sys.argv[1]; os.makedirs(out, exist_ok=True); log = []
-    for cid, v in C.items():
-        p = BASE.format(**v)
-        for s in SEEDS:
+    # seed-major order: one image per concept first, so a partial daily quota still covers every concept
+    for s in SEEDS:
+        for cid, v in C.items():
+            p = BASE.format(**v)
             f = f"{out}/{cid}_s{s}.png"
-            if os.path.exists(f): continue
+            if os.path.exists(f) or (cid == "C1"): continue  # C1 done with the earlier mask wording
             r = subprocess.run(["python3", "tools/concept_gen/flux.py", f, str(s), p], capture_output=True, text=True, timeout=240)
             ok = r.returncode == 0
             log.append({"concept": cid, "seed": s, "ok": ok, "err": None if ok else r.stderr.strip().splitlines()[-1][:200]})
             print(cid, s, "ok" if ok else log[-1]["err"], flush=True)
-            if not ok and "ZeroGPU" in (log[-1]["err"] or ""): json.dump(log, open(f"{out}/gen_log.json", "w"), indent=1); sys.exit("quota exhausted")
+            if not ok and "ZeroGPU" in (log[-1]["err"] or ""): json.dump(log, open(f"{out}/gen_log.json", "a"), indent=1); sys.exit("quota exhausted")
     json.dump({"base": BASE, "concepts": C, "seeds": SEEDS, "log": log}, open(f"{out}/gen_log.json", "w"), indent=1)

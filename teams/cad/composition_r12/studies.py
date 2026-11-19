@@ -83,7 +83,7 @@ def pose_spec(pc, holder, pose, amp, maw):
     H.update(c=tuple(c), yaw=yaw, pitch=pitch, roll=roll, boss=boss)
     px, py = c
     H['root_pref'] = {'B': (px + 30, py - 85), 'L': (px - 78, py - 30), 'R': (px + 78, py - 30), 'O': (px + 12, py + 78)}[holder]; H['root_r'] = 55
-    if pose == 'W': H['gap'] = 100.0; H['clear_margin'] = 9.0; H['boss'] = (0.0, 38.0); H['root_pref'] = (bend(amp, sx * 45.0, 245.0), 245.0); H['root_r'] = 85
+    if pose == 'W': H['gap'] = 100.0; H['clear_margin'] = 6.0; H['clear_start'] = 36; H['boss'] = (0.0, 38.0); H['root_pref'] = (bend(amp, sx * 45.0, 245.0), 245.0); H['root_r'] = 85
     return H
 
 def compose(cid):

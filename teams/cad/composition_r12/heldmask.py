@@ -67,7 +67,7 @@ def candidate(f, S, H, Gm, rx, ry, dt=None):
     # geometry of the free span: length, clearance to the existing solid
     bu_, bv_ = H['boss']; wb = -float(hback(Gm, q)) + 4.0; nA = float(Gm['en'] @ (A - Gm['c3'])); s_plane = (wb - nA) / float(Gm['en'] @ d); s_T = s_plane - PAD_LEN
     if s_T + 6 > 242.0 or s_T - EMBED < 20: _rej('len'); return None
-    ss = np.arange(EMBED + 60, s_T, 6.0)
+    ss = np.arange(EMBED + H.get('clear_start', 60), s_T, 6.0)
     if len(ss):
         Pc = A[None] + ss[:, None] * d[None]; u_ = np.clip((ss - EMBED) / (s_T - EMBED), 0, 1); Rr = 34.0 - 9.0 * u_ ** 0.9
         ic = np.clip(((Pc[:, 0] - X0) / 2.0).round().astype(int), 0, NX - 1); jc = np.clip(((Pc[:, 1] - X0) / 2.0).round().astype(int), 0, NY - 1); kc = np.clip(((Pc[:, 2] + 8) / 2.0).round().astype(int), 0, NZ - 1)
