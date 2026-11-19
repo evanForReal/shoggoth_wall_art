@@ -8,10 +8,10 @@ from scipy import ndimage as ndi
 from skimage import measure
 from PIL import Image
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from engine import XS, YS, RES, almond
+from engine import XS, YS, RES, almond, HALFX, HALFY
 HERE = os.path.dirname(os.path.abspath(__file__)); B = os.path.join(HERE, 'build'); R = os.path.join(HERE, 'renders')
 ENV = 914.0 ** 2; PX = RES ** 2; MMPX = 1.41 / 1200 * 1000    # render mm per pixel
-X, Y = np.meshgrid(XS, YS, indexing='ij'); IN = (np.abs(X) <= 457) & (np.abs(Y) <= 457)
+X, Y = np.meshgrid(XS, YS, indexing='ij'); IN = (np.abs(X) <= HALFX) & (np.abs(Y) <= HALFY)
 
 def area(m): return float(m.sum() * PX)
 def idx(x, y): return int(round((x - XS[0]) / RES)), int(round((y - YS[0]) / RES))
@@ -79,7 +79,7 @@ def run(sid):
     mw = meta['maw']; w_, h_ = mw['w'], mw['h']
     ad = almond(mw['c'][0], mw['c'][1], w_, h_, tilt=(np.pi / 2 if mw['orient'] == 'h' else 0) + (-0.0), seed={'G1a': 1, 'G1b': 2}.get(sid, 0))
     S_ = json.load(open(f'{B}/{sid}_meta.json'))
-    import importlib; st = importlib.import_module('studies').STUDIES[sid]
+    import studies_r13; st = studies_r13.get(sid)
     from engine import maw_sd; ad = maw_sd(st['maw'], st.get('seed', 0))
     open_ = ad(X, Y) < 0; maw_area = area(open_ & IN); ratio = maw_area / ma
     mpx, mpy = ex(*mw['c']); sx = (X[open_] - mw['c'][0]); 

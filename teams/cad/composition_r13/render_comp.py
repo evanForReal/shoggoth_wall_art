@@ -111,13 +111,13 @@ def add_plants():
         bpy.ops.mesh.primitive_uv_sphere_add(segments=12, ring_count=8, radius=1.0, location=tuple(np.array(c) * K)); o = bpy.context.object; o.scale = (sx * K, sy * K, sz * K); o.rotation_euler = rot; o.data.materials.append(m)
         bpy.ops.object.shade_smooth(); return o
     def pot(cx, top, cz):
-        bpy.ops.mesh.primitive_cone_add(vertices=40, radius1=50 * K, radius2=70 * K, depth=90 * K, location=(cx * K, (top + 45) * K, cz * K), rotation_euler=(np.pi / 2, 0, 0)); o = bpy.context.object; o.data.materials.append(pot_m); bpy.ops.object.shade_smooth()
-        bpy.ops.mesh.primitive_cylinder_add(vertices=40, radius=66 * K, depth=4 * K, location=(cx * K, (top + 84) * K, cz * K), rotation_euler=(np.pi / 2, 0, 0)); o = bpy.context.object; o.data.materials.append(soil_m)
+        bpy.ops.mesh.primitive_cone_add(vertices=40, radius1=50 * K, radius2=70 * K, depth=90 * K, location=(cx * K, (top + 45) * K, cz * K), rotation=(-np.pi / 2, 0, 0)); o = bpy.context.object; o.data.materials.append(pot_m); bpy.ops.object.shade_smooth()
+        bpy.ops.mesh.primitive_cylinder_add(vertices=40, radius=66 * K, depth=4 * K, location=(cx * K, (top + 84) * K, cz * K), rotation=(np.pi / 2, 0, 0)); o = bpy.context.object; o.data.materials.append(soil_m)
     def upright(cx, top, cz):
         pot(cx, top, cz); base = np.array([cx, top + 88.0, cz])
         for i in range(17):      # blades: 260 mm wide x 320 mm tall envelope above the pot rim
             az = rng.uniform(0, 2 * np.pi); tilt = np.radians(rng.uniform(3, 22)); L = rng.uniform(250, 318); dirv = np.array([np.sin(tilt) * np.cos(az), np.cos(tilt), np.sin(tilt) * np.sin(az)])
-            c = base + dirv * L / 2; ax = np.cross([0, 1.0, 0], dirv); ang = np.arccos(np.clip(dirv[1], -1, 1)); n_ = np.linalg.norm(ax)
+            c = base + dirv * L / 2; ax = np.cross([0, 0, 1.0], dirv); ang = np.arccos(np.clip(dirv[2], -1, 1)); n_ = np.linalg.norm(ax)
             import mathutils as mu; q = mu.Quaternion(tuple(ax / n_), ang) if n_ > 1e-6 else mu.Quaternion((1, 0, 0, 0)); e = q.to_euler()
             ell(c, rng.uniform(9, 15), 3.0, L / 2, e, greens[i % 4])      # ellipsoid blade, local z along the blade direction
         for i in range(5): ell(base + np.array([rng.uniform(-45, 45), 14, rng.uniform(-45, 45)]), rng.uniform(34, 50), 22, rng.uniform(34, 50), (0, 0, 0), greens[i % 4])

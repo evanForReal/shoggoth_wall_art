@@ -1,0 +1,408 @@
+{
+ "H13": {
+  "id": "H13",
+  "body_scale": 0.84,
+  "bbox_x_mm": [
+   -456,
+   456
+  ],
+  "bbox_y_mm": [
+   -408,
+   322
+  ],
+  "overall_w_h_mm": [
+   914,
+   732
+  ],
+  "ball_D_mm": 180.0,
+  "ball_depth_mm": 108.0,
+  "ball_front_z_mm": 278.0,
+  "relief_max_z_mm": 276.0,
+  "mass_kg": 0.743,
+  "lever_mm": 124.5,
+  "com_offset_mm": 28.1,
+  "tilt_deg": 15.0,
+  "core_dia_min_mm": 52.0,
+  "cover_min_mm": 20.8,
+  "free_span_clear_mm": 24.4,
+  "pad_dia_mm": 70.0,
+  "pad_depth_mm": 52.0,
+  "rod_to_seat_normal_deg": 11.7,
+  "ball_to_rest_mm": 34.0,
+  "gap_ball_back_to_flesh_mm": 66.0,
+  "root_exit": [
+   -24.0,
+   173.1,
+   96.0
+  ],
+  "arm_part_xyz_mm": [
+   100,
+   100,
+   180
+  ],
+  "arm_part_z_range_mm": [
+   2.0,
+   180.0
+  ],
+  "mask_part_xyz_mm": [
+   194,
+   188,
+   128
+  ],
+  "shelves": {
+   "S1_UL": {
+    "flat_x": 164,
+    "flat_z": 162,
+    "clear_above": 300
+   },
+   "S2_UR": {
+    "flat_x": 180,
+    "flat_z": 170,
+    "clear_above": 300
+   },
+   "S3_LL": {
+    "flat_x": 156,
+    "flat_z": 172,
+    "clear_above": 300
+   }
+  },
+  "whip": {
+   "L_old": 516.186738010797,
+   "L_new": 515.5370001912947,
+   "fork": [
+    202.24248508644595,
+    106.22865690637659,
+    90.37377729904432
+   ],
+   "head_stretch": 1.2599999999999998
+  },
+  "gaps": {
+   "S1_UL": {
+    "plate_x_range": [
+     -456,
+     -232
+    ],
+    "plate_thickness_max_mm": 86,
+    "gap_to_body_group_mm": 102.2,
+    "at_plate_px": [
+     -232,
+     220
+    ],
+    "gap_to_trunk_head_body_mm": 143.2,
+    "at_plate_px_body": [
+     -232,
+     220
+    ]
+   },
+   "S2_UR": {
+    "plate_x_range": [
+     210,
+     454
+    ],
+    "plate_thickness_max_mm": 134,
+    "gap_to_body_group_mm": 104.0,
+    "at_plate_px": [
+     210,
+     76
+    ],
+    "gap_to_trunk_head_body_mm": 104.0,
+    "at_plate_px_body": [
+     210,
+     76
+    ]
+   },
+   "S3_LL": {
+    "plate_x_range": [
+     -454,
+     -176
+    ],
+    "plate_thickness_max_mm": 108,
+    "gap_to_body_group_mm": 98.5,
+    "at_plate_px": [
+     -176,
+     -192
+    ],
+    "gap_to_trunk_head_body_mm": 98.5,
+    "at_plate_px_body": [
+     -176,
+     -192
+    ]
+   }
+  },
+  "reach": {
+   "S1_UL": {
+    "root": [
+     -88.2,
+     126.0,
+     35.0
+    ],
+    "plate_centroid_xz": [
+     -346.2,
+     118.3
+    ],
+    "plate_top_y": 285,
+    "dx_wall_plane": 258.0,
+    "dz": 83.3,
+    "horizontal_xz": 271.1,
+    "dist_3d": 314.3,
+    "dist_xy_wall_plane": 303.1,
+    "limb_path_len_mm": 443.3
+   },
+   "S2_UR": {
+    "root": [
+     58.8,
+     50.4,
+     35.0
+    ],
+    "plate_centroid_xz": [
+     335.6,
+     114.1
+    ],
+    "plate_top_y": 150,
+    "dx_wall_plane": 276.8,
+    "dz": 79.1,
+    "horizontal_xz": 287.9,
+    "dist_3d": 304.6,
+    "dist_xy_wall_plane": 294.2,
+    "limb_path_len_mm": 423.2
+   },
+   "S3_LL": {
+    "root": [
+     -58.8,
+     -84.0,
+     35.0
+    ],
+    "plate_centroid_xz": [
+     -335.8,
+     120.0
+    ],
+    "plate_top_y": -190,
+    "dx_wall_plane": 277.0,
+    "dz": 85.0,
+    "horizontal_xz": 289.7,
+    "dist_3d": 308.5,
+    "dist_xy_wall_plane": 296.6,
+    "limb_path_len_mm": 482.4
+   }
+  },
+  "limits": {
+   "relief": true,
+   "shelves": true,
+   "lever": true,
+   "com": true,
+   "tilt": true,
+   "mass": true,
+   "core": true,
+   "cover": true,
+   "clear": true,
+   "pad": true,
+   "seat": true,
+   "arm_part_z_bed": true,
+   "mask_part_bed": true
+  },
+  "pass_all": true
+ },
+ "E1": {
+  "id": "E1",
+  "body_scale": 1.0,
+  "bbox_x_mm": [
+   -602,
+   602
+  ],
+  "bbox_y_mm": [
+   -456,
+   384
+  ],
+  "overall_w_h_mm": [
+   1206,
+   842
+  ],
+  "ball_D_mm": 180.0,
+  "ball_depth_mm": 108.0,
+  "ball_front_z_mm": 296.0,
+  "relief_max_z_mm": 294.0,
+  "mass_kg": 0.744,
+  "lever_mm": 131.1,
+  "com_offset_mm": 14.3,
+  "tilt_deg": 15.0,
+  "core_dia_min_mm": 50.1,
+  "cover_min_mm": 19.9,
+  "free_span_clear_mm": 22.4,
+  "pad_dia_mm": 70.0,
+  "pad_depth_mm": 52.0,
+  "rod_to_seat_normal_deg": 4.2,
+  "ball_to_rest_mm": 28.6,
+  "gap_ball_back_to_flesh_mm": 66.0,
+  "root_exit": [
+   -16.0,
+   192.0,
+   108.0
+  ],
+  "arm_part_xyz_mm": [
+   100,
+   118,
+   202
+  ],
+  "arm_part_z_range_mm": [
+   2.0,
+   202.0
+  ],
+  "mask_part_xyz_mm": [
+   194,
+   186,
+   136
+  ],
+  "shelves": {
+   "S1_UL": {
+    "flat_x": 164,
+    "flat_z": 162,
+    "clear_above": 300
+   },
+   "S2_UR": {
+    "flat_x": 180,
+    "flat_z": 170,
+    "clear_above": 300
+   },
+   "S3_LL": {
+    "flat_x": 156,
+    "flat_z": 172,
+    "clear_above": 300
+   }
+  },
+  "whip": {
+   "L_old": 516.186738010797,
+   "L_new": 515.5370001912944,
+   "fork": [
+    348.141925105708,
+    106.05616125749141,
+    90.16738279284716
+   ],
+   "head_stretch": 1.2599999999999998
+  },
+  "gaps": {
+   "S1_UL": {
+    "plate_x_range": [
+     -602,
+     -378
+    ],
+    "plate_thickness_max_mm": 86,
+    "gap_to_body_group_mm": 250.0,
+    "at_plate_px": [
+     -378,
+     234
+    ],
+    "gap_to_trunk_head_body_mm": 262.4,
+    "at_plate_px_body": [
+     -378,
+     226
+    ]
+   },
+   "S2_UR": {
+    "plate_x_range": [
+     358,
+     600
+    ],
+    "plate_thickness_max_mm": 122,
+    "gap_to_body_group_mm": 231.0,
+    "at_plate_px": [
+     358,
+     76
+    ],
+    "gap_to_trunk_head_body_mm": 231.0,
+    "at_plate_px_body": [
+     358,
+     76
+    ]
+   },
+   "S3_LL": {
+    "plate_x_range": [
+     -600,
+     -322
+    ],
+    "plate_thickness_max_mm": 108,
+    "gap_to_body_group_mm": 213.5,
+    "at_plate_px": [
+     -322,
+     -192
+    ],
+    "gap_to_trunk_head_body_mm": 213.5,
+    "at_plate_px_body": [
+     -322,
+     -192
+    ]
+   }
+  },
+  "reach": {
+   "S1_UL": {
+    "root": [
+     -105.0,
+     150.0,
+     35.0
+    ],
+    "plate_centroid_xz": [
+     -492.2,
+     118.3
+    ],
+    "plate_top_y": 285,
+    "dx_wall_plane": 387.2,
+    "dz": 83.3,
+    "horizontal_xz": 396.1,
+    "dist_3d": 418.4,
+    "dist_xy_wall_plane": 410.1,
+    "limb_path_len_mm": 536.6
+   },
+   "S2_UR": {
+    "root": [
+     70.0,
+     60.0,
+     35.0
+    ],
+    "plate_centroid_xz": [
+     481.6,
+     114.1
+    ],
+    "plate_top_y": 150,
+    "dx_wall_plane": 411.6,
+    "dz": 79.1,
+    "horizontal_xz": 419.1,
+    "dist_3d": 428.7,
+    "dist_xy_wall_plane": 421.3,
+    "limb_path_len_mm": 544.9
+   },
+   "S3_LL": {
+    "root": [
+     -70.0,
+     -100.0,
+     35.0
+    ],
+    "plate_centroid_xz": [
+     -481.8,
+     120.0
+    ],
+    "plate_top_y": -190,
+    "dx_wall_plane": 411.8,
+    "dz": 85.0,
+    "horizontal_xz": 420.5,
+    "dist_3d": 430.0,
+    "dist_xy_wall_plane": 421.5,
+    "limb_path_len_mm": 579.4
+   }
+  },
+  "limits": {
+   "relief": true,
+   "shelves": true,
+   "lever": true,
+   "com": true,
+   "tilt": true,
+   "mass": true,
+   "core": true,
+   "cover": true,
+   "clear": true,
+   "pad": true,
+   "seat": true,
+   "arm_part_z_bed": true,
+   "mask_part_bed": true
+  },
+  "pass_all": true
+ }
+}
