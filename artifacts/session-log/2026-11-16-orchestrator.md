@@ -279,6 +279,8 @@ Board will carry ~10 concepts; Structural spot-checks lever/mass per concept num
 
 **SL-87** · 04:03 · Evan: use the free daily allowance. Quota still exhausted at 04:03 UTC. Batch reordered seed-major (one image per concept first) and mask wording tightened toward the flat emoticon (C1 came out a theatre smiley). One-shot resume reminder set for 16:10 UTC (trig_01VcCod5NeHQg4QKriHEHTYw); it re-arms itself once if the quota is still out — no recurring trigger (Evan's earlier "stop these checks" was about the recurring Canva probe; this is a single resume of work he asked for). `[judgment]`
 
+**SL-88** · 05:12 · CAD r12 read (C1-C10, 6bb506a). All 10 meet shelf (>=150x150, 300 clear), relief (<=298) and arm-spec numbers. Board carries 8: drop C5 and C7 (mask low beside the maw leaves the head a bare dome and covers the maw edge; worst checklist 2/13, 3/13), agreeing with CAD's recommendation. Honest weakness for the board notes: the CAD set varies mask pose/grip/whip/lean but keeps H's trunk, maw and shelf layout, so silhouettes read close; the FLUX set is where the larger variation comes from. Structural spot-check of the 8 arms (new grips: coil, eye-hole thread; over-head arm) sent to Structural before staging. `[judgment]`
+
 ---
 *Edit log*
 
@@ -324,3 +326,4 @@ Board will carry ~10 concepts; Structural spot-checks lever/mass per concept num
 | 2026-11-19 | orchestrator | Appended SL-84..85 (token handling, FLUX working, quota) | [PROVISIONAL] |
 | 2026-11-19 | orchestrator | Appended SL-86 (inference credits unavailable) | [PROVISIONAL] |
 | 2026-11-19 | orchestrator | Appended SL-87 (daily-quota plan, resume reminder) | [PROVISIONAL] |
+| 2026-11-19 | orchestrator | Appended SL-88 (CAD r12 read, C5/C7 dropped, structural spot-check) | [PROVISIONAL] |
