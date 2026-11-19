@@ -55,6 +55,13 @@
   "rel_density_vs_figure_mean": 0.9451341260650314,
   "abs_density_vs_figure_mean": 0.8088205364943282
  },
+ "neck_lattice": {
+  "area_share_of_figure": 0.022754878229943112,
+  "rel_detail_share": 0.02265662585248723,
+  "abs_edge_share": 0.027583375447808263,
+  "rel_density_vs_figure_mean": 0.9956821400464982,
+  "abs_density_vs_figure_mean": 1.2121961352230548
+ },
  "whip_UR": {
   "area_share_of_figure": 0.028421751706178947,
   "rel_detail_share": 0.037181846464377104,

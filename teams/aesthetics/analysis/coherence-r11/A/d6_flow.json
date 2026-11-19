@@ -1,0 +1,144 @@
+{
+ "fixations": [
+  {
+   "rank": 1,
+   "x": 554,
+   "y": 171,
+   "sal": 1.0,
+   "region": "mask"
+  },
+  {
+   "rank": 2,
+   "x": 507,
+   "y": 223,
+   "sal": 0.9345686132883918,
+   "region": "mask"
+  },
+  {
+   "rank": 3,
+   "x": 500,
+   "y": 413,
+   "sal": 0.8947393688487469,
+   "region": "shoulder_eyes"
+  },
+  {
+   "rank": 4,
+   "x": 626,
+   "y": 198,
+   "sal": 0.8300569561996486,
+   "region": "mask"
+  },
+  {
+   "rank": 5,
+   "x": 236,
+   "y": 222,
+   "sal": 0.7645678718490615,
+   "region": "shelf_UL"
+  },
+  {
+   "rank": 6,
+   "x": 306,
+   "y": 222,
+   "sal": 0.7372949731962506,
+   "region": "shelf_UL"
+  },
+  {
+   "rank": 7,
+   "x": 574,
+   "y": 245,
+   "sal": 0.6978734859392595,
+   "region": "mask"
+  },
+  {
+   "rank": 8,
+   "x": 813,
+   "y": 337,
+   "sal": 0.6629871455118618,
+   "region": "shelf_UR"
+  }
+ ],
+ "region_saliency_max_rel_mean_rel": {
+  "mask": [
+   1.0,
+   0.62
+  ],
+  "maw": [
+   0.64,
+   0.24
+  ],
+  "eye_patch": [
+   0.49,
+   0.24
+  ],
+  "shoulder_eyes": [
+   0.89,
+   0.2
+  ],
+  "shelf_UL": [
+   0.76,
+   0.31
+  ],
+  "shelf_UR": [
+   0.66,
+   0.24
+  ],
+  "shelf_LL": [
+   0.57,
+   0.24
+  ],
+  "root_tangle": [
+   0.61,
+   0.14
+  ],
+  "neck_lattice": [
+   0.64,
+   0.3
+  ],
+  "whip_UR": [
+   0.3,
+   0.15
+  ]
+ },
+ "curves": {
+  "spine (mask > left trunk > hub)": {
+   "length_mm": 464,
+   "total_turn_deg": 89,
+   "max_kink_deg": 32
+  },
+  "lower-right sweep": {
+   "length_mm": 484,
+   "total_turn_deg": 139,
+   "max_kink_deg": 90
+  },
+  "lower-left sweep": {
+   "length_mm": 476,
+   "total_turn_deg": 30,
+   "max_kink_deg": 14
+  },
+  "S1_UL arm": {
+   "length_mm": 290,
+   "total_turn_deg": 68,
+   "max_kink_deg": 51
+  },
+  "S3_LL arm": {
+   "length_mm": 260,
+   "total_turn_deg": 48,
+   "max_kink_deg": 24
+  },
+  "S2_UR arm": {
+   "length_mm": 304,
+   "total_turn_deg": 39,
+   "max_kink_deg": 28
+  },
+  "whip": {
+   "length_mm": 259,
+   "total_turn_deg": 146,
+   "max_kink_deg": 62
+  }
+ },
+ "shelf_UL_p90_lum": 160.61599999999999,
+ "shelf_UR_p90_lum": 132.4206,
+ "shelf_LL_p90_lum": 112.9312,
+ "mask_p50_lum": 221.84539999999998,
+ "wall_med": 33.83626350226258
+}

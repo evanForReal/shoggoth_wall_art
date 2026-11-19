@@ -19,5 +19,6 @@ REG = {
   "shelf_UR":  box(765, 320, 995, 400),
   "shelf_LL":  box(205, 605, 445, 695),
   "root_tangle": box(230, 610, 990, 845) & ~box(205, 605, 445, 695),
+  "neck_lattice": box(505, 322, 612, 398) & ~circ(*MASK_C, MASK_R),
   "whip_UR":   box(850, 380, 995, 550),
 }

@@ -1,0 +1,109 @@
+{
+ "figure_sat_median": 0.39814814814814814,
+ "figure_sat_p95": 0.4393939393939394,
+ "saturated_clusters": [
+  {
+   "cx": 664,
+   "cy": 208,
+   "px": 334
+  },
+  {
+   "cx": 467,
+   "cy": 584,
+   "px": 167
+  },
+  {
+   "cx": 630,
+   "cy": 166,
+   "px": 68
+  },
+  {
+   "cx": 747,
+   "cy": 354,
+   "px": 23
+  },
+  {
+   "cx": 649,
+   "cy": 282,
+   "px": 21
+  },
+  {
+   "cx": 696,
+   "cy": 379,
+   "px": 16
+  },
+  {
+   "cx": 476,
+   "cy": 441,
+   "px": 10
+  }
+ ],
+ "white_beads_clusters": [
+  {
+   "cx": 619,
+   "cy": 157,
+   "px": 2123
+  },
+  {
+   "cx": 500,
+   "cy": 412,
+   "px": 598
+  },
+  {
+   "cx": 304,
+   "cy": 210,
+   "px": 311
+  },
+  {
+   "cx": 537,
+   "cy": 475,
+   "px": 156
+  },
+  {
+   "cx": 484,
+   "cy": 547,
+   "px": 97
+  },
+  {
+   "cx": 457,
+   "cy": 596,
+   "px": 82
+  },
+  {
+   "cx": 737,
+   "cy": 356,
+   "px": 52
+  },
+  {
+   "cx": 842,
+   "cy": 325,
+   "px": 35
+  },
+  {
+   "cx": 907,
+   "cy": 325,
+   "px": 24
+  },
+  {
+   "cx": 417,
+   "cy": 219,
+   "px": 14
+  }
+ ],
+ "accent_cluster_count_ge_40px": 3,
+ "saturated_px_share_head_patch_region": 0.6619718309859155,
+ "mask_face_median": 221.84539999999998,
+ "mask_face_std": 17.178684066216775,
+ "mask_face_cv": 0.07743538548113585,
+ "flesh_lit_std": 20.521382241733654,
+ "flesh_lit_median": 95.1662,
+ "mask_over_flesh_lum": 2.3311364749249206,
+ "mask_over_wall_lum": 6.556439069732552,
+ "shelf_UL_lip_p90": 163.9008,
+ "shelf_UL_median": 126.35239999999999,
+ "shelf_UR_lip_p90": 139.9862,
+ "shelf_UR_median": 90.30139999999999,
+ "shelf_LL_lip_p90": 117.0716,
+ "shelf_LL_median": 99.4378,
+ "limb_median_lum_(root_tangle)": 79.5232
+}
