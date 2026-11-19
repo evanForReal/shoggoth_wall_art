@@ -266,6 +266,11 @@ Structural: Evan requires the mask-holding tentacle to pass "the review process"
 - Hugging Face FLUX.1-schnell demo (free): anonymous ZeroGPU quota already exhausted (shared egress). A free HF account token gets its own quota. Evan saved a token via the secure form for the demo host and for huggingface.co; huggingface.co rejects it (401 "Invalid username or password") over 90 s of retries → credential likely mistyped/not an HF access token. Blocked on Evan re-entering it.
 - Not chosen: local CPU generation (4 cores, 15 GB): no account needed, but SDXL-Turbo at ~512 px, slow, well below FLUX quality — fallback only.
 
+**SL-83** · 03:04 · Evan: remove Pollinations + AI Horde hosts (done, approved prompt); "use the services we have to generate some new concepts based very very closely and technically on the things we know ... substantial variation but all with the essential characteristics". HF token still 401 → FLUX unavailable; Canva has no credits → the working service is the in-house 3D pipeline (also the most "technically" grounded). · `[Evan]` / `[judgment]` (service choice)
+ESSENTIALS (every concept): r10/r11 locks — A0 ribbed narrow trunk with vertical jagged maw; no crown; three distinct tentacles of different weight to three shelves (>=150x150 flat, >=300 mm clear); long curling whip; denser than A0; fangs and/or lamprey mouth; held mask on a tentacle hovering out (structural spec: 10 mm rod, lever <= 250 mm, mask <= 0.8 kg); seething unhealthy eye patch behind the mask; bulging veiny eyes, cancerous not lumpy; hanging root cascade (no stance, no two legs); carved iconic smiley; side-profile depth; Beksiński palette.
+VARIATION (axes Evan has not ruled on), each concept moves SEVERAL axes for substantial variation, logged in a variation table so verdicts can still be regressed per axis: (1) which limb holds the mask and from where (left/right/below/over the head); (2) mask pose (facing, turned away, tilted, low/high, partly lowered as if unmasking); (3) grip type (rim fingers / tentacle coil / tentacle threaded through the eye holes); (4) eye-patch extent (patch only / spreading down the trunk / eyes on the holding tentacle); (5) mouth (fangs / lamprey / both / larger maw); (6) whip direction and length; (7) which shelf the massive limb takes, shelf height pattern; (8) cascade length/density; (9) body lean/asymmetry. `[judgment]`
+Board will carry ~10 concepts; Structural spot-checks lever/mass per concept numerically, full review on whichever Evan picks.
+
 ---
 *Edit log*
 
@@ -307,3 +312,4 @@ Structural: Evan requires the mask-holding tentacle to pass "the review process"
 | 2026-11-18 | orchestrator | Appended SL-80 (structural phase 2, r11 staged) | [PROVISIONAL] |
 | 2026-11-18 | orchestrator | Appended SL-81 (round-11 deploy) | [PROVISIONAL] |
 | 2026-11-19 | orchestrator | Appended SL-82 (free image-gen search) | [PROVISIONAL] |
+| 2026-11-19 | orchestrator | Appended SL-83 (concept set design) | [PROVISIONAL] |
