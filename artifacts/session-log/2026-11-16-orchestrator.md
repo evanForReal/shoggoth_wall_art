@@ -275,6 +275,8 @@ Board will carry ~10 concepts; Structural spot-checks lever/mass per concept num
 
 **SL-85** · 03:33 · FLUX working: gradio_client moves an "authorization" header into "x-hf-authorization" at construction, which the proxy doesn't fill → set the header AFTER construction so it stays "Authorization" (tools/concept_gen/flux.py). Prompt development over 6 test images: FLUX drifts toward a toothy skull mask, gives the creature its own head, floats shelves, adds a backboard; fixes = "headless, faceless", "top of trunk is a stump covered by bulging eyes", "mask carved from pale ivory bone, perfectly round classic smiley... no teeth, no nose", "no backboard", avoid the word "yellow". Batch (10 concepts x 2 seeds, teams/aesthetics/analysis/round-12-flux/concepts.py) stopped after 2 images: free-account ZeroGPU daily quota exhausted (prompt tests used most of it). C1 seed 101 is the strongest generated concept to date; seed 202 drifted (skull head). Remaining 18 images wait for quota or another route — Evan's call. · `[judgment]`
 
+**SL-86** · 04:01 · Evan chose HF free inference credits (PRO later). Token saved for router.huggingface.co via the secure form. Result: hf-inference and together → 410 "model deprecated" for FLUX.1-schnell; fal-ai → 402 "Purchase pre-paid credits ... or subscribe to PRO". Free monthly inference credits are not usable on this account for FLUX. Remaining free path: ZeroGPU daily refill. Router credential left in place (harmless; useful once PRO includes credits). · `[Evan]` / `[judgment]`
+
 ---
 *Edit log*
 
@@ -318,3 +320,4 @@ Board will carry ~10 concepts; Structural spot-checks lever/mass per concept num
 | 2026-11-19 | orchestrator | Appended SL-82 (free image-gen search) | [PROVISIONAL] |
 | 2026-11-19 | orchestrator | Appended SL-83 (concept set design) | [PROVISIONAL] |
 | 2026-11-19 | orchestrator | Appended SL-84..85 (token handling, FLUX working, quota) | [PROVISIONAL] |
+| 2026-11-19 | orchestrator | Appended SL-86 (inference credits unavailable) | [PROVISIONAL] |

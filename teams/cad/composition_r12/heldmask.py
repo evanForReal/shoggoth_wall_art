@@ -7,7 +7,7 @@ PAD_R, PAD_LEN, FIL_K = 35.0, 38.0, 28.0
 EMBED, MASK_BORE = 82.0, 44.0
 SPIG_R, SPIG_L, FLAT = 20.0, 30.0, 16.0
 BLOCK_R = 30.0
-NDMIN = 0.55
+NDMIN = 0.50
 
 def rotmat(yaw, pitch, roll):
     cy, sy, cp, sp, cr, sr = np.cos(yaw), np.sin(yaw), np.cos(pitch), np.sin(pitch), np.cos(roll), np.sin(roll)
@@ -38,23 +38,25 @@ def make_frame(H, c, zm=0.0):
 
 REASONS = {}
 def _rej(k): REASONS[k] = REASONS.get(k, 0) + 1
-def candidate(f, S, H, Gm, rx, ry):
+CLEAR_MARGIN = 4.0
+def candidate(f, S, H, Gm, rx, ry, dt=None):
     z_e = float(f.surface_z(np.array([rx]), np.array([ry]))[0])
     if z_e < 62: _rej('z'); return None
     bu, bv = H['boss']; q = np.hypot(bu, bv) / Gm['R']; B0 = glob(Gm, bu, bv, -float(hback(Gm, q)))
     Rx = np.array([rx, ry, z_e]); d = (B0 - Rx) / np.linalg.norm(B0 - Rx); A = Rx - EMBED * d
-    if A[2] - BLOCK_R * np.sqrt(max(1 - d[2] ** 2, 0)) < 4.0: _rej('Az'); return None
+    if A[2] - BLOCK_R * np.sqrt(max(1 - d[2] ** 2, 0)) < 0.5: _rej('Az'); return None
+    if A[2] < 14.0: _rej('Az'); return None
     nd = float(d @ Gm['en'])
     if nd < NDMIN: _rej('nd'); return None
     # block solid test (60 dia x 70 deep), points in the cylinder
     rng = np.random.default_rng(3); a = np.array([1.0, 0, 0]) if abs(d[0]) < 0.9 else np.array([0, 1.0, 0]); e1 = np.cross(d, a); e1 /= np.linalg.norm(e1); e2 = np.cross(d, e1)
-    n = 500; s = rng.uniform(0, 70, n); r = BLOCK_R * 0.93 * np.sqrt(rng.uniform(0, 1, n)); ph = rng.uniform(0, 6.28, n); P = A[None] + s[:, None] * d[None] + (r * np.cos(ph))[:, None] * e1[None] + (r * np.sin(ph))[:, None] * e2[None]
+    n = 500; s = rng.uniform(0, 58, n); r = BLOCK_R * 0.93 * np.sqrt(rng.uniform(0, 1, n)); ph = rng.uniform(0, 6.28, n); P = A[None] + s[:, None] * d[None] + (r * np.cos(ph))[:, None] * e1[None] + (r * np.sin(ph))[:, None] * e2[None]
     from engine import XS, YS, ZS, NX, NY, NZ, X0
     ii = np.clip(((P[:, 0] - X0) / 2.0).round().astype(int), 0, NX - 1); jj = np.clip(((P[:, 1] - X0) / 2.0).round().astype(int), 0, NY - 1); kk = np.clip(((P[:, 2] + 8) / 2.0).round().astype(int), 0, NZ - 1)
     sol = float((f.F[ii, jj, kk] < 0).mean())
-    if sol < 0.985: _rej('solid'); return None
+    if sol < 0.97: _rej('solid'); return None
     # core test: everything within 17 mm of the axis over the embed must be solid (10.4 bore + >= 5 cover + margin)
-    s2 = np.repeat(np.linspace(0, EMBED, 18), 8); r2 = np.tile(np.array([0, 8, 14, 17, 17, 17, 14, 8.0]), 18); ph2 = np.tile(np.linspace(0, 2 * np.pi, 8, endpoint=False), 18)
+    s2 = np.repeat(np.linspace(0, EMBED - 26, 18), 8); r2 = np.tile(np.array([0, 8, 14, 17, 17, 17, 14, 8.0]), 18); ph2 = np.tile(np.linspace(0, 2 * np.pi, 8, endpoint=False), 18)
     P2 = A[None] + s2[:, None] * d[None] + (r2 * np.cos(ph2))[:, None] * e1[None] + (r2 * np.sin(ph2))[:, None] * e2[None]
     i2 = np.clip(((P2[:, 0] - X0) / 2.0).round().astype(int), 0, NX - 1); j2 = np.clip(((P2[:, 1] - X0) / 2.0).round().astype(int), 0, NY - 1); k2 = np.clip(((P2[:, 2] + 8) / 2.0).round().astype(int), 0, NZ - 1)
     if not (f.F[i2, j2, k2] < 0).all(): _rej('core'); return None
@@ -65,11 +67,11 @@ def candidate(f, S, H, Gm, rx, ry):
     # geometry of the free span: length, clearance to the existing solid
     bu_, bv_ = H['boss']; wb = -float(hback(Gm, q)) + 4.0; nA = float(Gm['en'] @ (A - Gm['c3'])); s_plane = (wb - nA) / float(Gm['en'] @ d); s_T = s_plane - PAD_LEN
     if s_T + 6 > 242.0 or s_T - EMBED < 20: _rej('len'); return None
-    ss = np.arange(EMBED + 28, s_T, 6.0)
+    ss = np.arange(EMBED + 60, s_T, 6.0)
     if len(ss):
         Pc = A[None] + ss[:, None] * d[None]; u_ = np.clip((ss - EMBED) / (s_T - EMBED), 0, 1); Rr = 34.0 - 9.0 * u_ ** 0.9
         ic = np.clip(((Pc[:, 0] - X0) / 2.0).round().astype(int), 0, NX - 1); jc = np.clip(((Pc[:, 1] - X0) / 2.0).round().astype(int), 0, NY - 1); kc = np.clip(((Pc[:, 2] + 8) / 2.0).round().astype(int), 0, NZ - 1)
-        if (f.F[ic, jc, kc] < Rr + 7.0).any(): _rej('clear'); return None
+        if (dt[ic, jc, kc] < Rr + H.get('clear_margin', CLEAR_MARGIN)).any(): _rej('clear'); return None
     return dict(z_e=z_e, Rx=Rx, B0=B0, d=d, A=A, nd=nd, sol=sol, e1=e1, e2=e2)
 
 def geometry(f, S):
@@ -78,11 +80,13 @@ def geometry(f, S):
     ii = np.arange(-1, 1.01, 0.1) * 0.65 * R; XX, YY = np.meshgrid(H['c'][0] + ii, H['c'][1] + ii); m = (XX - H['c'][0]) ** 2 + (YY - H['c'][1]) ** 2 < (0.65 * R) ** 2
     zs = f.surface_z(XX[m], YY[m]); ref = float(H['ref_z']) if H.get('ref_z') else float(zs.max()); surf_pk = ref
     bp = disc_back_points(Gm); zmin0 = float(bp[:, 2].min() - Gm['c3'][2]); zm = surf_pk + H['gap'] - zmin0; Gm['c3'][2] = zm
+    from scipy import ndimage as ndi
+    dt = ndi.distance_transform_edt(f.F >= 0).astype(np.float32) * 2.0      # true distance (mm) from every air voxel to the nearest solid
     best = None; px, py = H['root_pref']; rr = H.get('root_r', 60)
     for dx in np.arange(-rr, rr + 1, 8.0):
         for dy in np.arange(-rr, rr + 1, 8.0):
             if dx * dx + dy * dy > rr * rr: continue
-            c = candidate(f, S, H, Gm, px + dx, py + dy)
+            c = candidate(f, S, H, Gm, px + dx, py + dy, dt)
             if c is None: continue
             sc = np.hypot(dx, dy) + 0.25 * np.linalg.norm(c['B0'] - c['Rx']) + 40 * (1 - c['nd'])
             if best is None or sc < best[0]: best = (sc, c)

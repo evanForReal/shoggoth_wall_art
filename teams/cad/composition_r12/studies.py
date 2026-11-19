@@ -8,8 +8,8 @@ from engine import curve, tent_r, maw_sd
 
 AXES = ['holder', 'pose', 'grip', 'patch', 'mouth', 'whip', 'massive', 'cascade', 'lean']
 TABLE = {   # concept -> axis values (see variation_table.csv for the long names)
- 'C1': 'B F F M B L LL S U', 'C2': 'L T C T F R UR T R', 'C3': 'R S E A L U ML A L', 'C4': 'O P F M X E LL T U', 'C5': 'L W C A B U LL S R',
- 'C6': 'B T E T L R ML A R', 'C7': 'R W F T X L UR T L', 'C8': 'O F C A F E ML S R', 'C9': 'B S F A B R LL A L', 'C10': 'R P E M L U UR T R'}
+ 'C1': 'B F F M B L LL S U', 'C2': 'L T C T F R UR T R', 'C3': 'R S E A L U ML A L', 'C4': 'O P F M X E LL T U', 'C5': 'L W C A B U LL S U',
+ 'C6': 'B T E T L R ML A R', 'C7': 'R W F T X L ML T U', 'C8': 'O F C A F E ML S R', 'C9': 'B S F A B R LL A L', 'C10': 'R P E M L U UR T R'}
 PATTERNS = {   # massive limb takes: shelf arms (name, shelf (cx, top), root on the trunk, R0 mm radius at root: 50 = 100 mm dia massive, 30 = 60 mm, 15 = 30 mm)
  'LL': dict(arms=[('S1_UL', (-335, 285), (-105, 150), 15.0), ('S2_UR', (335, 150), (70, 60), 30.0), ('S3_LL', (-335, -190), (-70, -100), 50.0)], right_top=150),
  'UR': dict(arms=[('S1_UL', (-335, 150), (-105, 150), 30.0), ('S2_UR', (335, 300), (85, 110), 50.0), ('S3_LL', (-335, -190), (-70, -100), 15.0)], right_top=300),
@@ -79,11 +79,11 @@ def pose_spec(pc, holder, pose, amp, maw):
     elif pose == 'T': c = c + np.array([-30 * (1 if side <= 0 else -1) * 0.6, -14]); yaw = 33.0 * (1 if side <= 0 else -1)
     elif pose == 'S': c = c + np.array([-30 * (1 if side <= 0 else -1) * 0.6, -20]); roll = 22.0 * (1 if side <= 0 else -1); pitch = 24.0
     elif pose == 'P': c = c + np.array([4.0, -100.0]); roll = 8.0 * (1 if side <= 0 else -1); pitch = 14.0
-    elif pose == 'W': sx = side if side != 0 else -1; c = np.array([sx * 125.0, 55.0]); roll = 10.0 * sx
+    elif pose == 'W': sx = side if side != 0 else -1; c = np.array([sx * 112.0, 88.0]); roll = 10.0 * sx
     H.update(c=tuple(c), yaw=yaw, pitch=pitch, roll=roll, boss=boss)
     px, py = c
     H['root_pref'] = {'B': (px + 30, py - 85), 'L': (px - 78, py - 30), 'R': (px + 78, py - 30), 'O': (px + 12, py + 78)}[holder]; H['root_r'] = 55
-    if pose == 'W': H['boss'] = (0.0, 40.0); H['root_pref'] = (bend(amp, sx * 62.0, 205.0), 205.0); H['root_r'] = 50
+    if pose == 'W': H['gap'] = 100.0; H['clear_margin'] = 9.0; H['boss'] = (0.0, 38.0); H['root_pref'] = (bend(amp, sx * 45.0, 245.0), 245.0); H['root_r'] = 85
     return H
 
 def compose(cid):

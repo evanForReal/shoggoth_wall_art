@@ -282,7 +282,9 @@ def build(S):
         arm_eyes.append(dict(arm=it['name'], n=len(placed), sizes=[e['G'] for e in placed]))
         for a_, b_ in zip(placed[:-1], placed[1:]): veins.append([(a_['x'], a_['y']), ((a_['x'] + b_['x']) / 2 + vrng.uniform(-3, 3), (a_['y'] + b_['y']) / 2 + vrng.uniform(-3, 3)), (b_['x'], b_['y'])])
     # ---- root tendrils round the arm exit (visual), then freeze the 'rest' of the piece
+    az_arm = np.degrees(np.arctan2(G['d'][1], G['d'][0]))
     for j_, ang in enumerate((205, 250, 295, 340, 20, 160)):
+        if abs((ang - az_arm + 180) % 360 - 180) < 70: continue      # no tendril under the arm's own line of travel
         th = np.radians(ang); p0 = np.array(G['Rx'][:2]) + 26 * np.array([np.cos(th), np.sin(th)]); L_ = vrng.uniform(60, 95)
         pts = [tuple(p0 + L_ * u * np.array([np.cos(th + 0.5 * np.sin(3 * u + j_)), np.sin(th + 0.5 * np.sin(3 * u + j_))])) for u in np.linspace(0, 1, 6)]
         f.add_rib(f'rtend{j_}', pts, r0=11.0, r1=4.5, lift=3.0, k=10.0, kind=2)
