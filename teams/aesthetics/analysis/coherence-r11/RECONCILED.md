@@ -1,6 +1,6 @@
 # Coherence review of r11 H: reconciliation (A + B)
 
-Orchestrator acting as aesthetics lead, 2026-11-19. [PROVISIONAL] Sources: `A/REPORT.md` (quantitative design-principles lens, 0ce3839), `B/REPORT.md` (fine-art / sculpture lens, ddc58b5). The two reviewers worked independently, so where they agree, the agreement is the evidence. Evan's request: review/verdicts/round-11.json card hd.
+Orchestrator acting as aesthetics lead, 2026-11-19. Sources: `A/REPORT.md` (quantitative design-principles lens, 0ce3839), `B/REPORT.md` (fine-art / sculpture lens, ddc58b5). The two reviewers worked independently, so where they agree, the agreement is the evidence. Evan's request: review/verdicts/round-11.json card hd.
 
 ## Verdict
 
@@ -45,4 +45,4 @@ Not used:
 
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
-| 2026-11-19 | orchestrator (as aesthetics lead) | Created: reconciliation of coherence reviews A and B, board questions K1-K4 | FLAG OPEN: convergent finding 3 cites B 'junction 7, R7'; in B/REPORT.md J7 is the tooth rows, the eye-group junction is J9 (R7 is correct). Fix: 'junction 7' -> 'junction 9' in the table, then re-sign. Verified OK: all other numbers trace to A/REPORT.md and A/*.json or B/REPORT.md (99.94% one component, 19.6% detail on 6.3% area, 97% squint top-value in mask, lip p90 164/140/117 vs limb median 80, beads 0.89 vs maw 0.64, tangle 29.6% at 0.95x, plants 86% and balance 1.02 to 1.30, darken 25-40%, lips <= 1.3x limb); commits 0ce3839 (A) and ddc58b5 (B) match; K1-K4 image paths exist (A/q3_plants_mock.png, B/q1_finish_value_mock.png, B/q2_eyes_consolidate_mock.png, B/c7_side_plate_vs_limb.png) and 'not used' mocks exist; CAD checklist #4 disagreement matches A s.5. Body [PROVISIONAL] tag (line 3) stays until the flag closes |
+| 2026-11-19 | orchestrator (as aesthetics lead) | Created: reconciliation of coherence reviews A and B, board questions K1-K4 | docs-reviewer (resolved, was FLAG OPEN: finding 3 cited B 'junction 7'; a5a6195 changes it to 'junction 9' (B J9 = left-shoulder eye cluster, R7 = rank eye groups), so the claim now traces. All other numbers verified against A/REPORT.md, A/*.json and B/REPORT.md as in the earlier flag text; table has no other junction mismatch) |
