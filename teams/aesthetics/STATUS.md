@@ -5,6 +5,7 @@
 
 ## Exec Summary (newest first)
 
+- 2026-11-19: Round-12 DEPLOYED (main 626d4b0, Evan pinged; awaiting verdicts). B1-B4 ball smiley on H (S2 squashed sphere = pick), K1-K4 coherence questions (reviews A+B, RECONCILED.md), 8 varied concepts refitted with the ball. FLUX concepts deferred to round 13.
 - 2026-11-19: R11 verdicts in (issue #12: 2/0/4). H locked as base model; all four one-axis variants dead. Next: draft a volumetric smiley (sphere / oblate spheroid held up to deceive) on H, and a visual-coherence review of H (cohesive piece vs scattered dense objects), iterated with Evan.
 - 2026-11-18: Round-11 DEPLOYED (main e49cce9, Evan pinged; awaiting verdicts). Staged as (review/staging/round-11/, now review/rounds/round-11/): H held-mask hero (eye patch behind, veiny arm eyes) + V1 lamprey, V2 fangs+lamprey, V3 mask further out, V4 patch only. Structural PASS on the mask arm (stud-row condition).
 - 2026-11-18: R10 verdicts in (issue #11: 7/2/5, best round). Locked: A0, distinct tentacles, long whip, fangs + lamprey, denser, held/slipping mask. Round-11 = held-mask hero (mask hovering out on a tentacle, eye patch behind) + one-axis variants; Structural reviews the mask arm before boarding.
@@ -99,3 +100,4 @@
 | 2026-11-18 | orchestrator | Round-11 staged (exec line) | [PROVISIONAL] |
 | 2026-11-18 | orchestrator | Round-11 deployed (exec line) | [PROVISIONAL] |
 | 2026-11-19 | orchestrator | R11 backprop: exec line, r11 takeaway | docs-reviewer (verified: 2026-11-19 exec line and r11 takeaway vs review/verdicts/round-11.json and issue #12: 2/0/4, H loved (base model), V1-V4 dislike, no notes; V1-V4 descriptions match round-11 manifest; volumetric-smiley and coherence-review directives paraphrase Evan's quotes without added claims; `git show 770ed23 -- teams/aesthetics/STATUS.md` adds only those two lines and this row; no body [PROVISIONAL] tag belongs to the row. Cosmetic, signed through: r11 takeaway sits above r10, consistent with newest-first from r10 up) |
+| 2026-11-19 | orchestrator | Round-12 deploy exec line | [PROVISIONAL] |
