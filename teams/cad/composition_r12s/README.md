@@ -30,7 +30,8 @@ The mask no longer prints back-down (pad face stands 24-38 mm behind the back, t
 ## 3. Files
 `ball.py`, `heldmask.py`, `build_h.py` (H + ball), `build.py` (r12 concepts + ball), `studies_s.py` (specs), `studies_r11.py`, `studies_r12.py`, `studies_base.py`, `engine.py`, `render_comp.py` (adds the `rake` view: camera in front of the ball, one grazing light), `measure_arm.py`, `measure_extra.py`, `report.py`, `make_sheets.py`, `render_p1.sh`. Outputs: `report_p1.json/.md`, `arm_report_p1.json`, `measure_extra_p1.json`, `renders/study_S{1,2,3}_{front,tq,side,rake}.png`, `renders/contact_sheet_p1_{front,tq,side,rake}.png` (r11 H flat disc + S1-S3). Geometry (`build/*.npy|npz|stl`) is gitignored; `build/*_meta.json`, `_eyes.json`, `_prev.png` are tracked as in r12. Reproduce: `python3 build_h.py S2`, `python3 render_comp.py S2 --views front,tq,side,rake`, `OUTJSON=arm_report_p1.json python3 measure_arm.py S1 S2 S3`, `OUTJSON=measure_extra_p1.json python3 measure_extra.py`, `python3 report.py p1`. About 25 s per build, 4-7 min per 4-view render.
 
-## 4. Known issues (Phase 1)
+## 4. Known issues (Phase 1 and 2)
+- Phase 2 arms are not the r12 arms (root and boss searched again, see s.5): C6 exit x = 82 and C10 exit (112, 110) in particular.
 - No FEA, no bench test; 2 mm voxels: bore, D-flat and the 2 mm wall are nominal. The shell/infill figure is an assumption, not a sliced mass.
 - Cap margins: ball front 288-294 vs 300; do not add tilt or gap without shrinking D.
 - Arm root differs from H (above). The arm is now nearly normal to the wall at the exit, 82 mm into a block under the head, 19 mm arm-part z-range lower than r11 (z 2-194 vs 0-209).
@@ -39,7 +40,30 @@ The mask no longer prints back-down (pad face stands 24-38 mm behind the back, t
 - The trimesh warning "invalid value in divide" comes from a degenerate sliver body in the arm part STL, as in r11/r12.
 
 ## 5. Phase 2: retrofit of C1, C2, C3, C4, C6, C8, C9, C10
-(pending)
+All eight use ball S2 (180 x 108 mm, gap 66 mm) in place of the 200 mm disc; `studies_s.concept()` takes each r12 `compose(cid)` spec unchanged (variation table, trunk, patch, whip, cascade, lean, pose centre / yaw / pitch / roll, holder side) and replaces only the mask object, the grip, and the root / boss search. C5 and C7 dropped. Measured by the same scripts (`report_p2.json`, `arm_report_p2.json`, `measure_extra_p2.json`); `limits` all true for all eight: relief <= 300, shelves >= 150 x 150 flat with 300 clear, mass <= 0.8, lever <= 250, CoM <= 50, tilt <= 35 (yaw/pitch/roll sum as in r12), core >= 22, cover >= 5, free-span clearance >= 6, rod to seat normal <= 35 deg (P13), pad dia 70.
+
+| concept (axes) | grip r12 -> ball | relief max z | mass kg | lever | CoM off | tilt | rod-seat deg | free-span clear (r11 def / along axis) | ball to rest | bore-to-pad wall | arm part z | r12 disc arm z | exit (x, y) | result |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| C1 (B F F M B L LL S U) | rim fingers -> 6 cupping tendrils | 286 | 0.736 | 141 | 22.1 | 8.0 | 7.8 | 13.0 / 19.7 | 38.1 | - | 2-200 | 2-204 | (18, 171) | PASS |
+| C2 (L T C T F R UR T R) | coil -> 1.15-turn equator wrap | 298 | 0.756 | 142 | 20.9 | 33.0 | 14.3 | 25.1 / 34.9 | 44.5 | - | 2-206 | 2-266 | (14, 212) | PASS |
+| C3 (R S E A L U ML A L) | eye-hole thread -> bored hole + thread | 298 | 0.69 | 135 | 33.2 | 32.6 | 28.6 | 20.7 / 29.0 | 38.4 | 15.4 | 2-202 | 2-226 | (6, 230) | PASS |
+| C4 (O P F M X E LL T U) | rim fingers -> 6 cupping tendrils | 288 | 0.747 | 124 | 26.6 | 16.1 | 12.5 | 20.5 / 28.9 | 48.7 | - | 2-204 | 2-224 | (18, 242) | PASS |
+| C6 (B T E T L R ML A R) | eye-hole thread -> bored hole + thread | 298 | 0.665 | 155 | 33.3 | 33.0 | 34.4 | 13.1 / 18.2 | 45.7 | 24.2 | 2-216 | 2-250 | (82, 165) | PASS |
+| C8 (O F C A F E ML S R) | coil -> 1.15-turn equator wrap | 286 | 0.794 | 121 | 35.1 | 8.0 | 18.2 | 24.7 / 31.6 | 29.5 | - | 2-192 | 2-198 | (60, 286) | PASS |
+| C9 (B S F A B R LL A L) | rim fingers -> 6 cupping tendrils | 298 | 0.729 | 146 | 11.1 | 32.6 | 21.0 | 12.6 / 19.7 | 35.4 | - | 2-198 | 2-224 | (-54, 175) | PASS |
+| C10 (R P E M L U UR T R) | eye-hole thread -> bored hole + thread | 294 | 0.699 | 142 | 33.4 | 16.1 | 27.9 | 16.0 / 23.2 | 42.2 | 23.4 | 2-196 | 2-214 | (112, 110) | PASS |
+
+**What changed besides the mask (not variation axes, but the arm differs from r12):**
+- Boss position on the ball's back is searched (12 directions x 3 radii) so the rod meets the seat within 35 deg; the root search radius is 70 mm around the r12 preference (r12: 55). Exits therefore moved: C1 (+18, 171), C2 (14, 212), C3 (6, 230), C4 (18, 242), C6 (82, 165), C8 (60, 286), C9 (-54, 175), C10 (112, 110). The patch / mask centre, holder side and pose are unchanged; the holding tentacle's path is not (e.g. C10's exit sits far right, C6's right of the head). Compare with the r12 contact sheet before reading these as the same concepts.
+- Gap 66 mm for all (r12 disc: 85); the oblate ball is 108 mm deep, so the front is 286-298 mm. C2, C3, C6 carry max z 298 and C9 298 (2 mm under the cap, same as the r12 discs 294-298 within a few mm): any larger ball, more yaw or more gap fails these four.
+- r12 numbers worth comparing: r12 arm-part z 266 (C2) and 250 (C6) -> 206 and 216 with the ball; both under the 256 mm bed height (N3). All eight arm parts are 192-216 mm.
+- Thread concepts C3, C6, C10: the left eye is bored through the ball (0.115 x 0.21 D, 21 x 38 mm at S2) and the tentacle (r 6 -> 4.2) passes it. Wall between the bore and the pad / spigot zone: C3 15.4, C6 24.2, C10 23.4 mm (>= 3 required). It is cosmetic only (the rod and pad hold the ball). In the renders it reads weakly: a small tentacle lip at the left eye, not a clear thread over the face; the hole itself reads as a larger eye. If it does not read for Evan, drop it back to a recessed eye (a one-line change in `ball.py`).
+- Coil concepts C2, C8: a single tentacle spirals 1.15 turns round the equator band (r 9.5 -> 4.5); from the front it appears as a rim ring and in the side views as a belt; C2's holder is on the left and yaw 33 deg turns the face away, so the wrap is the more visible element there.
+- C4 (O P F M X E LL T U) and C10 (R P E M L U UR T R) are the 'partly lowered' poses; the ball overlaps the maw top / patch in the front view, ball-to-rest minimum 48.7 / 42.2 mm.
+
+**Pass / fail:** all eight PASS every numeric limit. None needed a variation-axis change. Not re-run: composition gate and DESIGN_PRINCIPLES checklist (r12 values do not carry over: the mask silhouette and root path changed). C4's r12 gate failure (3/7) and C8's (5/7) come from trunk width and limb count and are untouched by the ball.
+
+Files: `renders/study_<cid>_S2_{front,tq,side}.png` (8 x 3), `renders/contact_sheet_p2_{front,tq,side}.png` (H + S2 and the eight; 3 x 3). Reproduce: `python3 build.py C1_S2` (any `Cn_S1|S2|S3`), `python3 render_comp.py C1_S2 --views front,tq,side`, `OUTJSON=arm_report_p2.json python3 measure_arm.py C1_S2 ...`, `python3 report.py p2`, `python3 make_sheets.py p2 S2`.
 
 ---
 *Edit log*
@@ -47,3 +71,4 @@ The mask no longer prints back-down (pad face stands 24-38 mm behind the back, t
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
 | 2026-11-19 | cad-worker | Initial creation: Phase 1 (H + S1-S3 ball) | [PROVISIONAL] |
+| 2026-11-19 | cad-worker | Phase 2: C1-C4, C6, C8-C10 retrofitted with ball S2, tables and notes | [PROVISIONAL] |
