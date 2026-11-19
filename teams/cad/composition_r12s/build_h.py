@@ -7,6 +7,7 @@ from skimage import measure
 from PIL import Image, ImageDraw
 from engine import *
 import heldmask as hm
+import ball
 import trimesh
 
 HERE = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(HERE, 'build')
@@ -223,6 +224,7 @@ def build(S):
     for e in S.get('eyes', []):
         add_eye(f, e, trng); meta['eyes'].append(dict(x=e['x'], y=e['y'], G=e['G'], lid=e.get('lid', 'ring'), pupil=e.get('pupil', 'none'), clouded=bool(e.get('clouded')), gaze=e.get('gaze', (0, 0)), veiny=False, grp='e2'))
     # ================= r11 =================
+    _pc = S['patch']['c']; _ii = np.arange(-40, 41, 4.0); _XX, _YY = np.meshgrid(_pc[0] + _ii, _pc[1] + _ii); _m = ((_XX - _pc[0]) ** 2 + (_YY - _pc[1]) ** 2) < 40 ** 2; S['held']['ref_z'] = float(f.surface_z(_XX[_m], _YY[_m]).max())   # r11 flesh peak, so gap is measured as in r11
     G = hm.geometry(f, S); vrng = np.random.default_rng(S.get('seed', 0) + 4242); veins = []; allg = []
     # ---- eye patch (6-12 eyes 15-50 mm) on the swollen flesh behind the mask
     pe = S['patch']['eyes']
@@ -271,26 +273,25 @@ def build(S):
         f.add_rib(f'vein{k_}', pts, r0=3.2, r1=2.2, lift=1.8, k=2.5, kind=9, sig=3); nv += 1; vh.append(float(np.median(f.surface_z(cv_[:, 0], cv_[:, 1]) - z0_)))
     meta['veins'] = dict(n=nv, r0=3.2, r1=2.2, raised_mm_min=float(np.min(vh)), raised_mm_median=float(np.median(vh)), raised_mm_p10=float(np.percentile(vh, 10)))
     # ---- the held mask: rod-cored holding tentacle, root tendrils, pad, fingers, separate mask part
-    mkc = dict(c=tuple(G['mc']), D=S['held']['D']); fsd0 = mask_features(mkc); _ct, _st = G['ct'], G['st']; _cx, _cy = G['mc']
-    fsd = lambda X, Y: fsd0(_cx + _ct * (X - _cx) + _st * (Y - _cy), _cy - _st * (X - _cx) + _ct * (Y - _cy)); fl = G['zm'] + G['dz'] - 11.0
+    BF = ball.Features(S['held']['D'], S['held']['ratio'], S['held']['grip'])
     mfn = hm.mask_sdf_fn(G); D = S['held']['D']; mk = dict(c=tuple(G['mc']), D=D)
     for j_, ang in enumerate((205, 250, 295, 340, 20, 160)):      # root tendrils: grip the trunk round the arm exit (visual), ride the surface
         th = np.radians(ang); p0 = np.array(G['Rx'][:2]) + 26 * np.array([np.cos(th), np.sin(th)]); L_ = vrng.uniform(60, 95); pts = [tuple(p0 + L_ * u * np.array([np.cos(th + 0.5 * np.sin(3 * u + j_)), np.sin(th + 0.5 * np.sin(3 * u + j_))])) for u in np.linspace(0, 1, 6)]
         f.add_rib(f'rtend{j_}', pts, r0=11.0, r1=4.5, lift=3.0, k=10.0, kind=2)
     Frest = f.F.copy(); Krest = f.K.copy() if False else None
-    hm.add_arm(f, G, 'main'); fing = hm.add_mask(f, G, fsd, fl, 'main')
+    hm.add_arm(f, G, 'main'); fing = ball.add_ball(f, G, BF, 'main')
     hm.carve_bore(f, G, G['s_rod'])
     arm_c, arm_R, arm_sw = hm.sheath(G); f.parts['M_arm'] = dict(c=arm_c, r=arm_R)
     meta['limbs'].append(dict(name='M_arm', shelf=False, length=float(G['s_T'] - G['s_exit']), r0=float(arm_R.max()), c=arm_c[::8].tolist(), r=arm_R[::8].tolist(), t=np.linspace(0, 1, len(arm_c))[::8].tolist()))
     # isolated parts for export / review: arm part (arm + root block + column + plate + spigot) and mask part (disc + pad + fingers + socket + bore)
     fa = Field(); hm.add_arm(fa, G, 'arm'); hm.carve_bore(fa, G, G['s_T'] + hm.SPIG_L); Fa = fa.finish(); del fa
-    fm = Field(); hm.add_mask(fm, G, fsd, fl, 'mask'); Fm = fm.finish(); del fm
+    fm = Field(); ball.add_ball(fm, G, BF, 'mask'); Fm = fm.finish(); del fm
     F = f.finish(); sil = (F < 0).any(axis=2)
     v, fc, _, _ = measure.marching_cubes(F, 0.0, spacing=(RES,) * 3); v = v + np.array([XS[0], YS[0], ZS[0]])
     x, y, z = v[:, 0], v[:, 1], v[:, 2]
     ii = np.clip(((v - np.array([XS[0], YS[0], ZS[0]])) / RES).round().astype(int), 0, [NX - 1, NY - 1, NZ - 1])
     kind = f.K[ii[:, 0], ii[:, 1], ii[:, 2]]
-    mk_v = mfn(x, y, z); dm = ad(x, y) + SL * np.clip(ZR - z, 0, None); fv = np.maximum(fsd(x, y), fl + 1.5 - z)
+    mk_v = mfn(x, y, z); dm = ad(x, y) + SL * np.clip(ZR - z, 0, None); fv = BF.fv(G, x, y, z)
     meta.update(mask=dict(c=list(mk['c']), D=D, aspect=1.0), held_geo={k_: (v_.tolist() if hasattr(v_, 'tolist') else v_) for k_, v_ in G.items() if k_ != 'H'}, held_in=S['held'], fingers=fing, arm_eyes=[{k_: v_ for k_, v_ in a_.items() if k_ != 'paths'} for a_ in arm_eyes], maw=dict(c=mw['c'], w=mw['w'], h=mw['h'], orient='v'), spine=dict(pts=[list(p) for p in sp.tolist()], zs=zsb), gesture=S['gesture'], web_stats=f.web_stats)
     os.makedirs(OUT, exist_ok=True); sid = S['id']
     np.savez_compressed(f'{OUT}/{sid}.npz', v=v.astype(np.float32), f=fc.astype(np.int32), mk=mk_v.astype(np.float32), dm=dm.astype(np.float32), fv=fv.astype(np.float32), kind=kind)
@@ -314,4 +315,4 @@ def build(S):
     Image.fromarray(np.clip(col, 0, 255).astype(np.uint8).T[::-1]).resize((468, 468)).save(f'{OUT}/{sid}_prev.png')
 
 if __name__ == '__main__':
-    sys.path.insert(0, HERE); build(importlib.import_module('studies').STUDIES[sys.argv[1]])
+    sys.path.insert(0, HERE); build(importlib.import_module('studies_s').get(sys.argv[1]))

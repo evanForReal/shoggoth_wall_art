@@ -53,7 +53,12 @@ def candidate(f, S, H, Gm, rx, ry, dt=None):
     if A[2] - BLOCK_R * np.sqrt(max(1 - d[2] ** 2, 0)) < 0.5: _rej('Az'); return None
     if A[2] < 14.0: _rej('Az'); return None
     nd = float(d @ Gm['en'])
-    if nd < NDMIN: _rej('nd'); return None
+    if H.get('shape') == 'ball':      # P13 (Structural N1): rod vs the seat (ball back) normal at the boss, <= 35 deg
+        wl = -float(hback(Gm, q)); a_, c_ = Gm['R'], Gm['dz']; nl = -np.array([bu / a_ ** 2, bu * 0 + bv / a_ ** 2, wl / c_ ** 2]); nl /= np.linalg.norm(nl)
+        nseat = nl[0] * Gm['eu'] + nl[1] * Gm['ev'] + nl[2] * Gm['en']; nd = float(d @ nseat)
+        if nd < np.cos(np.radians(H.get('seat_max_deg', 35.0))): _rej('seat'); return None
+    elif nd < NDMIN: _rej('nd'); return None
+    if H.get('shape') == 'ball': pass
     # block solid test (60 dia x 70 deep), points in the cylinder
     rng = np.random.default_rng(3); a = np.array([1.0, 0, 0]) if abs(d[0]) < 0.9 else np.array([0, 1.0, 0]); e1 = np.cross(d, a); e1 /= np.linalg.norm(e1); e2 = np.cross(d, e1)
     n = 500; s = rng.uniform(0, 58, n); r = BLOCK_R * 0.93 * np.sqrt(rng.uniform(0, 1, n)); ph = rng.uniform(0, 6.28, n); P = A[None] + s[:, None] * d[None] + (r * np.cos(ph))[:, None] * e1[None] + (r * np.sin(ph))[:, None] * e2[None]

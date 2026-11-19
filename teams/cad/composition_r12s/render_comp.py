@@ -78,17 +78,24 @@ VIEWS = {'front': dict(loc=(0, 0, 2.0), tgt=(0, 0, 0), ortho=1.41), 'tq': dict(l
          'side': dict(loc=(1.45, 0.38, 0.55), tgt=(0, 0.24, 0.13), lens=60), 'sideL': dict(loc=(-1.45, 0.38, 0.55), tgt=(0, 0.24, 0.13), lens=60),
          'prof': dict(loc=(3.0, 0.26, 0.14), tgt=(0, 0.26, 0.14), ortho=0.62), 'close': dict(loc=(0.55, 0.30, 1.05), tgt=(0, 0.25, 0.12), lens=70)}
 WARM = (1.0, 0.88, 0.72)
-def setup_lights():
+_mf = f'{B}/{a.id}_meta.json'
+if os.path.exists(_mf):      # raking close-up of the held ball: camera in front of the ball (slightly left / above), one grazing light from the right
+    _c3 = np.array(json.load(open(_mf))['held_geo']['c3']) * 0.001
+    VIEWS['rake'] = dict(loc=tuple(_c3 + np.array([-0.06, 0.05, 0.55])), tgt=tuple(_c3 + np.array([0.0, -0.005, 0.0])), lens=95)
+def setup_lights(rake=False):
     for o_ in [o_ for o_ in sc.objects if o_.type == 'LIGHT']: bpy.data.objects.remove(o_)
+    if rake:
+        t_ = tuple(_c3); light('rk', 'AREA', (t_[0] + 0.55, t_[1] + 0.10, t_[2] + 0.10), t_, 38, WARM, 0.35); light('rkf', 'AREA', (t_[0] - 0.3, t_[1] + 0.2, t_[2] + 0.4), t_, 2.5, (0.75, 0.8, 1.0), 1.0); return
     light('down', 'AREA', (-0.45, 0.95, 0.75), (0, -0.02, 0.05), 150, WARM, 1.3)       # c01-like warm downlight from upper left, soft
     light('down2', 'AREA', (0.55, 0.95, 0.55), (0, 0.0, 0.05), 28, WARM, 0.8)
     light('fill', 'AREA', (0.9, -0.5, 1.2), (0, 0, 0.05), 5, (0.75, 0.8, 1.0), 1.0)
 for nm in a.views.split(','):
-    cfg = VIEWS[nm]; setup_lights(); cam.location = cfg['loc']; cam.rotation_euler = look(cfg['loc'], cfg['tgt'])
+    cfg = VIEWS[nm]; setup_lights(nm == 'rake'); cam.location = cfg['loc']; cam.rotation_euler = look(cfg['loc'], cfg['tgt'])
     if 'ortho' in cfg: cam.data.type = 'ORTHO'; cam.data.ortho_scale = cfg['ortho']
     else: cam.data.type = 'PERSP'; cam.data.lens = cfg['lens']
     sc.render.filepath = f'{OUT}/study_{a.id}_{nm}.png'; bpy.ops.render.render(write_still=True); print('rendered', nm, flush=True)
     from PIL import Image as _I; _I.open(sc.render.filepath).convert('RGB').save(sc.render.filepath, optimize=True, compress_level=9)
+    if os.path.getsize(sc.render.filepath) > 950_000: _I.open(sc.render.filepath).convert('RGB').quantize(256, method=_I.Quantize.MEDIANCUT, dither=_I.Dither.FLOYDSTEINBERG).save(sc.render.filepath, optimize=True)
 if a.mask:
     for o_ in [o_ for o_ in sc.objects if o_.type == 'LIGHT']: bpy.data.objects.remove(o_)
     cfg = VIEWS['front']; cam.location = cfg['loc']; cam.rotation_euler = look(cfg['loc'], cfg['tgt']); cam.data.type = 'ORTHO'; cam.data.ortho_scale = cfg['ortho']

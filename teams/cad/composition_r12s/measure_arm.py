@@ -6,8 +6,10 @@ from skimage import measure
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 from engine import XS, YS, ZS, RES, X0
 import heldmask as hm
-B = os.path.join(HERE, 'build'); RHO = 1.27e-3     # g/mm3 PETG
-IDS = sys.argv[1:] or ['C%d' % i for i in range(1, 11)]
+B = os.path.join(HERE, 'build'); RHO = 1.24e-3     # g/mm3 PLA; WALL 2.0 mm, INFILL 10% (assumption stated in README)
+WALL, INFILL = 2.0, 0.10
+IDS = sys.argv[1:] or ['S1', 'S2', 'S3']
+OUTJSON = os.environ.get('OUTJSON', 'arm_report.json')
 def vox(p): return np.clip(np.round((np.asarray(p) - np.array([XS[0], YS[0], ZS[0]])) / RES).astype(int), 0, [len(XS) - 1, len(YS) - 1, len(ZS) - 1])
 def crop(P, pad, G=None):
     lo = vox(np.min(P, 0) - pad); hi = vox(np.max(P, 0) + pad) + 1; return tuple(slice(a, b) for a, b in zip(lo, hi))
@@ -54,11 +56,24 @@ for sid in IDS:
     r['P5_horizontal_lever_exit_axis_to_CoM_mm'] = float(np.hypot(com[0] - Rx[0], com[2] - Rx[2])); r['P5_lever_incl_vertical_offset_3D_mm'] = float(np.linalg.norm(com - Rx)); r['P5_tilt_roll_deg'] = float(np.degrees(G['roll'])); r['P5_tilt_yaw_deg'] = float(np.degrees(G['yaw'])); r['P5_tilt_pitch_deg'] = float(np.degrees(G['pitch'])); r['P5_total_tilt_deg'] = float(np.degrees(np.sqrt(G['roll'] ** 2 + G['yaw'] ** 2 + G['pitch'] ** 2)))
     r['P5_lever_from_trunk_wall_plane_z0_horizontal_mm'] = float(np.hypot(com[0] - A[0], com[2] - 0.0)) if False else None
     nzm = np.argwhere(maskp); lo_, hi_ = nzm.min(0), nzm.max(0) + 1; sl2 = tuple(slice(int(a), int(b)) for a, b in zip(lo_, hi_)); gx = np.meshgrid(XS[sl2[0]], YS[sl2[1]], ZS[sl2[2]], indexing='ij'); disc = mfn(*gx) < 0
-    mp2 = maskp[sl2]; dvol = mp2 & disc; pfvol = mp2 & ~disc; Vd = dvol.sum() * RES ** 3; Vpf = pfvol.sum() * RES ** 3
-    vs, fs, _, _ = measure.marching_cubes(ndi.gaussian_filter(dvol.astype(np.float32), 0.8), 0.5, spacing=(RES,) * 3); Ad = measure.mesh_surface_area(vs, fs); shell = min(Ad * 2.0, Vd); inter = Vd - shell; mass = RHO * (shell + 0.15 * inter + Vpf)
-    r['P6_mask_mass_calc'] = dict(V_disc_cm3=round(Vd / 1e3, 1), area_disc_cm2=round(Ad / 1e2, 1), shell_2mm_cm3=round(shell / 1e3, 1), interior_cm3=round(inter / 1e3, 1), infill15_cm3=round(0.15 * inter / 1e3, 1), V_pad_fingers_solid_cm3=round(Vpf / 1e3, 1), V_total_cm3=round(V_total, 1), PETG_g_cm3=1.27,
-                                  mass_g=round(mass, 0), mass_with_5pct_finish_g=round(mass * 1.05, 0))
+    mp2 = maskp[sl2]; dvol = mp2 & disc; pfvol = mp2 & ~disc; Vd = dvol.sum() * RES ** 3
+    sg, rg, Ug, Vg = hm.axc(G, *gx); padin = dvol & (rg < hm.PAD_R) & (sg > G['s_T']) & (sg < G['s_plane'] + 14)      # pad cylinder inside the ball: 100% solid (conservative)
+    Vpadin = padin.sum() * RES ** 3; Vout = pfvol.sum() * RES ** 3; hollow = dvol & ~padin; Vh = hollow.sum() * RES ** 3
+    vs, fs, _, _ = measure.marching_cubes(ndi.gaussian_filter(dvol.astype(np.float32), 0.8), 0.5, spacing=(RES,) * 3); Ad = measure.mesh_surface_area(vs, fs); shell = min(Ad * WALL, Vh); inter = Vh - shell
+    mass = RHO * (shell + INFILL * inter + Vpadin + Vout); vox_total = (Vd + Vout) / 1e3; mesh_vol = meta['stl']['maskpart']['volume_cm3']
+    r['P6_mask_mass_calc'] = dict(basis='hollow shell wall %.1f mm, infill %d%%, pad cylinder inside ball + boss + grip tendrils 100%% solid, PLA 1.24 g/cm3, +5%% finish' % (WALL, INFILL * 100), V_ball_region_cm3=round(Vd / 1e3, 1), area_ball_cm2=round(Ad / 1e2, 1), shell_cm3=round(shell / 1e3, 1), interior_cm3=round(inter / 1e3, 1), infill_cm3=round(INFILL * inter / 1e3, 1),
+                                  V_pad_inside_ball_solid_cm3=round(Vpadin / 1e3, 1), V_boss_grip_outside_ball_solid_cm3=round(Vout / 1e3, 1), V_total_voxel_cm3=round(vox_total, 1), V_total_STL_mesh_cm3=mesh_vol, mesh_vs_voxel_pct=round(100 * (mesh_vol / vox_total - 1), 1), mass_g=round(mass, 0), mass_with_5pct_finish_g=round(mass * 1.05, 0),
+                                  mass_if_solid_ball_mesh_kg=round(RHO * mesh_vol * 1e3 / 1e3 * 1.0, 3))
     r['P6_mask_mass_kg'] = round(mass * 1.05 / 1000, 3)
+    # ---- ball dimensions, seat normal (P13), relief, bore-to-pad wall
+    H_ = G['H']; a_, c_ = G['R'], G['dz']; bu_, bv_ = H_['boss']; wl = -float(hm.hback(G, np.hypot(bu_, bv_) / a_)); nl = -np.array([bu_ / a_ ** 2, bv_ / a_ ** 2, wl / c_ ** 2]); nl /= np.linalg.norm(nl); nseat = nl[0] * G['eu'] + nl[1] * G['ev'] + nl[2] * G['en']
+    r['ball'] = dict(name=H_.get('ball'), grip=H_.get('grip'), D_mm=2 * a_, depth_mm=2 * c_, depth_over_D=2 * c_ / (2 * a_), centre=G['c3'].round(1).tolist(), front_z_mm=float(G['c3'][2] + c_ if (G['pitch'] == 0 and G['yaw'] == 0) else maskp.nonzero()[2].max() * 0 + ZS[nzm[:, 2].max()]), back_lowest_z_mm=float(G['z_back']))
+    r['P13_rod_to_seat_normal_deg'] = float(np.degrees(np.arccos(np.clip(d @ nseat, -1, 1)))); r['rod_to_mask_axis_en_deg'] = float(np.degrees(np.arccos(np.clip(d @ G['en'], -1, 1))))
+    if H_.get('grip') == 'E':
+        import ball as _b; Fb = _b.Features(2 * a_, c_ / a_, 'E'); ex, ey, ww, hh, rot = Fb.eyes[0]; Dd = 2 * a_; ct, st = np.cos(rot), np.sin(rot); u_, v_, w_ = hm.loc(G, *gx)
+        uu = ct * (u_ - ex * Dd) + st * (v_ - ey * Dd); vv = -st * (u_ - ex * Dd) + ct * (v_ - ey * Dd); hole = (np.sqrt((uu / (ww * Dd / 2)) ** 2 + (vv / (hh * Dd / 2)) ** 2) - 1) * (ww * Dd / 2) < 0
+        hole &= np.abs(w_) < c_; zone = ((rg < hm.PAD_R) & (sg > G['s_T'] - 2) & (sg < G['s_plane'] + 14)) | ((rg < hm.SPIG_R) & (sg > G['s_T']) & (sg < G['s_T'] + hm.MASK_BORE))
+        r['thread_bore_to_pad_min_wall_mm'] = float(ndi.distance_transform_edt(~zone, sampling=RES)[hole].min()) if hole.any() and zone.any() else None
     # ---- P9 seam
     Rt = float(R_[-1]); r['P9'] = dict(arm_integral_with_trunk=True, root_seam=None, mask_end_seam_land_mm2=round(np.pi * Rt ** 2 - np.pi * (hm.BORE_D / 2) ** 2), spigot_socket_depth_mm=hm.SPIG_L, spigot_dia_mm=2 * hm.SPIG_R, d_flat_mm_from_axis=hm.FLAT, tip_dia_at_pad_face_mm=2 * Rt)
     r['P10_arm_axis_angle_from_XY_plane_deg'] = float(np.degrees(np.arcsin(abs(d[2])))); r['P11'] = dict(grip=G['H'].get('grip'), n_fingers=sum(1 for f_ in meta['fingers'] if 'ang' in f_), grip_items=meta['fingers'], d_flat_key=True)
@@ -73,4 +88,4 @@ for sid in IDS:
     # S10 nearest cleat seat: shelf roots
     roots = {a_['name']: tuple(a_['pts'][0][:2]) for a_ in [dict(name=l['name'], pts=[l['c'][0]]) for l in meta['limbs'] if l['name'] in ('S1_UL', 'S2_UR', 'S3_LL')]}; r['nearest_shelf_root'] = {k: round(float(np.hypot(Rx[0] - v[0], Rx[1] - v[1])), 0) for k, v in roots.items()}
     out[sid] = r; print(sid, json.dumps({k: v for k, v in r.items() if k.startswith(('P1_', 'P3', 'P5', 'P6_mask_mass_kg', 'P7', 'P12', 'max_z', 'gap', 'connected'))}, indent=0)[:1800])
-json.dump(out, open(f'{HERE}/arm_report.json', 'w'), indent=1)
+json.dump(out, open(f'{HERE}/{OUTJSON}', 'w'), indent=1)
