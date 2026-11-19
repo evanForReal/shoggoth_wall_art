@@ -3,7 +3,7 @@
   "title": "Shoggoth wall art — round 12: the ball, the coherence review, varied concepts",
   "created": "2026-11-19",
   "issue_repo": "evanForReal/shoggoth_wall_art",
-  "notes": "Your two asks built: the smiley as a held BALL (vote B1-B4 for shape), and a coherence review of H (one creature at 2-4 m, 'assembled' up close; K1-K4 refine it). Sketches welcome, never waited on. ··· BALL: B1 is our pick (squashed sphere 180 mm wide, 108 deep): the only shape that reads round from the front; carved emoticon; tentacles cup it from behind; it floats ~65 mm off the eye patch so the patch shows from the side. B3 full sphere is smaller (depth cap 300 mm), B4 flatter. All hold the structural limits (ball 0.52-0.77 kg vs 0.8 cap, printed hollow in two halves). COHERENCE: two reviewers worked independently and agreed: not scattered objects. It holds as one connected shape, the detail sits in the maw, and the mask is the only bright mass. Weak spots up close: shelves look like plates on stalks, too many bright values, competing eye groups. The six rim rings read as stitches; the ball grip replaces them. K1-K4 are mocks (crude image edits), not geometry. C CARDS: 8 varied concepts on H's essentials (who holds the ball, its pose and grip, mouth type, which tentacle is massive, whip, cascade, lean). Each card lists its differences. These were planned before I read your round-11 verdict (my miss: I read it late), then refitted with the B1 ball. Structural: all 8 pass the arm limits; mounting still needs your stud locations. NOT YET: the FLUX concept art (daily free quota ran out; it resumes today and goes to round 13). Not yet peer-signed: CAD r12/r12s write-ups, Structural s.10, coherence reports.",
+  "notes": "Which ball shape: B1 (our pick), B3 or B4? Then K1-K4: apply each coherence fix or not? C cards: which varied concepts read best? ··· Your two asks built: the smiley as a held BALL (B1-B4), and a coherence review of H (one creature at 2-4 m, 'assembled' up close). Sketches welcome, never waited on. ··· BALL: B1 is our pick (squashed sphere 180 mm wide, 108 deep): the only shape that reads as a form, not a disc, from the front; carved emoticon; tentacles cup it from behind; 66 mm of air under its back, 27 mm to the nearest eye, so the eye patch shows from the side. B3 full sphere is smaller (120 mm, depth cap 300 mm), B4 flatter. All three pass CAD's limits (ball mass 0.52-0.77 kg vs 0.8 cap), but mass assumes a hollow 2 mm shell at 10% infill, printed in two halves (split not yet designed); at 15% infill B1 is 0.82 kg and fails. COHERENCE: two reviewers worked independently and agreed: not scattered objects. It holds as one connected shape, the detail sits in the maw, and the mask is the brightest mass (the shelves are next; CAD's own checklist disagrees on this). Weak spots up close: shelves look like plates on stalks, too many bright values, competing eye groups. The six rim rings read as stitches; the ball grip replaces them. K1-K4 are mocks (crude image edits of round-11 H, flat disc), not geometry. C CARDS: 8 varied concepts on H's essentials (who holds the ball, its pose and grip, mouth type, which tentacle is massive, whip, cascade, lean). Each card lists its differences. These were planned before I read your round-11 verdict (my miss: I read it late), then refitted with the B1 ball. Arms: all 8 pass CAD's own limit checks with the ball; Structural reviewed only the flat-disc versions (4 of 8 conditional, ball re-check pending). Composition gate and design checklist not re-run on the ball versions. Mounting still needs your stud locations. NOT YET: the FLUX concept art (daily free quota ran out; it resumes today and goes to round 13). Not yet peer-signed: CAD r12/r12s write-ups, Structural s.10 (flat-disc arms), the coherence reports and their reconciliation (RECONCILED.md).",
   "cards": [
     {
       "id": "b1",
@@ -18,7 +18,7 @@
       "image": "images/B2_ball_S2_detail.jpg",
       "axis": "ball",
       "title": "B1 detail — three-quarter + raking close-up",
-      "rationale": "How the ball reads at an angle, and the carved face up close (weathered bone; the rough eye edges come from the 2 mm draft resolution, not a design choice).",
+      "rationale": "How the ball reads at an angle, and the carved face up close (weathered bone; the rough eye edges are partly the 2 mm draft resolution, partly deliberate weathering).",
       "source": "generated in-house (composition_r12s, S2)"
     },
     {
@@ -26,7 +26,7 @@
       "image": "images/B3_ball_S1.jpg",
       "axis": "ball",
       "title": "B3 — full sphere instead",
-      "rationale": "A true sphere has to be smaller (120 mm) to stay inside the 300 mm depth limit, so the face is about half the size of round 11's disc and competes with the eye patch.",
+      "rationale": "A true sphere has to be smaller (120 mm) to stay inside the 300 mm depth limit, so the face is about half the size of round 11's disc and is lost against the eye patch.",
       "source": "generated in-house (composition_r12s, S1)"
     },
     {
@@ -34,7 +34,7 @@
       "image": "images/B4_ball_S3.jpg",
       "axis": "ball",
       "title": "B4 — flatter ball (200 mm wide, 90 deep)",
-      "rationale": "The same face size as round 11's disc, but from the front it shades almost like the flat disc. Side views show the volume.",
+      "rationale": "The same face size as round 11's disc, but from the front it shades almost like the flat disc. Only angled and side views (not on this card) show the volume.",
       "source": "generated in-house (composition_r12s, S3)"
     },
     {
@@ -42,7 +42,7 @@
       "image": "images/K1_paint.jpg",
       "axis": "coherence",
       "title": "K1 — paint it as one creature?",
-      "rationale": "One dark umber glaze over flesh, shelves and lace, with only the mask and teeth bone-pale (right), vs lighter shelves (left). Both reviewers flagged the bright shelves as competing with the mask. Love/like = right. Mock: an image edit of round-11 H.",
+      "rationale": "One dark umber glaze over flesh, shelves and lace, with only the mask and teeth bone-pale (right), vs lighter shelves (left). Both reviewers flagged the shelves as the second-brightest group after the mask. Love/like = right. Mock: an image edit of round-11 H.",
       "source": "coherence review B (teams/aesthetics/analysis/coherence-r11)"
     },
     {
@@ -122,7 +122,7 @@
       "image": "images/C9.jpg",
       "axis": "concept",
       "title": "C9 — varied concept (front + three-quarter)",
-      "rationale": "Held from below, ball tilted 33° on cupping tendrils; fangs plus rings; massive lower-left shelf; cascade swept right; leans left; eyes on the holding arm. Strongest side view.",
+      "rationale": "Held from below, ball tilted 32° on cupping tendrils; fangs plus rings; massive lower-left shelf; cascade swept right; leans left; eyes on the holding arm. Strongest side view (CAD's call on the flat-disc version).",
       "source": "generated in-house (composition_r12 concept C9, refitted with ball S2 in composition_r12s)"
     },
     {
