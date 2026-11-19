@@ -1,0 +1,10 @@
+from common import *
+rgb = load_rgb(); g = gray(rgb)
+wall = wall_fit(g)
+m = figure_mask(g, wall)
+ys, xs = np.where(m)
+print("wall fit range", wall.min(), wall.max(), "wall median", np.median(wall))
+print("bbox x", xs.min(), xs.max(), "y", ys.min(), ys.max(), "w", xs.max()-xs.min()+1)
+np.save(os.path.join(OUT, "fig_mask.npy"), m)
+ov = rgb.copy(); ov[m] = 0.4*ov[m] + 0.6*np.array([255, 0, 0])
+save(ov, "d0_mask_overlay.png")
