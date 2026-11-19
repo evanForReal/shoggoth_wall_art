@@ -271,6 +271,10 @@ ESSENTIALS (every concept): r10/r11 locks — A0 ribbed narrow trunk with vertic
 VARIATION (axes Evan has not ruled on), each concept moves SEVERAL axes for substantial variation, logged in a variation table so verdicts can still be regressed per axis: (1) which limb holds the mask and from where (left/right/below/over the head); (2) mask pose (facing, turned away, tilted, low/high, partly lowered as if unmasking); (3) grip type (rim fingers / tentacle coil / tentacle threaded through the eye holes); (4) eye-patch extent (patch only / spreading down the trunk / eyes on the holding tentacle); (5) mouth (fangs / lamprey / both / larger maw); (6) whip direction and length; (7) which shelf the massive limb takes, shelf height pattern; (8) cascade length/density; (9) body lean/asymmetry. `[judgment]`
 Board will carry ~10 concepts; Structural spot-checks lever/mass per concept numerically, full review on whichever Evan picks.
 
+**SL-84** · 03:33 · Evan pasted his HF token in chat. Did NOT use the chat value (would land in command logs); brought up the secure credential forms for huggingface.co and the FLUX space host; suggested he rotate the token since it's now in chat history. New token verified (whoami 200, role read). · `[judgment]`
+
+**SL-85** · 03:33 · FLUX working: gradio_client moves an "authorization" header into "x-hf-authorization" at construction, which the proxy doesn't fill → set the header AFTER construction so it stays "Authorization" (tools/concept_gen/flux.py). Prompt development over 6 test images: FLUX drifts toward a toothy skull mask, gives the creature its own head, floats shelves, adds a backboard; fixes = "headless, faceless", "top of trunk is a stump covered by bulging eyes", "mask carved from pale ivory bone, perfectly round classic smiley... no teeth, no nose", "no backboard", avoid the word "yellow". Batch (10 concepts x 2 seeds, teams/aesthetics/analysis/round-12-flux/concepts.py) stopped after 2 images: free-account ZeroGPU daily quota exhausted (prompt tests used most of it). C1 seed 101 is the strongest generated concept to date; seed 202 drifted (skull head). Remaining 18 images wait for quota or another route — Evan's call. · `[judgment]`
+
 ---
 *Edit log*
 
@@ -313,3 +317,4 @@ Board will carry ~10 concepts; Structural spot-checks lever/mass per concept num
 | 2026-11-18 | orchestrator | Appended SL-81 (round-11 deploy) | [PROVISIONAL] |
 | 2026-11-19 | orchestrator | Appended SL-82 (free image-gen search) | [PROVISIONAL] |
 | 2026-11-19 | orchestrator | Appended SL-83 (concept set design) | [PROVISIONAL] |
+| 2026-11-19 | orchestrator | Appended SL-84..85 (token handling, FLUX working, quota) | [PROVISIONAL] |

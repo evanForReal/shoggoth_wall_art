@@ -53,6 +53,23 @@ def candidate(f, S, H, Gm, rx, ry):
     ii = np.clip(((P[:, 0] - X0) / 2.0).round().astype(int), 0, NX - 1); jj = np.clip(((P[:, 1] - X0) / 2.0).round().astype(int), 0, NY - 1); kk = np.clip(((P[:, 2] + 8) / 2.0).round().astype(int), 0, NZ - 1)
     sol = float((f.F[ii, jj, kk] < 0).mean())
     if sol < 0.985: _rej('solid'); return None
+    # core test: everything within 17 mm of the axis over the embed must be solid (10.4 bore + >= 5 cover + margin)
+    s2 = np.repeat(np.linspace(0, EMBED, 18), 8); r2 = np.tile(np.array([0, 8, 14, 17, 17, 17, 14, 8.0]), 18); ph2 = np.tile(np.linspace(0, 2 * np.pi, 8, endpoint=False), 18)
+    P2 = A[None] + s2[:, None] * d[None] + (r2 * np.cos(ph2))[:, None] * e1[None] + (r2 * np.sin(ph2))[:, None] * e2[None]
+    i2 = np.clip(((P2[:, 0] - X0) / 2.0).round().astype(int), 0, NX - 1); j2 = np.clip(((P2[:, 1] - X0) / 2.0).round().astype(int), 0, NY - 1); k2 = np.clip(((P2[:, 2] + 8) / 2.0).round().astype(int), 0, NZ - 1)
+    if not (f.F[i2, j2, k2] < 0).all(): _rej('core'); return None
+    # back plate 100 x 100 x 6 under A must lie in solid trunk
+    gx, gy = np.meshgrid(np.arange(-48, 49, 8.0), np.arange(-48, 49, 8.0)); ip = np.clip(((A[0] + gx.ravel() - X0) / 2.0).round().astype(int), 0, NX - 1); jp = np.clip(((A[1] + gy.ravel() - X0) / 2.0).round().astype(int), 0, NY - 1)
+    kp = int(round((4.0 + 8) / 2.0))
+    if (f.F[ip, jp, kp] < 0).mean() < 0.97: _rej('plate'); return None
+    # geometry of the free span: length, clearance to the existing solid
+    bu_, bv_ = H['boss']; wb = -float(hback(Gm, q)) + 4.0; nA = float(Gm['en'] @ (A - Gm['c3'])); s_plane = (wb - nA) / float(Gm['en'] @ d); s_T = s_plane - PAD_LEN
+    if s_T + 6 > 242.0 or s_T - EMBED < 20: _rej('len'); return None
+    ss = np.arange(EMBED + 28, s_T, 6.0)
+    if len(ss):
+        Pc = A[None] + ss[:, None] * d[None]; u_ = np.clip((ss - EMBED) / (s_T - EMBED), 0, 1); Rr = 34.0 - 9.0 * u_ ** 0.9
+        ic = np.clip(((Pc[:, 0] - X0) / 2.0).round().astype(int), 0, NX - 1); jc = np.clip(((Pc[:, 1] - X0) / 2.0).round().astype(int), 0, NY - 1); kc = np.clip(((Pc[:, 2] + 8) / 2.0).round().astype(int), 0, NZ - 1)
+        if (f.F[ic, jc, kc] < Rr + 7.0).any(): _rej('clear'); return None
     return dict(z_e=z_e, Rx=Rx, B0=B0, d=d, A=A, nd=nd, sol=sol, e1=e1, e2=e2)
 
 def geometry(f, S):
