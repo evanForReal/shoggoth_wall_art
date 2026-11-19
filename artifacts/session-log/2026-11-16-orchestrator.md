@@ -258,6 +258,14 @@ Structural: Evan requires the mask-holding tentacle to pass "the review process"
 
 **SL-81** · 15:01 · Round-11 deployed on Evan's tap: staging → review/rounds/round-11, main fast-forwarded to e49cce9 (ancestor check passed), ping sent with the structural verdict and stud condition. · `[Evan]`
 
+## 2026-11-19
+
+**SL-82** · 03:02 · Evan: find a free, high-quality image-generation service instead of paying for Canva. Tried, in order (all `[judgment]` on order; environment network additions approved by Evan in prompts):
+- Pollinations (image.pollinations.ai, free, no key): works, but the free tier silently swapped to a weaker model at 768 px, watermarked despite nologo, ignored most of the prompt. Not high quality → rejected.
+- AI Horde (aihorde.net, free, anonymous): works, but under heavy demand anonymous jobs are capped at SD1.5 <= 576 px; SDXL models need kudos → rejected.
+- Hugging Face FLUX.1-schnell demo (free): anonymous ZeroGPU quota already exhausted (shared egress). A free HF account token gets its own quota. Evan saved a token via the secure form for the demo host and for huggingface.co; huggingface.co rejects it (401 "Invalid username or password") over 90 s of retries → credential likely mistyped/not an HF access token. Blocked on Evan re-entering it.
+- Not chosen: local CPU generation (4 cores, 15 GB): no account needed, but SDXL-Turbo at ~512 px, slow, well below FLUX quality — fallback only.
+
 ---
 *Edit log*
 
@@ -298,3 +306,4 @@ Structural: Evan requires the mask-holding tentacle to pass "the review process"
 | 2026-11-18 | orchestrator | Appended SL-78..79 (mask-arm spec, r11 read) | [PROVISIONAL] |
 | 2026-11-18 | orchestrator | Appended SL-80 (structural phase 2, r11 staged) | [PROVISIONAL] |
 | 2026-11-18 | orchestrator | Appended SL-81 (round-11 deploy) | [PROVISIONAL] |
+| 2026-11-19 | orchestrator | Appended SL-82 (free image-gen search) | [PROVISIONAL] |
