@@ -1,0 +1,85 @@
+{
+ "mask": {
+  "area_share_of_figure": 0.10620690860473449,
+  "rel_detail_share": 0.05373783007927823,
+  "abs_edge_share": 0.10722630633304855,
+  "rel_density_vs_figure_mean": 0.5059730180008527,
+  "abs_density_vs_figure_mean": 1.0095982242747308
+ },
+ "maw": {
+  "area_share_of_figure": 0.06268951475484327,
+  "rel_detail_share": 0.19550724204711342,
+  "abs_edge_share": 0.1436605145827375,
+  "rel_density_vs_figure_mean": 3.1186593613249958,
+  "abs_density_vs_figure_mean": 2.2916195019939685
+ },
+ "eye_patch": {
+  "area_share_of_figure": 0.03190401705742024,
+  "rel_detail_share": 0.02997828928916917,
+  "abs_edge_share": 0.03992554051745373,
+  "rel_density_vs_figure_mean": 0.9396399592946185,
+  "abs_density_vs_figure_mean": 1.2514267543675301
+ },
+ "shoulder_eyes": {
+  "area_share_of_figure": 0.05144315212737139,
+  "rel_detail_share": 0.04019600440345583,
+  "abs_edge_share": 0.053243519168716245,
+  "rel_density_vs_figure_mean": 0.7813674462235902,
+  "abs_density_vs_figure_mean": 1.0349972147291286
+ },
+ "shelf_UL": {
+  "area_share_of_figure": 0.052102903781119744,
+  "rel_detail_share": 0.03428465237308979,
+  "abs_edge_share": 0.04393257524403624,
+  "rel_density_vs_figure_mean": 0.6580180735629814,
+  "abs_density_vs_figure_mean": 0.8431886143734634
+ },
+ "shelf_UR": {
+  "area_share_of_figure": 0.05220776497111948,
+  "rel_detail_share": 0.038355251811547725,
+  "abs_edge_share": 0.04145566723127045,
+  "rel_density_vs_figure_mean": 0.7346656542904154,
+  "abs_density_vs_figure_mean": 0.7940517517691683
+ },
+ "shelf_LL": {
+  "area_share_of_figure": 0.046016585544884955,
+  "rel_detail_share": 0.042057920117974,
+  "abs_edge_share": 0.03858351171161427,
+  "rel_density_vs_figure_mean": 0.9139730734030744,
+  "abs_density_vs_figure_mean": 0.8384696790243072
+ },
+ "root_tangle": {
+  "area_share_of_figure": 0.29563427912301093,
+  "rel_detail_share": 0.27941404603379244,
+  "abs_edge_share": 0.23911507624638764,
+  "rel_density_vs_figure_mean": 0.9451341260650314,
+  "abs_density_vs_figure_mean": 0.8088205364943282
+ },
+ "whip_UR": {
+  "area_share_of_figure": 0.028421751706178947,
+  "rel_detail_share": 0.037181846464377104,
+  "abs_edge_share": 0.028638835309601648,
+  "rel_density_vs_figure_mean": 1.3082179750480931,
+  "abs_density_vs_figure_mean": 1.0076379389161825
+ },
+ "top10pct_area_holds_rel_share": 0.3742606444085593,
+ "top25pct_area_holds_rel_share": 0.6512454715312956,
+ "gini_rel": 0.5464466501640051,
+ "top10pct_area_holds_abs_share": 0.3913690382858728,
+ "top25pct_area_holds_abs_share": 0.6571109661486543,
+ "gini_abs": 0.5551192177608459,
+ "peak_rel": {
+  "x": 592,
+  "y": 500,
+  "region": "maw"
+ },
+ "figure_frac_ge_50pct_of_peak_rel": 0.04079537212614801,
+ "figure_frac_ge_70pct_of_peak_rel": 0.019718272936200706,
+ "peak_abs": {
+  "x": 635,
+  "y": 527,
+  "region": "maw"
+ },
+ "figure_frac_ge_50pct_of_peak_abs": 0.03785925880615535,
+ "figure_frac_ge_70pct_of_peak_abs": 0.015737916932460655
+}
