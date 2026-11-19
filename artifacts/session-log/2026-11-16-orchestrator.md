@@ -281,6 +281,8 @@ Board will carry ~10 concepts; Structural spot-checks lever/mass per concept num
 
 **SL-88** · 05:12 · CAD r12 read (C1-C10, 6bb506a). All 10 meet shelf (>=150x150, 300 clear), relief (<=298) and arm-spec numbers. Board carries 8: drop C5 and C7 (mask low beside the maw leaves the head a bare dome and covers the maw edge; worst checklist 2/13, 3/13), agreeing with CAD's recommendation. Honest weakness for the board notes: the CAD set varies mask pose/grip/whip/lean but keeps H's trunk, maw and shelf layout, so silhouettes read close; the FLUX set is where the larger variation comes from. Structural spot-check of the 8 arms (new grips: coil, eye-hole thread; over-head arm) sent to Structural before staging. `[judgment]`
 
+**SL-89** · 05:25 · Round-11 verdict (issue #12, filed 2026-11-18 15:06) read only now: 2/0/4, H loved as base model, V1-V4 dead. Miss: I did not poll issues between the r11 deploy and starting round-12, so the CAD r12 set (flat disc, varied around H) was briefed and built without it; disclosed in the DECISIONS r11 row. Response: (1) FLUX prompt switched from flat disc to a volumetric ball (slightly squashed sphere) held up to deceive; flat-disc C1 outputs set aside as prompt dev. (2) CAD r12s: S1 sphere / S2 oblate 0.6 / S3 oblate 0.45 on H, CAD picks one, then retrofits it onto the 8 boarded r12 concepts (Evan's "draft for me" = H is the primary card; the varied concepts follow his later "substantial variation" request). (3) Coherence review "team" = two independent Sonnet reviewers (A quantitative design-principles, B fine-art/sculpture) so their agreement is evidence; I reconcile into board questions, since Evan wants "back and forth". (4) Structural's r12 flat-disc spot-check left running: method and grips carry over; ball mass/CoM re-check after CAD reports. `[Evan]` / `[error]` / `[judgment]`
+
 ---
 *Edit log*
 
@@ -327,3 +329,5 @@ Board will carry ~10 concepts; Structural spot-checks lever/mass per concept num
 | 2026-11-19 | orchestrator | Appended SL-86 (inference credits unavailable) | [PROVISIONAL] |
 | 2026-11-19 | orchestrator | Appended SL-87 (daily-quota plan, resume reminder) | [PROVISIONAL] |
 | 2026-11-19 | orchestrator | Appended SL-88 (CAD r12 read, C5/C7 dropped, structural spot-check) | [PROVISIONAL] |
+
+| 2026-11-19 | orchestrator | Appended SL-89 (r11 verdict read late, volumetric mask, coherence review) | [PROVISIONAL] |

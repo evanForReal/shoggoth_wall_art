@@ -1,0 +1,36 @@
+{
+  "source": {
+    "issue": 12,
+    "url": "https://github.com/evanForReal/shoggoth_wall_art/issues/12"
+  },
+  "round": "round-11",
+  "reviewed": "2026-11-18",
+  "verdicts": [
+    {
+      "id": "h",
+      "verdict": "love",
+      "notes": "wow. absolutely incredible. amazing work with this one.one possible next edit i’d like you to draft for me: the smiley face is a sphere, or some shape that has volume like an oblate spheroid. it’s a thing that the creature is holding up to deceive the viewer."
+    },
+    {
+      "id": "hd",
+      "verdict": "love",
+      "notes": "this is so excellent. send a review team that checks for the visual coherence of this model (would it just look like some scattered, dense objects or would it look like a cohesive artistic presentation? we can go back and forth with this question to refine the finer details.) but i really like this base model."
+    },
+    {
+      "id": "v1",
+      "verdict": "dislike"
+    },
+    {
+      "id": "v2",
+      "verdict": "dislike"
+    },
+    {
+      "id": "v3",
+      "verdict": "dislike"
+    },
+    {
+      "id": "v4",
+      "verdict": "dislike"
+    }
+  ]
+}

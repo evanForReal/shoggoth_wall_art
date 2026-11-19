@@ -5,6 +5,7 @@
 
 ## Exec Summary (newest first)
 
+- 2026-11-19: R11 verdicts in (issue #12: 2/0/4). H locked as base model; all four one-axis variants dead. Next: draft a volumetric smiley (sphere / oblate spheroid held up to deceive) on H, and a visual-coherence review of H (cohesive piece vs scattered dense objects), iterated with Evan.
 - 2026-11-18: Round-11 DEPLOYED (main e49cce9, Evan pinged; awaiting verdicts). Staged as (review/staging/round-11/, now review/rounds/round-11/): H held-mask hero (eye patch behind, veiny arm eyes) + V1 lamprey, V2 fangs+lamprey, V3 mask further out, V4 patch only. Structural PASS on the mask arm (stud-row condition).
 - 2026-11-18: R10 verdicts in (issue #11: 7/2/5, best round). Locked: A0, distinct tentacles, long whip, fangs + lamprey, denser, held/slipping mask. Round-11 = held-mask hero (mask hovering out on a tentacle, eye patch behind) + one-axis variants; Structural reviews the mask arm before boarding.
 - 2026-11-18: Round-10 DEPLOYED (main 8111a57, Evan pinged; awaiting verdicts). Staged as (review/staging/round-10/, now review/rounds/round-10/): pick-from-spread, A0 (A minus crown) + 12 one-axis variants (tentacles, eyes, mouth, density, outliers) + original A.
@@ -47,6 +48,7 @@
 - **r02:** chibi hard no; Gaudí organic architecture strong.
 - **r03:** Beksiński sweep loved; surface core locked; refined dark rooms; bas-relief + multi-anchor spread.
 - **r04:** c01/c02 concepts loved; horrific asymmetry, less octopus, not a centerpiece; Bayon mask loved; carved never applied; root-over-rock shelves.
+- **r11:** 2/0/4. H loved (base model). V1-V4 dead (lamprey-only, fangs+lamprey, mask further out, plain arms). Smiley to become volumetric (sphere / oblate spheroid), held up to deceive. Coherence review requested.
 - **r10:** 7/2/5. A0, T1, T2, M1, M2, D2, O3 loved; eyes instead of suckers; cancerous yes, lumpy no; sparser and alternate poses dead. Mask held out on a tentacle.
 - **r09:** 0/1/4, no notes; only A (r08) liked. Stop rule fired.
 - **r08:** 0/2/2. A extreme improvement; no crown; distinct tentacles; flow to platforms; B too crowded (let eyes linger); C "justin bieber"; c01 demoted; octopus-like now WANTED (supersedes r04); Evan sketching before r09.
@@ -96,3 +98,4 @@
 | 2026-11-18 | orchestrator | R10 backprop: exec line, r10 takeaway | [PROVISIONAL] |
 | 2026-11-18 | orchestrator | Round-11 staged (exec line) | [PROVISIONAL] |
 | 2026-11-18 | orchestrator | Round-11 deployed (exec line) | [PROVISIONAL] |
+| 2026-11-19 | orchestrator | R11 backprop: exec line, r11 takeaway | [PROVISIONAL] |
