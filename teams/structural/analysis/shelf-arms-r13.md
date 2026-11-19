@@ -138,9 +138,62 @@ Screws: no new scheme, but a 2-per-row group is now needed on all six (E1 worst 
 
 E, creep, allowables ([GENERAL], no coupon); trunk and root-block stiffness, so the root is modelled fixed; plate flat-top skin and rim; fatigue; epoxy shear; stud wood and drywall; all three shelves loaded together with the body and mask arm on the same cleats; 5 kg plant with a pot taller than 140 mm (CAD plant proxy only); the 14 kg mass cap (rods 0.6-0.9 kg each add to it; CAD to report the real hollowed mass).
 
+## 9. UL arm options (follow-up, coordinator request; `shelf_ul_options_r13.py`, `shelf_ul_options_r13.json`)
+
+Same model and criteria as s.1-2, UL only. Rod and tube follow the limb centreline (pre-bent), cover from the 3D EDT of the voxel solid at the centreline (3 mm floor), steel only credited, printed limb beyond the steel stays at its 3 mm hollow credit. Pass = sag <= L/50 (printed-only options with the 1.33 margin), sustained <= 7 MPa on printed parts, lean/bump stress D/C <= 1 (steel 0.7 Fy, printed 22 MPa).
+
+**Board line (option that keeps the thin arm thinnest):** UL can stay exactly as drawn (30 -> 20 mm in H13, 30 -> 17 mm in E1) if a pre-bent 12 mm steel rod runs inside it: H13 then carries the full 5 kg plant (sag 5.4 mm vs 7.0), E1 only about 2.5 kg (a 1.5 kg trailing plant passes), and E1 gets the full 5 kg by adding one buttress tentacle under the plate (already approved in DECISIONS 2026-11-15 for shelves >= 25 cm). Without steel or a prop the UL arm cannot even carry its own printed plate (8-34 mm sag with an empty shelf), so "thin and unreinforced" is not an option.
+
+### 9.1 (a) Bent rod or tube along the centreline
+
+Limb needs d >= D + 0.4 + 2 x 3 mm along the steel span: rod 10 -> 16.4 mm, rod 12 -> 18.4, rod 16 and tube 16 x 1.5 -> 22.4, tube 20 x 2 -> 26.4. As built (UL): r-meta diameter to the plate entry min 19.7 mm (H13) / 16.8 mm (E1), voxel inscribed diameter min 21.6 / 18.7 mm.
+
+| H13 UL (L 350, limit 7.0 mm) | steel ends at s (entry 216) | min cover (mm) | sag at 5 kg (mm) | stress D/C (sus / lean) | self-only sag (mm) | max plant (kg) | verdict 5 kg |
+|---|---|---|---|---|---|---|---|
+| rod 10 | 392 (176 past entry) | 5.6 | 11.2 | 0.99 / 1.67 | 1.5 | 0.97 | FAIL |
+| **rod 12** | 392 (176 past entry) | 4.6 | **5.4** | 0.58 / 0.97 | 0.8 | **5.3** | **PASS** |
+| rod 16 | 148 (68 short) | 3.2 | 33.9 | 2.47 / 1.35 | 4.0 | 0.5 | FAIL |
+| tube 16 x 1.5 | 148 | 3.2 | 34.8 | 2.47 / 1.35 | 4.1 | 0.5 | FAIL |
+| tube 20 x 2 | 76 | 3.1 | 67.1 | 2.47 / 1.35 | 8.4 | 0 | FAIL |
+| no steel, hollow 3 mm / 100% infill | | | 98.7 / 65.3 | 2.47 / 1.87 | 12.8 / 8.4 | 0 / 0 | FAIL |
+
+| E1 UL (L 471, limit 9.4 mm) | steel ends at s (entry 312) | min cover (mm) | sag at 5 kg (mm) | stress D/C (sus / lean) | self-only sag (mm) | max plant (kg) | verdict 5 kg |
+|---|---|---|---|---|---|---|---|
+| rod 10 | 484 (172 past entry) | 4.2 | 23.1 | 1.36 / 2.27 | 3.6 | 0 | FAIL |
+| **rod 12** | 484 (172 past entry) | 3.2 | 11.2 | 0.79 / 1.32 | 1.8 | **2.5** | FAIL at 5 kg, PASS at 1.5-2.5 kg |
+| rod 16 | 188 (124 short) | 3.3 | 104 | 3.65 / 2.00 | 12.8 | 0 | FAIL |
+| tube 16 x 1.5 | 188 | 3.3 | 106 | 3.65 / 2.00 | 13.1 | 0 | FAIL |
+| tube 20 x 2 | 92 | 3.1 | 178 | 3.65 / 2.00 | 23.3 | 0 | FAIL |
+| no steel, hollow 3 mm / 100% infill | | | 247 / 169 | 3.65 / 3.01 | 33.8 / 22.8 | 0 / 0 | FAIL |
+
+Reading: a bigger rod or tube does not help UL, because it cannot keep 3 mm cover past s = 148 (H13) / 188 (E1) where the limb is narrower than 22.4 mm; the printed 10-12 mm limb beyond the steel then governs. The rod 12 passes because it runs 172-176 mm past the entry into the plate flare, where the section is large; 10 mm is too weak (stress and sag). Cover for rod 12 is 4.6 mm (H13) and only 3.2 mm (E1). The limb as built is already thick enough for a 12 mm rod everywhere (min inscribed d 21.6 / 18.7 vs 18.4 needed), so no thickening and no change in the thin silhouette.
+
+Bend feasibility (general cold-bend rule: centreline radius >= 3 d, mandrel for tube; [GENERAL], Fabrication to confirm): smallest centreline radius of curvature of the UL sweep over the rod span is 58 mm (H13) and 121 mm (E1), against 36 mm for rod 12 (30 mm rod 10, 48 mm tube 16): bendable, but a 3D (non-planar) curve, so a jig or CNC wire bender and a template from the CAD centreline. Solid root block: the straight run back from the limb root along the root tangent is only 46 mm (H13) / 84 mm (E1) before the rod hits the 8 mm back plate (z >= 8 mm + r), against the 8 d = 96 mm embed of mask-arm S3. H13 therefore needs a second bend into the trunk (parallel to the wall, R >= 36 mm) or accepts 46 mm embed: bearing M/(0.67 e) = 34.6 N.m / 31 mm = 1.1 kN on 12 x 23 mm = 4.1 MPa vs 8 MPa transient, passes but with half the margin of the straight-rod arms; E1 84 mm (bearing 1.7 MPa, same method) is fine. Root block 100% solid, merged into the 100 x 100 x 6 mm back pad (s.5 item 4). Rod weight 3.5 N (H13) / 4.3 N (E1) for rod 12.
+
+### 9.2 (b) Light-load UL shelf
+
+Maximum plant (pot + wet soil) at the same L/50 and stress limits, pot CG at the bound lever (350 / 471 mm; a smaller pot would sit nearer the rim anyway), plate weight unchanged (10.6 N):
+
+| UL | as built hollow | as built 100% infill | bent rod 10 | bent rod 12 |
+|---|---|---|---|---|
+| H13 max plant | 0 kg | 0 kg | 0.97 kg | **5.3 kg** |
+| E1 max plant | 0 kg | 0 kg | 0 kg | **2.5 kg** |
+
+As built, UL carries nothing: the printed plate alone (empty) sags 12.8 mm hollow / 8.4 mm solid in H13 and 33.8 / 22.8 mm in E1 against 7.0 / 9.4, and at 1.5 kg the worst ratio (sag, with margin) is still 7.3 hollow / 4.8 solid in H13 (JSON `worst_1p5kg`). A small trailing plant of 1-1.5 kg is **viable only with the bent 12 mm rod** (H13 worst D/C 0.63 at 1.5 kg; E1 0.87). With rod 10 it is marginal in H13 (max 0.97 kg, 1.5 kg gives D/C 1.09) and not viable in E1.
+
+### 9.3 (c) Other fixes
+
+1. **Prop under the plate (rp2 buttress strut, 45 deg, PETG 24 x 3 tube, L 450 mm, E_lt 640 MPa, vertical stiffness 140 N/mm).** Prop at the pot CG. UL limb as built: prop reaction 56 N (all of the 49 N plant plus plate share), strut axial 79-80 N vs the 260 N creep-buckling allowance (rp2 strut spec), rim sag 1.4 mm hollow / 1.0 mm solid (H13) and 2.2 / 1.5 mm (E1) vs 7.0 / 9.4, limb stress D/C 0.08-0.15 sustained and 0.45-0.87 under lean with the prop reaction held at its sustained value (lean not relieved). So the thin limb passes for the full 5 kg in both variants with no steel in it. Cost: a second tentacle under the plate with its foot on the wall (bearing pad + 56 N shear, 56 N horizontal: rp2 foot spec), and a 56 N inward pull at the UL root anchors (D/C about 0.1). This is the buttress tentacle already approved for >= 25 cm shelves. It is visible unless it reads as a limb; not hidden in the lace.
+2. **Plate moved toward the trunk (root unchanged, plate rigid).** Minimum inward shift for 5 kg: printed limb 230-250 mm (H13, i.e. plate at L ~100-120 mm: impossible, the plate entry is already 155 mm out), E1 none within 300 mm; bent rod 12: 0 mm H13, 120 mm E1 (L 351); rod 16: 140 / 200 mm; rod 10: 140 / 260 mm. Moving the plate does not rescue the thin printed limb; it only helps E1 with a rod.
+3. **Second attachment through the lace membrane to the trunk.** Not quantified: no membrane geometry or thickness (s.9.5 of mask-arm-v1 cites 2.6 mm) is in the CAD data I have, so I give it no credit. If CAD can make a >= 6 mm solid web from the plate underside to the back pad it behaves like the prop above in tension/compression; any web or tie must be sized as a structural member (prop numbers: 56-80 N), not as lace.
+4. **Lighter plate.** The plate (1.08 kg solid-volume x 0.42 retention) is 10.6 N, more than the limb can carry unaided; every 25% off the plate weight cuts the self-only sag of the hollow limb by about 3 mm (H13) and 8 mm (E1) (scaled from the self-only values, not re-run). Not enough alone.
+
+Not verified here: rod bending residual stress and springback, rod-to-sheath epoxy in a curved bore, prop foot anchorage and its visibility, E and creep ([GENERAL]).
+
 ---
 *Edit log*
 
 | Date | Agent | Change | Signed-off-by |
 |------|-------|--------|---------------|
 | 2026-11-19 | structural-lead | Initial creation: r13 shelf-arm reach check, H13 and E1 | [PROVISIONAL] |
+| 2026-11-19 | structural-lead | Added s.9 UL arm options (bent rod/tube, light-load plant, prop, plate move) + shelf_ul_options_r13.py/json | [PROVISIONAL] |

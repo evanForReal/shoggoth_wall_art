@@ -1,0 +1,402 @@
+{
+ "H13": {
+  "L_bound": 350.3,
+  "L_nom": 271.1,
+  "r_root_entry": [
+   15.2,
+   9.9
+  ],
+  "s_entry": 216.0,
+  "min_limb_inscribed_d_to_entry_mm": 21.6,
+  "min_r_meta_d_to_entry_mm": 19.7,
+  "options": {
+   "print_shell": {
+    "fits": true,
+    "sag_5kg_mm": 98.7,
+    "limit_mm": 7.01,
+    "sag_ratio_5kg": 18.74,
+    "sus_ratio": 2.47,
+    "bump_ratio": 1.35,
+    "pass_5kg": false,
+    "sag_self_only_mm": 12.84,
+    "m_max_kg": 0.0,
+    "pass_1p5kg": false,
+    "pass_1kg": false,
+    "worst_1p5kg": 7.32,
+    "root_M_lean_5kg_Nm": 34.1
+   },
+   "print_solid": {
+    "fits": true,
+    "sag_5kg_mm": 65.31,
+    "limit_mm": 7.01,
+    "sag_ratio_5kg": 12.4,
+    "sus_ratio": 1.87,
+    "bump_ratio": 1.03,
+    "pass_5kg": false,
+    "sag_self_only_mm": 8.43,
+    "m_max_kg": 0.0,
+    "pass_1p5kg": false,
+    "pass_1kg": false,
+    "worst_1p5kg": 4.84,
+    "root_M_lean_5kg_Nm": 34.1
+   },
+   "rod10": {
+    "fits": true,
+    "rod_end_s_mm": 392.0,
+    "rod_end_vs_entry_mm": 176.0,
+    "min_cover_mm": 5.6,
+    "min_limb_d_over_rod_span_mm": 12.0,
+    "rod_weight_N": 2.4,
+    "min_bend_R_mm": 58.267761981871864,
+    "k_end": 98,
+    "sag_5kg_mm": 11.19,
+    "limit_mm": 7.01,
+    "sag_ratio_5kg": 1.6,
+    "sus_ratio": 0.99,
+    "bump_ratio": 1.67,
+    "pass_5kg": false,
+    "sag_self_only_mm": 1.53,
+    "m_max_kg": 0.97,
+    "pass_1p5kg": false,
+    "pass_1kg": false,
+    "worst_1p5kg": 1.09,
+    "root_M_lean_5kg_Nm": 34.5
+   },
+   "rod12": {
+    "fits": true,
+    "rod_end_s_mm": 392.0,
+    "rod_end_vs_entry_mm": 176.0,
+    "min_cover_mm": 4.6,
+    "min_limb_d_over_rod_span_mm": 12.0,
+    "rod_weight_N": 3.45,
+    "min_bend_R_mm": 58.267761981871864,
+    "k_end": 98,
+    "sag_5kg_mm": 5.43,
+    "limit_mm": 7.01,
+    "sag_ratio_5kg": 0.77,
+    "sus_ratio": 0.58,
+    "bump_ratio": 0.97,
+    "pass_5kg": true,
+    "sag_self_only_mm": 0.77,
+    "m_max_kg": 5.29,
+    "pass_1p5kg": true,
+    "pass_1kg": true,
+    "worst_1p5kg": 0.63,
+    "root_M_lean_5kg_Nm": 34.6
+   },
+   "rod16": {
+    "fits": true,
+    "rod_end_s_mm": 148.0,
+    "rod_end_vs_entry_mm": -68.0,
+    "min_cover_mm": 3.2,
+    "min_limb_d_over_rod_span_mm": 23.9,
+    "rod_weight_N": 2.35,
+    "min_bend_R_mm": 58.267761981871864,
+    "k_end": 37,
+    "sag_5kg_mm": 33.88,
+    "limit_mm": 7.01,
+    "sag_ratio_5kg": 4.84,
+    "sus_ratio": 2.47,
+    "bump_ratio": 1.35,
+    "pass_5kg": false,
+    "sag_self_only_mm": 3.99,
+    "m_max_kg": 0.51,
+    "pass_1p5kg": false,
+    "pass_1kg": false,
+    "worst_1p5kg": 1.85,
+    "root_M_lean_5kg_Nm": 34.2
+   },
+   "tube16x1.5": {
+    "fits": true,
+    "rod_end_s_mm": 148.0,
+    "rod_end_vs_entry_mm": -68.0,
+    "min_cover_mm": 3.2,
+    "min_limb_d_over_rod_span_mm": 23.9,
+    "rod_weight_N": 0.8,
+    "min_bend_R_mm": 58.267761981871864,
+    "k_end": 37,
+    "sag_5kg_mm": 34.78,
+    "limit_mm": 7.01,
+    "sag_ratio_5kg": 4.96,
+    "sus_ratio": 2.47,
+    "bump_ratio": 1.35,
+    "pass_5kg": false,
+    "sag_self_only_mm": 4.11,
+    "m_max_kg": 0.47,
+    "pass_1p5kg": false,
+    "pass_1kg": false,
+    "worst_1p5kg": 1.9,
+    "root_M_lean_5kg_Nm": 34.1
+   },
+   "tube20x2": {
+    "fits": true,
+    "rod_end_s_mm": 76.0,
+    "rod_end_vs_entry_mm": -140.0,
+    "min_cover_mm": 3.1,
+    "min_limb_d_over_rod_span_mm": 27.7,
+    "rod_weight_N": 0.7,
+    "min_bend_R_mm": 58.267761981871864,
+    "k_end": 19,
+    "sag_5kg_mm": 67.07,
+    "limit_mm": 7.01,
+    "sag_ratio_5kg": 9.57,
+    "sus_ratio": 2.47,
+    "bump_ratio": 1.35,
+    "pass_5kg": false,
+    "sag_self_only_mm": 8.39,
+    "m_max_kg": 0.0,
+    "pass_1p5kg": false,
+    "pass_1kg": false,
+    "worst_1p5kg": 3.71,
+    "root_M_lean_5kg_Nm": 34.1
+   }
+  },
+  "c1_plate_moved_inward_5kg": {
+   "print_shell": {
+    "min_inward_shift_mm": 250,
+    "L_bound_after_mm": 100.0
+   },
+   "print_solid": {
+    "min_inward_shift_mm": 230,
+    "L_bound_after_mm": 120.0
+   },
+   "rod10": {
+    "min_inward_shift_mm": 140,
+    "L_bound_after_mm": 210.0
+   },
+   "rod12": {
+    "min_inward_shift_mm": 0,
+    "L_bound_after_mm": 350.0
+   },
+   "rod16": {
+    "min_inward_shift_mm": 140,
+    "L_bound_after_mm": 210.0
+   }
+  },
+  "c2_hidden_prop_5kg": {
+   "print_shell": {
+    "prop_reaction_N": 56.1,
+    "strut_axial_N": 79.4,
+    "strut_axial_limit_N": 260,
+    "sag_with_prop_mm": 1.43,
+    "limit_mm": 7.01,
+    "sus_ratio": 0.08,
+    "bump_ratio_no_prop_relief": 1.35,
+    "bump_ratio_prop_at_sustained_R": 0.59,
+    "pass_sag": true
+   },
+   "print_solid": {
+    "prop_reaction_N": 55.9,
+    "strut_axial_N": 79.1,
+    "strut_axial_limit_N": 260,
+    "sag_with_prop_mm": 0.96,
+    "limit_mm": 7.01,
+    "sus_ratio": 0.05,
+    "bump_ratio_no_prop_relief": 1.03,
+    "bump_ratio_prop_at_sustained_R": 0.45,
+    "pass_sag": true
+   }
+  },
+  "c2_prop_vertical_stiffness_N_per_mm": 140.7
+ },
+ "E1": {
+  "L_bound": 470.5,
+  "L_nom": 396.1,
+  "r_root_entry": [
+   15.2,
+   8.4
+  ],
+  "s_entry": 312.0,
+  "min_limb_inscribed_d_to_entry_mm": 18.7,
+  "min_r_meta_d_to_entry_mm": 16.8,
+  "options": {
+   "print_shell": {
+    "fits": true,
+    "sag_5kg_mm": 247.38,
+    "limit_mm": 9.41,
+    "sag_ratio_5kg": 34.96,
+    "sus_ratio": 3.65,
+    "bump_ratio": 2.0,
+    "pass_5kg": false,
+    "sag_self_only_mm": 33.82,
+    "m_max_kg": 0.0,
+    "pass_1p5kg": false,
+    "pass_1kg": false,
+    "worst_1p5kg": 13.83,
+    "root_M_lean_5kg_Nm": 46.2
+   },
+   "print_solid": {
+    "fits": true,
+    "sag_5kg_mm": 169.04,
+    "limit_mm": 9.41,
+    "sag_ratio_5kg": 23.89,
+    "sus_ratio": 3.01,
+    "bump_ratio": 1.65,
+    "pass_5kg": false,
+    "sag_self_only_mm": 22.84,
+    "m_max_kg": 0.0,
+    "pass_1p5kg": false,
+    "pass_1kg": false,
+    "worst_1p5kg": 9.42,
+    "root_M_lean_5kg_Nm": 46.2
+   },
+   "rod10": {
+    "fits": true,
+    "rod_end_s_mm": 484.0,
+    "rod_end_vs_entry_mm": 172.0,
+    "min_cover_mm": 4.2,
+    "min_limb_d_over_rod_span_mm": 12.0,
+    "rod_weight_N": 2.95,
+    "min_bend_R_mm": 120.66860199774956,
+    "k_end": 121,
+    "sag_5kg_mm": 23.1,
+    "limit_mm": 9.41,
+    "sag_ratio_5kg": 2.45,
+    "sus_ratio": 1.36,
+    "bump_ratio": 2.27,
+    "pass_5kg": false,
+    "sag_self_only_mm": 3.55,
+    "m_max_kg": 0.0,
+    "pass_1p5kg": false,
+    "pass_1kg": false,
+    "worst_1p5kg": 1.49,
+    "root_M_lean_5kg_Nm": 46.8
+   },
+   "rod12": {
+    "fits": true,
+    "rod_end_s_mm": 484.0,
+    "rod_end_vs_entry_mm": 172.0,
+    "min_cover_mm": 3.2,
+    "min_limb_d_over_rod_span_mm": 12.0,
+    "rod_weight_N": 4.25,
+    "min_bend_R_mm": 120.66860199774956,
+    "k_end": 121,
+    "sag_5kg_mm": 11.22,
+    "limit_mm": 9.41,
+    "sag_ratio_5kg": 1.19,
+    "sus_ratio": 0.79,
+    "bump_ratio": 1.32,
+    "pass_5kg": false,
+    "sag_self_only_mm": 1.8,
+    "m_max_kg": 2.51,
+    "pass_1p5kg": true,
+    "pass_1kg": true,
+    "worst_1p5kg": 0.87,
+    "root_M_lean_5kg_Nm": 47.1
+   },
+   "rod16": {
+    "fits": true,
+    "rod_end_s_mm": 188.0,
+    "rod_end_vs_entry_mm": -124.0,
+    "min_cover_mm": 3.3,
+    "min_limb_d_over_rod_span_mm": 23.6,
+    "rod_weight_N": 2.97,
+    "min_bend_R_mm": 120.66860199774956,
+    "k_end": 47,
+    "sag_5kg_mm": 104.36,
+    "limit_mm": 9.41,
+    "sag_ratio_5kg": 11.09,
+    "sus_ratio": 3.65,
+    "bump_ratio": 2.0,
+    "pass_5kg": false,
+    "sag_self_only_mm": 12.77,
+    "m_max_kg": 0.0,
+    "pass_1p5kg": false,
+    "pass_1kg": false,
+    "worst_1p5kg": 4.28,
+    "root_M_lean_5kg_Nm": 46.4
+   },
+   "tube16x1.5": {
+    "fits": true,
+    "rod_end_s_mm": 188.0,
+    "rod_end_vs_entry_mm": -124.0,
+    "min_cover_mm": 3.3,
+    "min_limb_d_over_rod_span_mm": 23.6,
+    "rod_weight_N": 1.01,
+    "min_bend_R_mm": 120.66860199774956,
+    "k_end": 47,
+    "sag_5kg_mm": 106.34,
+    "limit_mm": 9.41,
+    "sag_ratio_5kg": 11.3,
+    "sus_ratio": 3.65,
+    "bump_ratio": 2.0,
+    "pass_5kg": false,
+    "sag_self_only_mm": 13.06,
+    "m_max_kg": 0.0,
+    "pass_1p5kg": false,
+    "pass_1kg": false,
+    "worst_1p5kg": 4.36,
+    "root_M_lean_5kg_Nm": 46.3
+   },
+   "tube20x2": {
+    "fits": true,
+    "rod_end_s_mm": 92.0,
+    "rod_end_vs_entry_mm": -220.0,
+    "min_cover_mm": 3.1,
+    "min_limb_d_over_rod_span_mm": 27.7,
+    "rod_weight_N": 0.84,
+    "min_bend_R_mm": 120.66860199774956,
+    "k_end": 23,
+    "sag_5kg_mm": 177.79,
+    "limit_mm": 9.41,
+    "sag_ratio_5kg": 18.89,
+    "sus_ratio": 3.65,
+    "bump_ratio": 2.0,
+    "pass_5kg": false,
+    "sag_self_only_mm": 23.25,
+    "m_max_kg": 0.0,
+    "pass_1p5kg": false,
+    "pass_1kg": false,
+    "worst_1p5kg": 7.39,
+    "root_M_lean_5kg_Nm": 46.2
+   }
+  },
+  "c1_plate_moved_inward_5kg": {
+   "print_shell": {
+    "min_inward_shift_mm": null,
+    "L_bound_after_mm": null
+   },
+   "print_solid": {
+    "min_inward_shift_mm": null,
+    "L_bound_after_mm": null
+   },
+   "rod10": {
+    "min_inward_shift_mm": 260,
+    "L_bound_after_mm": 211.0
+   },
+   "rod12": {
+    "min_inward_shift_mm": 120,
+    "L_bound_after_mm": 351.0
+   },
+   "rod16": {
+    "min_inward_shift_mm": 200,
+    "L_bound_after_mm": 271.0
+   }
+  },
+  "c2_hidden_prop_5kg": {
+   "print_shell": {
+    "prop_reaction_N": 56.7,
+    "strut_axial_N": 80.2,
+    "strut_axial_limit_N": 260,
+    "sag_with_prop_mm": 2.19,
+    "limit_mm": 9.41,
+    "sus_ratio": 0.15,
+    "bump_ratio_no_prop_relief": 2.0,
+    "bump_ratio_prop_at_sustained_R": 0.87,
+    "pass_sag": true
+   },
+   "print_solid": {
+    "prop_reaction_N": 56.6,
+    "strut_axial_N": 80.0,
+    "strut_axial_limit_N": 260,
+    "sag_with_prop_mm": 1.46,
+    "limit_mm": 9.41,
+    "sus_ratio": 0.12,
+    "bump_ratio_no_prop_relief": 1.65,
+    "bump_ratio_prop_at_sustained_R": 0.72,
+    "pass_sag": true
+   }
+  },
+  "c2_prop_vertical_stiffness_N_per_mm": 140.7
+ }
+}
