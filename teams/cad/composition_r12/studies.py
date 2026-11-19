@@ -12,8 +12,8 @@ TABLE = {   # concept -> axis values (see variation_table.csv for the long names
  'C6': 'B T E T L R ML A R', 'C7': 'R W F T X L ML T U', 'C8': 'O F C A F E ML S R', 'C9': 'B S F A B R LL A L', 'C10': 'R P E M L U UR T R'}
 PATTERNS = {   # massive limb takes: shelf arms (name, shelf (cx, top), root on the trunk, R0 mm radius at root: 50 = 100 mm dia massive, 30 = 60 mm, 15 = 30 mm)
  'LL': dict(arms=[('S1_UL', (-335, 285), (-105, 150), 15.0), ('S2_UR', (335, 150), (70, 60), 30.0), ('S3_LL', (-335, -190), (-70, -100), 50.0)], right_top=150),
- 'UR': dict(arms=[('S1_UL', (-335, 150), (-105, 150), 30.0), ('S2_UR', (335, 300), (85, 110), 50.0), ('S3_LL', (-335, -190), (-70, -100), 15.0)], right_top=300),
- 'ML': dict(arms=[('S1_UL', (-335, 330), (-105, 150), 15.0), ('S2_UR', (335, 170), (70, 60), 30.0), ('S3_LL', (-340, -50), (-105, -20), 50.0)], right_top=170)}
+ 'UR': dict(arms=[('S1_UL', (-335, 245), (-105, 150), 30.0), ('S2_UR', (335, 300), (85, 110), 50.0), ('S3_LL', (-335, -190), (-70, -100), 15.0)], right_top=300),
+ 'ML': dict(arms=[('S1_UL', (-335, 362), (-105, 150), 15.0), ('S2_UR', (335, 170), (70, 60), 30.0), ('S3_LL', (-340, -50), (-105, -20), 50.0)], right_top=170)}
 LEAN_AMP = {'U': 0.0, 'L': -60.0, 'R': 60.0}      # top of the trunk shifts by this many mm (about 10 deg at the head)
 bend = lambda amp, x, y: x + amp * float(np.clip((y + 245) / 507.0, 0, 1.15)) ** 1.5
 def bend_slope(amp, y): return amp * 1.5 * float(np.clip((y + 245) / 507.0, 0.001, 1.15)) ** 0.5 / 507.0
@@ -79,11 +79,11 @@ def pose_spec(pc, holder, pose, amp, maw):
     elif pose == 'T': c = c + np.array([-30 * (1 if side <= 0 else -1) * 0.6, -14]); yaw = 33.0 * (1 if side <= 0 else -1)
     elif pose == 'S': c = c + np.array([-30 * (1 if side <= 0 else -1) * 0.6, -20]); roll = 22.0 * (1 if side <= 0 else -1); pitch = 24.0
     elif pose == 'P': c = c + np.array([4.0, -100.0]); roll = 8.0 * (1 if side <= 0 else -1); pitch = 14.0
-    elif pose == 'W': sx = side if side != 0 else -1; c = np.array([sx * 112.0, 88.0]); roll = 10.0 * sx
+    elif pose == 'W': sx = side if side != 0 else -1; c = np.array([sx * 112.0, 125.0]); roll = 10.0 * sx
     H.update(c=tuple(c), yaw=yaw, pitch=pitch, roll=roll, boss=boss)
     px, py = c
     H['root_pref'] = {'B': (px + 30, py - 85), 'L': (px - 78, py - 30), 'R': (px + 78, py - 30), 'O': (px + 12, py + 78)}[holder]; H['root_r'] = 55
-    if pose == 'W': H['gap'] = 135.0; H['clear_margin'] = 6.0; H['clear_start'] = 36; H['boss'] = (0.0, 38.0); H['root_pref'] = (bend(amp, sx * 45.0, 245.0), 245.0); H['root_r'] = 85
+    if pose == 'W': H['gap'] = 100.0; H['clear_margin'] = 8.0; H['clear_start'] = 45; H['boss'] = (0.0, 38.0); H['root_pref'] = (bend(amp, sx * 45.0, 245.0), 245.0); H['root_r'] = 85
     return H
 
 def compose(cid):
@@ -91,7 +91,7 @@ def compose(cid):
     maw = maw_for(mo, amp); sk = skeleton(amp, maw, ma, mo); arms = sk['arms']
     PC = (bend(amp, 8.0, 262.0), 262.0)
     H = pose_spec(PC, ho, po, amp, maw); H['grip'] = gr
-    pcen = PC if po != 'W' else tuple(np.array(H['c']) + np.array([40 if H['c'][0] < 0 else -40, 5]))
+    pcen = PC if po != 'W' else tuple(np.array(H['c']) + np.array([-14 if H['c'][0] < 0 else 14, 0]))
     for a in arms: a.update(n=1, smooth=True, R0=a['R0w'], p=0.6, r_tip=6.0, seed=0.4 + 1.3 * arms.index(a), nodes=NODES)
     for a in arms:
         if a['R0w'] >= 30.0: a['eyerow'] = 9 if a['R0w'] >= 50 else 7

@@ -1,0 +1,352 @@
+{
+ "C1": {
+  "shelves": {
+   "S1_UL": {
+    "top_y": 285,
+    "cx": -335,
+    "flat_top_x_mm": 152,
+    "flat_top_z_mm": 188,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 2,
+    "room_to_envelope_mm": 172,
+    "ok": true
+   },
+   "S2_UR": {
+    "top_y": 150,
+    "cx": 335,
+    "flat_top_x_mm": 194,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 307,
+    "ok": true
+   },
+   "S3_LL": {
+    "top_y": -190,
+    "cx": -335,
+    "flat_top_x_mm": 188,
+    "flat_top_z_mm": 158,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 2,
+    "room_to_envelope_mm": 647,
+    "ok": true
+   }
+  },
+  "max_z_mm": 254.0
+ },
+ "C2": {
+  "shelves": {
+   "S1_UL": {
+    "top_y": 245,
+    "cx": -335,
+    "flat_top_x_mm": 158,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 212,
+    "ok": true
+   },
+   "S2_UR": {
+    "top_y": 300,
+    "cx": 335,
+    "flat_top_x_mm": 194,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 157,
+    "ok": true
+   },
+   "S3_LL": {
+    "top_y": -190,
+    "cx": -335,
+    "flat_top_x_mm": 172,
+    "flat_top_z_mm": 172,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 230,
+    "room_to_envelope_mm": 647,
+    "ok": true
+   }
+  },
+  "max_z_mm": 298.0
+ },
+ "C3": {
+  "shelves": {
+   "S1_UL": {
+    "top_y": 362,
+    "cx": -335,
+    "flat_top_x_mm": 158,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 95,
+    "ok": true
+   },
+   "S2_UR": {
+    "top_y": 170,
+    "cx": 335,
+    "flat_top_x_mm": 194,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 287,
+    "ok": true
+   },
+   "S3_LL": {
+    "top_y": -50,
+    "cx": -340,
+    "flat_top_x_mm": 182,
+    "flat_top_z_mm": 164,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 62,
+    "room_to_envelope_mm": 507,
+    "ok": true
+   }
+  },
+  "max_z_mm": 298.0
+ },
+ "C4": {
+  "shelves": {
+   "S1_UL": {
+    "top_y": 285,
+    "cx": -335,
+    "flat_top_x_mm": 158,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 172,
+    "ok": true
+   },
+   "S2_UR": {
+    "top_y": 150,
+    "cx": 335,
+    "flat_top_x_mm": 194,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 307,
+    "ok": true
+   },
+   "S3_LL": {
+    "top_y": -190,
+    "cx": -335,
+    "flat_top_x_mm": 188,
+    "flat_top_z_mm": 158,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 2,
+    "room_to_envelope_mm": 647,
+    "ok": true
+   }
+  },
+  "max_z_mm": 268.0
+ },
+ "C5": {
+  "shelves": {
+   "S1_UL": {
+    "top_y": 285,
+    "cx": -335,
+    "flat_top_x_mm": 158,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 172,
+    "ok": true
+   },
+   "S2_UR": {
+    "top_y": 150,
+    "cx": 335,
+    "flat_top_x_mm": 194,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 307,
+    "ok": true
+   },
+   "S3_LL": {
+    "top_y": -190,
+    "cx": -335,
+    "flat_top_x_mm": 172,
+    "flat_top_z_mm": 172,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 2,
+    "room_to_envelope_mm": 647,
+    "ok": true
+   }
+  },
+  "max_z_mm": 254.0
+ },
+ "C6": {
+  "shelves": {
+   "S1_UL": {
+    "top_y": 362,
+    "cx": -335,
+    "flat_top_x_mm": 158,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 95,
+    "ok": true
+   },
+   "S2_UR": {
+    "top_y": 170,
+    "cx": 335,
+    "flat_top_x_mm": 194,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 10,
+    "room_to_envelope_mm": 287,
+    "ok": true
+   },
+   "S3_LL": {
+    "top_y": -50,
+    "cx": -340,
+    "flat_top_x_mm": 182,
+    "flat_top_z_mm": 164,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 2,
+    "room_to_envelope_mm": 507,
+    "ok": true
+   }
+  },
+  "max_z_mm": 298.0
+ },
+ "C7": {
+  "shelves": {
+   "S1_UL": {
+    "top_y": 362,
+    "cx": -335,
+    "flat_top_x_mm": 158,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 2,
+    "room_to_envelope_mm": 95,
+    "ok": true
+   },
+   "S2_UR": {
+    "top_y": 170,
+    "cx": 335,
+    "flat_top_x_mm": 194,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 2,
+    "room_to_envelope_mm": 287,
+    "ok": true
+   },
+   "S3_LL": {
+    "top_y": -50,
+    "cx": -340,
+    "flat_top_x_mm": 182,
+    "flat_top_z_mm": 164,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 62,
+    "room_to_envelope_mm": 507,
+    "ok": true
+   }
+  },
+  "max_z_mm": 254.0
+ },
+ "C8": {
+  "shelves": {
+   "S1_UL": {
+    "top_y": 362,
+    "cx": -335,
+    "flat_top_x_mm": 158,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 95,
+    "ok": true
+   },
+   "S2_UR": {
+    "top_y": 170,
+    "cx": 335,
+    "flat_top_x_mm": 194,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 60,
+    "room_to_envelope_mm": 287,
+    "ok": true
+   },
+   "S3_LL": {
+    "top_y": -50,
+    "cx": -340,
+    "flat_top_x_mm": 182,
+    "flat_top_z_mm": 164,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 2,
+    "room_to_envelope_mm": 507,
+    "ok": true
+   }
+  },
+  "max_z_mm": 254.0
+ },
+ "C9": {
+  "shelves": {
+   "S1_UL": {
+    "top_y": 285,
+    "cx": -335,
+    "flat_top_x_mm": 158,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 172,
+    "ok": true
+   },
+   "S2_UR": {
+    "top_y": 150,
+    "cx": 335,
+    "flat_top_x_mm": 194,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 307,
+    "ok": true
+   },
+   "S3_LL": {
+    "top_y": -190,
+    "cx": -335,
+    "flat_top_x_mm": 188,
+    "flat_top_z_mm": 158,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 2,
+    "room_to_envelope_mm": 647,
+    "ok": true
+   }
+  },
+  "max_z_mm": 294.0
+ },
+ "C10": {
+  "shelves": {
+   "S1_UL": {
+    "top_y": 245,
+    "cx": -335,
+    "flat_top_x_mm": 158,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 212,
+    "ok": true
+   },
+   "S2_UR": {
+    "top_y": 300,
+    "cx": 335,
+    "flat_top_x_mm": 194,
+    "flat_top_z_mm": 182,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 300,
+    "room_to_envelope_mm": 157,
+    "ok": true
+   },
+   "S3_LL": {
+    "top_y": -190,
+    "cx": -335,
+    "flat_top_x_mm": 172,
+    "flat_top_z_mm": 172,
+    "clear_above_flat_mm": 300,
+    "clear_above_footprint_mm": 230,
+    "room_to_envelope_mm": 647,
+    "ok": true
+   }
+  },
+  "max_z_mm": 274.0
+ }
+}
