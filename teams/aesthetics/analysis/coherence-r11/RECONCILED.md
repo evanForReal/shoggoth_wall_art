@@ -16,7 +16,7 @@ It drifts toward "assembly" up close and from the side, at specific junctions.
 |---|---|---|---|---|
 | 1 | Shelves read as separate objects (bright, regular, "plates on stalks") | lip p90 luminance 164/140/117 vs limb median 80; 2 straight front edges | junction 1, side crop c7 | Ask Evan (K1 value, K4 shape) |
 | 2 | Six grip rings read as stitches / clip-on bezel; the hold is invisible | refinement 2 | junction 6, R6 | Superseded by the volumetric-ball grip (CAD r12s cupping tendrils); not asked separately |
-| 3 | Eye groups compete with the head patch (left-shoulder beads outrank the maw in saliency) | saliency: beads 0.89, maw 0.64 (relative to mask) | junction 7, R7 | Ask Evan (K2) |
+| 3 | Eye groups compete with the head patch (left-shoulder beads outrank the maw in saliency) | saliency: beads 0.89, maw 0.64 (relative to mask) | junction 9, R7 | Ask Evan (K2) |
 | 4 | Too many value levels outside the focal pair | tangle darken 25-40%, shelf lips to <= 1.3x limb | one umber glaze; mask + teeth only bone | Ask Evan (K1) |
 | 5 | Lace / lower filler reads as cut sheet or even mat | tangle 29.6% area at 0.95x mean density | flat cut sheet, no hem (R3) | Hold: value fix (K1) first; geometry after Evan's K1 answer |
 
