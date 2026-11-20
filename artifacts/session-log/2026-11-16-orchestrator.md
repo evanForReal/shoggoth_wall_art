@@ -295,6 +295,8 @@ Board will carry ~10 concepts; Structural spot-checks lever/mass per concept num
 
 **SL-95** · 19:09 · Evan approved "Deploy + email ping" for round-13. Staging moved to review/rounds/round-13 (4218564), main fast-forwarded, ping sent with the githack URL at 4218564. FLUX last free try 04:20 UTC 2026-11-20 unchanged; images, if any, go to round 14. `[Evan]`
 
+**SL-96** · 04:22 · FLUX last free try (04:21 UTC 2026-11-20, trig_01W3kw892etW8iqrRSYAngfL): 8 of 20 images, then the quota ran out. Reviewed in teams/aesthetics/analysis/round-12-flux/REVIEW.md. All masks render as theatre masks, not the ball or emoticon; 4 of 8 put a face on the trunk; every image is a vertical totem, not the wide relief. Not boarded. No further retries scheduled, per the reminder's own stop rule. Recommendation to Evan: HF PRO is not worth it for concept art at this stage. `[judgment]`
+
 ---
 *Edit log*
 
@@ -348,3 +350,4 @@ Board will carry ~10 concepts; Structural spot-checks lever/mass per concept num
 | 2026-11-19 | orchestrator | Appended SL-93 (UL shelf-arm failure, process miss, options query) | docs-reviewer (verified, factual claims only: vs teams/structural/analysis/shelf-arms-r13.md (s.0, s.1, s.4) and shelf_arms_r13.json: UL FAILS in H13 and E1, limb 30 -> 20 (H13) / 17 (E1) mm, 'same radii as r11 H' (s.1: root 15 mm identical in r11 H_meta); UR/LL pass with conditions; E1 needs 16 mm rods and +35-38% root moments (lean case); shelf-arm rule in rp2-strut-limb-voids.md (dated 2026-11-16, commit 58bb675) = root solid core d >= 40 mm and I >= 1.2e5 mm^4 (row (c), s.3); thickening 42 (H13) / 49 (E1) mm matches s.0; 80597f3 is the Structural commit, SL-93 commit f5713b4 is 17:06:10 = entry time; options query answered by s.9 (71af851). 'Process miss' claim: teams/cad/composition_r13/checks.py has no shelf-arm root-section check; only fullpiece_v2/v2_1 gen_fullpiece.py reference I >= 1.2e5; consistent with 'rounds 07-12 not tested' (Orchestrator judgment, `[error]` tag fits). 'UL is probably the thin member of the T1 weight ladder' is labelled judgment, not checked. Structural s.0/s.9 themselves are still [PROVISIONAL]. No body [PROVISIONAL] tag belongs to this row) |
 | 2026-11-19 | orchestrator | Appended SL-94 (SL-92 read-time correction, r13 manifest fixes logged) | [PROVISIONAL] |
 | 2026-11-19 | orchestrator | Appended SL-95 (round-13 deploy) | [PROVISIONAL] |
+| 2026-11-20 | orchestrator | Appended SL-96 (FLUX last try, review, no further retries) | [PROVISIONAL] |
